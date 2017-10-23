@@ -1,6 +1,7 @@
 <mat-toolbar color="primary" class="mat-elevation-z5">
   <span>{{title}}</span>
-
+  <span class="space-filler"></span>
+  <app-ticker></app-ticker>
 </mat-toolbar> 
 
 <blockquote>
@@ -9,44 +10,47 @@
     - Sidney Coleman
 </blockquote>
 
+<div class="mdc-layout-grid">
+  <div class="mdc-layout-grid__inner">
 
-<mat-grid-list cols="3">
+    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4">
 
-  <mat-grid-tile>
-    <p>
-      This is a tile
-    </p>
-    <button mat-button color="primary">Click me</button>
-    <button mat-raised-button color="primary">Click me</button>
-  </mat-grid-tile>
+      <!-- <p>
+        This is a cell
+      </p>
+      <button mat-button color="primary">Click me</button>
+      <button mat-raised-button color="primary">Click me</button> -->
+    </div>
 
-  <mat-grid-tile>
-    <p>
-      This is a different tile
-    </p>
-    <button mat-button color="accent">Click me</button>
-    <button mat-raised-button color="accent">Click me</button>
-  </mat-grid-tile>
+    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4">
+      &nbsp;
+      <!-- <p>
+        This is another cell
+      </p>
+      <button mat-button color="accent">Click me</button>
+      <button mat-raised-button color="accent">Click me</button> -->
+    </div>
+
+    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 log">
+      <p>
+          The vacuum contains neither matter nor energy, but it does contain
+          ''fluctuations,'' transitions between something and nothing in which
+            potential existence can be transformed into real existence by the
+          addition of energy.
+      </p>
+      <p>
+          The vacuum's totally empty space is actually a seething 
+          turmoil of creation and annihilation, which to the ordinary world
+          appears calm because the scale of fluctuations in the vacuum is tiny 
+          and the fluctuations tend to cancel each other out. 
+      </p>
   
-  <mat-grid-tile>
-    <p>
-        The vacuum contains neither matter nor energy, but it does contain
-        ''fluctuations,'' transitions between something and nothing in which
-         potential existence can be transformed into real existence by the
-        addition of energy.
-    </p>
-    <p>
-        Thus, the vacuum's totally empty space is actually a seething 
-        turmoil of creation and annihilation, which to the ordinary world
-        appears calm because the scale of fluctuations in the vacuum is tiny 
-        and the fluctuations tend to cancel each other out. 
-    </p>
-
-    <p>
-        Every conceivable kind of subnuclear particle (along with its 
-        antimatter equivalent particle) is constantly popping into existence 
-        in the vacuum only to be immediately reunited with its antiparticle 
-        in mutual annihilation. 
-    </p>
-  </mat-grid-tile>
-</mat-grid-list>
+      <p>
+          Every conceivable kind of subnuclear particle is constantly popping
+          into existence in the vacuum only to be immediately reunited with
+          its antiparticle in mutual annihilation. 
+      </p>
+    </div>
+      
+  </div>
+</div>

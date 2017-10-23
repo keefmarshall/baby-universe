@@ -4,6 +4,13 @@
 /* @import '~@angular/material/prebuilt-themes/pink-bluegrey.css'; */
 /* @import '~@angular/material/prebuilt-themes/purple-green.css'; */
 
+@import '~@material/layout-grid/dist/mdc.layout-grid.min.css';
+
 body {
     margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+blockquote, .log {
+    font-family: 'Lora', serif;
 }

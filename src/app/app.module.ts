@@ -8,10 +8,13 @@ import { MdesignModule } from './mdesign/mdesign.module';
 
 import { AppComponent } from './app.component';
 
+import { TickerService } from './ticker.service';
+import { TickerComponent } from './ticker/ticker.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TickerComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +23,7 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     MdesignModule
   ],
-  providers: [],
+  providers: [TickerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
