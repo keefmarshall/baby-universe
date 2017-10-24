@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { TickerService } from '../ticker.service';
+import { TickerService } from '../services/ticker.service';
 
 @Component({
   selector: 'app-ticker',
-  templateUrl: './ticker.component.html',
-  styleUrls: ['./ticker.component.css']
+  template: `
+    <span>{{ticker}}</span>`,
 })
 export class TickerComponent implements OnInit {
   public ticker: number = -1;
@@ -15,10 +15,9 @@ export class TickerComponent implements OnInit {
 
   ngOnInit() {
     this.tickerService.tick$.subscribe(n => {
-      if (n % 4 == 0) {
+      if (n % 4 === 0) {
         this.ticker = this.ticker + 1;
       }
-
     });
   }
 

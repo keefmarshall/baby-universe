@@ -8,7 +8,7 @@ import { MdesignModule } from './mdesign/mdesign.module';
 
 import { AppComponent } from './app.component';
 
-import { TickerService } from './ticker.service';
+import { TickerService } from './services/ticker.service';
 import { TickerComponent } from './ticker/ticker.component';
 
 @NgModule({
