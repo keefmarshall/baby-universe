@@ -1,0 +1,15 @@
+<div id="dev-panel">
+  
+  <button mat-raised-button (click)="collectPhoton()">
+    Collect photon
+  </button>
+
+  <button mat-raised-button color="primary" class="deploy-button"
+     (click)="deployPhotonCollector()"
+     [disabled]="this.universeService.universe.energy < 5">
+    Deploy photon collector<br/>
+    <small>cost: 5MeV</small>
+  </button>
+    
+
+</div>

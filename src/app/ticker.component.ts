@@ -9,12 +9,13 @@ import { Universe } from './services/universe';
   selector: 'app-ticker',
   template: `
     <span>
-      {{ticker}} | 
+      <!-- {{ ticker }} | -->
+      Energy: {{ universe.energy | number:'1.0-2' }} MeV |
       {{ universe.elapsedSeconds | number:'1.0-0' }}
     </span>`,
 })
 export class TickerComponent implements OnInit {
-  public ticker: number = -1;
+  public ticker: number = 0;
   public universe: Universe;
 
   constructor(
@@ -26,9 +27,7 @@ export class TickerComponent implements OnInit {
     this.universe = this.universeService.universe;
 
     this.tickerService.tick$.subscribe(n => {
-      // if (n % 4 === 0) {
         this.ticker = this.ticker + 1;
-      // }
     });
   }
 

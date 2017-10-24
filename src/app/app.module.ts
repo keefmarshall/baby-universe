@@ -7,9 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // This is a module to encapsulate the material design components
 import { MdesignModule } from './mdesign/mdesign.module';
+import { PanelsModule } from './panels/panels.module';
 
 // Central application services
 import { AutosaveService } from './services/autosave.service';
+import { ParticleService } from './services/particle.service';
 import { TickerService } from './services/ticker.service';
 import { TimeService } from './services/time.service';
 import { UniverseService } from './services/universe.service';
@@ -28,9 +30,16 @@ import { TickerComponent } from './ticker.component';
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
-    MdesignModule
+    MdesignModule,
+    PanelsModule
   ],
-  providers: [AutosaveService, TickerService, TimeService, UniverseService],
+  providers: [
+    AutosaveService,
+    ParticleService,
+    TickerService,
+    TimeService,
+    UniverseService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
