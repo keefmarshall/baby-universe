@@ -4,11 +4,18 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// This is a module to encapsulate the material design components
 import { MdesignModule } from './mdesign/mdesign.module';
 
-import { AppComponent } from './app.component';
-
+// Central application services
+import { AutosaveService } from './services/autosave.service';
 import { TickerService } from './services/ticker.service';
+import { TimeService } from './services/time.service';
+import { UniverseService } from './services/universe.service';
+
+// Top level components
+import { AppComponent } from './app.component';
 import { TickerComponent } from './ticker.component';
 
 @NgModule({
@@ -23,7 +30,7 @@ import { TickerComponent } from './ticker.component';
     BrowserAnimationsModule,
     MdesignModule
   ],
-  providers: [TickerService],
+  providers: [AutosaveService, TickerService, TimeService, UniverseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
