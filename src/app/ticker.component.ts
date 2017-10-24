@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TickerService } from '../services/ticker.service';
+import { TickerService } from './services/ticker.service';
 
 @Component({
   selector: 'app-ticker',

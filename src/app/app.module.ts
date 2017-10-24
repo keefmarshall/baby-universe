@@ -9,7 +9,7 @@ import { MdesignModule } from './mdesign/mdesign.module';
 import { AppComponent } from './app.component';
 
 import { TickerService } from './services/ticker.service';
-import { TickerComponent } from './ticker/ticker.component';
+import { TickerComponent } from './ticker.component';
 
 @NgModule({
   declarations: [
