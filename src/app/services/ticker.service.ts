@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 
 import { Observable, Subject } from 'rxjs/Rx';
+import { Globals } from '../globals';
 
 @Injectable()
 export class TickerService {
 
-  public secondsPerTick = 0.1;
   public tick$: Observable<number>;
 
   private pauser = new Subject<boolean>();
@@ -19,7 +19,7 @@ export class TickerService {
     //    paused ? Observable.never() : internalTicker$
     // );
 
-    this.tick$ = Observable.interval(1000 * this.secondsPerTick).share();
+    this.tick$ = Observable.interval(1000 * Globals.secondsPerTick).share();
   }
 
   pause() {

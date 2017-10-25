@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AutosaveService } from './services/autosave.service';
+import { MachineService } from './services/machine.service';
 import { TimeService } from './services/time.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class AppComponent implements OnInit  {
 
   constructor(
     private autosaveService: AutosaveService,
+    private machineService: MachineService,
     private timeService: TimeService
   ) { }
 

@@ -5,7 +5,10 @@ export class Universe {
 
     energy = 0;
 
-    // Things
+    // Photons
     photonCount = 0;
+    energyPerPhoton = 0.5;
 
+    // Machines - hash of machine name against a hash of machine properties
+    machines = {};
 }

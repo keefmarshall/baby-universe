@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { TickerService } from './ticker.service';
 import { UniverseService } from './universe.service';
 
+import { Globals } from '../globals';
+
 @Injectable()
 export class AutosaveService {
 
@@ -15,7 +17,7 @@ export class AutosaveService {
   ) {
     this.tickerService.tick$.subscribe(n => {
       // every 5 seconds
-      const interval = (this.frequency / this.tickerService.secondsPerTick);
+      const interval = (this.frequency / Globals.secondsPerTick);
       if (n % interval === 0) { 
         this.autosave();
       }

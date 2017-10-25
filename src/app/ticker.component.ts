@@ -10,13 +10,12 @@ import { Universe } from './services/universe';
   template: `
     <span>
       <!-- {{ ticker }} | -->
-      Energy: {{ universe.energy | number:'1.0-2' }} MeV |
-      {{ universe.elapsedSeconds | number:'1.0-0' }}
+      Energy: {{ universe().energy | number:'1.1-2' }} MeV |
+      {{ universe().elapsedSeconds | number:'1.0-0' }}
     </span>`,
 })
 export class TickerComponent implements OnInit {
   public ticker: number = 0;
-  public universe: Universe;
 
   constructor(
     private tickerService: TickerService,
@@ -24,11 +23,12 @@ export class TickerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.universe = this.universeService.universe;
-
     this.tickerService.tick$.subscribe(n => {
         this.ticker = this.ticker + 1;
     });
   }
 
+  universe() {
+    return this.universeService.universe;
+  }
 }
