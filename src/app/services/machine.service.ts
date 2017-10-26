@@ -102,6 +102,9 @@ export class MachineService {
       const machine = this.machineFactory.newMachine(m);
       machine.canSee = machine.preconditions();
       machine.canBuy = machine.affordable(1);
+      machine.canBuy10 = machine.affordable(10);
+      machine.canBuy100 = machine.affordable(100);
+      machine.canBuy1k = machine.affordable(1000);
     });
   }
 }

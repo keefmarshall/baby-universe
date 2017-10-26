@@ -63,10 +63,8 @@ export class PhotonCollector extends Machine {
     energyCost(amount: number = 1): number {
         const q = this.properties().quantity || 0;
 
-        let cost = 0;
-        for (let i = q; i < q + amount; i++) {
-            cost += this.baseEnergyCost * Math.pow(this.costMultipler, i);
-        }
+        const cost = this.baseEnergyCost *
+            Globals.geometricProgressionSum(q, q + amount - 1, this.costMultipler);
 
         return cost;
     }

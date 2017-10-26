@@ -8,6 +8,9 @@ export abstract class Machine {
 
     public canSee: boolean = false;
     public canBuy: boolean = false;
+    public canBuy10: boolean = false;
+    public canBuy100: boolean = false;
+    public canBuy1k: boolean = false;
 
     abstract onTick();
     abstract preconditions(): boolean;

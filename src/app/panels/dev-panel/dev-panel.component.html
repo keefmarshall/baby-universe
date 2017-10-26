@@ -18,6 +18,8 @@
     
   <button mat-raised-button (click)="resetUniverse();" color="warn">RESET</button>
 
+  <span>cost10 = {{ machineFactory.newMachine('PhotonCollector').energyCost(10) }}</span>
+
   <div><pre>{{ universeService.universe | json }}</pre></div>
   <div><pre>{{ machineFactory.newMachine('PhotonCollector') | json }}</pre></div>
 </div>
