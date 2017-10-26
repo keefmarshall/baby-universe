@@ -1,26 +1,37 @@
 import { Globals } from '../globals';
 import { Universe } from '../services/universe';
+import { UniverseService } from '../services/universe.service';
 
 
 export abstract class Machine {
-    readonly name: string;
+    //readonly name: string;
 
-    abstract onTick(universe: Universe, props: MachineProperties);
+    public canSee: boolean = false;
+    public canBuy: boolean = false;
 
-    abstract preconditions(universe: Universe): boolean;
+    abstract onTick();
+    abstract preconditions(): boolean;
+    abstract displayCost(count: number): string;
+    abstract payFor(count: number): boolean;
+    abstract affordable(amount: number): boolean;
 
-    constructor(name: string) {
-        this.name = name;
-    }
+    constructor(
+        public readonly name: string,
+        protected universeService: UniverseService
+    ) { }
 
     defaultProperties(): MachineProperties {
         return new MachineProperties();
     }
 
+    properties(): MachineProperties {
+        return this.universeService.universe.machines[this.name] ||
+                 this.defaultProperties();
+    }
 }
 
 export class MachineProperties {
-    quantity = 1;
+    quantity = 0;
     efficiency = Globals.secondsPerTick;
     extras = {};
 }

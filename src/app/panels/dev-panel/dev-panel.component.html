@@ -4,12 +4,12 @@
     Collect photon
   </button>
 
-  <button *ngIf="machineService.isAvailable('PhotonCollector')"
+  <button *ngIf="machineFactory.newMachine('PhotonCollector').canSee"
      mat-raised-button color="primary" class="deploy-button"
      (click)="deployPhotonCollector()"
-     [disabled]="universeService.universe.energy < 5">
+     [disabled]="!machineFactory.newMachine('PhotonCollector').canBuy">
     
-     Deploy photon collector (5 MeV)<br/>
+     Deploy photon collector ({{ machineFactory.newMachine('PhotonCollector').displayCost() }})<br/>
     
     <small>
       Converts stray photons into energy
@@ -19,4 +19,5 @@
   <button mat-raised-button (click)="resetUniverse();" color="warn">RESET</button>
 
   <div><pre>{{ universeService.universe | json }}</pre></div>
+  <div><pre>{{ machineFactory.newMachine('PhotonCollector') | json }}</pre></div>
 </div>

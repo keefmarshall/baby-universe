@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MachineService } from '../../services/machine.service';
 import { UniverseService } from '../../services/universe.service';
 
+import { MachineFactory } from '../../machines/machine-factory';
 import { ParticleFactory } from '../../machines/particle-factory';
 import { PhotonCollector } from '../../machines/photon-collector';
 
@@ -14,6 +15,7 @@ export class DevPanelComponent implements OnInit {
   private particleFactory = new ParticleFactory();
 
   constructor(
+    private machineFactory: MachineFactory,
     private machineService: MachineService,
     private universeService: UniverseService
   ) { }
@@ -35,8 +37,13 @@ export class DevPanelComponent implements OnInit {
   }
 
   deployPhotonCollector() {
-    console.log('Deployed photon collector!');
-    this.universeService.universe.energy -= 5;
-    this.machineService.addMachine(new PhotonCollector());
+    // this.universeService.universe.energy -= 5;
+    const newMachine = this.machineFactory.newMachine('PhotonCollector');
+    if (newMachine.payFor(1)) {
+      this.machineService.addMachine(newMachine);
+      console.log("Deployed photon collector!");
+    } else {
+      console.log("Can't afford new photon collector!");
+    }
   }
 }

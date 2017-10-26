@@ -1,4 +1,8 @@
-import {Machine} from './machine';
+import { Injectable } from '@angular/core';
+
+import { UniverseService } from '../services/universe.service';
+
+import { Machine } from './machine';
 
 // Tediously import every bloody machine
 import { PhotonCollector } from './photon-collector';
@@ -12,10 +16,15 @@ import { PhotonCollector } from './photon-collector';
  * Any machine that can be added to the machine service has to be represented
  * here, otherwise we can't recover from a saved state correctly.
  */
+@Injectable()
 export class MachineFactory {
-    allMachines = {
-        'PhotonCollector': new PhotonCollector()
-    };
+    allMachines: {};
+
+    constructor(private universeService: UniverseService) {
+        this.allMachines = {
+            'PhotonCollector': new PhotonCollector(universeService)
+        };
+    }
 
     newMachine(name: string): Machine {
         // console.log('Building machine of type ' + name);

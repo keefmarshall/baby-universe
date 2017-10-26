@@ -17,11 +17,9 @@ import { Machine, MachineProperties } from '../machines/machine';
 export class MachineService {
   private machines: Array<Machine> = [];
   private machineNames: Array<string> = [];
-  private available: Array<string> = [];
-
-  private machineFactory = new MachineFactory();
 
   constructor(
+    private machineFactory: MachineFactory,
     private tickerService: TickerService,
     private universeService: UniverseService
   ) {
@@ -38,10 +36,9 @@ export class MachineService {
 
     this.machineNames = [];
     this.machines = [];
-    this.available = [];
 
     console.log('Adding machine instances from store..');
-    
+
     Object.keys(this.universeService.universe.machines).forEach(m => {
       const machine = this.machineFactory.newMachine(m);
       this.machines.push(machine);
@@ -49,10 +46,9 @@ export class MachineService {
     });
 
     console.log('Got machine instances: ' + JSON.stringify(this.machines));
-
     console.log('Rationalising machine availability against preconditions...');
 
-    this.checkAvailability();
+    this.updateAvailability();
   }
 
   /**
@@ -65,15 +61,10 @@ export class MachineService {
 
     // This is the core machine loop. Here's where the magic happens!
     this.machines.forEach(machine => {
-      machine.onTick(u, u.machines[machine.name]);
+      machine.onTick();
     });
 
-    // This could get expensive, so let's only do it every 20 ticks:
-    if (n % 20 === 0) {
-      // console.log('Refreshing availbility..')
-      this.checkAvailability();
-      console.log('Got new availability: ' + JSON.stringify(this.available));
-    }
+    this.updateAvailability();
   }
 
   addMachine(machine: Machine) {
@@ -88,44 +79,30 @@ export class MachineService {
     if (!exists) {
       this.machines.push(machine);
       this.machineNames.push(machine.name);
-    } else {
-      // increment the quantity
-      universe.machines[machine.name].quantity += 1;
     }
 
+    // increment the quantity
+    universe.machines[machine.name].quantity += 1;
   }
 
   /**
    * Reset the machine availability based on the current universe 
    * state (most machines require some precondition which could occur
-   * at any time)
+   * at any time) - this also sets whether the machine is currently
+   * affordable.
+   * 
+   * NB, although the machine objects contain functions to calculate this
+   * on demand, we also need to set it in a variable so that Angular can
+   * use it for [disabled] etc, as it doesn't like functions in these clauses.
    */
-  checkAvailability() {
+  updateAvailability() {
     const u = this.universeService.universe;
 
     Object.keys(this.machineFactory.allMachines).forEach(m => {
       const machine = this.machineFactory.newMachine(m);
-      const preconMet = machine.preconditions(u);
-      const isAvailable = this.isAvailable(m);
-
-      // Add newly available machines
-      if (preconMet && !isAvailable) {
-        this.available.push(m);
-      }
-      // Remove no longer available machines
-      if (!preconMet && isAvailable) {
-        const index = this.available.indexOf(m);
-        this.available.splice(index, 1);
-      }
+      machine.canSee = machine.preconditions();
+      machine.canBuy = machine.affordable(1);
     });
-  }
-
-  /**
-   * Is the machine currently available, given the state of the
-   * universe?
-   */
-  isAvailable(m: string) {
-    return this.available.includes(m);
   }
 }
 

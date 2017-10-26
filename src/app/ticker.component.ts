@@ -10,7 +10,7 @@ import { Universe } from './services/universe';
   template: `
     <span>
       <!-- {{ ticker }} | -->
-      Energy: {{ universe().energy | number:'1.1-2' }} MeV |
+      Energy: {{ universe().energy | number:'1.1-1' }} MeV |
       {{ universe().elapsedSeconds | number:'1.0-0' }}
     </span>`,
 })
