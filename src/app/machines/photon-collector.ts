@@ -19,14 +19,8 @@ export class PhotonCollector extends Machine {
         if (this.photonCount >= 1) { // we have at least one whole one
             const newPhotons = Math.floor(this.photonCount);
             this.photonCount -= newPhotons;
-
-            for (let i = 0; i < newPhotons; i++) {
-                this.particleFactory.collectPhoton(universe);
-            }
-            // universe.photonCount += newPhotons;
-            // universe.energy += newPhotons * universe.energyPerPhoton;
+            this.particleFactory.collectPhoton(universe, newPhotons);
         }
-
     }
 
     preconditions(universe: Universe): boolean {

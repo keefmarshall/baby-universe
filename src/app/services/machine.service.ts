@@ -70,7 +70,7 @@ export class MachineService {
 
     // This could get expensive, so let's only do it every 20 ticks:
     if (n % 20 === 0) {
-      console.log('Refreshing availbility..')
+      // console.log('Refreshing availbility..')
       this.checkAvailability();
       console.log('Got new availability: ' + JSON.stringify(this.available));
     }
@@ -103,7 +103,7 @@ export class MachineService {
   checkAvailability() {
     const u = this.universeService.universe;
 
-    this.machineFactory.allMachines.forEach(m => {
+    Object.keys(this.machineFactory.allMachines).forEach(m => {
       const machine = this.machineFactory.newMachine(m);
       const preconMet = machine.preconditions(u);
       const isAvailable = this.isAvailable(m);

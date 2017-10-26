@@ -13,20 +13,13 @@ import { PhotonCollector } from './photon-collector';
  * here, otherwise we can't recover from a saved state correctly.
  */
 export class MachineFactory {
-    allMachines = [
-        'PhotonCollector'
-    ];
+    allMachines = {
+        'PhotonCollector': new PhotonCollector()
+    };
 
     newMachine(name: string): Machine {
-        console.log('Building machine of type ' + name);
-        switch (name) {
-            case 'PhotonCollector': 
-                console.log('Building photon collector..');
-                return new PhotonCollector();
-
-            default: 
-                return null;
-        }
+        // console.log('Building machine of type ' + name);
+        return this.allMachines[name];
     }
 
 }
