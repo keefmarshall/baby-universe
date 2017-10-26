@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MachineService } from '../../services/machine.service';
-import { ParticleService } from '../../services/particle.service';
 import { UniverseService } from '../../services/universe.service';
 
+import { ParticleFactory } from '../../machines/particle-factory';
 import { PhotonCollector } from '../../machines/photon-collector';
 
 @Component({
@@ -11,10 +11,10 @@ import { PhotonCollector } from '../../machines/photon-collector';
   styleUrls: ['./dev-panel.component.css']
 })
 export class DevPanelComponent implements OnInit {
+  private particleFactory = new ParticleFactory();
 
   constructor(
     private machineService: MachineService,
-    private particleService: ParticleService,
     private universeService: UniverseService
   ) { }
 
@@ -31,7 +31,7 @@ export class DevPanelComponent implements OnInit {
 
   collectPhoton() {
     console.log('Collected photon!');
-    this.particleService.collectPhoton();
+    this.particleFactory.collectPhoton(this.universeService.universe);
   }
 
   deployPhotonCollector() {

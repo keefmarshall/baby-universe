@@ -4,9 +4,10 @@
     Collect photon
   </button>
 
-  <button mat-raised-button color="primary" class="deploy-button"
+  <button *ngIf="machineService.isAvailable('PhotonCollector')"
+     mat-raised-button color="primary" class="deploy-button"
      (click)="deployPhotonCollector()"
-     [disabled]="this.universeService.universe.energy < 5">
+     [disabled]="universeService.universe.energy < 5">
     
      Deploy photon collector (5 MeV)<br/>
     

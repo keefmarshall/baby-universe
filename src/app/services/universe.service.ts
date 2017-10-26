@@ -7,6 +7,7 @@ export class UniverseService {
 
   constructor() {
     this.loadUniverse();
+    console.log('Universe constructed: ' + JSON.stringify(this.universe));
   }
 
   saveUniverse() {

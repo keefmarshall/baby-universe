@@ -12,7 +12,6 @@ import { PanelsModule } from './panels/panels.module';
 // Central application services
 import { AutosaveService } from './services/autosave.service';
 import { MachineService } from './services/machine.service';
-import { ParticleService } from './services/particle.service';
 import { TickerService } from './services/ticker.service';
 import { TimeService } from './services/time.service';
 import { UniverseService } from './services/universe.service';
@@ -37,7 +36,6 @@ import { TickerComponent } from './ticker.component';
   providers: [
     AutosaveService,
     MachineService,
-    ParticleService,
     TickerService,
     TimeService,
     UniverseService

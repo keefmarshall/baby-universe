@@ -1,9 +1,12 @@
 import {Machine, MachineProperties} from './machine';
-import {Universe} from '../services/universe';
+import { Universe } from '../services/universe';
+
+import { ParticleFactory } from './particle-factory';
 
 export class PhotonCollector extends Machine {
     private photonCount = 0;
-
+    private particleFactory = new ParticleFactory();
+    
     constructor() {
         super(PhotonCollector.name);
     }
@@ -15,12 +18,18 @@ export class PhotonCollector extends Machine {
         this.photonCount += props.quantity * props.efficiency;
         if (this.photonCount >= 1) { // we have at least one whole one
             const newPhotons = Math.floor(this.photonCount);
-            console.log('Generated ' + newPhotons + ' new photons!');
-            console.log('Energy per photon currently ' + universe.energyPerPhoton);
             this.photonCount -= newPhotons;
-            universe.energy += newPhotons * universe.energyPerPhoton;
+
+            for (let i = 0; i < newPhotons; i++) {
+                this.particleFactory.collectPhoton(universe);
+            }
+            // universe.photonCount += newPhotons;
+            // universe.energy += newPhotons * universe.energyPerPhoton;
         }
 
     }
 
+    preconditions(universe: Universe): boolean {
+        return universe.photonCount >= 10;
+    }
 }

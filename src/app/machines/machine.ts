@@ -4,7 +4,10 @@ import { Universe } from '../services/universe';
 
 export abstract class Machine {
     readonly name: string;
+
     abstract onTick(universe: Universe, props: MachineProperties);
+
+    abstract preconditions(universe: Universe): boolean;
 
     constructor(name: string) {
         this.name = name;
