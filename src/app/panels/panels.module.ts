@@ -7,8 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // This is a module to encapsulate the material design components
 import { MdesignModule } from '../mdesign/mdesign.module';
 
+import { ButtonsModule } from '../buttons/buttons.module';
+
 @NgModule({
   imports: [
+    ButtonsModule,
     CommonModule,
     BrowserAnimationsModule,
     MdesignModule

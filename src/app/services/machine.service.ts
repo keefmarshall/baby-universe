@@ -67,8 +67,12 @@ export class MachineService {
     this.updateAvailability();
   }
 
+  /**
+   * Add a machine instance to the universe
+   * 
+   * @param machine instance to add
+   */
   addMachine(machine: Machine) {
-
     const exists = this.machineNames.includes(machine.name);
     const universe = this.universeService.universe;
 

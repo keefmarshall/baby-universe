@@ -20,6 +20,8 @@ export abstract class Machine {
 
     constructor(
         public readonly name: string,
+        public readonly displayName: string,
+        public readonly displayPurpose: string,
         protected universeService: UniverseService
     ) { }
 
