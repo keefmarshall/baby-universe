@@ -22,8 +22,6 @@ export class PhotonCollector extends Machine {
     // Abstract method implementations
 
     onTick() {
-        // n is the tick number, not the number of machines!
-
         // accumulate fractions of photons
         const props = this.properties();
         this.photonCount += props.quantity * props.efficiency;

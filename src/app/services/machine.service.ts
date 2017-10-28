@@ -96,8 +96,12 @@ export class MachineService {
    * use it for [disabled] etc, as it doesn't like functions in these clauses.
    */
   updateAvailability() {
-    const u = this.universeService.universe;
-
+    // I'm in two minds here - we probably should have observables for things like
+    // energy, have a 'watchable' updater which observes tick$ and updates the
+    // energy observable and any other key quantity. But I don't know, at this stage,
+    // what other quantities will need to be observables, and this mechanism below
+    // allows each machine to have completely independent concepts of availability and
+    // cost without being tied to any global observable.
     Object.keys(this.machineFactory.allMachines).forEach(m => {
       const machine = this.machineFactory.newMachine(m);
       machine.canSee = machine.preconditions();
