@@ -20,12 +20,15 @@ import { PhotonicPhilosopher } from 'app/machines/photonic-philosopher';
 @Injectable()
 export class MachineFactory {
     allMachines: {};
+    allMachineNames: Array<string> = [];
 
     constructor(private universeService: UniverseService) {
         this.allMachines = {
             'PhotonCollector': new PhotonCollector(universeService),
             'PhotonicPhilosopher': new PhotonicPhilosopher(universeService)
         };
+
+        Object.keys(this.allMachines).forEach(m => this.allMachineNames.push(m));
     }
 
     newMachine(name: string): Machine {

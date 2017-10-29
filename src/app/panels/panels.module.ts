@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdesignModule } from '../mdesign/mdesign.module';
 
 import { ButtonsModule } from '../buttons/buttons.module';
+import { DeploymentPanelComponent } from './deployment-panel/deployment-panel.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,7 @@ import { ButtonsModule } from '../buttons/buttons.module';
     BrowserAnimationsModule,
     MdesignModule
   ],
-  declarations: [DevPanelComponent],
-  exports: [DevPanelComponent]
+  declarations: [DevPanelComponent, DeploymentPanelComponent],
+  exports: [DevPanelComponent, DeploymentPanelComponent]
 })
 export class PanelsModule { }
