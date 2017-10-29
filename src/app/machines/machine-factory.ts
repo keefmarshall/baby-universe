@@ -6,6 +6,7 @@ import { Machine } from './machine';
 
 // Tediously import every bloody machine
 import { PhotonCollector } from './photon-collector';
+import { PhotonicPhilosopher } from 'app/machines/photonic-philosopher';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -22,7 +23,8 @@ export class MachineFactory {
 
     constructor(private universeService: UniverseService) {
         this.allMachines = {
-            'PhotonCollector': new PhotonCollector(universeService)
+            'PhotonCollector': new PhotonCollector(universeService),
+            'PhotonicPhilosopher': new PhotonicPhilosopher(universeService)
         };
     }
 
