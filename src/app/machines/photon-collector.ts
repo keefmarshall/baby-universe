@@ -41,7 +41,7 @@ export class PhotonCollector extends Machine {
     }
 
     displayCost(amount: number = 1): string {
-        return Globals.round(this.energyCost(), 1) + ' MeV';
+        return Globals.round(this.energyCost(amount), 1) + ' MeV';
     }
 
     payFor(amount: number = 1): boolean {
