@@ -8,12 +8,14 @@
     (click)="researchProject(project)"
     [disabled]="!canResearch">
 
-  Research {{ project.name }} ({{ project.displayCost() }})
-  <br/>
-  <small>{{ project.description }}</small>
-  <mat-progress-bar color="accent"
-    *ngIf="project.progress() > 0"
-    [value]="project.progress()"
-  ></mat-progress-bar>
+    {{ project.name }} ({{ project.displayCost() }})
+    <br/>
+    <small>{{ project.description }}</small>
+    
+    <mat-progress-bar color="accent"
+      *ngIf="project.progress() > 0"
+      [value]="project.progress()"
+    ></mat-progress-bar>
+  
   </button>
 </div>

@@ -81,10 +81,12 @@ export class ResearchService {
   initialise(u: Universe) {
     console.log("Initialising research projects..");
     Object.keys(this.allProjects).forEach(pname => {
-        if (u.research[pname] != null) {
-            const project = this.allProjects[pname];
-            project.addScience(u.research[pname].scienceGained);
-        }
+      const project = this.allProjects[pname];
+      if (u.research[pname] != null) {
+        project.addScience(u.research[pname].scienceGained);
+      } else {
+        project.reset();
+      }
     });
 
     const currentName = this.universeService.universe.currentResearchProject;

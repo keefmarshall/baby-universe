@@ -15,8 +15,8 @@ export class PhotonicPhilosopher extends Machine {
         private researchService: ResearchService
      ) {
         super(PhotonicPhilosopher.name, 
-            "photonic philosopher",
-            "Conducts research",
+            "Photonic Philosopher",
+            "Conducts scientific research",
             universeService);
     }
 

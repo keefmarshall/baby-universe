@@ -5,7 +5,7 @@
   (click)="deployMachine()"
   [disabled]="!machine.canBuy">
 
-  Deploy {{ machine.displayName }} ({{ machine.displayCost() }})
+  {{ machine.displayName }} ({{ machine.displayCost() }})
   <br/>
   <small>{{ machine.displayPurpose }}</small>
 

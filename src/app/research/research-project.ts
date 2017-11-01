@@ -37,4 +37,9 @@ export abstract class ResearchProject {
     displayCost() {
         return this.scienceRequired + " science";
     }
+
+    reset() {
+        this.scienceGained = 0;
+        this.researched = false;
+    }
 }

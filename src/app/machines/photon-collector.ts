@@ -15,8 +15,8 @@ export class PhotonCollector extends Machine {
 
 
     constructor(universeService: UniverseService) {
-        super(PhotonCollector.name, 
-            "photon collector",
+        super(PhotonCollector.name,
+            "Photon Collector",
             "Converts stray photons into energy",
             universeService);
     }
