@@ -7,6 +7,7 @@ import { Machine } from './machine';
 // Tediously import every bloody machine
 import { PhotonCollector } from './photon-collector';
 import { PhotonicPhilosopher } from 'app/machines/photonic-philosopher';
+import { ResearchService } from 'app/services/research.service';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -22,10 +23,13 @@ export class MachineFactory {
     allMachines: {};
     allMachineNames: Array<string> = [];
 
-    constructor(private universeService: UniverseService) {
+    constructor(
+        private universeService: UniverseService,
+        private researchService: ResearchService
+    ) {
         this.allMachines = {
             'PhotonCollector': new PhotonCollector(universeService),
-            'PhotonicPhilosopher': new PhotonicPhilosopher(universeService)
+            'PhotonicPhilosopher': new PhotonicPhilosopher(universeService, researchService)
         };
 
         Object.keys(this.allMachines).forEach(m => this.allMachineNames.push(m));

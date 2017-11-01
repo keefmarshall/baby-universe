@@ -1,5 +1,40 @@
-export interface ResearchProject {
-    name: string;
-    addScience(number);
-    isComplete(): boolean;
+import { Universe } from "app/services/universe";
+
+export abstract class ResearchProject {
+    readonly name: string;
+    readonly description: string;
+
+    public canBuy: boolean = false;
+    public canSee: boolean = false;
+
+    protected readonly scienceRequired: number = 1;
+    private scienceGained = 0;
+    private researched = false;
+
+    abstract preconditions(universe: Universe): boolean;
+    abstract onCompletion();
+
+    addScience(quantity: number) {
+        this.scienceGained += quantity;
+        if (this.scienceGained > this.scienceRequired) {
+            this.researched = true;
+            this.onCompletion();
+        }
+    }
+
+    currentScience(): number {
+        return this.scienceGained;
+    }
+
+    progress(): number {
+        return Math.round(this.scienceGained * 100 / this.scienceRequired);
+    }
+
+    isComplete(): boolean {
+        return this.researched;
+    }
+
+    displayCost() {
+        return this.scienceRequired + " science";
+    }
 }

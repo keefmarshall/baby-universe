@@ -4,10 +4,16 @@
     Collect photon
   </button>
   
-  <app-deploy-button machineName="PhotonCollector"></app-deploy-button>
-  <app-deploy-button machineName="PhotonicPhilosopher"></app-deploy-button>
+  <button mat-raised-button (click)="addEnergy(1000)">
+    Add 1000 energy
+  </button>
+  
+
+  <!-- <app-deploy-button machineName="PhotonCollector"></app-deploy-button>
+  <app-deploy-button machineName="PhotonicPhilosopher"></app-deploy-button> -->
   
   <button mat-raised-button (click)="resetUniverse();" color="warn">RESET</button>
 
   <div><pre>{{ universeService.universe | json }}</pre></div>
+  <div><pre>{{ projects | json }}</pre></div>
 </div>

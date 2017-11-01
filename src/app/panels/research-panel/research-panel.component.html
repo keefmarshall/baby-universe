@@ -1,0 +1,16 @@
+<h4>Research</h4>
+
+<div *ngFor="let project of projectList">
+  <button 
+    *ngIf="project.preconditions(universeService.universe) && !project.isComplete()"
+    mat-raised-button color="accent" 
+    class="deploy-button"
+    (click)="researchProject(project)"
+    [disabled]="!canResearch">
+
+  Research {{ project.name }} ({{ project.displayCost() }})
+  <br/>
+  <small>{{ project.description }}</small>
+
+  </button>
+</div>

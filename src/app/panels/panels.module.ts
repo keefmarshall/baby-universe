@@ -9,6 +9,7 @@ import { MdesignModule } from '../mdesign/mdesign.module';
 
 import { ButtonsModule } from '../buttons/buttons.module';
 import { DeploymentPanelComponent } from './deployment-panel/deployment-panel.component';
+import { ResearchPanelComponent } from './research-panel/research-panel.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import { DeploymentPanelComponent } from './deployment-panel/deployment-panel.co
     BrowserAnimationsModule,
     MdesignModule
   ],
-  declarations: [DevPanelComponent, DeploymentPanelComponent],
-  exports: [DevPanelComponent, DeploymentPanelComponent]
+  declarations: [DevPanelComponent, DeploymentPanelComponent, ResearchPanelComponent],
+  exports: [DevPanelComponent, DeploymentPanelComponent, ResearchPanelComponent]
 })
 export class PanelsModule { }

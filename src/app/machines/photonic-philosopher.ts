@@ -1,16 +1,19 @@
 import { Machine, MachineProperties } from "app/machines/machine";
+import { Universe } from "app/services/universe";
 import { UniverseService } from "app/services/universe.service";
 import { Globals } from "app/globals";
 import { ResearchProject } from "app/research/research-project";
+import { ResearchList } from "app/research/research-list";
+import { ResearchService } from "app/services/research.service";
 
 export class PhotonicPhilosopher extends Machine {
 
     private baseEnergyCost = 1000;
 
-    public currentProject: ResearchProject = null;
-
-
-    constructor(universeService: UniverseService) {
+    constructor(
+        universeService: UniverseService,
+        private researchService: ResearchService
+     ) {
         super(PhotonicPhilosopher.name, 
             "photonic philosopher",
             "Conducts research",
@@ -21,13 +24,8 @@ export class PhotonicPhilosopher extends Machine {
     // Abstract method implementations
 
     onTick() {
-        if (this.currentProject != null) {
-            const science = this.properties().quantity * this.properties().efficiency;
-            this.currentProject.addScience(science);
-            if (this.currentProject.isComplete()) {
-                this.completeProject();
-            }
-        }
+        const science = this.properties().quantity * this.properties().efficiency;
+        this.researchService.addScience(science);
     }
 
     preconditions(): boolean {
@@ -82,27 +80,6 @@ export class PhotonicPhilosopher extends Machine {
         if (q >= 50) cm = 5;
 
         return cm;
-    }
-
-    startProject(project: ResearchProject): boolean {
-        if (this.properties().quantity > 0) {
-            if (this.currentProject == null) {
-                console.log("Starting new research project: " + this.currentProject.name);
-                this.currentProject = project;
-                return true;
-            } else {
-                console.log("Can't research new project, already busy!");
-                return false;
-            }
-        } else {
-            console.log("Can't research new project, no philosphers!");
-            return false;
-        }
-    }
-
-    completeProject() {
-        console.log("Research complete: " + this.currentProject.name);
-        this.currentProject = null;
     }
 
 }

@@ -14,6 +14,7 @@ import { AutosaveService } from './services/autosave.service';
 import { MachineFactory } from './machines/machine-factory';
 import { MachineService } from './services/machine.service';
 import { MeteringService } from './services/metering.service';
+import { ResearchService } from 'app/services/research.service';
 import { TickerService } from './services/ticker.service';
 import { TimeService } from './services/time.service';
 import { UniverseService } from './services/universe.service';
@@ -40,6 +41,7 @@ import { TickerComponent } from './ticker.component';
     MachineFactory,
     MachineService,
     MeteringService,
+    ResearchService,
     TickerService,
     TimeService,
     UniverseService

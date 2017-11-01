@@ -89,6 +89,15 @@ export class MachineService {
     universe.machines[machine.name].quantity += 1;
   }
 
+  exists(name: string) {
+    return this.machineNames.includes(name);
+  }
+
+  getMachine(name: string): Machine {
+    const matches = this.machines.filter(m => m.name === name);
+    return matches.length > 0 ? matches[0] : null;
+  }
+
   /**
    * Reset the machine availability based on the current universe 
    * state (most machines require some precondition which could occur
