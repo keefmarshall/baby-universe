@@ -30,7 +30,7 @@ export class ResearchService {
   addScience(science: number) {
     this.scienceCount += science;
     if (this.currentProject != null) {
-      this.currentProject.addScience(science);
+      this.currentProject.addScience(science, this.universeService.universe);
       this.saveProject();
       if (this.currentProject.isComplete()) {
         this.completeProject();

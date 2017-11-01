@@ -12,13 +12,13 @@ export abstract class ResearchProject {
     private researched = false;
 
     abstract preconditions(universe: Universe): boolean;
-    abstract onCompletion();
+    abstract onCompletion(universe: Universe);
 
-    addScience(quantity: number) {
+    addScience(quantity: number, universe: Universe) {
         this.scienceGained += quantity;
         if (this.scienceGained > this.scienceRequired) {
             this.researched = true;
-            this.onCompletion();
+            this.onCompletion(universe);
         }
     }
 
@@ -27,7 +27,7 @@ export abstract class ResearchProject {
     }
 
     progress(): number {
-        return Math.round(this.scienceGained * 100 / this.scienceRequired);
+        return this.scienceGained * 100 / this.scienceRequired;
     }
 
     isComplete(): boolean {

@@ -39,7 +39,9 @@ export class ResearchPanelComponent implements OnInit {
       project.canSee = project.preconditions(u);
     });
 
-    this.canResearch = this.researchService.scienceCount > 0;
+    this.canResearch = 
+      (this.researchService.scienceCount > 0) &&
+      !this.researchService.isResearching();
   }
 
   researchProject(project: ResearchProject) {

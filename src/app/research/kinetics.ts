@@ -12,7 +12,7 @@ export class KineticConstruction extends ResearchProject {
             && universe.machines['PhotonicPhilosopher'].quantity > 0;
     }
 
-    onCompletion() {
+    onCompletion(universe: Universe) {
         // do nothing
     }
 }
@@ -29,7 +29,7 @@ export class KineticEngineering extends ResearchProject {
         return kcprops != null ? kcprops.researched : false;
     }
 
-    onCompletion() {
+    onCompletion(universe: Universe) {
         // do nothing
     }
 }
