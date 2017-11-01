@@ -1,9 +1,16 @@
-import { LightEngineering } from "app/research/light-engineering";
-import { LightMechanics } from "app/research/light-mechanics";
+import { KineticConstruction, KineticEngineering } from "app/research/kinetics";
+import { ResearchProject } from "app/research/research-project";
 
 export class ResearchList {
-    public static projects = {
-        'Light Mechanics': new LightMechanics(),
-        'Light Engineering': new LightEngineering()
-    };
+    public projectList: Array<ResearchProject> = [];
+    public projects = {};
+
+    constructor() {
+        this.projectList = [
+            new KineticConstruction(),
+            new KineticEngineering()
+        ];
+
+        this.projectList.forEach(p => this.projects[p.name] = p);
+    }
 }

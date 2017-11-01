@@ -3,7 +3,6 @@ import { MachineService } from '../../services/machine.service';
 import { UniverseService } from '../../services/universe.service';
 
 import { ParticleFactory } from '../../machines/particle-factory';
-import { ResearchList } from 'app/research/research-list';
 import { ResearchService } from 'app/services/research.service';
 
 @Component({
@@ -13,7 +12,7 @@ import { ResearchService } from 'app/services/research.service';
 })
 export class DevPanelComponent implements OnInit {
   private particleFactory = new ParticleFactory();
-  private projects = ResearchList.projects;
+  private projects = null;
 
   constructor(
     private machineService: MachineService,
@@ -22,6 +21,7 @@ export class DevPanelComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.projects = this.researchService.researchList.projects;
   }
 
   resetUniverse() {

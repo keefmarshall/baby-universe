@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ResearchList } from 'app/research/research-list';
 import { ResearchProject } from 'app/research/research-project';
 import { PhotonicPhilosopher } from 'app/machines/photonic-philosopher';
 
@@ -25,10 +24,11 @@ export class ResearchPanelComponent implements OnInit {
   }
 
   ngOnInit() {
-    const projects = ResearchList.projects;
-    // grr.. this is horrible. But using Map.values() doesn't appear to 
-    // agree with Angular's *ngFor
-    this.projectList = Object.keys(projects).map(p => projects[p]);
+    // const projects = this.researchService.researchList.projects;
+    // // grr.. this is horrible. But using Map.values() doesn't appear to 
+    // // agree with Angular's *ngFor
+    // this.projectList = Object.keys(projects).map(p => projects[p]);
+    this.projectList = this.researchService.researchList.projectList;
     this.tickerService.tick$.subscribe(n => this.onTick(n));
   }
 

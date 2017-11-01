@@ -6,6 +6,7 @@ import { ResearchList } from 'app/research/research-list';
 
 @Injectable()
 export class ResearchService {
+  public researchList;
   public currentProject: ResearchProject = null;
 
   // This is not a safe property to use except to calculate
@@ -17,7 +18,8 @@ export class ResearchService {
   constructor(
     private universeService: UniverseService
   ) {
-    this.allProjects = ResearchList.projects;
+    this.researchList = new ResearchList();
+    this.allProjects = this.researchList.projects;
     this.initialise(universeService.universe);
   }
 
@@ -87,7 +89,7 @@ export class ResearchService {
 
     const currentName = this.universeService.universe.currentResearchProject;
     if (currentName != null) {
-        this.currentProject = ResearchList.projects[currentName];
+        this.currentProject = this.allProjects[currentName];
     }
   }
 
