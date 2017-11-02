@@ -22,7 +22,7 @@ export class Assembler extends Machine {
 
     onTick() {
         // We only take energy and produce work while something is being built
-        // which makes this a bit complex 
+        // which makes this a bit complex
         if (this.constructionService.isConstructing) {
             // We take 1 energy per tick and lossily convert it to work.
             // The lost energy is converted to universal heat.

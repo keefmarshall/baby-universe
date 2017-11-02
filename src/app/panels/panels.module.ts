@@ -11,6 +11,7 @@ import { ButtonsModule } from '../buttons/buttons.module';
 import { DeploymentPanelComponent } from './deployment-panel/deployment-panel.component';
 import { ResearchPanelComponent } from './research-panel/research-panel.component';
 import { CollectionPanelComponent } from './collection-panel/collection-panel.component';
+import { ConstructionPanelComponent } from './construction-panel/construction-panel.component';
 
 @NgModule({
   imports: [
@@ -23,13 +24,15 @@ import { CollectionPanelComponent } from './collection-panel/collection-panel.co
     DevPanelComponent,
     DeploymentPanelComponent,
     ResearchPanelComponent,
-    CollectionPanelComponent
+    CollectionPanelComponent,
+    ConstructionPanelComponent
   ],
   exports: [
     DevPanelComponent,
     DeploymentPanelComponent,
     ResearchPanelComponent,
-    CollectionPanelComponent
+    CollectionPanelComponent,
+    ConstructionPanelComponent
   ]
 })
 export class PanelsModule { }

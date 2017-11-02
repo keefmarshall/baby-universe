@@ -7,7 +7,9 @@ export class ConstructionService {
   constructor() { }
 
   addWork(work: number) {
-    
+    if (this.constructing) {
+      // do stuff
+    }
   }
 
   isConstructing() {

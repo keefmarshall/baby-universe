@@ -17,6 +17,7 @@ blockquote, .log {
 
 .panel {
     border-top: solid 1px grey;
+    margin-bottom: 20px;
 }
 
 .panel-title {

@@ -3,6 +3,7 @@ import { AutosaveService } from './services/autosave.service';
 import { MachineService } from './services/machine.service';
 import { TimeService } from './services/time.service';
 import { PhotonicPhilosopher } from 'app/machines/photonic-philosopher';
+import { Assembler } from 'app/machines/assembler';
 
 @Component({
   selector: 'app-root',
@@ -27,4 +28,9 @@ export class AppComponent implements OnInit  {
   showResearchPanel(): boolean {
     return this.machineService.exists(PhotonicPhilosopher.name);
   }
+
+  showConstructionPanel(): boolean {
+    return this.machineService.exists(Assembler.name);
+  }
+
 }
