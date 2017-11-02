@@ -8,6 +8,8 @@ import { Machine } from './machine';
 import { PhotonCollector } from './photon-collector';
 import { PhotonicPhilosopher } from 'app/machines/photonic-philosopher';
 import { ResearchService } from 'app/services/research.service';
+import { Assembler } from 'app/machines/assembler';
+import { ConstructionService } from 'app/services/construction.service';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -25,11 +27,13 @@ export class MachineFactory {
 
     constructor(
         private universeService: UniverseService,
-        private researchService: ResearchService
+        private researchService: ResearchService,
+        private constructionService: ConstructionService
     ) {
         this.allMachines = {
             'PhotonCollector': new PhotonCollector(universeService),
-            'PhotonicPhilosopher': new PhotonicPhilosopher(universeService, researchService)
+            'PhotonicPhilosopher': new PhotonicPhilosopher(universeService, researchService),
+            'Assembler': new Assembler(universeService, constructionService)
         };
 
         Object.keys(this.allMachines).forEach(m => this.allMachineNames.push(m));

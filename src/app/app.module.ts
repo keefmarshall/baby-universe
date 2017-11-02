@@ -22,6 +22,7 @@ import { UniverseService } from './services/universe.service';
 // Top level components
 import { AppComponent } from './app.component';
 import { TickerComponent } from './ticker.component';
+import { ConstructionService } from 'app/services/construction.service';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { TickerComponent } from './ticker.component';
   ],
   providers: [
     AutosaveService,
+    ConstructionService,
     MachineFactory,
     MachineService,
     MeteringService,

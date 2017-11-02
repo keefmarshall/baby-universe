@@ -18,10 +18,10 @@ export class KineticConstruction extends ResearchProject {
 }
 
 export class KineticEngineering extends ResearchProject {
-    protected readonly scienceRequired = 10;
+    protected readonly scienceRequired = 100;
     public readonly name = "Kinetic Engineering";
     public readonly description =
-        "The basis of constructing complex machines";
+        "Advanced construction skills";
 
     preconditions(universe: Universe): boolean {
         const kcname = new KineticConstruction().name;

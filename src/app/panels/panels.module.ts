@@ -10,6 +10,7 @@ import { MdesignModule } from '../mdesign/mdesign.module';
 import { ButtonsModule } from '../buttons/buttons.module';
 import { DeploymentPanelComponent } from './deployment-panel/deployment-panel.component';
 import { ResearchPanelComponent } from './research-panel/research-panel.component';
+import { CollectionPanelComponent } from './collection-panel/collection-panel.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,17 @@ import { ResearchPanelComponent } from './research-panel/research-panel.componen
     BrowserAnimationsModule,
     MdesignModule
   ],
-  declarations: [DevPanelComponent, DeploymentPanelComponent, ResearchPanelComponent],
-  exports: [DevPanelComponent, DeploymentPanelComponent, ResearchPanelComponent]
+  declarations: [
+    DevPanelComponent,
+    DeploymentPanelComponent,
+    ResearchPanelComponent,
+    CollectionPanelComponent
+  ],
+  exports: [
+    DevPanelComponent,
+    DeploymentPanelComponent,
+    ResearchPanelComponent,
+    CollectionPanelComponent
+  ]
 })
 export class PanelsModule { }

@@ -4,6 +4,7 @@ export class Universe {
     elapsedSeconds = 0;
 
     energy = 0;
+    heat = 0;
 
     // Photons
     photonCount = 0;

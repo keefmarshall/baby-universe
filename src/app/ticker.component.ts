@@ -11,9 +11,9 @@ import { Universe } from './services/universe';
   template: `
     <span>
       <!-- {{ ticker }} | -->
-      Energy: {{ universe().energy | number:'1.1-1' }} MeV |
-      {{ meteringService.read('energy') | number:'1.1-1' }} MeV/s |
-      {{ universe().elapsedSeconds | number:'1.0-0' }}
+      Energy: {{ universe().energy | number:'1.1-1' }} MeV
+      | {{ meteringService.read('energy') | number:'1.1-1' }} MeV/s
+      <!-- | {{ universe().elapsedSeconds | number:'1.0-0' }} -->
     </span>`,
 })
 export class TickerComponent implements OnInit {
