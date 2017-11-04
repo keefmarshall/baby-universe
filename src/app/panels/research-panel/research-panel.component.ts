@@ -51,4 +51,9 @@ export class ResearchPanelComponent implements OnInit {
       console.log("Can't start new projects at this time!");
     }
   }
+
+  isComplete(project: ResearchProject) {
+    const u = this.universeService.universe;
+    return (u.research[project.name] != null && u.research[project.name].researched);
+  }
 }

@@ -1,18 +1,22 @@
 import { Universe } from "app/services/universe";
 
 export abstract class ResearchProject {
-    readonly name: string;
-    readonly description: string;
+    
 
     public canBuy: boolean = false;
     public canSee: boolean = false;
 
-    protected readonly scienceRequired: number = 1;
     private scienceGained = 0;
     private researched = false;
 
     abstract preconditions(universe: Universe): boolean;
     abstract onCompletion(universe: Universe);
+
+    constructor(
+        public readonly name: string,
+        public readonly description: string,
+        protected readonly scienceRequired: number = 1
+    ) {}
 
     addScience(quantity: number, universe: Universe) {
         this.scienceGained += quantity;
@@ -41,5 +45,14 @@ export abstract class ResearchProject {
     reset() {
         this.scienceGained = 0;
         this.researched = false;
+    }
+
+    /** This seems to come up quite frequently */
+    protected machineQuantity(universe: Universe, machineName: string): number {
+        if (universe.machines[machineName] == null) {
+            return 0;
+        } else {
+            return universe.machines[machineName].quantity;
+        }
     }
 }

@@ -29,7 +29,7 @@ export class DevPanelComponent implements OnInit {
     if (confirm) {
       this.universeService.resetUniverse();
       this.machineService.resetMachines();
-      this.researchService.initialise(this.universeService.universe);
+      this.researchService.initialise();
     }
   }
 

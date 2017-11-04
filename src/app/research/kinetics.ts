@@ -1,11 +1,12 @@
 import { ResearchProject } from "app/research/research-project";
 import { Universe } from "app/services/universe";
+import { Assembler } from "app/machines/assembler";
 
 export class KineticConstruction extends ResearchProject {
-    protected readonly scienceRequired = 1;
-    public readonly name = "Kinetic Construction";
-    public readonly description =
-        "How to convert energy into useful work";
+
+    constructor() {
+        super("Kinetic Construction", "How to convert energy into useful work", 5);
+    }
 
     preconditions(universe: Universe): boolean {
         return universe.machines['PhotonicPhilosopher'] != null
@@ -18,15 +19,19 @@ export class KineticConstruction extends ResearchProject {
 }
 
 export class KineticEngineering extends ResearchProject {
-    protected readonly scienceRequired = 100;
-    public readonly name = "Kinetic Engineering";
-    public readonly description =
-        "Advanced construction skills";
+
+    constructor() {
+        super("Kinetic Engineering", "Advanced construction skills", 100)
+    }
 
     preconditions(universe: Universe): boolean {
-        const kcname = new KineticConstruction().name;
-        const kcprops = universe.research[kcname];
-        return kcprops != null ? kcprops.researched : false;
+        const kcprops = universe.research[new KineticConstruction().name];
+        const kcResearched = kcprops != null ? kcprops.researched : false;
+
+        const assemblers = universe.machines["Assembler"];
+        const assemblersBuilt = (assemblers != null && assemblers.quantity > 4);
+
+        return kcResearched && assemblersBuilt;
     }
 
     onCompletion(universe: Universe) {

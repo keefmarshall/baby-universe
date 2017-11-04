@@ -6,7 +6,7 @@
 
   <div *ngFor="let project of projectList">
     <button 
-      *ngIf="project.preconditions(universeService.universe) && !project.isComplete()"
+      *ngIf="project.preconditions(universeService.universe) && !isComplete(project)"
       mat-raised-button color="accent" 
       class="deploy-button"
       (click)="researchProject(project)"

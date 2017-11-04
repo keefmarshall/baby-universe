@@ -21,7 +21,7 @@ blockquote, .log {
 }
 
 .panel-title {
-    display: inline-flex;
+    /* display: inline-flex; */
 }
 
 .panel-title > .mat-icon {

@@ -20,7 +20,7 @@ export class ResearchService {
   ) {
     this.researchList = new ResearchList();
     this.allProjects = this.researchList.projects;
-    this.initialise(universeService.universe);
+    this.initialise();
   }
 
   isResearching(): boolean {
@@ -78,18 +78,20 @@ export class ResearchService {
 
 
 
-  initialise(u: Universe) {
+  initialise() {
     console.log("Initialising research projects..");
+    const u = this.universeService.universe;
+
     Object.keys(this.allProjects).forEach(pname => {
       const project = this.allProjects[pname];
-      if (u.research[pname] != null) {
-        project.addScience(u.research[pname].scienceGained);
+      if (u.research[pname] != null && !u.research[pname].researched) {
+        project.addScience(u.research[pname].scienceGained, u);
       } else {
         project.reset();
       }
     });
 
-    const currentName = this.universeService.universe.currentResearchProject;
+    const currentName = u.currentResearchProject;
     if (currentName != null) {
         this.currentProject = this.allProjects[currentName];
     }
