@@ -23,7 +23,7 @@ export class Assembler extends Machine {
     onTick() {
         // We only take energy and produce work while something is being built
         // which makes this a bit complex
-        if (this.constructionService.isConstructing) {
+        if (this.constructionService.isConstructing()) {
             // We take 1 energy per tick and lossily convert it to work.
             // The lost energy is converted to universal heat.
             const u = this.universeService.universe;
@@ -35,7 +35,7 @@ export class Assembler extends Machine {
                 // the universe to work! Not sure if I'll use this.
                 u.energy -= 1;
                 const work = this.properties().efficiency * 0.1;
-                u.heat -= (1 - work);
+                u.heat += (1 - work);
                 this.constructionService.addWork(work);
             }
         }

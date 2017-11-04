@@ -4,9 +4,9 @@
         Deployment
     </p>
 
-    <app-deploy-button 
-        *ngFor="let machine of machineFactory.allMachineNames"
-        [machineName]="machine">
-    </app-deploy-button>
-</div>
+    <div *ngFor="let machine of machineFactory.allMachineNames">
+      <app-deploy-button [machineName]="machine"></app-deploy-button>
+    </div>
+
+  </div>
   
