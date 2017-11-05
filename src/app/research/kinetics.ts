@@ -10,8 +10,7 @@ export class KineticConstruction extends ResearchProject {
     }
 
     preconditions(universe: Universe): boolean {
-        const pvprops = universe.research[new Photovoltaics().name];
-        return pvprops != null ? pvprops.researched : false;
+        return this.isResearched(universe, new Photovoltaics());
     }
 
     onCompletion(universe: Universe) {
@@ -22,17 +21,14 @@ export class KineticConstruction extends ResearchProject {
 export class KineticEngineering extends ResearchProject {
 
     constructor() {
-        super("Kinetic Engineering", "Advanced construction skills", 500)
+        super("Kinetic Engineering", "Advanced construction skills", 5000)
     }
 
     preconditions(universe: Universe): boolean {
-        const kcprops = universe.research[new KineticConstruction().name];
-        const kcResearched = kcprops != null ? kcprops.researched : false;
+        const kcResearched = this.isResearched(universe, new KineticConstruction());
+        const assemblersBuilt = this.machineQuantity(universe, "Assembler");
 
-        const assemblers = universe.machines["Assembler"];
-        const assemblersBuilt = (assemblers != null && assemblers.quantity > 4);
-
-        return kcResearched && assemblersBuilt;
+        return kcResearched && assemblersBuilt > 4;
     }
 
     onCompletion(universe: Universe) {

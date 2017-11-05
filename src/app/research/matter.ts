@@ -9,8 +9,7 @@ export class Leptons extends ResearchProject {
     }
 
     preconditions(universe: Universe): boolean {
-        const pcprops = universe.machines[PhotonCollector.name];
-        return pcprops != null ? pcprops.quantity >= 50 : false;
+        return this.machineQuantity(universe, PhotonCollector.name) >= 50;
     }
 
     onCompletion(universe: Universe) {

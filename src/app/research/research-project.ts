@@ -55,4 +55,9 @@ export abstract class ResearchProject {
             return universe.machines[machineName].quantity;
         }
     }
+
+    protected isResearched(universe: Universe, project: ResearchProject): boolean {
+        const props = universe.research[project.name];
+        return props != null ? props.researched : false;
+    }
 }
