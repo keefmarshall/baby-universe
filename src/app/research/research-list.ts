@@ -1,7 +1,7 @@
 import { KineticConstruction, KineticEngineering } from "app/research/kinetics";
 import { ResearchProject } from "app/research/research-project";
 import { Leptons } from "app/research/matter";
-import { Photovoltaics } from "app/research/photons";
+import { Photovoltaics, LinearPolarisation } from "app/research/photons";
 
 export class ResearchList {
     public projectList: Array<ResearchProject> = [];
@@ -10,6 +10,7 @@ export class ResearchList {
     constructor() {
         this.projectList = [
             new Photovoltaics(),
+            new LinearPolarisation(),
             new KineticConstruction(),
             new KineticEngineering(),
             new Leptons()

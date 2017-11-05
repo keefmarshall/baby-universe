@@ -1,16 +1,17 @@
 import { ResearchProject } from "app/research/research-project";
 import { Universe } from "app/services/universe";
 import { Assembler } from "app/machines/assembler";
+import { Photovoltaics } from "app/research/photons";
 
 export class KineticConstruction extends ResearchProject {
 
     constructor() {
-        super("Kinetic Construction", "How to convert energy into useful work", 5);
+        super("Kinetic Construction", "How to convert energy into useful work", 10);
     }
 
     preconditions(universe: Universe): boolean {
-        return universe.machines['PhotonicPhilosopher'] != null
-            && universe.machines['PhotonicPhilosopher'].quantity > 0;
+        const pvprops = universe.research[new Photovoltaics().name];
+        return pvprops != null ? pvprops.researched : false;
     }
 
     onCompletion(universe: Universe) {
@@ -21,7 +22,7 @@ export class KineticConstruction extends ResearchProject {
 export class KineticEngineering extends ResearchProject {
 
     constructor() {
-        super("Kinetic Engineering", "Advanced construction skills", 100)
+        super("Kinetic Engineering", "Advanced construction skills", 500)
     }
 
     preconditions(universe: Universe): boolean {
