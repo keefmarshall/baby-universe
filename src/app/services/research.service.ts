@@ -94,6 +94,8 @@ export class ResearchService {
     const currentName = u.currentResearchProject;
     if (currentName != null) {
         this.currentProject = this.allProjects[currentName];
+    } else {
+        this.currentProject = null;
     }
   }
 
