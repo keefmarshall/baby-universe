@@ -31,7 +31,7 @@ export class Photoelectrics extends ResearchProject {
 
     onCompletion(universe: Universe) {
         // in theory we can't get here without at least some photon collectors
-        universe.machines[PhotonCollector.name].efficiency *= 2;
+        universe.machines[PhotonCollector.name].efficiency *= 4;
     }
 }
 
@@ -53,7 +53,7 @@ export class LinearPolarisation extends ResearchProject {
 export class CircularPolarisation extends ResearchProject {
     
     constructor() {
-        super("Circular Polarisation", "Trebles efficiency of Philosophers", 150);
+        super("Circular Polarisation", "Trebles efficiency of Philosophers", 75);
     }
 
     preconditions(universe: Universe): boolean {
@@ -68,7 +68,7 @@ export class CircularPolarisation extends ResearchProject {
 export class EllipticalPolarisation extends ResearchProject {
     
     constructor() {
-        super("Elliptical Polarisation", "Quadruples efficiency of Philosophers", 3000);
+        super("Elliptical Polarisation", "Quadruples efficiency of Philosophers", 1000);
     }
 
     preconditions(universe: Universe): boolean {
@@ -77,5 +77,20 @@ export class EllipticalPolarisation extends ResearchProject {
 
     onCompletion(universe: Universe) {
         universe.machines[PhotonicPhilosopher.name].efficiency *= 4;
+    }
+}
+
+export class Reflection extends ResearchProject {
+    
+    constructor() {
+        super("Reflection", "Allows building more Philosophers", 30);
+    }
+
+    preconditions(universe: Universe): boolean {
+        return true;
+    }
+
+    onCompletion(universe: Universe) {
+        universe.machines[PhotonicPhilosopher.name].extras.maxAllowed += 15;
     }
 }
