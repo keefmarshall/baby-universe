@@ -77,8 +77,11 @@ export class PhotonicPhilosopher extends Machine {
         const q = this.properties().quantity || 0;
         let cm = 1;
         if (q >= 10) cm = 2;
+        if (q >= 25) cm = 3;
         if (q >= 50) cm = 5;
-
+        if (q >= 80) cm = 10;
+        if (q >= 150) cm = 50;
+        
         return cm;
     }
 
