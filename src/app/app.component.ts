@@ -4,6 +4,7 @@ import { MachineService } from './services/machine.service';
 import { TimeService } from './services/time.service';
 import { PhotonicPhilosopher } from 'app/machines/photonic-philosopher';
 import { Assembler } from 'app/machines/assembler';
+import { UniverseService } from 'app/services/universe.service';
 
 @Component({
   selector: 'app-root',
@@ -18,13 +19,18 @@ export class AppComponent implements OnInit  {
   constructor(
     private autosaveService: AutosaveService,
     private machineService: MachineService,
-    private timeService: TimeService
+    private timeService: TimeService,
+    private universeService: UniverseService
   ) { }
 
   ngOnInit() {
     this.autosaveService.enabled = true;
   }
 
+  showDeploymentPanel(): boolean {
+    return this.universeService.universe.photonCount >= 10;
+  }
+  
   showResearchPanel(): boolean {
     return this.machineService.exists(PhotonicPhilosopher.name);
   }

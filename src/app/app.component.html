@@ -15,7 +15,7 @@
 
     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4">
         <app-collection-panel></app-collection-panel>
-        <app-deployment-panel></app-deployment-panel>
+        <app-deployment-panel *ngIf="showDeploymentPanel()"></app-deployment-panel>
     </div>
 
     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4">

@@ -9,7 +9,7 @@ import { Globals } from '../globals';
 export class AutosaveService {
 
   public enabled = false;
-  public frequency = 5;
+  public frequency = 60;
 
   constructor(
     private tickerService: TickerService,
