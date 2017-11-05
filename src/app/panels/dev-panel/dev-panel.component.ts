@@ -33,10 +33,10 @@ export class DevPanelComponent implements OnInit {
     }
   }
 
-  collectPhoton() {
-    console.log('Collected photon!');
-    this.particleFactory.collectPhoton(this.universeService.universe);
-  }
+  // collectPhoton() {
+  //   console.log('Collected photon!');
+  //   this.particleFactory.collectPhoton(this.universeService.universe);
+  // }
 
   addEnergy(n: number) {
     this.universeService.universe.energy += n;

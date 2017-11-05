@@ -1,9 +1,5 @@
 <div id="dev-panel">
   
-  <button mat-raised-button (click)="collectPhoton()">
-    Collect photon
-  </button>
-  
   <button mat-raised-button (click)="addEnergy(1000)">
     Add 1000 energy
   </button>
@@ -15,5 +11,5 @@
   <button mat-raised-button (click)="resetUniverse();" color="warn">RESET</button>
 
   <div><pre>{{ universeService.universe | json }}</pre></div>
-  <div><pre>{{ projects | json }}</pre></div>
+  <!-- <div><pre>{{ projects | json }}</pre></div> -->
 </div>

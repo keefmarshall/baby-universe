@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UniverseService } from 'app/services/universe.service';
 
 @Component({
   selector: 'app-construction-panel',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConstructionPanelComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private universeService: UniverseService
+  ) { }
 
   ngOnInit() {
   }

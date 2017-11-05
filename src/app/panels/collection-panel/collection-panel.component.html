@@ -1,4 +1,16 @@
-<div id="collection-panel">
+<div id="collection-panel" class="panel">
+    <p class="panel-title">
+        <mat-icon>input</mat-icon>
+        Collection
+    </p>
+
+    <p><small><small>
+        <span *ngIf='universeService.universe.machines["PhotonCollector"] != null'>
+            Photon Collectors: {{ universeService.universe.machines["PhotonCollector"].quantity }}<br/>
+        </span>
+    </small></small></p>
+        
+
     <button mat-raised-button (click)="collectPhoton()">
         Collect photon
     </button>
