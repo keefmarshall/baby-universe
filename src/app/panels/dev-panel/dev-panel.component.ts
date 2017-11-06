@@ -4,6 +4,7 @@ import { UniverseService } from '../../services/universe.service';
 
 import { ParticleFactory } from '../../machines/particle-factory';
 import { ResearchService } from 'app/services/research.service';
+import { ConstructionService } from 'app/services/construction.service';
 
 @Component({
   selector: 'app-dev-panel',
@@ -17,7 +18,8 @@ export class DevPanelComponent implements OnInit {
   constructor(
     private machineService: MachineService,
     private universeService: UniverseService,
-    private researchService: ResearchService
+    private researchService: ResearchService,
+    private constructionService: ConstructionService
   ) { }
 
   ngOnInit() {
@@ -30,6 +32,7 @@ export class DevPanelComponent implements OnInit {
       this.universeService.resetUniverse();
       this.machineService.resetMachines();
       this.researchService.initialise();
+      this.constructionService.currentProject = null;
     }
   }
 
@@ -41,4 +44,13 @@ export class DevPanelComponent implements OnInit {
   addEnergy(n: number) {
     this.universeService.universe.energy += n;
   }
+
+  addScience(n: number) {
+    this.researchService.addScience(n);
+  }
+
+  addWork(n: number) {
+    this.researchService.addScience(n);
+  }
+
 }

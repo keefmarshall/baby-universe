@@ -44,5 +44,8 @@ export class UniverseService {
     if (u.phase == null) u.phase = 1;
     if (u.machines == null) u.machines = {};
     if (u.research == null) u.research = {};
+    
+    if (!u.currentResearchProject) u.currentResearchProject = null;
+    if (!u.currentConstructionProject) u.currentConstructionProject = null;
   }
 }

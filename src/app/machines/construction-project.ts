@@ -1,2 +1,48 @@
-export class ConstructionProject {
+import { Machine } from "app/machines/machine";
+import { UniverseService } from "app/services/universe.service";
+import { MachineService } from "app/services/machine.service";
+
+export abstract class ConstructionProject extends Machine {
+    public readonly needsConstruction: boolean = true;
+    private machineService: MachineService = null;
+
+    private workGained: number = 0;
+
+    constructor(
+        public readonly name: string,
+        public readonly displayName: string,
+        public readonly displayPurpose: string,
+        protected universeService: UniverseService
+    ) {
+        super(name, displayName, displayPurpose, universeService);
+    }
+
+    // We can't inject this, due to circular dependency problems.
+    // Instead, we need to set it when the project is first started.
+    public setMachineService(machineService: MachineService) {
+        this.machineService = machineService;
+    }
+
+    /** returns 'true' if construction complete */
+    addWork(work: number): boolean {
+        this.workGained += work;
+        if (this.workGained >= this.workCost()) {
+            this.onComplete();
+            this.workGained = 0;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    affordable() {
+        return (this.universeService.universe.currentConstructionProject === null);
+    }
+
+    progress(): number {
+        return this.workGained * 100 / this.workCost();
+    }
+
+    abstract onComplete();
+    abstract workCost(): number;
 }

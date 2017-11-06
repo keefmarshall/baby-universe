@@ -3,6 +3,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Machine } from '../../machines/machine';
 import { MachineFactory } from '../../machines/machine-factory';
 import { MachineService } from '../../services/machine.service';
+import { ConstructionService } from 'app/services/construction.service';
+import { ConstructionProject } from 'app/machines/construction-project';
 
 @Component({
   selector: 'app-deploy-button',
@@ -15,7 +17,8 @@ export class DeployButtonComponent implements OnInit {
 
   constructor(
     private machineService: MachineService,
-    private machineFactory: MachineFactory
+    private machineFactory: MachineFactory,
+    private constructionService: ConstructionService
   ) { }
 
   ngOnInit() {
@@ -23,12 +26,20 @@ export class DeployButtonComponent implements OnInit {
   }
 
   deployMachine() {
-    if (this.machine.payFor(1)) {
-      this.machineService.addMachine(this.machine);
-      console.log("Deployed " + this.machineName + "!");
+    if (this.machine.needsConstruction) {
+      this.startConstruction(this.machine as ConstructionProject);
     } else {
-      console.log("Can't afford new " + this.machineName + "!");
+      if (this.machine.payFor(1)) {
+        this.machineService.addMachine(this.machine);
+        console.log("Deployed " + this.machineName + "!");
+      } else {
+        console.log("Can't afford new " + this.machineName + "!");
+      }
     }
   }
 
+  startConstruction(project: ConstructionProject) {
+    project.setMachineService(this.machineService);
+    this.constructionService.construct(project);
+  }
 }

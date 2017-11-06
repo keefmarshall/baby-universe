@@ -10,6 +10,7 @@ import { PhotonicPhilosopher } from 'app/machines/photonic-philosopher';
 import { ResearchService } from 'app/services/research.service';
 import { Assembler } from 'app/machines/assembler';
 import { ConstructionService } from 'app/services/construction.service';
+import { FieldMirror } from 'app/machines/field-mirror';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -33,7 +34,8 @@ export class MachineFactory {
         this.allMachines = {
             'PhotonCollector': new PhotonCollector(universeService),
             'PhotonicPhilosopher': new PhotonicPhilosopher(universeService, researchService),
-            'Assembler': new Assembler(universeService, constructionService)
+            'Assembler': new Assembler(universeService, constructionService),
+            'FieldMirror': new FieldMirror(universeService)
         };
 
         Object.keys(this.allMachines).forEach(m => this.allMachineNames.push(m));

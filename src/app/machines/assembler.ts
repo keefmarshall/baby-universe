@@ -8,6 +8,8 @@ export class Assembler extends Machine {
     private baseEnergyCost = 3000;
     private costMultiplier = 1.05;
 
+    private baseEnergyDraw = 1;
+
     constructor(universeService: UniverseService,
         private constructionService: ConstructionService
     ) {
@@ -27,15 +29,17 @@ export class Assembler extends Machine {
             // We take 1 energy per tick and lossily convert it to work.
             // The lost energy is converted to universal heat.
             const u = this.universeService.universe;
-            if (u.energy < 1) {
+            const q = this.properties().quantity;
+            const energyDraw = this.baseEnergyDraw * q;
+            if (u.energy < energyDraw) {
                 // do nothing, there's not enough for us to work!
                 console.log("Assembler: not enough energy to work!");
             } else {
                 // NB if efficiency goes above 10, we start taking heat from
                 // the universe to work! Not sure if I'll use this.
-                u.energy -= 1;
-                const work = this.properties().efficiency * 0.1;
-                u.heat += (1 - work);
+                u.energy -= energyDraw;
+                const work = this.properties().efficiency * q * 0.1;
+                u.heat += (energyDraw - work);
                 this.constructionService.addWork(work);
             }
         }

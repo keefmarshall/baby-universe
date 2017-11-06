@@ -8,6 +8,14 @@
         Assemblers: {{ universeService.universe.machines["Assembler"].quantity }}<br/>
     </small></small></p>
         
+    <p *ngIf="constructionService.isConstructing()">
+      <small>Current project: {{ constructionService.currentProject.name }}</small><br/>
+      <small><small>Energy draw: {{ constructionService.energyDrawPerSecond }}</small></small>
+
+      <mat-progress-bar color="accent"
+        [value]="constructionService.currentProject.progress()"
+      ></mat-progress-bar>
+    </p>
 </div>
   
   
