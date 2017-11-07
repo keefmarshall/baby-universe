@@ -23,6 +23,7 @@ import { UniverseService } from './services/universe.service';
 import { AppComponent } from './app.component';
 import { TickerComponent } from './ticker.component';
 import { ConstructionService } from 'app/services/construction.service';
+import { StateManagementService } from 'app/services/state-management.service';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ConstructionService } from 'app/services/construction.service';
     MachineService,
     MeteringService,
     ResearchService,
+    StateManagementService,
     TickerService,
     TimeService,
     UniverseService

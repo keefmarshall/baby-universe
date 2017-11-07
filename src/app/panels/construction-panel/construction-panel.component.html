@@ -6,11 +6,13 @@
 
     <p><small><small>
         Assemblers: {{ universeService.universe.machines["Assembler"].quantity }}<br/>
-    </small></small></p>
+        <span [ngClass]="energyCostColour()">
+          Energy draw: {{ readEnergyCostMeter() }} MeV/s
+        </span>
+      </small></small></p>
         
     <p *ngIf="constructionService.isConstructing()">
-      <small>Current project: {{ constructionService.currentProject.name }}</small><br/>
-      <small><small>Energy draw: {{ constructionService.energyDrawPerSecond }}</small></small>
+      <small>Building: {{ constructionService.currentProject.name }}</small><br/>
 
       <mat-progress-bar color="accent"
         [value]="constructionService.currentProject.progress()"

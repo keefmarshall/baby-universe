@@ -7,6 +7,7 @@ import { UniverseService } from './universe.service';
 import { TickerService } from './ticker.service';
 import { Meter } from 'app/meters/meter';
 import { EnergyMeter } from 'app/meters/energy-meter';
+import { ConstructionEnergyCostMeter } from 'app/meters/construction-energy-cost-meter';
 
 @Injectable()
 export class MeteringService {
@@ -18,7 +19,9 @@ export class MeteringService {
     private universeService: UniverseService,
     private tickerService: TickerService
   ) {
-    this.meters.set('energy', new EnergyMeter(universeService.universe));
+    const u = universeService.universe;
+    this.meters.set('energy', new EnergyMeter(u));
+    this.meters.set('construction-energy-cost', new ConstructionEnergyCostMeter());
     tickerService.tick$.subscribe(n => this.onTick(n));
   }
 
@@ -33,5 +36,9 @@ export class MeteringService {
 
   read(meterName: string): number {
     return this.meters.get(meterName).meterValue;
+  }
+
+  addQuantity(meterName: string, quantity: number) {
+    this.meters.get(meterName).addQuantity(quantity);
   }
 }

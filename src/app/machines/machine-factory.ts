@@ -10,6 +10,7 @@ import { PhotonicPhilosopher } from 'app/machines/photonic-philosopher';
 import { ResearchService } from 'app/services/research.service';
 import { Assembler } from 'app/machines/assembler';
 import { ConstructionService } from 'app/services/construction.service';
+import { MeteringService } from 'app/services/metering.service';
 import { FieldMirror } from 'app/machines/field-mirror';
 
 /**
@@ -29,12 +30,13 @@ export class MachineFactory {
     constructor(
         private universeService: UniverseService,
         private researchService: ResearchService,
-        private constructionService: ConstructionService
+        private constructionService: ConstructionService,
+        private meteringService: MeteringService
     ) {
         this.allMachines = {
             'PhotonCollector': new PhotonCollector(universeService),
             'PhotonicPhilosopher': new PhotonicPhilosopher(universeService, researchService),
-            'Assembler': new Assembler(universeService, constructionService),
+            'Assembler': new Assembler(universeService, constructionService, meteringService),
             'FieldMirror': new FieldMirror(universeService)
         };
 
