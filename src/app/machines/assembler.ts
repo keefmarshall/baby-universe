@@ -3,6 +3,8 @@ import { Globals } from "app/globals";
 import { KineticConstruction } from "app/research/kinetics";
 import { UniverseService } from "app/services/universe.service";
 import { ConstructionService } from "app/services/construction.service";
+import { MeteringService } from "app/services/metering.service";
+import { ConstructionEnergyCostMeter } from "app/meters/construction-energy-cost-meter";
 
 export class Assembler extends Machine {
     private baseEnergyCost = 3000;
@@ -11,7 +13,8 @@ export class Assembler extends Machine {
     private baseEnergyDraw = 1;
 
     constructor(universeService: UniverseService,
-        private constructionService: ConstructionService
+        private constructionService: ConstructionService,
+        private meteringService: MeteringService
     ) {
         super(Assembler.name,
             "Assembler",
@@ -41,6 +44,7 @@ export class Assembler extends Machine {
                 const work = this.properties().efficiency * q * 0.1;
                 u.heat += (energyDraw - work);
                 this.constructionService.addWork(work);
+                this.meteringService.addQuantity('construction-energy-cost', energyDraw);
             }
         }
     }

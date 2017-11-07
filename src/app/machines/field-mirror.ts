@@ -2,10 +2,13 @@ import { ConstructionProject } from "app/machines/construction-project";
 import { UniverseService } from "app/services/universe.service";
 import { PhotonicPhilosopher } from "app/machines/photonic-philosopher";
 import { Reflection } from "app/research/photons";
-import { Assembler } from "app/machines/assembler";
+import { Globals } from "app/globals";
+import { MachineService } from "app/services/machine.service";
+import { MachineProperties } from "app/machines/machine";
 
-export class FieldMirror extends ConstructionProject{
+export class FieldMirror extends ConstructionProject {
     private baseCost: number = 25;
+    private costMultiplier: number = 2;
 
     constructor(universeService: UniverseService) {
         super(
@@ -18,10 +21,12 @@ export class FieldMirror extends ConstructionProject{
 
     onComplete() {
         this.universeService.universe.machines[PhotonicPhilosopher.name].extras.maxAllowed += 5;
+        this.machineService.addMachine(this);
     }
 
     workCost(): number {
-        return this.baseCost;
+        const q = this.properties().quantity;
+        return Globals.geometricProgressionSum(q, q, this.costMultiplier) * this.baseCost;
     }
 
     onTick() {
@@ -30,14 +35,15 @@ export class FieldMirror extends ConstructionProject{
 
     preconditions(): boolean {
         return this.isResearched(new Reflection()) && 
-            this.machineQuantity(Assembler.name) > 0;
+            this.machineQuantity('Assembler') > 0;
     }
 
     displayCost(count: number): string {
-        return this.baseCost + " Work";
+        return Globals.round(this.workCost(), 1) + " Work";
     }
 
     payFor(count: number): boolean {
         return this.affordable();
     }
+
 }

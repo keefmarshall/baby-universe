@@ -4,7 +4,7 @@ import { MachineService } from "app/services/machine.service";
 
 export abstract class ConstructionProject extends Machine {
     public readonly needsConstruction: boolean = true;
-    private machineService: MachineService = null;
+    protected machineService: MachineService = null;
 
     private workGained: number = 0;
 

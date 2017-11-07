@@ -15,4 +15,7 @@ export class EnergyMeter implements Meter {
         this.startPoint = universe.energy;
     }
 
+    addQuantity(n: number) { 
+        // do nothing
+    }
 }

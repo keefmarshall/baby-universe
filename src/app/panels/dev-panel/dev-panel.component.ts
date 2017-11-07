@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MachineService } from '../../services/machine.service';
 import { UniverseService } from '../../services/universe.service';
 
 import { ParticleFactory } from '../../machines/particle-factory';
 import { ResearchService } from 'app/services/research.service';
 import { ConstructionService } from 'app/services/construction.service';
+import { StateManagementService } from 'app/services/state-management.service';
 
 @Component({
   selector: 'app-dev-panel',
@@ -16,7 +16,7 @@ export class DevPanelComponent implements OnInit {
   private projects = null;
 
   constructor(
-    private machineService: MachineService,
+    private stateManagementService: StateManagementService,
     private universeService: UniverseService,
     private researchService: ResearchService,
     private constructionService: ConstructionService
@@ -30,7 +30,7 @@ export class DevPanelComponent implements OnInit {
     const confirm = window.confirm('Reset everything??');
     if (confirm) {
       this.universeService.resetUniverse();
-      this.machineService.resetMachines();
+      this.stateManagementService.reloadUniverse();
       this.researchService.initialise();
       this.constructionService.currentProject = null;
     }

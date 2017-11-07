@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UniverseService } from 'app/services/universe.service';
 import { ConstructionService } from 'app/services/construction.service';
+import { MeteringService } from 'app/services/metering.service';
+import { ConstructionEnergyCostMeter } from 'app/meters/construction-energy-cost-meter';
+
 
 @Component({
   selector: 'app-construction-panel',
@@ -8,12 +11,36 @@ import { ConstructionService } from 'app/services/construction.service';
   styleUrls: ['./construction-panel.component.css']
 })
 export class ConstructionPanelComponent implements OnInit {
-
   constructor(
     private universeService: UniverseService,
-    private constructionService: ConstructionService
+    private constructionService: ConstructionService,
+    private meteringService: MeteringService
   ) { }
 
   ngOnInit() {
+  }
+
+  readEnergyCostMeter(): number {
+    return this.meteringService.read('construction-energy-cost');
+  }
+
+  energyCostColour(): string {
+    if (!this.constructionService.isConstructing()) {
+      return 'green';
+    }
+
+    const usage = this.readEnergyCostMeter();
+    const supply = this.meteringService.read('energy');
+    const totalEnergy = this.universeService.universe.energy;
+    if (supply <= 0) {
+      if (totalEnergy < usage * 10) {
+        return 'red';
+      } else {
+        return 'orange';
+      }
+    } else {
+      return 'green';
+    }
+
   }
 }

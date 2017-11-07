@@ -5,6 +5,7 @@ import { TimeService } from './services/time.service';
 import { PhotonicPhilosopher } from 'app/machines/photonic-philosopher';
 import { Assembler } from 'app/machines/assembler';
 import { UniverseService } from 'app/services/universe.service';
+import { StateManagementService } from 'app/services/state-management.service';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit  {
   constructor(
     private autosaveService: AutosaveService,
     private machineService: MachineService,
+    private stateManagementService: StateManagementService,
     private timeService: TimeService,
     private universeService: UniverseService
   ) { }

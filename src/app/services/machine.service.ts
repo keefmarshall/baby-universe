@@ -24,31 +24,15 @@ export class MachineService {
     private universeService: UniverseService
   ) {
     console.log('Machine Service constructor, starting tick subscription now');
-    this.resetMachines();
     this.tickerService.tick$.subscribe(n => this.onTick(n));
   }
 
   /**
    * Reload the current machines from the state of the universe
    */
-  resetMachines() {
-    console.log('Resetting machines..');
-
-    this.machineNames = [];
-    this.machines = [];
-
-    console.log('Adding machine instances from store..');
-
-    Object.keys(this.universeService.universe.machines).forEach(m => {
-      const machine = this.machineFactory.newMachine(m);
-      this.machines.push(machine);
-      this.machineNames.push(m);
-    });
-
-    console.log('Got machine instances: ' + JSON.stringify(this.machines));
-    console.log('Rationalising machine availability against preconditions...');
-
-    this.updateAvailability();
+  resetMachines(machines, machineNames) {
+    this.machines = machines;
+    this.machineNames = machineNames;
   }
 
   /**
@@ -63,8 +47,6 @@ export class MachineService {
     this.machines.forEach(machine => {
       machine.onTick();
     });
-
-    this.updateAvailability();
   }
 
   /**
@@ -98,31 +80,5 @@ export class MachineService {
     return matches.length > 0 ? matches[0] : null;
   }
 
-  /**
-   * Reset the machine availability based on the current universe 
-   * state (most machines require some precondition which could occur
-   * at any time) - this also sets whether the machine is currently
-   * affordable.
-   * 
-   * NB, although the machine objects contain functions to calculate this
-   * on demand, we also need to set it in a variable so that Angular can
-   * use it for [disabled] etc, as it doesn't like functions in these clauses.
-   */
-  updateAvailability() {
-    // I'm in two minds here - we probably should have observables for things like
-    // energy, have a 'watchable' updater which observes tick$ and updates the
-    // energy observable and any other key quantity. But I don't know, at this stage,
-    // what other quantities will need to be observables, and this mechanism below
-    // allows each machine to have completely independent concepts of availability and
-    // cost without being tied to any global observable.
-    Object.keys(this.machineFactory.allMachines).forEach(m => {
-      const machine = this.machineFactory.newMachine(m);
-      machine.canSee = machine.preconditions();
-      machine.canBuy = machine.affordable(1);
-      machine.canBuy10 = machine.affordable(10);
-      machine.canBuy100 = machine.affordable(100);
-      machine.canBuy1k = machine.affordable(1000);
-    });
-  }
 }
 
