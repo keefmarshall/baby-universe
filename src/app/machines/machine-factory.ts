@@ -33,13 +33,18 @@ export class MachineFactory {
         private constructionService: ConstructionService,
         private meteringService: MeteringService
     ) {
+        this.resetMachines();
+    }
+
+    resetMachines() {
         this.allMachines = {
-            'PhotonCollector': new PhotonCollector(universeService),
-            'PhotonicPhilosopher': new PhotonicPhilosopher(universeService, researchService),
-            'Assembler': new Assembler(universeService, constructionService, meteringService),
-            'FieldMirror': new FieldMirror(universeService)
+            'PhotonCollector': new PhotonCollector(this.universeService),
+            'PhotonicPhilosopher': new PhotonicPhilosopher(this.universeService, this.researchService),
+            'Assembler': new Assembler(this.universeService, this.constructionService, this.meteringService),
+            'FieldMirror': new FieldMirror(this.universeService)
         };
 
+        this.allMachineNames = [];
         Object.keys(this.allMachines).forEach(m => this.allMachineNames.push(m));
     }
 

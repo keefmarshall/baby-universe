@@ -40,6 +40,8 @@ export class StateManagementService {
   resetMachines() {
     console.log('Resetting machines..');
 
+    this.machineFactory.resetMachines();
+
     const machineNames = [];
     const machines = [];
 
