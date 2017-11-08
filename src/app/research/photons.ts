@@ -20,7 +20,7 @@ export class Photovoltaics extends ResearchProject {
 }
 
 export class Photoelectrics extends ResearchProject {
-    
+
     constructor() {
         super("Photoelectrics", "Quadruples efficiency of Photon Collectors", 500);
     }
@@ -36,7 +36,7 @@ export class Photoelectrics extends ResearchProject {
 }
 
 export class LinearPolarisation extends ResearchProject {
-    
+
     constructor() {
         super("Linear Polarisation", "Doubles efficiency of Philosophers", 5);
     }
@@ -51,7 +51,7 @@ export class LinearPolarisation extends ResearchProject {
 }
 
 export class CircularPolarisation extends ResearchProject {
-    
+
     constructor() {
         super("Circular Polarisation", "Trebles efficiency of Philosophers", 75);
     }
@@ -66,7 +66,7 @@ export class CircularPolarisation extends ResearchProject {
 }
 
 export class EllipticalPolarisation extends ResearchProject {
-    
+
     constructor() {
         super("Elliptical Polarisation", "Quadruples efficiency of Philosophers", 1000);
     }
@@ -81,7 +81,7 @@ export class EllipticalPolarisation extends ResearchProject {
 }
 
 export class Reflection extends ResearchProject {
-    
+
     constructor() {
         super("Reflection", "Allows building more Philosophers", 30);
     }
@@ -91,6 +91,6 @@ export class Reflection extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        universe.machines[PhotonicPhilosopher.name].extras.maxAllowed += 15;
+        universe.machines[PhotonicPhilosopher.name].extras.maxAllowed += 5;
     }
 }

@@ -7,7 +7,7 @@ import { MachineService } from "app/services/machine.service";
 import { MachineProperties } from "app/machines/machine";
 
 export class FieldMirror extends ConstructionProject {
-    private baseCost: number = 25;
+    private baseCost: number = 12.5;
     private costMultiplier: number = 2;
 
     constructor(universeService: UniverseService) {
