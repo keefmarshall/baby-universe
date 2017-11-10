@@ -37,7 +37,7 @@ export class Quarks1 extends ResearchProject {
 export class Quarks2 extends ResearchProject {
 
     constructor() {
-        super("Matter: Quarks II", "Heavier quarks", 10);
+        super("Matter: Quarks II", "Heavier quarks", 20);
     }
 
     preconditions(universe: Universe): boolean {
@@ -52,7 +52,7 @@ export class Quarks2 extends ResearchProject {
 export class Quarks3 extends ResearchProject {
 
     constructor() {
-        super("Matter: Quarks III", "The heaviest quarks", 50);
+        super("Matter: Quarks III", "The heaviest quarks", 100);
     }
 
     preconditions(universe: Universe): boolean {

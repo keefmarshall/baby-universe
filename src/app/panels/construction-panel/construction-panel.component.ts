@@ -3,6 +3,8 @@ import { UniverseService } from 'app/services/universe.service';
 import { ConstructionService } from 'app/services/construction.service';
 import { MeteringService } from 'app/services/metering.service';
 import { ConstructionEnergyCostMeter } from 'app/meters/construction-energy-cost-meter';
+import { MachineFactory } from 'app/machines/machine-factory';
+import { Assembler } from 'app/machines/assembler';
 
 
 @Component({
@@ -14,6 +16,7 @@ export class ConstructionPanelComponent implements OnInit {
   constructor(
     private universeService: UniverseService,
     private constructionService: ConstructionService,
+    private machineFactory: MachineFactory,
     private meteringService: MeteringService
   ) { }
 
@@ -22,6 +25,10 @@ export class ConstructionPanelComponent implements OnInit {
 
   readEnergyCostMeter(): number {
     return this.meteringService.read('construction-energy-cost');
+  }
+
+  readAssemblerEfficiency(): number {
+    return this.universeService.universe.machines[Assembler.name].efficiency;
   }
 
   energyCostColour(): string {

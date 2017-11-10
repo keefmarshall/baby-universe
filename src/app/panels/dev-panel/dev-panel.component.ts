@@ -5,6 +5,7 @@ import { ParticleFactory } from '../../machines/particle-factory';
 import { ResearchService } from 'app/services/research.service';
 import { ConstructionService } from 'app/services/construction.service';
 import { StateManagementService } from 'app/services/state-management.service';
+import { AutosaveService } from 'app/services/autosave.service';
 
 @Component({
   selector: 'app-dev-panel',
@@ -19,7 +20,8 @@ export class DevPanelComponent implements OnInit {
     private stateManagementService: StateManagementService,
     private universeService: UniverseService,
     private researchService: ResearchService,
-    private constructionService: ConstructionService
+    private constructionService: ConstructionService,
+    private autosaveService: AutosaveService
   ) { }
 
   ngOnInit() {
@@ -33,7 +35,12 @@ export class DevPanelComponent implements OnInit {
       this.stateManagementService.reloadUniverse();
       this.researchService.initialise();
       this.constructionService.currentProject = null;
+      this.autosaveService.autosave();
     }
+  }
+
+  saveNow() {
+    this.autosaveService.autosave();
   }
 
   // collectPhoton() {
