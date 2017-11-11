@@ -45,6 +45,7 @@ export class Assembler extends Machine {
                 u.heat += (energyDraw - work);
                 this.constructionService.addWork(work);
                 this.meteringService.addQuantity('construction-energy-cost', energyDraw);
+                this.meteringService.addQuantity('work', work);
             }
         }
     }

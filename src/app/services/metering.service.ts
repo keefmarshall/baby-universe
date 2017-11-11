@@ -8,6 +8,7 @@ import { TickerService } from './ticker.service';
 import { Meter } from 'app/meters/meter';
 import { EnergyMeter } from 'app/meters/energy-meter';
 import { ConstructionEnergyCostMeter } from 'app/meters/construction-energy-cost-meter';
+import { WorkMeter } from 'app/meters/work-meter';
 
 @Injectable()
 export class MeteringService {
@@ -22,6 +23,8 @@ export class MeteringService {
     const u = universeService.universe;
     this.meters.set('energy', new EnergyMeter(u));
     this.meters.set('construction-energy-cost', new ConstructionEnergyCostMeter());
+    this.meters.set('work', new WorkMeter());
+    
     tickerService.tick$.subscribe(n => this.onTick(n));
   }
 

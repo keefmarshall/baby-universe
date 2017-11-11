@@ -4,18 +4,20 @@
        Construction
     </p>
 
-    <p class="info info-right">
-      Efficiency: {{ readAssemblerEfficiency() }}<br/>
-      Work: /s
-    </p>
+    <div class="clearfix">
+        <p class="info info-right">
+            Efficiency: {{ readAssemblerEfficiency() }}<br/>
+            Work: {{ readWorkMeter() | number:'1.1-1'  }}/s
+        </p>
 
-    <p class="info info-left">
-      Assemblers: {{ universeService.universe.machines["Assembler"].quantity }}<br/>
-      <span [ngClass]="energyCostColour()">
-        Energy draw: {{ readEnergyCostMeter() }} MeV/s
-      </span>
-    </p>
-        
+        <p class="info info-left">
+            Assemblers: {{ universeService.universe.machines["Assembler"].quantity }}<br/>
+            <span [ngClass]="energyCostColour()">
+                Energy draw: {{ readEnergyCostMeter() }} MeV/s
+            </span>
+        </p>
+    </div>
+
     <p *ngIf="constructionService.isConstructing()">
       <small>Building: {{ constructionService.currentProject.name }}</small><br/>
 

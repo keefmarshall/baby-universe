@@ -31,6 +31,10 @@ export class ConstructionPanelComponent implements OnInit {
     return this.universeService.universe.machines[Assembler.name].efficiency;
   }
 
+  readWorkMeter(): number {
+      return this.meteringService.read('work');
+  }
+  
   energyCostColour(): string {
     if (!this.constructionService.isConstructing()) {
       return 'green';

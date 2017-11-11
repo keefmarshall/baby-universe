@@ -17,4 +17,9 @@ p.info {
     margin: 0px;
 }
 
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
 /* TODO: clearfix */
