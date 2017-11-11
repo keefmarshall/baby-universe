@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <script src="https://code.createjs.com/easeljs-0.8.0.min.js"></script>
+        <script src="https://code.createjs.com/tweenjs-0.6.0.min.js"></script>
+    </head>
+
+    <body  onload="init();">
+        <canvas id="gameCanvas" width="500" height="300" style="border: 1px solid black"></canvas>
+    </body>
+
+
+
+    <script>
+        function init() {
+            var stage = new createjs.Stage("gameCanvas");
+
+            var startr = 10;
+
+            // background
+            var rect = new createjs.Shape();
+            rect.graphics.beginFill("Black").drawRect(0,0,500,300);
+            stage.addChild(rect);
+
+            doStar(stage, startr);
+            setTimeout(function() { doStar(stage, startr + (3 - Math.random())); }, 1000);
+            setTimeout(function() { doStar(stage, startr + (3 - Math.random())); }, 2500);
+
+            createjs.Ticker.setFPS(20);
+            createjs.Ticker.addEventListener("tick", stage);
+        }
+
+        function doStar(stage, radius) {
+            // need a container, so we can rotate relative to it. 
+            // We move the container round the screen but the star rotates relative to it.
+            var starContainer = new createjs.Container();
+            starContainer.x = randomX();
+            starContainer.y = randomY();
+
+            var star = new createjs.Shape();
+            star.name = "mystar-" + Math.floor(Math.random() * 20);
+            star.graphics.beginRadialGradientFill(["White", "DeepSkyBlue"], [0,1], 0, 0, 0, 0, 0, radius)
+                .drawPolyStar(0, 0, radius, Math.round(3 + (Math.random() * 6)), 0.9 - (Math.random() * 0.5), 0);
+            star.alpha = 0;
+            star.regX = 0;
+            star.regY = 0;
+
+            starContainer.addChild(star);
+            stage.addChild(starContainer);
+
+            var difficulty = Math.random();
+            var delay = 1000 + (3000 * difficulty);
+
+            var starTween = createjs.Tween.get(star)
+                .to({alpha: 1, rotation: 720}, delay, createjs.Ease.getPowInOut(2))
+                .wait(500 * difficulty)
+                .to({alpha: 0, rotation: 0}, delay, createjs.Ease.getPowInOut(2));
+
+            var contTween = createjs.Tween.get(starContainer)
+                .to({x: randomX(), y: randomY()}, delay, createjs.Ease.getPowInOut(2))
+                .wait(500 * difficulty)
+                .to({x: randomX(), y: randomY()}, delay, createjs.Ease.getPowInOut(2));
+
+            var timeline = new createjs.Timeline();
+            timeline.addTween(starTween, contTween).call(function() {
+                // timeout here is to avoid stack overflow issues
+                setTimeout(function() { doStar(stage, radius); }, 4000 * Math.random());
+            });
+
+            star.addEventListener("click", onClick);
+        }
+
+        function randomX() { 
+            return (Math.random() * 400) + 50;
+        }
+
+        function randomY() { 
+            return (Math.random() * 240) + 30;
+        }
+
+
+        function onClick(event) {
+            console.log("Clicked! " + JSON.stringify(event.type) + ", " + event.target);
+            event.target.visible = false;
+        }
+    </script>
+      
+      
+</html>

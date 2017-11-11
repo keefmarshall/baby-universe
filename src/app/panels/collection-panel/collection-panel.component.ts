@@ -22,4 +22,7 @@ export class CollectionPanelComponent implements OnInit {
     this.particleFactory.collectPhoton(this.universeService.universe);
   }
 
+  collectMatter() {
+    // TODO!
+  }
 }

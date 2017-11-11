@@ -19,7 +19,7 @@
     </div>
 
     <p *ngIf="constructionService.isConstructing()">
-      <small>Building: {{ constructionService.currentProject.name }}</small><br/>
+      <small>Building: {{ constructionService.currentProject.displayName }}</small><br/>
 
       <mat-progress-bar color="accent"
         [value]="constructionService.currentProject.progress()"
