@@ -1,11 +1,12 @@
 <html>
     <head>
+        <meta charset="utf-8" />
         <script src="https://code.createjs.com/easeljs-0.8.0.min.js"></script>
         <script src="https://code.createjs.com/tweenjs-0.6.0.min.js"></script>
     </head>
 
     <body  onload="init();">
-        <canvas id="gameCanvas" width="500" height="300" style="border: 1px solid black"></canvas>
+        <canvas id="gameCanvas" width="300" height="300" style="border: 1px solid black"></canvas>
         <p>Score: <span id="score">0</span> | Streak <span id="streak">0</span></p>
         <p>Time: <span id="time">0</span></p>
     </body>
@@ -20,14 +21,23 @@
 
         var seconds = 60;
 
+        var canvasWidth = 0;
+        var canvasHeight = 0;
+
         function init() {
             var stage = new createjs.Stage("gameCanvas");
 
-            var startr = 10;
+            console.log("Stage canvas width/height: " + stage.canvas.width + ", " + stage.canvas.height);
+            canvasWidth = stage.canvas.width;
+            canvasHeight = stage.canvas.height;
+
+            // var startr = 10;
+            var startr = Math.round((canvasWidth + canvasHeight) / 80);
+            console.log("Base radius is " + startr);
 
             // background
             var rect = new createjs.Shape();
-            rect.graphics.beginFill("Black").drawRect(0,0,500,300);
+            rect.graphics.beginFill("Black").drawRect(0,0,canvasWidth,canvasHeight);
             stage.addChild(rect);
 
             doStar(stage, startr, 4);
@@ -109,11 +119,11 @@
         }
 
         function randomX() { 
-            return (Math.random() * 400) + 50;
+            return (Math.random() * canvasWidth * 0.8) + (canvasWidth * 0.1);
         }
 
         function randomY() { 
-            return (Math.random() * 240) + 30;
+            return (Math.random() * canvasHeight * 0.8) + (canvasHeight * 0.1);
         }
 
 
