@@ -6,11 +6,20 @@
 
     <body  onload="init();">
         <canvas id="gameCanvas" width="500" height="300" style="border: 1px solid black"></canvas>
+        <p>Score: <span id="score">0</span> | Streak <span id="streak">0</span></p>
+        <p>Time: <span id="time">0</span></p>
     </body>
 
 
 
     <script>
+        var score = 0;
+        var missed = 0;
+        var hits = 0;
+        var streak = 0;
+
+        var seconds = 60;
+
         function init() {
             var stage = new createjs.Stage("gameCanvas");
 
@@ -21,26 +30,42 @@
             rect.graphics.beginFill("Black").drawRect(0,0,500,300);
             stage.addChild(rect);
 
-            doStar(stage, startr);
-            setTimeout(function() { doStar(stage, startr + (3 - Math.random())); }, 1000);
-            setTimeout(function() { doStar(stage, startr + (3 - Math.random())); }, 2500);
+            doStar(stage, startr, 4);
+            setTimeout(function() { doStar(stage, startr + (2 - (Math.random() * 3)), 5); }, 1000);
+            setTimeout(function() { doStar(stage, startr + (2 - (Math.random() * 3)), 3); }, 2500);
 
             createjs.Ticker.setFPS(20);
             createjs.Ticker.addEventListener("tick", stage);
+
+            var timer = setInterval(function() {
+                seconds -= 1;
+                document.getElementById("time").textContent = seconds;
+                if (seconds <= 0) {
+                    createjs.Ticker.reset();
+                    stage.removeAllChildren();
+                    stage.removeAllEventListeners();
+                    stage.update();
+                    clearInterval(timer);
+                    console.log("Done. Total score: " + score + ", hit ratio: " + Math.round(hits * 100 / (hits + missed)) + "%");
+                }
+            }, 1000);
         }
 
-        function doStar(stage, radius) {
+        function doStar(stage, radius, points) {
             // need a container, so we can rotate relative to it. 
             // We move the container round the screen but the star rotates relative to it.
             var starContainer = new createjs.Container();
             starContainer.x = randomX();
             starContainer.y = randomY();
 
+            var pointiness = 0.9 - (Math.random() * 0.5)
+
             var star = new createjs.Shape();
-            star.name = "mystar-" + Math.floor(Math.random() * 20);
+            star.name = "mystar-" + points + "-" + Math.floor(Math.random() * 100);
             star.graphics.beginRadialGradientFill(["White", "DeepSkyBlue"], [0,1], 0, 0, 0, 0, 0, radius)
-                .drawPolyStar(0, 0, radius, Math.round(3 + (Math.random() * 6)), 0.9 - (Math.random() * 0.5), 0);
-            star.alpha = 0;
+                // .drawPolyStar(0, 0, radius, Math.round(3 + (Math.random() * 6)), 0.9 - (Math.random() * 0.5), 0);
+                .drawPolyStar(0, 0, radius, points, pointiness, 0);
+                star.alpha = 0;
             star.regX = 0;
             star.regY = 0;
 
@@ -63,8 +88,22 @@
             var timeline = new createjs.Timeline();
             timeline.addTween(starTween, contTween).call(function() {
                 // timeout here is to avoid stack overflow issues
-                setTimeout(function() { doStar(stage, radius); }, 4000 * Math.random());
+                setTimeout(function() { doStar(stage, radius, points); }, 4000 * Math.random());
+                if (star.visible) {
+                    missed += 1;
+                    streak = 0;
+                    document.getElementById("streak").textContent = streak;
+                    console.log("Missed:  " + missed);
+                }
             });
+
+            // custom stuff
+            star.gamedata = {};
+            star.gamedata.difficulty = difficulty;
+            star.gamedata.radius = radius;
+            star.gamedata.points = points;
+            star.gamedata.pointiness = pointiness;
+
 
             star.addEventListener("click", onClick);
         }
@@ -81,6 +120,19 @@
         function onClick(event) {
             console.log("Clicked! " + JSON.stringify(event.type) + ", " + event.target);
             event.target.visible = false;
+
+            var gd = event.target.gamedata;
+            console.log(".. " + JSON.stringify(gd));
+            var starScore = Math.round((gd.difficulty * gd.pointiness / gd.radius) * 250);
+            score += (starScore * (Math.pow(2, streak)));
+            console.log(".. " + starScore + ": " + score);
+
+            hits += 1;
+            streak += 1;
+            document.getElementById("streak").textContent = streak;
+            console.log("Hits: " + hits + ", streak: " + streak);
+
+            document.getElementById("score").textContent = score;
         }
     </script>
       
