@@ -15,7 +15,8 @@
         Collect photon
     </button>
 
-    <button mat-raised-button (click)="collectMatter()">
+    <button mat-raised-button (click)="collectMatter()"
+      *ngIf="showCollectMatter()">
         Collect matter
     </button>
     
