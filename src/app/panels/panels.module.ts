@@ -14,13 +14,15 @@ import { CollectionPanelComponent } from './collection-panel/collection-panel.co
 import { ConstructionPanelComponent } from './construction-panel/construction-panel.component';
 import { StargameComponent } from './stargame/stargame.component';
 import { StargameDialogComponent } from 'app/panels/stargame/stargame-dialog.component';
+import { GameModule } from 'app/games/game.module';
 
 @NgModule({
   imports: [
     ButtonsModule,
     CommonModule,
     BrowserAnimationsModule,
-    MdesignModule
+    MdesignModule,
+    GameModule
   ],
   declarations: [
     DevPanelComponent,

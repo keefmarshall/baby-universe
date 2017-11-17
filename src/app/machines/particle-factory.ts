@@ -10,4 +10,16 @@ export class ParticleFactory {
         universe.photonCount += (1 * count);
     }
 
+    collectQuark(universe: Universe, type: string, count: number = 1) {
+        // Every quark has to be created with an anti-quark, that's just the way it is
+        // [actually not quite - the balance has to be correct, but we're simplifying here]
+        // [[ and at some point we have to worry about Baryogenesis.. oh dear..]]
+        if (universe.particles[type] == null) {
+            universe.particles[type] = 0;
+            universe.antiparticles[type] = 0;
+        }
+
+        universe.particles[type] += count;
+        universe.antiparticles[type] += count;
+    }
 }

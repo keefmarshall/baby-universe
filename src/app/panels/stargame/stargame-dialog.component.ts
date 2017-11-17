@@ -1,6 +1,7 @@
 import { Component, Inject, Input } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { StargameComponent } from 'app/panels/stargame/stargame.component';
+import { StargameService } from 'app/games/stargame/stargame.service';
 
 @Component({
   selector: 'app-stargame-dialog',
@@ -15,7 +16,8 @@ export class StargameDialogComponent {
 
     constructor(
         public dialogRef: MatDialogRef<StargameDialogComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: any
+        @Inject(MAT_DIALOG_DATA) public data: any,
+        private stargameService: StargameService
     ) {
         this.width = data.width;
         this.height = data.height;
@@ -23,5 +25,6 @@ export class StargameDialogComponent {
 
     closeDialog() {
         this.dialogRef.close();
+        this.stargameService.pauseGame();
     }
 }

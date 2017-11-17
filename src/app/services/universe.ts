@@ -6,6 +6,9 @@ export class Universe {
     energy = 0;
     heat = 0;
 
+    particles = {};
+    antiparticles = {};
+
     phase = 1; // pre/post big bang is 1/2
 
     // Photons

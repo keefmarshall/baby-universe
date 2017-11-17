@@ -47,5 +47,8 @@ export class UniverseService {
     
     if (!u.currentResearchProject) u.currentResearchProject = null;
     if (!u.currentConstructionProject) u.currentConstructionProject = null;
+
+    if (!u.particles) u.particles = {};
+    if (!u.antiparticles) u.antiparticles = {};
   }
 }

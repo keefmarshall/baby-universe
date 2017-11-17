@@ -57,7 +57,7 @@ export class DevPanelComponent implements OnInit {
   }
 
   addWork(n: number) {
-    this.researchService.addScience(n);
+    this.constructionService.addWork(n);
   }
 
 }
