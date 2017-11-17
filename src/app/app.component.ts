@@ -6,6 +6,7 @@ import { PhotonicPhilosopher } from 'app/machines/photonic-philosopher';
 import { Assembler } from 'app/machines/assembler';
 import { UniverseService } from 'app/services/universe.service';
 import { StateManagementService } from 'app/services/state-management.service';
+import { Quarks1 } from 'app/research/matter';
 
 @Component({
   selector: 'app-root',
@@ -41,4 +42,8 @@ export class AppComponent implements OnInit  {
     return this.machineService.exists(Assembler.name);
   }
 
+  showMatterCollectionPanel(): boolean {
+    const props = this.universeService.universe.research[new Quarks1().name];
+    return props != null ? props.researched : false;
+  }
 }
