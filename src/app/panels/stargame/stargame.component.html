@@ -10,4 +10,18 @@
   <button (click)="stargameService.resumeGame()">Resume</button>
   <button (click)="stargameService.pauseGame()">Pause</button> 
   -->
+
+  <table *ngIf="getParticles().length > 0">
+    <tr>
+      <th>Particle</th>
+      <th>Matter</th>
+      <th>Antimatter</th>
+    </tr>
+
+    <tr *ngFor="let p of getParticles()">
+      <td>{{ p }}</td>
+      <td>{{ universeService.universe.particles[p] }}</td>
+      <td>{{ universeService.universe.antiparticles[p] }}</td>
+    </tr>
+  </table>
 </div>

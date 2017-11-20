@@ -1,0 +1,11 @@
+th {
+    text-align: left;
+}
+
+td, th {
+    padding-right: 5px;
+}
+
+table {
+    font-size: 0.64em;
+}
