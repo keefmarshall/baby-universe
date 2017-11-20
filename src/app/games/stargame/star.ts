@@ -30,6 +30,7 @@ export class UpQuarkStar extends Star {
     type = "up quark";
     difficulty = Math.random() / 4 + .3; // .3 -> .55
     points = 3;
+    pointiness = 0.7 - (Math.random() * 0.25);
 }
 
 export class DownQuarkStar extends Star {
@@ -48,7 +49,21 @@ export class StrangeQuarkStar extends Star {
 
 export class CharmQuarkStar extends Star {
     type = "charm quark";
-    difficulty = Math.random() / 4 + .2; // .2 -> .45
+    difficulty = Math.random() / 4 + .17; // .17 -> .42
     points = 6;
-    radiusFactor = 1.5;
+    radiusFactor = 1.6; // more points seems to make it harder to catch
+}
+
+export class TopQuarkStar extends Star {
+    type = "top quark";
+    difficulty = Math.random() / 3 + .1; // .1 -> .43
+    points = 7;
+    radiusFactor = 2;
+}
+
+export class BottomQuarkStar extends Star {
+    type = "bottom quark";
+    difficulty = Math.random() / 3 + .1; // .1 -> .43
+    points = 8;
+    radiusFactor = 2;
 }

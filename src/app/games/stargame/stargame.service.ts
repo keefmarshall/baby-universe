@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UniverseService } from 'app/services/universe.service';
 import * as createjs from 'createjs-module';
-import { Star, UpQuarkStar, DownQuarkStar, StrangeQuarkStar, CharmQuarkStar } from 'app/games/stargame/star';
+import { Star, UpQuarkStar, DownQuarkStar, StrangeQuarkStar, CharmQuarkStar, TopQuarkStar, BottomQuarkStar } from 'app/games/stargame/star';
 import { ResearchProject } from 'app/research/research-project';
 import { Quarks2, Quarks3 } from 'app/research/matter';
 import { ParticleFactory } from 'app/machines/particle-factory';
@@ -69,6 +69,7 @@ export class StargameService {
   stopGame() {
     this.stage.removeAllChildren();
     this.stage.removeAllEventListeners();
+    // TODO: doesn't work on game reset! still retains stars.
   }
 
   resumeGame() {
@@ -127,10 +128,14 @@ export class StargameService {
   randomStar(): Star {
     const ran = Math.random() * 100; // 0-99.9999
     console.log("Random star: ran = " + ran);
-    // if (this.isResearched(new Quarks3())) {
-      // include tiny change of top and bottom quarks      
-    // } else 
-    if (this.isResearched(new Quarks2())) {
+    if (this.isResearched(new Quarks3())) {
+      // include tiny change of top and bottom quarks
+      return ran < 60.5 ? new UpQuarkStar() :
+              ran < 91 ? new DownQuarkStar() :
+                ran < 95 ? new StrangeQuarkStar() :
+                  ran < 98.7 ? new CharmQuarkStar() :
+                    ran < 99.4 ? new TopQuarkStar() : new BottomQuarkStar();
+    } else if (this.isResearched(new Quarks2())) {
       return ran < 61 ? new UpQuarkStar() :
               ran < 92 ? new DownQuarkStar() :
                 ran < 96 ? new StrangeQuarkStar() : new CharmQuarkStar();
