@@ -3,9 +3,13 @@ th {
 }
 
 td, th {
-    padding-right: 5px;
+    padding-right: 10px;
+}
+
+.right-align {
+    text-align: right;
 }
 
 table {
-    font-size: 0.64em;
+    font-size: 0.75em;
 }

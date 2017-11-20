@@ -20,8 +20,8 @@
 
     <tr *ngFor="let p of getParticles()">
       <td>{{ p }}</td>
-      <td>{{ universeService.universe.particles[p] }}</td>
-      <td>{{ universeService.universe.antiparticles[p] }}</td>
+      <td class="right-align">{{ universeService.universe.particles[p] }}</td>
+      <td class="right-align">{{ universeService.universe.antiparticles[p] }}</td>
     </tr>
   </table>
 </div>

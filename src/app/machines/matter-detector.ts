@@ -43,6 +43,7 @@ export class MatterDetector extends ConstructionProject {
     }
 
     payFor(count: number): boolean {
-        throw new Error("Method not implemented.");
+        console.log("MatterDetector: payFor() called");
+        return this.affordable();
     }
 }
