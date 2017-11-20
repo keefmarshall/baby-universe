@@ -6,6 +6,8 @@ import { Globals } from "app/globals";
 import { StargameService } from "app/games/stargame/stargame.service";
 
 export class MatterDetector extends ConstructionProject {
+    private readonly baseCost: number = 50;
+    private readonly costMultiplier: number = 4;
 
     constructor(
         universeService: UniverseService,
@@ -25,7 +27,8 @@ export class MatterDetector extends ConstructionProject {
     }
 
     workCost(): number {
-        return 50;
+        const q = this.properties().quantity;
+        return Globals.geometricProgressionSum(q, q, this.costMultiplier) * this.baseCost;
     }
 
     onTick() {
@@ -34,7 +37,7 @@ export class MatterDetector extends ConstructionProject {
 
     preconditions(): boolean {
         return this.isResearched(new Quarks1()) &&
-            this.properties().quantity === 0 && // can only have one
+            this.properties().quantity < 4 && // can only have 4 (5 stars in total)
             this.machineQuantity('Assembler') > 0;
     }
 

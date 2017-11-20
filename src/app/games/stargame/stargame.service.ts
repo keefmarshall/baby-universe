@@ -61,8 +61,9 @@ export class StargameService {
     createjs.Ticker.setPaused(false);
 
     // add more stars if there are appropriate machines in play:
-    if (this.machineQuantity(MatterDetector.name) > 0) {
-      this.doStar();
+    const matterDetectors = this.machineQuantity(MatterDetector.name);
+    for (let i = 0; i < matterDetectors; i++) {
+      setTimeout(() => this.doStar(), Math.random() * 3000);
     }
   }
 
@@ -105,17 +106,19 @@ export class StargameService {
     starContainer.addChild(starSprite);
     this.stage.addChild(starContainer);
 
-    const difficulty = star.difficulty;
-    const delay = 1000 + (3000 * difficulty);
+    const easiness = 0.25 / star.difficulty;
+    const delay = 1000 + (3000 * easiness);
+
+    console.log("Easiness = " + easiness + ", delay = " + delay);
 
     const starTween = createjs.Tween.get(starSprite)
         .to({alpha: 1, rotation: 720}, delay, createjs.Ease.getPowInOut(2))
-        .wait(500 * difficulty)
+        .wait(500 * easiness)
         .to({alpha: 0, rotation: 0}, delay, createjs.Ease.getPowInOut(2));
 
     const contTween = createjs.Tween.get(starContainer)
         .to({x: this.randomX(), y: this.randomY()}, delay, createjs.Ease.getPowInOut(2))
-        .wait(500 * difficulty)
+        .wait(500 * easiness)
         .to({x: this.randomX(), y: this.randomY()}, delay, createjs.Ease.getPowInOut(2));
 
     const timeline = new createjs.Timeline([starTween, contTween], null, null);
