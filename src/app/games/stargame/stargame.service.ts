@@ -5,6 +5,7 @@ import { Star, UpQuarkStar, DownQuarkStar, StrangeQuarkStar, CharmQuarkStar } fr
 import { ResearchProject } from 'app/research/research-project';
 import { Quarks2, Quarks3 } from 'app/research/matter';
 import { ParticleFactory } from 'app/machines/particle-factory';
+import { MatterDetector } from 'app/machines/matter-detector';
 
 @Injectable()
 export class StargameService {
@@ -14,6 +15,7 @@ export class StargameService {
 
   private stage: createjs.Stage;
   private startr: number = 10;
+  private readonly radiusDivisor: number = 70; // bigger -> smaller stars
 
   private particleFactory: ParticleFactory;
 
@@ -24,11 +26,13 @@ export class StargameService {
   }
 
   initGame(canvasName: string) {
+    console.log("Star Game Initialising..");
     this.canvasName = canvasName;
     this.initStage();
   }
 
   initStage() {
+    console.log("Star Game: Stage Initialising..");
     this.stage = new createjs.Stage(this.canvasName);
 
     this.canvasWidth = this.stage.canvas['width'];
@@ -36,7 +40,7 @@ export class StargameService {
     console.log("Stage canvas width/height: " + this.canvasWidth + ", " + this.canvasHeight);
 
     // var startr = 10;
-    this.startr = Math.round((this.canvasWidth + this.canvasHeight) / 80);
+    this.startr = Math.round((this.canvasWidth + this.canvasHeight) / this.radiusDivisor);
     console.log("Base radius is " + this.startr);
 
     // background
@@ -44,13 +48,27 @@ export class StargameService {
     rect.graphics.beginFill("Black").drawRect(0, 0, this.canvasWidth, this.canvasHeight);
     this.stage.addChild(rect);
 
+    this.startGame();
+
     createjs.Ticker.setFPS(20);
     createjs.Ticker.addEventListener("tick", this.stage);
   }
 
   startGame() {
+    console.log("Star Game: Starting..");
+
     this.doStar();
     createjs.Ticker.setPaused(false);
+
+    // add more stars if there are appropriate machines in play:
+    if (this.machineQuantity(MatterDetector.name) > 0) {
+      this.doStar();
+    }
+  }
+
+  stopGame() {
+    this.stage.removeAllChildren();
+    this.stage.removeAllEventListeners();
   }
 
   resumeGame() {
@@ -148,6 +166,14 @@ export class StargameService {
 
   randomY() {
       return (Math.random() * this.canvasHeight * 0.8) + (this.canvasHeight * 0.1);
+  }
+
+  protected machineQuantity(machineName: string): number {
+    if (this.universeService.universe.machines[machineName] == null) {
+        return 0;
+    } else {
+        return this.universeService.universe.machines[machineName].quantity;
+    }
   }
 
 }

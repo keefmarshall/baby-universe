@@ -12,6 +12,8 @@ import { Assembler } from 'app/machines/assembler';
 import { ConstructionService } from 'app/services/construction.service';
 import { MeteringService } from 'app/services/metering.service';
 import { FieldMirror } from 'app/machines/field-mirror';
+import { StargameService } from 'app/games/stargame/stargame.service';
+import { MatterDetector } from 'app/machines/matter-detector';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -31,7 +33,8 @@ export class MachineFactory {
         private universeService: UniverseService,
         private researchService: ResearchService,
         private constructionService: ConstructionService,
-        private meteringService: MeteringService
+        private meteringService: MeteringService,
+        private stargameService: StargameService
     ) {
         this.resetMachines();
     }
@@ -41,7 +44,8 @@ export class MachineFactory {
             'PhotonCollector': new PhotonCollector(this.universeService),
             'PhotonicPhilosopher': new PhotonicPhilosopher(this.universeService, this.researchService),
             'Assembler': new Assembler(this.universeService, this.constructionService, this.meteringService),
-            'FieldMirror': new FieldMirror(this.universeService)
+            'FieldMirror': new FieldMirror(this.universeService),
+            'MatterDetector': new MatterDetector(this.universeService, this.stargameService)
         };
 
         this.allMachineNames = [];
