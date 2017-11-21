@@ -38,6 +38,7 @@ export class DevPanelComponent implements OnInit {
       this.researchService.initialise();
       this.constructionService.currentProject = null;
       this.autosaveService.autosave();
+      this.stargameService.stopGame();
     }
   }
 
