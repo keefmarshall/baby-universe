@@ -1,0 +1,27 @@
+<div class="stargame" class="panel">
+  <p class="panel-title">
+      <mat-icon>input</mat-icon>
+      Matter Collection
+  </p>
+
+  <canvas [width]="width" [height]="height" id="stargame-canvas"></canvas>
+  <!-- 
+  <button (click)="stargameService.startGame()">Start</button>
+  <button (click)="stargameService.resumeGame()">Resume</button>
+  <button (click)="stargameService.pauseGame()">Pause</button> 
+  -->
+
+  <table *ngIf="getParticles().length > 0">
+    <tr>
+      <th>Particle</th>
+      <th>Matter</th>
+      <th>Antimatter</th>
+    </tr>
+
+    <tr *ngFor="let p of getParticles()">
+      <td>{{ p }}</td>
+      <td class="right-align">{{ universeService.universe.particles[p] }}</td>
+      <td class="right-align">{{ universeService.universe.antiparticles[p] }}</td>
+    </tr>
+  </table>
+</div>

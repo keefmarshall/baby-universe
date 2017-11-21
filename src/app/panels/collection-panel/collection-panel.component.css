@@ -1,3 +1,13 @@
 #collection-panel {
     margin-bottom: 20px;
 }
+
+p.info {
+    font-size:0.64em
+}
+
+.info-right {
+    float: right; 
+    text-align: right; 
+    margin: 0px;
+}

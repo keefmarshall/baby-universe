@@ -2,8 +2,9 @@
     padding-top: 6px;
     padding-bottom: 6px;
     line-height: 1.2;
-    width: 240px;
-    font-size: 80%;
+    /* width: 240px; */
+    width: 100%;
+    font-size: 0.8em;
     font-weight: 400;
     white-space: normal;
 }

@@ -5,6 +5,7 @@ import { MeteringService } from 'app/services/metering.service';
 import { ConstructionEnergyCostMeter } from 'app/meters/construction-energy-cost-meter';
 import { MachineFactory } from 'app/machines/machine-factory';
 import { Assembler } from 'app/machines/assembler';
+import { Globals } from 'app/globals';
 
 
 @Component({
@@ -28,7 +29,7 @@ export class ConstructionPanelComponent implements OnInit {
   }
 
   readAssemblerEfficiency(): number {
-    return this.universeService.universe.machines[Assembler.name].efficiency;
+    return Globals.round(this.universeService.universe.machines[Assembler.name].efficiency, 1);
   }
 
   readWorkMeter(): number {

@@ -6,6 +6,7 @@ import { ResearchService } from 'app/services/research.service';
 import { ConstructionService } from 'app/services/construction.service';
 import { StateManagementService } from 'app/services/state-management.service';
 import { AutosaveService } from 'app/services/autosave.service';
+import { StargameService } from 'app/games/stargame/stargame.service';
 
 @Component({
   selector: 'app-dev-panel',
@@ -21,6 +22,7 @@ export class DevPanelComponent implements OnInit {
     private universeService: UniverseService,
     private researchService: ResearchService,
     private constructionService: ConstructionService,
+    private stargameService: StargameService,
     private autosaveService: AutosaveService
   ) { }
 
@@ -36,6 +38,7 @@ export class DevPanelComponent implements OnInit {
       this.researchService.initialise();
       this.constructionService.currentProject = null;
       this.autosaveService.autosave();
+      this.stargameService.stopGame();
     }
   }
 
@@ -57,7 +60,7 @@ export class DevPanelComponent implements OnInit {
   }
 
   addWork(n: number) {
-    this.researchService.addScience(n);
+    this.constructionService.addWork(n);
   }
 
 }

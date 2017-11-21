@@ -12,27 +12,38 @@ import { DeploymentPanelComponent } from './deployment-panel/deployment-panel.co
 import { ResearchPanelComponent } from './research-panel/research-panel.component';
 import { CollectionPanelComponent } from './collection-panel/collection-panel.component';
 import { ConstructionPanelComponent } from './construction-panel/construction-panel.component';
+import { StargameComponent } from './stargame/stargame.component';
+import { StargameDialogComponent } from 'app/panels/stargame/stargame-dialog.component';
+import { GameModule } from 'app/games/game.module';
 
 @NgModule({
   imports: [
     ButtonsModule,
     CommonModule,
     BrowserAnimationsModule,
-    MdesignModule
+    MdesignModule,
+    GameModule
   ],
   declarations: [
     DevPanelComponent,
     DeploymentPanelComponent,
     ResearchPanelComponent,
     CollectionPanelComponent,
-    ConstructionPanelComponent
+    ConstructionPanelComponent,
+    StargameComponent,
+    StargameDialogComponent
+  ],
+  entryComponents: [
+    StargameDialogComponent
   ],
   exports: [
     DevPanelComponent,
     DeploymentPanelComponent,
     ResearchPanelComponent,
     CollectionPanelComponent,
-    ConstructionPanelComponent
+    ConstructionPanelComponent,
+    StargameComponent,
+    StargameDialogComponent
   ]
 })
 export class PanelsModule { }
