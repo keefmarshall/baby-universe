@@ -16,6 +16,7 @@ export class Photovoltaics extends ResearchProject {
     onCompletion(universe: Universe) {
         // in theory we can't get here without at least some photon collectors
         universe.machines[PhotonCollector.name].efficiency *= 2;
+        universe.logs.push("Efficient collectors absorb more photons.");
     }
 }
 
@@ -32,6 +33,7 @@ export class Photoelectrics extends ResearchProject {
     onCompletion(universe: Universe) {
         // in theory we can't get here without at least some photon collectors
         universe.machines[PhotonCollector.name].efficiency *= 4;
+        universe.logs.push("Super-efficient collectors absorb many more photons.");
     }
 }
 

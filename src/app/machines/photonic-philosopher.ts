@@ -43,8 +43,17 @@ export class PhotonicPhilosopher extends Machine {
 
     payFor(amount: number = 1): boolean {
         const cost = this.energyCost(amount);
+
         if (this.affordable(amount)) {
             this.universeService.universe.energy -= cost;
+
+            const q = this.properties().quantity || 0;
+            if (q === 0) {
+                this.universeService.universe.logs.push(
+                    "A world of knowledge opens up."
+                );
+            }
+            
             return true;
         } else {
             return false;

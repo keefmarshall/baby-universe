@@ -36,7 +36,7 @@ export class UniverseService {
   }
 
   /**
-   * MOstly during development - this handles the case where there's a new
+   * Mostly during development - this handles the case where there's a new
    * property in the Universe object that is not in the saved version, we
    * need to initialise it properly otherwise stuff breaks
    */
@@ -50,5 +50,11 @@ export class UniverseService {
 
     if (!u.particles) u.particles = {};
     if (!u.antiparticles) u.antiparticles = {};
+
+    if (!u.logs) {
+      u.logs = ["...", "...", "...", "...", "...", "...",
+          "Within the empty void, matter and energy spontaneously " +
+          "flash into existence, only to decay almost instantly. "];
+    }
   }
 }

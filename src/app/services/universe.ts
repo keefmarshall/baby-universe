@@ -22,4 +22,10 @@ export class Universe {
     // Research - hash of project name against science gained and complete status
     research = {};
     currentResearchProject: string = null;
+
+    // Log
+    logs = [//"...", "...", "...", "...", "...", "...",
+            "Within the empty void, matter and energy spontaneously " +
+            "flash into existence, only to decay almost instantly. "];
+
 }
