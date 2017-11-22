@@ -30,6 +30,8 @@ export class Quarks1 extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
+        universe.logs.push("Matter is born in equal amounts with antimatter. " + 
+                            "Now the collection can commence.");
     }
 
 }
@@ -41,7 +43,10 @@ export class Quarks2 extends ResearchProject {
     }
 
     preconditions(universe: Universe): boolean {
-        return this.isResearched(universe, new Quarks1());
+        const q1Researched = this.isResearched(universe, new Quarks1());
+        const quarksCaught = (universe.particles["up quark"] || 0) +
+                             (universe.particles["down quark"] || 0);
+        return q1Researched && quarksCaught >= 10;
     }
 
     onCompletion(universe: Universe) {
@@ -56,7 +61,10 @@ export class Quarks3 extends ResearchProject {
     }
 
     preconditions(universe: Universe): boolean {
-        return this.isResearched(universe, new Quarks2());
+        const q2Researched = this.isResearched(universe, new Quarks2());
+        const quarksCaught = (universe.particles["strange quark"] || 0) +
+                             (universe.particles["charm quark"] || 0);
+        return q2Researched && quarksCaught >= 10;
     }
 
     onCompletion(universe: Universe) {
@@ -78,5 +86,4 @@ export class Leptons extends ResearchProject {
 
     onCompletion(universe: Universe) {
     }
-
 }

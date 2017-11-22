@@ -71,7 +71,7 @@ export class StargameService {
     if (this.stage) {
       this.stage.removeAllChildren();
       this.stage.removeAllEventListeners();
-      //createjs.Ticker.reset();
+      createjs.Ticker.reset();
       // TODO: doesn't work on game reset! still retains stars.
     }
   }

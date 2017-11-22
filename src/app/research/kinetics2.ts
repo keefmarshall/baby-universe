@@ -24,7 +24,7 @@ export class KineticEnergyRecovery extends ResearchProject {
 export class KineticEngineering extends ResearchProject {
 
     constructor() {
-        super("Kinetic Engineering", "Advanced construction skills", 5000)
+        super("Kinetic Engineering", "Advanced construction skills", 5000);
     }
 
     preconditions(universe: Universe): boolean {
@@ -35,6 +35,7 @@ export class KineticEngineering extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        // do nothing
+        // treble efficiency of assemblers:
+        universe.machines[Assembler.name].efficiency *= (10 / 3);
     }
 }
