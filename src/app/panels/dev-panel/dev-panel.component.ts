@@ -7,6 +7,7 @@ import { ConstructionService } from 'app/services/construction.service';
 import { StateManagementService } from 'app/services/state-management.service';
 import { AutosaveService } from 'app/services/autosave.service';
 import { StargameService } from 'app/games/stargame/stargame.service';
+import { LogService } from 'app/services/log.service';
 
 @Component({
   selector: 'app-dev-panel',
@@ -23,7 +24,8 @@ export class DevPanelComponent implements OnInit {
     private researchService: ResearchService,
     private constructionService: ConstructionService,
     private stargameService: StargameService,
-    private autosaveService: AutosaveService
+    private autosaveService: AutosaveService,
+    private logService: LogService
   ) { }
 
   ngOnInit() {
@@ -39,6 +41,7 @@ export class DevPanelComponent implements OnInit {
       this.constructionService.currentProject = null;
       this.autosaveService.autosave();
       this.stargameService.stopGame();
+      this.logService.resetLogs();
     }
   }
 

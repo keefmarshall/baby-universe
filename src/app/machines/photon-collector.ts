@@ -48,6 +48,14 @@ export class PhotonCollector extends Machine {
         const cost = this.energyCost(amount);
         if (this.affordable(amount)) {
             this.universeService.universe.energy -= cost;
+
+            const q = this.properties().quantity || 0;
+            if (q === 9) {
+                this.universeService.universe.logs.push(
+                    "The light of the void can help unlock a myriad of possibilities."
+                );
+            }
+
             return true;
         } else {
             return false;

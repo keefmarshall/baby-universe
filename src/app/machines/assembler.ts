@@ -64,6 +64,12 @@ export class Assembler extends Machine {
         const cost = this.energyCost(amount);
         if (this.affordable(amount)) {
             this.universeService.universe.energy -= cost;
+
+            const q = this.properties().quantity || 0;
+            if (q === 0) {
+                this.universeService.universe.logs.push(
+                    "Assemblers use up energy while building. Inefficiency produces heat as waste.");
+            }
             return true;
         } else {
             return false;

@@ -13,7 +13,8 @@ export class KineticConstruction extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        // do nothing
+        universe.logs.push(
+            "Assemblers are now available. They turn stored energy into construction work.");
     }
 }
 

@@ -15,6 +15,7 @@ import { ConstructionPanelComponent } from './construction-panel/construction-pa
 import { StargameComponent } from './stargame/stargame.component';
 import { StargameDialogComponent } from 'app/panels/stargame/stargame-dialog.component';
 import { GameModule } from 'app/games/game.module';
+import { LogPanelComponent } from './log-panel/log-panel.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { GameModule } from 'app/games/game.module';
     CollectionPanelComponent,
     ConstructionPanelComponent,
     StargameComponent,
-    StargameDialogComponent
+    StargameDialogComponent,
+    LogPanelComponent
   ],
   entryComponents: [
     StargameDialogComponent
@@ -43,7 +45,8 @@ import { GameModule } from 'app/games/game.module';
     CollectionPanelComponent,
     ConstructionPanelComponent,
     StargameComponent,
-    StargameDialogComponent
+    StargameDialogComponent,
+    LogPanelComponent
   ]
 })
 export class PanelsModule { }
