@@ -4,6 +4,7 @@ import { ResearchProject } from "app/research/research-project";
 import { Leptons, Fermions, Quarks3, Quarks2, Quarks1 } from "app/research/matter";
 import { Photovoltaics, LinearPolarisation, CircularPolarisation, EllipticalPolarisation,
      Photoelectrics, Reflection } from "app/research/photons";
+import { PhotonAmplification } from "app/research/amplification";
 
 export class ResearchList {
     public projectList: Array<ResearchProject> = [];
@@ -13,6 +14,7 @@ export class ResearchList {
         this.projectList = [
             new Photovoltaics(),
             new Photoelectrics(),
+            new PhotonAmplification(),
             new LinearPolarisation(),
             new CircularPolarisation(),
             new EllipticalPolarisation(),

@@ -6,8 +6,6 @@ import { Globals } from "app/globals";
 import { StargameService } from "app/games/stargame/stargame.service";
 
 export class MatterDetector extends ConstructionProject {
-    private readonly baseCost: number = 50;
-    private readonly costMultiplier: number = 4;
 
     constructor(
         universeService: UniverseService,
@@ -16,7 +14,7 @@ export class MatterDetector extends ConstructionProject {
         super(MatterDetector.name,
             "Matter Detector",
             "Exposes more matter for collection",
-            universeService);
+            universeService, 50, 4);
     }
 
 
@@ -24,11 +22,6 @@ export class MatterDetector extends ConstructionProject {
         // star game gets an extra star!
         this.stargameService.doStar();
         this.machineService.addMachine(this);
-    }
-
-    workCost(): number {
-        const q = this.properties().quantity;
-        return Globals.geometricProgressionSum(q, q, this.costMultiplier) * this.baseCost;
     }
 
     onTick() {
@@ -41,12 +34,4 @@ export class MatterDetector extends ConstructionProject {
             this.machineQuantity('Assembler') > 0;
     }
 
-    displayCost(count: number): string {
-        return Globals.round(this.workCost(), 1) + " Work";
-    }
-
-    payFor(count: number): boolean {
-        console.log("MatterDetector: payFor() called");
-        return this.affordable();
-    }
 }

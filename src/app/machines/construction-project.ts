@@ -1,6 +1,7 @@
 import { Machine } from "app/machines/machine";
 import { UniverseService } from "app/services/universe.service";
 import { MachineService } from "app/services/machine.service";
+import { Globals } from "app/globals";
 
 export abstract class ConstructionProject extends Machine {
     public readonly needsConstruction: boolean = true;
@@ -12,7 +13,9 @@ export abstract class ConstructionProject extends Machine {
         public readonly name: string,
         public readonly displayName: string,
         public readonly displayPurpose: string,
-        protected universeService: UniverseService
+        protected universeService: UniverseService,
+        protected readonly baseCost: number = 1,
+        protected readonly costMultiplier: number = 1
     ) {
         super(name, displayName, displayPurpose, universeService);
     }
@@ -43,6 +46,18 @@ export abstract class ConstructionProject extends Machine {
         return this.workGained * 100 / this.workCost();
     }
 
+    workCost(): number {
+        const q = this.properties().quantity;
+        return Globals.geometricProgressionSum(q, q, this.costMultiplier) * this.baseCost;
+    }
+
+    displayCost(count: number): string {
+        return Globals.round(this.workCost(), 1) + " Work";
+    }
+
+    payFor(count: number): boolean {
+        return this.affordable();
+    }
+
     abstract onComplete();
-    abstract workCost(): number;
 }

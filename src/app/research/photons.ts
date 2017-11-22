@@ -2,6 +2,7 @@ import { ResearchProject } from "app/research/research-project";
 import { Universe } from "app/services/universe";
 import { PhotonCollector } from "app/machines/photon-collector";
 import { PhotonicPhilosopher } from "app/machines/photonic-philosopher";
+import { KineticEngineering } from "app/research/kinetics2";
 
 export class Photovoltaics extends ResearchProject {
 

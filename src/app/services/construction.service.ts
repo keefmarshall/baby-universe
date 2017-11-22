@@ -39,10 +39,12 @@ export class ConstructionService {
     if (this.isConstructing()) {
       console.log("Can't build construction, already constructing!");
       return false;
-    } else {
+    } else if (project.payFor(1)) {
       console.log("Constructing " + project.name);
       this.universeService.universe.currentConstructionProject = project.name;
       this.currentProject = project;
+    } else {
+      console.log("Can't afford " + project.name);
     }
   }
 
