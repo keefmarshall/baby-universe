@@ -7,3 +7,7 @@
 .debug {
     overflow-x: auto;
 }
+
+#main-content {
+    margin-top: -24px;
+}
