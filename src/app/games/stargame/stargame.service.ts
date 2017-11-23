@@ -112,7 +112,7 @@ export class StargameService {
     const easiness = 0.25 / star.difficulty;
     const delay = 1000 + (3000 * easiness);
 
-    console.log("Easiness = " + easiness + ", delay = " + delay);
+    // console.log("Easiness = " + easiness + ", delay = " + delay);
 
     const starTween = createjs.Tween.get(starSprite)
         .to({alpha: 1, rotation: 720}, delay, createjs.Ease.getPowInOut(2))
@@ -133,7 +133,7 @@ export class StargameService {
 
   randomStar(): Star {
     const ran = Math.random() * 100; // 0-99.9999
-    console.log("Random star: ran = " + ran);
+    // console.log("Random star: ran = " + ran);
     if (this.isResearched(new Quarks3())) {
       // include tiny change of top and bottom quarks
       return ran < 60.5 ? new UpQuarkStar() :
@@ -157,14 +157,14 @@ export class StargameService {
 
 
   starFinished(star: Star) {
-    console.log("Star finished, type = " + star.type + ", captured = " + star.captured);
+    // console.log("Star finished, type = " + star.type + ", captured = " + star.captured);
     setTimeout(() => {
         this.doStar();
     }, (Math.random() * 3000) + 1000);
   }
 
   starClicked(event) {
-    console.log("Clicked! " + JSON.stringify(event.type) + ", " + event.target);
+    // console.log("Clicked! " + JSON.stringify(event.type) + ", " + event.target);
     event.target.visible = false;
     event.target.star.captured = true;
     const type = event.target.star.type;
