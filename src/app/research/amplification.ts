@@ -20,6 +20,6 @@ export class PhotonAmplification extends ResearchProject {
 
     onCompletion(universe: Universe) {
         // Does nothing, but enables Pasers to be constructed
-        universe.logs.push("Build Pasers to greatly enhance the energy collected from each Photon");
+        universe.logs.push("Build Pasers to greatly enhance the energy collected from each photon");
     }
 }
