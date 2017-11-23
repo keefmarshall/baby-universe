@@ -5,6 +5,7 @@ import { Globals } from "app/globals";
 import { PhotonAmplification } from "app/research/amplification";
 
 export class Paser extends ConstructionProject {
+    baseStrangeQuarkCost = 2;
 
     constructor(
         universeService: UniverseService
@@ -12,7 +13,7 @@ export class Paser extends ConstructionProject {
         super(Paser.name,
             "Paser",
             "Multiplies energy from photons by 10",
-            universeService, 3000, Math.SQRT2);
+            universeService, 5000, 2);
     }
 
     onComplete() {
@@ -31,9 +32,10 @@ export class Paser extends ConstructionProject {
 
     // overrides
 
-    downQuarkCost(count: number = 1): number {
+    strangeQuarkCost(count: number = 1): number {
         const q = this.properties().quantity;
-        return Math.round(5 * Globals.geometricProgressionSum(q, q, 2));
+        return Math.round(
+            this.baseStrangeQuarkCost * Globals.geometricProgressionSum(q, q, 2));
     }
 
     // NB need to find a formula for this progression if we need to count more
@@ -44,14 +46,14 @@ export class Paser extends ConstructionProject {
 
     displayCost(count: number = 1): string {
         return super.displayCost(count) + ", " + 
-            this.downQuarkCost(count) + " down quarks, " +
+            this.strangeQuarkCost(count) + " strange quarks, " +
             this.topQuarkCost() + " anti top quark" +
             (this.topQuarkCost() > 1 ? "s" : "");
     }
 
     affordable(): boolean {
         const u = this.universeService.universe;
-        const dqs = u.particles['down quark'] >= this.downQuarkCost();
+        const dqs = u.particles['strange quark'] >= this.strangeQuarkCost();
         const atqs = u.antiparticles['top quark'] >= this.topQuarkCost();
 
         return super.affordable() && dqs && atqs;
@@ -62,7 +64,7 @@ export class Paser extends ConstructionProject {
             // assume no race conditions, otherwise we'll have a ton of
             // nested ifs and we'll need to rollback on error
             const u = this.universeService.universe;
-            u.particles['down quark'] -= this.downQuarkCost(count);
+            u.particles['strange quark'] -= this.strangeQuarkCost(count);
             u.antiparticles['top quark'] -= this.topQuarkCost();
             super.payFor(count);
             return true;
