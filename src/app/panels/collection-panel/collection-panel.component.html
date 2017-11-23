@@ -8,6 +8,9 @@
         <span *ngIf='universeService.universe.machines["PhotonCollector"] != null'>
             Photon Collectors: {{ universeService.universe.machines["PhotonCollector"].quantity }}<br/>
         </span>
+        <span *ngIf='universeService.universe.machines["Paser"] != null'>
+            Pasers: {{ universeService.universe.machines["Paser"].quantity }}
+        </span>
     </p>
 
     <button mat-raised-button (click)="collectPhoton()">
