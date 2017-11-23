@@ -46,6 +46,10 @@ export abstract class ConstructionProject extends Machine {
         return this.workGained * 100 / this.workCost();
     }
 
+    currentWorkTotal(): number {
+        return this.workGained;
+    }
+
     workCost(): number {
         const q = this.properties().quantity;
         return Globals.geometricProgressionSum(q, q, this.costMultiplier) * this.baseCost;

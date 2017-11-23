@@ -17,18 +17,14 @@ export class ConstructionService {
     private universeService: UniverseService,
     private tickerService: TickerService
   ) {
-    // Ideally we'd initialise the project from the universe, on load.
-    // But the universe only has the name, and we have a circular dep 
-    // which prevents us injecting machineFactory. So, if you refresh the
-    // page you lose any in-progress construction project. 
-    this.universeService.universe.currentConstructionProject = null;
-
+    // The state management service takes care of initialising us after a
+    // page reload
     tickerService.tick$.subscribe(n => this.onTick(n));
   }
 
   /** this is just for metering energy usage */
   onTick(n: number) {
-    if (n % this.ticksPerSecond == 0) {
+    if (n % this.ticksPerSecond === 0) {
       // once per second:
       this.energyDrawPerSecond = this.currentWork;
       this.currentWork = 0;
@@ -56,6 +52,10 @@ export class ConstructionService {
         console.log("Built " + this.currentProject.name);
         this.currentProject = null;
         this.universeService.universe.currentConstructionProject = null;
+        this.universeService.universe.currentConstructionWork = 0;
+      } else {
+        this.universeService.universe.currentConstructionWork =
+          this.currentProject.currentWorkTotal();
       }
     }
   }

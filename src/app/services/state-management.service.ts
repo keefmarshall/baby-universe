@@ -3,6 +3,8 @@ import { MachineFactory } from 'app/machines/machine-factory';
 import { MachineService } from 'app/services/machine.service';
 import { TickerService } from 'app/services/ticker.service';
 import { UniverseService } from 'app/services/universe.service';
+import { ConstructionService } from 'app/services/construction.service';
+import { ConstructionProject } from 'app/machines/construction-project';
 
 /**
  * This service exists to break circular dependencies between 
@@ -19,6 +21,7 @@ import { UniverseService } from 'app/services/universe.service';
 export class StateManagementService {
 
   constructor(
+    private constructionService: ConstructionService,
     private machineFactory: MachineFactory,
     private machineService: MachineService,
     private tickerService: TickerService,
@@ -32,6 +35,7 @@ export class StateManagementService {
 
   reloadUniverse() {
     this.resetMachines();
+    this.resetConstruction();
   }
 
   /**
@@ -61,6 +65,26 @@ export class StateManagementService {
     this.updateMachineAvailability();
   }
 
+  resetConstruction() {
+    const u = this.universeService.universe;
+    if (u.currentConstructionProject != null) {
+      console.log("Initialising construction project " + u.currentConstructionProject);
+
+      const currentProject =
+        this.machineFactory.newMachine(u.currentConstructionProject) as ConstructionProject;
+      currentProject.setMachineService(this.machineService);
+      const currentWork = u.currentConstructionWork;
+
+      // NB don't call 'construct()' here as it will charge the fee again, using up
+      // resources
+      this.constructionService.currentProject = currentProject;
+
+      console.log(".. adding construction work: " + currentWork);
+      this.constructionService.addWork(currentWork);
+    } else {
+      console.log("No current construction project to initialise.");
+    }
+  }
 
   /**
    * Reset the machine availability based on the current universe 

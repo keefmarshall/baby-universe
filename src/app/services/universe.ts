@@ -18,6 +18,7 @@ export class Universe {
     // Machines - hash of machine name against a hash of machine properties
     machines = {};
     currentConstructionProject: string = null;
+    currentConstructionWork: number = 0;
 
     // Research - hash of project name against science gained and complete status
     research = {};
