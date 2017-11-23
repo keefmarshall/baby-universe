@@ -4,6 +4,17 @@
         Collection
     </p> -->
 
+    <table class="energy-ticker mobile-only">
+        <tr>
+            <th>Energy: </th>
+            <td>{{ universeService.universe.energy | number:'1.1-1' }} MeV</td>
+        </tr>
+        <tr>
+            <th>Rate: </th>
+            <td>{{ meteringService.read('energy') | number:'1.1-1' }} MeV/s</td>
+        </tr>
+    </table>
+
     <p class="info info-right">
         <span *ngIf='universeService.universe.machines["PhotonCollector"] != null'>
             Photon Collectors: {{ universeService.universe.machines["PhotonCollector"].quantity }}<br/>
@@ -17,9 +28,4 @@
         Collect photon
     </button>
 
-    <!-- <button mat-raised-button (click)="collectMatter()"
-      *ngIf="showCollectMatter()">
-        Collect matter
-    </button> -->
-    
 </div>

@@ -28,8 +28,8 @@ import { LogService } from 'app/services/log.service';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    TickerComponent
+    AppComponent
+    // TickerComponent
   ],
   imports: [
     BrowserModule,

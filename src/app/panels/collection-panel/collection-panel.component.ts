@@ -5,6 +5,7 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 import { StargameComponent } from 'app/panels/stargame/stargame.component';
 import { Quarks1 } from 'app/research/matter';
 import { StargameDialogComponent } from 'app/panels/stargame/stargame-dialog.component';
+import { MeteringService } from 'app/services/metering.service';
 
 @Component({
   selector: 'app-collection-panel',
@@ -16,6 +17,7 @@ export class CollectionPanelComponent implements OnInit {
 
   constructor(
     private universeService: UniverseService,
+    private meteringService: MeteringService,
     public dialog: MatDialog
   ) { }
 
