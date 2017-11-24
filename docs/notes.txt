@@ -6,3 +6,7 @@ Quantum Chromodynamics - Quark Squeezer, produce gluons from quarks
 
 Pion π+ - up, anti-down (- is anti-up, down) - mass 139MeV/c2
 Kaon K+ - up, anti-strange (- is anti-up, strange) mass 494MeV/c2
+
+
+250 photon collectors seems to be a bit of a major milestone
+.. 200 assemblers hit a little while before 250 pc's

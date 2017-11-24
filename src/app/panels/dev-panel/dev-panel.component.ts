@@ -66,4 +66,7 @@ export class DevPanelComponent implements OnInit {
     this.constructionService.addWork(n);
   }
 
+  windowHeight(): number { return window.innerHeight; }
+  windowWidth(): number { return window.innerWidth; }
+  
 }

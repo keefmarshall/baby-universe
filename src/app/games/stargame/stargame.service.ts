@@ -34,6 +34,7 @@ export class StargameService {
   initStage() {
     console.log("Star Game: Stage Initialising..");
     this.stage = new createjs.Stage(this.canvasName);
+    // createjs.Touch.enable(this.stage); // hoping this will help
 
     this.canvasWidth = this.stage.canvas['width'];
     this.canvasHeight = this.stage.canvas['height'];
@@ -71,18 +72,20 @@ export class StargameService {
     if (this.stage) {
       this.stage.removeAllChildren();
       this.stage.removeAllEventListeners();
+      // createjs.Touch.disable(this.stage);
       createjs.Ticker.reset();
-      // TODO: doesn't work on game reset! still retains stars.
     }
   }
 
   resumeGame() {
     createjs.Ticker.setPaused(false);
+    // createjs.Touch.enable(this.stage);
     this.stage.update();
   }
 
   pauseGame() {
     createjs.Ticker.setPaused(true);
+    createjs.Touch.disable(this.stage);
   }
 
   doStar() {
@@ -106,7 +109,15 @@ export class StargameService {
     starSprite.regY = 0;
     starSprite["star"] = star; // custom property
 
+    // We define a slightly larger hit area for the star - otherwise the game
+    // is pretty much impossible on mobile.
+    const starHit = new createjs.Shape();
+    // starHit.graphics.beginFill("#000").drawCircle(0, 0, radius);
+    starHit.graphics.beginFill("#000").drawRect(-radius, -radius, radius * 2, radius * 2);
+    starSprite.hitArea = starHit;
+
     starContainer.addChild(starSprite);
+    // starContainer.addChild(starHit); // assume we need to do this?
     this.stage.addChild(starContainer);
 
     const easiness = 0.25 / star.difficulty;
@@ -125,7 +136,9 @@ export class StargameService {
         .to({x: this.randomX(), y: this.randomY()}, delay, createjs.Ease.getPowInOut(2));
 
     const timeline = new createjs.Timeline([starTween, contTween], null, null);
-    contTween.call(this.starFinished, [star], this);
+    contTween.call(this.starFinished,
+      [star, starSprite, starContainer],
+      this);
 
     // funky arrow syntax to retain context
     starSprite.addEventListener("click", (event) => this.starClicked(event));
@@ -156,8 +169,16 @@ export class StargameService {
   }
 
 
-  starFinished(star: Star) {
+  starFinished(star: Star, starSprite: createjs.Shape, starContainer: createjs.Container) {
     // console.log("Star finished, type = " + star.type + ", captured = " + star.captured);
+    createjs.Tween.removeTweens(starSprite);
+    createjs.Tween.removeTweens(starContainer);
+
+    starSprite.removeAllEventListeners('click');
+    starContainer.removeAllEventListeners('click');
+    starContainer.removeChild(starSprite);
+    this.stage.removeChild(starContainer);
+
     setTimeout(() => {
         this.doStar();
     }, (Math.random() * 3000) + 1000);
@@ -165,6 +186,7 @@ export class StargameService {
 
   starClicked(event) {
     // console.log("Clicked! " + JSON.stringify(event.type) + ", " + event.target);
+    event.target.removeAllEventListeners('click');
     event.target.visible = false;
     event.target.star.captured = true;
     const type = event.target.star.type;

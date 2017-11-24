@@ -8,8 +8,8 @@ import { UniverseService } from 'app/services/universe.service';
   styleUrls: ['./stargame.component.css']
 })
 export class StargameComponent implements AfterViewInit {
-  @Input() width = 248;
-  @Input() height = 300;
+  @Input() width =  380; //248;
+  @Input() height = 380; //300;
 
   // NB if injecting MatDialogRef this component can only be used
   // as a dialog! Might be better off wrapping the game in an

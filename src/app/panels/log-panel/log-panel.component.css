@@ -12,7 +12,7 @@
 .fadedScroller_fade {
     content:'';
     margin-top: -70px; /* don't forget to add the padding! */
-    margin-left: -24px;
+    /* margin-left: -24px; */
     /* margin-right: -24px; */
     height: 40px;
     padding: 5px;
@@ -33,4 +33,25 @@
     content: "";
     display: table;
     clear: both;
+}
+
+/* min-width 840 - margin goes from 16 to 24 */
+
+@media all and (max-width: 839px) {
+    .log-container {
+        padding-left: 16px;
+        padding-right: 16px;
+        font-size: 0.75em;
+    }
+
+    .log-panel {
+        margin-left: -16px;
+        margin-right: -16px;
+    }
+}
+
+@media all and (max-width: 639px) {
+    .log-container {
+        font-size: 0.65em;
+    }
 }
