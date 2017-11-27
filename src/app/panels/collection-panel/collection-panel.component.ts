@@ -16,8 +16,8 @@ export class CollectionPanelComponent implements OnInit {
   private particleFactory = new ParticleFactory();
 
   constructor(
-    private universeService: UniverseService,
-    private meteringService: MeteringService,
+    public universeService: UniverseService,
+    public meteringService: MeteringService,
     public dialog: MatDialog
   ) { }
 

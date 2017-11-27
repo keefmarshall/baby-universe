@@ -15,8 +15,8 @@ import { Globals } from 'app/globals';
 })
 export class ConstructionPanelComponent implements OnInit {
   constructor(
-    private universeService: UniverseService,
-    private constructionService: ConstructionService,
+    public universeService: UniverseService,
+    public constructionService: ConstructionService,
     private machineFactory: MachineFactory,
     private meteringService: MeteringService
   ) { }

@@ -20,7 +20,7 @@ export class TickerComponent implements OnInit {
   public ticker: number = 0;
 
   constructor(
-    private meteringService: MeteringService,
+    public meteringService: MeteringService,
     private tickerService: TickerService,
     private universeService: UniverseService
   ) { }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, isDevMode } from '@angular/core';
 import { AutosaveService } from './services/autosave.service';
 import { MachineService } from './services/machine.service';
 import { TimeService } from './services/time.service';
@@ -15,6 +15,7 @@ import { Quarks1 } from 'app/research/matter';
 })
 export class AppComponent implements OnInit  {
   title = 'Baby Universe';
+  showDebug = isDevMode();
 
   // Add services here to ensure they're started at application
   // load time, otherwise things may not get kicked off correctly.

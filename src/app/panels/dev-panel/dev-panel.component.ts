@@ -20,7 +20,7 @@ export class DevPanelComponent implements OnInit {
 
   constructor(
     private stateManagementService: StateManagementService,
-    private universeService: UniverseService,
+    public universeService: UniverseService,
     private researchService: ResearchService,
     private constructionService: ConstructionService,
     private stargameService: StargameService,

@@ -13,11 +13,11 @@ import { ResearchService } from 'app/services/research.service';
   styleUrls: ['./research-panel.component.css']
 })
 export class ResearchPanelComponent implements OnInit {
-  private projectList: Array<ResearchProject>;
+  projectList: Array<ResearchProject>;
   private canResearch: boolean = false;
 
   constructor(
-    private universeService: UniverseService,
+    public universeService: UniverseService,
     private tickerService: TickerService,
     private researchService: ResearchService
   ) {
