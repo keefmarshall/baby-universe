@@ -12,3 +12,17 @@
 #main-content {
     margin-top: -24px;
 }
+
+@media all and (max-width: 839px) {
+    .under-840 { display: block; }
+    .over-840 { display: none; }
+}
+
+@media all and (min-width: 840px) {
+    .under-840 { display: none; }
+    .over-840 { display: block; }
+}
+
+@media all and (min-width: 480px) and (max-width: 839px) {
+    .col3 { grid-column-start: 1; grid-column-end: span 8; }    
+}
