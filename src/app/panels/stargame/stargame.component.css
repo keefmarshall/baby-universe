@@ -12,4 +12,10 @@ td, th {
 
 table {
     font-size: 0.75em;
+    padding: 5px;
+    min-width: 240px;
+}
+
+canvas {
+    float: left;
 }
