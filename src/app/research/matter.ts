@@ -1,6 +1,5 @@
 import { ResearchProject } from "app/research/research-project";
 import { Universe } from "app/services/universe";
-import { PhotonCollector } from "app/machines/photon-collector";
 import { PhotonicPhilosopher } from "app/machines/photonic-philosopher";
 
 
@@ -80,10 +79,39 @@ export class Leptons extends ResearchProject {
     }
 
     preconditions(universe: Universe): boolean {
-        return this.machineQuantity(universe, PhotonCollector.name) >= 50 &&
+        return this.machineQuantity(universe, 'PhotonCollector') >= 50 &&
             universe.phase > 1;
     }
 
     onCompletion(universe: Universe) {
     }
+}
+
+
+export class QuarkUtils {
+
+    randomQuark(universe: Universe): string {
+        const ran = Math.random() * 100; // 0-99.9999
+        // console.log("Random star: ran = " + ran);
+        if (this.isResearched(universe, new Quarks3())) {
+            // include tiny change of top and bottom quarks
+            return ran < 60.5 ? "up quark" :
+                    ran < 91 ? "down quark" :
+                    ran < 95 ? "strange quark" :
+                        ran < 98.7 ? "charm quark" :
+                        ran < 99.4 ? "top quark" : "bottom quark";
+        } else if (this.isResearched(universe, new Quarks2())) {
+            return ran < 61 ? "up quark" :
+                    ran < 92 ? "down quark" :
+                    ran < 96 ? "strange quark" : "charm quark";
+        } else { // assume Quarks1 has to be researched before we get here
+            return ran < 65 ? "up quark" : "down quark";
+        }
+    }
+
+    private isResearched(universe: Universe, project: ResearchProject): boolean {
+        const props = universe.research[project.name];
+        return props != null ? props.researched : false;
+    }
+
 }
