@@ -16,10 +16,10 @@
     </table>
 
     <p class="info info-right">
-        <span *ngIf='universeService.universe.machines["PhotonCollector"] != null'>
+        <span *ngIf='universeService.universe.machines["PhotonCollector"]'>
             Photon Collectors: {{ universeService.universe.machines["PhotonCollector"].quantity }}<br/>
         </span>
-        <span *ngIf='universeService.universe.machines["Paser"] != null'>
+        <span *ngIf='universeService.universe.machines["Paser"]'>
             Pasers: {{ universeService.universe.machines["Paser"].quantity }}
         </span>
     </p>

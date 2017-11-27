@@ -34,13 +34,17 @@ export class AppComponent implements OnInit  {
   showDeploymentPanel(): boolean {
     return this.universeService.universe.photonCount >= 10;
   }
-  
+
   showResearchPanel(): boolean {
-    return this.machineService.exists(PhotonicPhilosopher.name);
+    const rp =  this.machineService.exists('PhotonicPhilosopher');
+    // console.log("Show research panel: " + rp);
+    return rp;
   }
 
   showConstructionPanel(): boolean {
-    return this.machineService.exists(Assembler.name);
+    const cp = this.machineService.exists('Assembler');
+    // console.log("Show constrruction panel :" + cp);
+    return cp;
   }
 
   showMatterCollectionPanel(): boolean {

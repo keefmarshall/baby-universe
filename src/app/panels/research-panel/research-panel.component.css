@@ -12,3 +12,7 @@
 .deploy-button small {
     font-style: italic;
 }
+
+p.info {
+    font-size: 0.64em;
+}

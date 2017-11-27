@@ -11,7 +11,7 @@ export class MatterDetector extends ConstructionProject {
         universeService: UniverseService,
         private stargameService: StargameService
     ) {
-        super(MatterDetector.name,
+        super('MatterDetector',
             "Matter Detector",
             "Exposes more matter for collection",
             universeService, 50, 4);

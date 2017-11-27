@@ -16,7 +16,7 @@ export class Assembler extends Machine {
         private constructionService: ConstructionService,
         private meteringService: MeteringService
     ) {
-        super(Assembler.name,
+        super('Assembler',
             "Assembler",
             "Converts stored energy to useful work",
             universeService);

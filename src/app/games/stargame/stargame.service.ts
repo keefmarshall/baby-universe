@@ -62,7 +62,7 @@ export class StargameService {
     createjs.Ticker.setPaused(false);
 
     // add more stars if there are appropriate machines in play:
-    const matterDetectors = this.machineQuantity(MatterDetector.name);
+    const matterDetectors = this.machineQuantity("MatterDetector");
     for (let i = 0; i < matterDetectors; i++) {
       setTimeout(() => this.doStar(), Math.random() * 3000);
     }

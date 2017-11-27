@@ -29,7 +29,7 @@ export class ConstructionPanelComponent implements OnInit {
   }
 
   readAssemblerEfficiency(): number {
-    return Globals.round(this.universeService.universe.machines[Assembler.name].efficiency, 1);
+    return Globals.round(this.universeService.universe.machines['Assembler'].efficiency, 1);
   }
 
   readWorkMeter(): number {

@@ -17,7 +17,7 @@ export class KineticEnergyRecovery extends ResearchProject {
 
     onCompletion(universe: Universe) {
         // treble efficiency of assemblers:
-        universe.machines[Assembler.name].efficiency *= 3;
+        universe.machines['Assembler'].efficiency *= 3;
     }
 }
 
@@ -36,6 +36,6 @@ export class KineticEngineering extends ResearchProject {
 
     onCompletion(universe: Universe) {
         // treble efficiency of assemblers:
-        universe.machines[Assembler.name].efficiency *= (10 / 3);
+        universe.machines['Assembler'].efficiency *= (10 / 3);
     }
 }
