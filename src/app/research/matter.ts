@@ -10,7 +10,7 @@ export class Fermions extends ResearchProject {
     }
 
     preconditions(universe: Universe): boolean {
-        return this.machineQuantity(universe, PhotonicPhilosopher.name) > 0;
+        return this.machineQuantity(universe, "PhotonicPhilosopher") > 0;
     }
 
     onCompletion(universe: Universe) {
@@ -95,15 +95,15 @@ export class QuarkUtils {
         // console.log("Random star: ran = " + ran);
         if (this.isResearched(universe, new Quarks3())) {
             // include tiny change of top and bottom quarks
-            return ran < 60.5 ? "up quark" :
-                    ran < 91 ? "down quark" :
-                    ran < 95 ? "strange quark" :
-                        ran < 98.7 ? "charm quark" :
-                        ran < 99.4 ? "top quark" : "bottom quark";
+            return ran < 60.5 ? "up quark" : // 60.5
+                    ran < 91 ? "down quark" : // 30.5
+                    ran < 95 ? "strange quark" : // 4
+                        ran < 98.7 ? "charm quark" : // 3.7
+                        ran < 99.4 ? "top quark" : "bottom quark"; // 0.7 : 0.6
         } else if (this.isResearched(universe, new Quarks2())) {
-            return ran < 61 ? "up quark" :
-                    ran < 92 ? "down quark" :
-                    ran < 96 ? "strange quark" : "charm quark";
+            return ran < 61 ? "up quark" : // 61
+                    ran < 92 ? "down quark" : // 31
+                    ran < 96 ? "strange quark" : "charm quark"; // 4 : 4
         } else { // assume Quarks1 has to be researched before we get here
             return ran < 65 ? "up quark" : "down quark";
         }

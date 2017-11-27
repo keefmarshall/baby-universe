@@ -15,8 +15,8 @@ import { Globals } from 'app/globals';
 })
 export class ConstructionPanelComponent implements OnInit {
   constructor(
-    private universeService: UniverseService,
-    private constructionService: ConstructionService,
+    public universeService: UniverseService,
+    public constructionService: ConstructionService,
     private machineFactory: MachineFactory,
     private meteringService: MeteringService
   ) { }
@@ -29,7 +29,7 @@ export class ConstructionPanelComponent implements OnInit {
   }
 
   readAssemblerEfficiency(): number {
-    return Globals.round(this.universeService.universe.machines[Assembler.name].efficiency, 1);
+    return Globals.round(this.universeService.universe.machines['Assembler'].efficiency, 1);
   }
 
   readWorkMeter(): number {

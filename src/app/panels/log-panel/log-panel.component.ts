@@ -17,7 +17,7 @@ export class LogPanelComponent implements AfterViewInit {
   @ViewChild('content') content: ElementRef;
 
   constructor(
-    private logService: LogService
+    public logService: LogService
   ) { }
 
   ngAfterViewInit() {

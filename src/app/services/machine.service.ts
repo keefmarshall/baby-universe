@@ -72,6 +72,7 @@ export class MachineService {
   }
 
   exists(name: string) {
+    // console.log("Exists called with " + name);
     return this.machineNames.includes(name);
   }
 

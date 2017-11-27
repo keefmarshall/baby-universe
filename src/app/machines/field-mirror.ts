@@ -18,7 +18,7 @@ export class FieldMirror extends ConstructionProject {
     }
 
     onComplete() {
-        this.universeService.universe.machines[PhotonicPhilosopher.name].extras.maxAllowed += 5;
+        this.universeService.universe.machines['PhotonicPhilosopher'].extras.maxAllowed += 5;
         this.machineService.addMachine(this);
     }
 

@@ -16,7 +16,7 @@ export class Photovoltaics extends ResearchProject {
 
     onCompletion(universe: Universe) {
         // in theory we can't get here without at least some photon collectors
-        universe.machines[PhotonCollector.name].efficiency *= 2;
+        universe.machines['PhotonCollector'].efficiency *= 2;
         universe.logs.push("Efficient collectors absorb more photons.");
     }
 }
@@ -33,7 +33,7 @@ export class Photoelectrics extends ResearchProject {
 
     onCompletion(universe: Universe) {
         // in theory we can't get here without at least some photon collectors
-        universe.machines[PhotonCollector.name].efficiency *= 4;
+        universe.machines['PhotonCollector'].efficiency *= 4;
         universe.logs.push("Super-efficient collectors absorb many more photons.");
     }
 }
@@ -49,7 +49,7 @@ export class LinearPolarisation extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        universe.machines[PhotonicPhilosopher.name].efficiency *= 2;
+        universe.machines['PhotonicPhilosopher'].efficiency *= 2;
     }
 }
 
@@ -64,7 +64,7 @@ export class CircularPolarisation extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        universe.machines[PhotonicPhilosopher.name].efficiency *= 3;
+        universe.machines['PhotonicPhilosopher'].efficiency *= 3;
     }
 }
 
@@ -79,7 +79,7 @@ export class EllipticalPolarisation extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        universe.machines[PhotonicPhilosopher.name].efficiency *= 4;
+        universe.machines['PhotonicPhilosopher'].efficiency *= 4;
     }
 }
 
@@ -94,6 +94,6 @@ export class Reflection extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        universe.machines[PhotonicPhilosopher.name].extras.maxAllowed += 5;
+        universe.machines['PhotonicPhilosopher'].extras.maxAllowed += 5;
     }
 }

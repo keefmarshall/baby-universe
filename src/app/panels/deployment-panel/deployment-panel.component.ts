@@ -8,7 +8,7 @@ import { MachineFactory } from 'app/machines/machine-factory';
 })
 export class DeploymentPanelComponent implements OnInit {
 
-  constructor(private machineFactory: MachineFactory) { }
+  constructor(public machineFactory: MachineFactory) { }
 
   ngOnInit() {
   }

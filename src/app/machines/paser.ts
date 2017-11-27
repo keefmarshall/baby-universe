@@ -10,14 +10,14 @@ export class Paser extends ConstructionProject {
     constructor(
         universeService: UniverseService
     ) {
-        super(Paser.name,
+        super('Paser',
             "Paser",
             "Multiplies energy from photons by 10",
             universeService, 5000, 2);
     }
 
     onComplete() {
-        this.universeService.universe.machines[PhotonCollector.name].efficiency *= 10;
+        this.universeService.universe.machines["PhotonCollector"].efficiency *= 10;
         this.machineService.addMachine(this);
     }
 

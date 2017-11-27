@@ -4,13 +4,13 @@
      Research
   </p>
 
-  <p><small><small>
+  <p class="info" *ngIf="universeService.universe.machines['PhotonicPhilosopher']">
     <!-- <span *ngIf="researchService.currentProject != null">
       Currently researching: {{ researchService.currentProject.name }}<br/>
     </span> -->
     Photonic Philosophers: {{ universeService.universe.machines["PhotonicPhilosopher"].quantity }} /
       {{ universeService.universe.machines["PhotonicPhilosopher"].extras.maxAllowed }}
-  </small></small></p>
+  </p>
 
   <div *ngFor="let project of projectList">
     <button 

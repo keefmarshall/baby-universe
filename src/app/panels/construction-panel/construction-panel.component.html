@@ -10,7 +10,7 @@
             Work: {{ readWorkMeter() | number:'1.1-1'  }}/s
         </p>
 
-        <p class="info info-left">
+        <p class="info info-left" *ngIf="universeService.universe.machines['Assembler']">
             Assemblers: {{ universeService.universe.machines["Assembler"].quantity }}<br/>
             <span [ngClass]="energyCostColour()">
                 Energy draw: {{ readEnergyCostMeter() }} MeV/s
