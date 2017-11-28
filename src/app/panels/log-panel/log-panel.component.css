@@ -1,0 +1,57 @@
+.log-container {
+    overflow: auto;
+    position: relative;
+    height: 60px;
+    font-size: 0.86em;
+    padding-top: 5px;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 5px;
+}
+
+.fadedScroller_fade {
+    content:'';
+    margin-top: -70px; /* don't forget to add the padding! */
+    /* margin-left: -24px; */
+    /* margin-right: -24px; */
+    height: 40px;
+    padding: 5px;
+    background: linear-gradient(to bottom, rgba(251, 251, 251, 1) 0%, rgba(251, 251, 251, 0) 100%);
+    position: relative;
+}
+
+.log-panel {
+    /* margin-bottom: 10px; */
+    padding-bottom: 10px;
+    height: 70px;
+    background-color: #cfd8dc;
+    margin-left: -24px;
+    margin-right: -24px;
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* min-width 840 - margin goes from 16 to 24 */
+
+@media all and (max-width: 839px) {
+    .log-container {
+        padding-left: 16px;
+        padding-right: 16px;
+        font-size: 0.75em;
+    }
+
+    .log-panel {
+        margin-left: -16px;
+        margin-right: -16px;
+    }
+}
+
+@media all and (max-width: 639px) {
+    .log-container {
+        font-size: 0.65em;
+    }
+}

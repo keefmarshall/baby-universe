@@ -1,0 +1,18 @@
+#collection-panel {
+    margin-bottom: 20px;
+}
+
+p.info {
+    font-size:0.7em
+}
+
+.info-right {
+    float: right; 
+    text-align: right;
+    margin: 0px;
+}
+
+.energy-ticker {
+    margin-bottom: 10px;
+    font-size: 0.7em;
+}

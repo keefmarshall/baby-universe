@@ -1,0 +1,31 @@
+<div id="collection-panel"> <!-- class="panel"> -->
+    <!-- <p class="panel-title">
+        <mat-icon>input</mat-icon>
+        Collection
+    </p> -->
+
+    <table class="energy-ticker mobile-only">
+        <tr>
+            <th>Energy: </th>
+            <td>{{ universeService.universe.energy | number:'1.1-1' }} MeV</td>
+        </tr>
+        <tr>
+            <th>Rate: </th>
+            <td>{{ meteringService.read('energy') | number:'1.1-1' }} MeV/s</td>
+        </tr>
+    </table>
+
+    <p class="info info-right">
+        <span *ngIf='universeService.universe.machines["PhotonCollector"]'>
+            Photon Collectors: {{ universeService.universe.machines["PhotonCollector"].quantity }}<br/>
+        </span>
+        <span *ngIf='universeService.universe.machines["Paser"]'>
+            Pasers: {{ universeService.universe.machines["Paser"].quantity }}
+        </span>
+    </p>
+
+    <button mat-raised-button (click)="collectPhoton()">
+        Collect photon
+    </button>
+
+</div>
