@@ -10,3 +10,18 @@ Kaon K+ - up, anti-strange (- is anti-up, strange) mass 494MeV/c2
 
 250 photon collectors seems to be a bit of a major milestone
 .. 200 assemblers hit a little while before 250 pc's
+
+
+NB to get the smallest build dist:
+ng build --prod --build-optimizer
+- tested with nginx, most basic conf:
+
+server {
+    listen 80;
+    root /var/www/bu;
+
+    try_files $uri $uri/ index.html;
+
+    error_log /var/log/nginx/bu_error.log;
+    access_log /var/log/nginx/bu_access.log;
+}
