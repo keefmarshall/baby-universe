@@ -42,6 +42,7 @@ export class DevPanelComponent implements OnInit {
       this.autosaveService.autosave();
       this.stargameService.stopGame();
       this.logService.resetLogs();
+      window.location.reload();
     }
   }
 

@@ -14,6 +14,7 @@ export class StargameService {
   private canvasWidth: number;
 
   private stage: createjs.Stage;
+  private tickListener = null;
   private startr: number = 10;
   private readonly radiusDivisor: number = 70; // bigger -> smaller stars
 
@@ -26,15 +27,15 @@ export class StargameService {
   }
 
   initGame(canvasName: string) {
-    console.log("Star Game Initialising..");
     this.canvasName = canvasName;
+    console.log("Star Game Initialising, canvas name = " + canvasName + "..");
     this.initStage();
   }
 
   initStage() {
     console.log("Star Game: Stage Initialising..");
     this.stage = new createjs.Stage(this.canvasName);
-    // createjs.Touch.enable(this.stage); // hoping this will help
+    createjs.Touch.enable(this.stage); // hoping this will help
 
     this.canvasWidth = this.stage.canvas['width'];
     this.canvasHeight = this.stage.canvas['height'];
@@ -52,7 +53,8 @@ export class StargameService {
     this.startGame();
 
     createjs.Ticker.setFPS(20);
-    createjs.Ticker.addEventListener("tick", this.stage);
+    createjs.Ticker.init();
+    this.tickListener = createjs.Ticker.addEventListener("tick", this.stage);
   }
 
   startGame() {
@@ -63,6 +65,7 @@ export class StargameService {
 
     // add more stars if there are appropriate machines in play:
     const matterDetectors = this.machineQuantity("MatterDetector");
+    console.log("Starting " + matterDetectors + " matter detectors..");
     for (let i = 0; i < matterDetectors; i++) {
       setTimeout(() => this.doStar(), Math.random() * 3000);
     }
@@ -73,8 +76,15 @@ export class StargameService {
       this.stage.removeAllChildren();
       this.stage.removeAllEventListeners();
       // createjs.Touch.disable(this.stage);
-      createjs.Ticker.reset();
+      createjs.Ticker.reset(); // this can kill the canvas under some conditions
+      // createjs.Ticker.removeAllEventListeners("tick"); // as can this
+      // createjs.Ticker.setPaused(true); // not enough, doesn't stop existing stars
     }
+
+    // This doesn't reset existing stars either
+    // if (this.tickListener) {
+    //   createjs.Ticker.removeEventListener("tick", this.tickListener);
+    // }
   }
 
   resumeGame() {
@@ -123,7 +133,7 @@ export class StargameService {
     const easiness = 0.25 / star.difficulty;
     const delay = 1000 + (3000 * easiness);
 
-    // console.log("Easiness = " + easiness + ", delay = " + delay);
+    console.log("Easiness = " + easiness + ", delay = " + delay);
 
     const starTween = createjs.Tween.get(starSprite)
         .to({alpha: 1, rotation: 720}, delay, createjs.Ease.getPowInOut(2))
