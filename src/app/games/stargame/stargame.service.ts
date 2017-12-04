@@ -183,8 +183,29 @@ export class StargameService {
     event.target.removeAllEventListeners('click');
     event.target.visible = false;
     event.target.star.captured = true;
+
+    // console.log("Captured star x=" + event.target.parent.x + ", y=" + event.target.parent.y);
+
     const type = event.target.star.type;
     this.particleFactory.collectQuark(this.universeService.universe, type);
+
+    const text = new createjs.Text(type, this.startr + "px Arial", event.target.star.colour);
+    text.x = event.target.parent.x - 20;
+    text.y = event.target.parent.y - 5;
+    this.stage.addChild(text);
+
+    const textTween = createjs.Tween.get(text)
+      .to({alpha: 0.5}, 150)
+      .to({alpha: 1}, 150)
+      .to({alpha: 0.5}, 150)
+      .to({alpha: 1}, 150)
+      .to({alpha: 0}, 2000, createjs.Ease.getPowInOut(2))
+      .call(this.textFinished, [text], this);
+  }
+
+  textFinished(text) {
+    createjs.Tween.removeTweens(text);
+    this.stage.removeChild(text);
   }
 
   randomX() {
