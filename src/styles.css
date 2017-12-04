@@ -22,7 +22,7 @@ blockquote, .log {
  @keyframes fadeInLeft {
   from {
     opacity: 0;
-    transform: translate3d(-10%, 5%, 0);
+    transform: translate3d(-10%, 0, 0);
   }
 
   to {
@@ -99,4 +99,24 @@ blockquote, .log {
 
 .bounceIn {
   animation-name: bounceIn;
+}
+
+.delay-1 {
+  animation-delay: 200ms;
+}
+
+.delay-2 {
+  animation-delay: 400ms;
+}
+
+.delay-3 {
+  animation-delay: 600ms;
+}
+
+.delay-4 {
+  animation-delay: 800ms;
+}
+
+.delay-5 {
+  animation-delay: 1000ms;
 }

@@ -18,4 +18,5 @@ table {
 
 canvas {
     float: left;
+    cursor: crosshair;
 }
