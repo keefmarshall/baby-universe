@@ -15,9 +15,34 @@ blockquote, .log {
     font-family: 'Lora', serif;
 }
 
+/*************************************
+ PANELS
+ *************************************/
+
+ @keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-10%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fadeInLeft {
+    animation-name: fadeInLeft;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
 .panel {
     border-top: solid 1px grey;
     margin-bottom: 20px;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: fadeInLeft;    
 }
 
 .panel-title {
@@ -37,4 +62,61 @@ blockquote, .log {
 @media all and (max-width: 768px) {
     .mobile-only {display: block;}
     .desktop-only { display: none; }
+}
+
+@keyframes bounceIn {
+  from, 20%, 40%, 60%, 80%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  0% {
+    opacity: 0;
+    transform: scale3d(.3, .3, .3);
+  }
+
+  20% {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  40% {
+    transform: scale3d(.9, .9, .9);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+
+  80% {
+    transform: scale3d(.97, .97, .97);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.bounceIn {
+  animation-name: bounceIn;
+}
+
+.delay-1 {
+  animation-delay: 200ms;
+}
+
+.delay-2 {
+  animation-delay: 400ms;
+}
+
+.delay-3 {
+  animation-delay: 600ms;
+}
+
+.delay-4 {
+  animation-delay: 800ms;
+}
+
+.delay-5 {
+  animation-delay: 1000ms;
 }

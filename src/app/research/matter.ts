@@ -49,6 +49,7 @@ export class Quarks2 extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
+        universe.logs.push("Quarks: strangeness and charm.");
     }
 
 }
@@ -67,6 +68,7 @@ export class Quarks3 extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
+        universe.logs.push("Quarks: from the Top to the Bottom.");
     }
 
 }
