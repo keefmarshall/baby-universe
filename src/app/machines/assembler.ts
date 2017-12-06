@@ -7,19 +7,19 @@ import { MeteringService } from "app/services/metering.service";
 import { ConstructionEnergyCostMeter } from "app/meters/construction-energy-cost-meter";
 
 export class Assembler extends Machine {
-    private baseEnergyCost = 3000;
-    private costMultiplier = 1.05;
+    protected baseEnergyCost = 3000;
+    protected costMultiplier = 1.05;
 
-    private baseEnergyDraw = 1;
+    protected baseEnergyDraw = 1;
 
     constructor(universeService: UniverseService,
         private constructionService: ConstructionService,
-        private meteringService: MeteringService
+        private meteringService: MeteringService,
+        _name = 'Assembler',
+        _displayName = 'Assembler',
+        _description = "Converts stored energy to useful work"
     ) {
-        super('Assembler',
-            "Assembler",
-            "Converts stored energy to useful work",
-            universeService);
+        super(_name, _displayName, _description, universeService);
     }
 
     // ////////////////////////////////
@@ -41,7 +41,7 @@ export class Assembler extends Machine {
                 // NB if efficiency goes above 10, we start taking heat from
                 // the universe to work! Not sure if I'll use this.
                 u.energy -= energyDraw;
-                const work = this.properties().efficiency * q * 0.1;
+                const work = this.properties().efficiency * energyDraw * 0.1;
                 u.heat += (energyDraw - work);
                 this.constructionService.addWork(work);
                 this.meteringService.addQuantity('construction-energy-cost', energyDraw);
