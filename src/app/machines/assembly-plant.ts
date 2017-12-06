@@ -15,8 +15,8 @@ export class AssemblyPlant extends ConstructionProject {
     ) {
         super('AssemblyPlant',
             "Assembly Plant",
-            "Converts stored energy to useful work",
-            universeService, 2500, 2);
+            "Combines assemblers to draw 10x energy",
+            universeService, 2500, Math.SQRT2);
     }
 
     // cut-and-paste from Assembler, can't find easy way to share the code
@@ -53,8 +53,7 @@ export class AssemblyPlant extends ConstructionProject {
     }
 
     preconditions(): boolean {
-        return this.isResearched(new KineticConstruction()) &&
-            this.machineQuantity('Assembler') > 1;
+        return this.isResearched(new KineticConstruction());
     }
 
     displayCost(count: number = 1): string {
