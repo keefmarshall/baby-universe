@@ -15,6 +15,7 @@ import { FieldMirror } from 'app/machines/field-mirror';
 import { StargameService } from 'app/games/stargame/stargame.service';
 import { MatterDetector } from 'app/machines/matter-detector';
 import { Paser } from 'app/machines/paser';
+import { AssemblyPlant } from 'app/machines/assembly-plant';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -45,6 +46,7 @@ export class MachineFactory {
             'PhotonCollector': new PhotonCollector(this.universeService),
             'PhotonicPhilosopher': new PhotonicPhilosopher(this.universeService, this.researchService),
             'Assembler': new Assembler(this.universeService, this.constructionService, this.meteringService),
+            'AssemblyPlant': new AssemblyPlant(this.universeService, this.constructionService, this.meteringService),
             'FieldMirror': new FieldMirror(this.universeService),
             'MatterDetector': new MatterDetector(this.universeService, this.stargameService),
             'Paser': new Paser(this.universeService)
