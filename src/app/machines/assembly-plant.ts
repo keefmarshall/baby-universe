@@ -57,7 +57,7 @@ export class AssemblyPlant extends ConstructionProject {
     }
 
     displayCost(count: number = 1): string {
-        return super.displayCost(count) + ", " + this.assemblerCost + " assemblers";
+        return super.displayCost(count) + ", " + this.assemblerCost + " Assemblers";
     }
 
     affordable(): boolean {
