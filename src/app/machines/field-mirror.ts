@@ -14,7 +14,7 @@ export class FieldMirror extends ConstructionProject {
             "Field Mirror",
             "Allows more Philosophers",
             universeService, 12.5, 2
-        )
+        );
     }
 
     onComplete() {
