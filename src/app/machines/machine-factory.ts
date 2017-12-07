@@ -16,6 +16,7 @@ import { StargameService } from 'app/games/stargame/stargame.service';
 import { MatterDetector } from 'app/machines/matter-detector';
 import { Paser } from 'app/machines/paser';
 import { AssemblyPlant } from 'app/machines/assembly-plant';
+import { QuarkScoop } from 'app/machines/quark-scoop';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -49,7 +50,8 @@ export class MachineFactory {
             'AssemblyPlant': new AssemblyPlant(this.universeService, this.constructionService, this.meteringService),
             'FieldMirror': new FieldMirror(this.universeService),
             'MatterDetector': new MatterDetector(this.universeService, this.stargameService),
-            'Paser': new Paser(this.universeService)
+            'Paser': new Paser(this.universeService),
+            'QuarkScoop': new QuarkScoop(this.universeService)
         };
 
         this.allMachineNames = [];
