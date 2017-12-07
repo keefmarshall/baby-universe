@@ -4,15 +4,6 @@
       Matter Collection
   </p>
 
-  <div *ngIf="universeService.universe.machines['QuarkScoop']">
-    <p class="info info-right">
-      Efficiency: {{ universeService.universe.machines['QuarkScoop'].efficiency }}
-    </p>
-    <p class="info">
-      Quark Scoops: {{ universeService.universe.machines['QuarkScoop'].quantity }}
-    </p>
-  </div>
-
   <canvas [width]="width" [height]="height" id="stargame-canvas"></canvas>
   <!-- 
   <button (click)="stargameService.startGame()">Start</button>
@@ -33,4 +24,14 @@
       <td class="right-align">{{ universeService.universe.antiparticles[p] }}</td>
     </tr>
   </table>
+
+  <div *ngIf="universeService.universe.machines['QuarkScoop']">
+    <p class="info info-right">
+      Efficiency: {{ universeService.universe.machines['QuarkScoop'].efficiency }}
+    </p>
+    <p class="info">
+      Quark Scoops: {{ universeService.universe.machines['QuarkScoop'].quantity }}
+    </p>
+  </div>
+
 </div>
