@@ -8,6 +8,7 @@ import { StateManagementService } from 'app/services/state-management.service';
 import { AutosaveService } from 'app/services/autosave.service';
 import { StargameService } from 'app/games/stargame/stargame.service';
 import { LogService } from 'app/services/log.service';
+import { QuarkUtils } from 'app/research/matter';
 
 @Component({
   selector: 'app-dev-panel',
@@ -67,7 +68,16 @@ export class DevPanelComponent implements OnInit {
     this.constructionService.addWork(n);
   }
 
+  addQuarks(n: number) {
+    const qu = new QuarkUtils();
+    const u = this.universeService.universe;
+    for (let i = 0; i < n; i++) {
+      const quark = qu.randomQuark(u);
+      this.particleFactory.collectQuark(u, quark);
+    }
+  }
+
   windowHeight(): number { return window.innerHeight; }
   windowWidth(): number { return window.innerWidth; }
-  
+
 }
