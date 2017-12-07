@@ -56,7 +56,7 @@ export abstract class ConstructionProject extends Machine {
     }
 
     displayCost(count: number): string {
-        return Globals.round(this.workCost(), 1) + " Work";
+        return Math.floor(this.workCost()) + " Work";
     }
 
     payFor(count: number): boolean {
