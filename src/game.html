@@ -6,7 +6,7 @@
     </head>
 
     <body  onload="init();">
-        <canvas id="gameCanvas" width="300" height="300" style="border: 1px solid black"></canvas>
+        <canvas id="gameCanvas" width="500" height="500" style="border: 1px solid black"></canvas>
         <p>Score: <span id="score">0</span> | Streak <span id="streak">0</span></p>
         <p>Time: <span id="time">0</span></p>
     </body>
@@ -133,7 +133,7 @@
 
             var gd = event.target.gamedata;
             console.log(".. " + JSON.stringify(gd));
-            var starScore = Math.round((gd.difficulty * gd.pointiness / gd.radius) * 250);
+            var starScore = Math.round((gd.difficulty * gd.pointiness) * 25);
             score += (starScore * (Math.pow(2, streak)));
             console.log(".. " + starScore + ": " + score);
 
