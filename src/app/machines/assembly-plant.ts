@@ -3,7 +3,7 @@ import { UniverseService } from "app/services/universe.service";
 import { ConstructionService } from "app/services/construction.service";
 import { MeteringService } from "app/services/metering.service";
 import { ConstructionProject } from "app/machines/construction-project";
-import { KineticConstruction } from "app/research/kinetics";
+import { KineticEngineering } from "app/research/kinetics2";
 
 export class AssemblyPlant extends ConstructionProject {
     protected baseEnergyDraw = 100;
@@ -53,7 +53,7 @@ export class AssemblyPlant extends ConstructionProject {
     }
 
     preconditions(): boolean {
-        return this.isResearched(new KineticConstruction());
+        return this.isResearched(new KineticEngineering());
     }
 
     displayCost(count: number = 1): string {
