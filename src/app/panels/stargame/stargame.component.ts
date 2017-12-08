@@ -17,7 +17,7 @@ export class StargameComponent implements AfterViewInit {
   // lose the option of embedding it into the main page.
   constructor(
     private stargameService: StargameService,
-    private universeService: UniverseService
+    public universeService: UniverseService
   ) { }
 
   ngAfterViewInit() {
