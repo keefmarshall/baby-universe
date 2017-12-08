@@ -31,7 +31,7 @@ export class KineticEngineering extends ResearchProject {
         const kersResearched = this.isResearched(universe, new KineticEnergyRecovery());
         const assemblersBuilt = this.machineQuantity(universe, "Assembler");
 
-        return kersResearched && assemblersBuilt >= 20;
+        return kersResearched && assemblersBuilt >= 10;
     }
 
     onCompletion(universe: Universe) {

@@ -1,10 +1,10 @@
 import { ConstructionProject } from "app/machines/construction-project";
 import { UniverseService } from "app/services/universe.service";
 import { Quarks3, QuarkUtils } from "app/research/matter";
-import { KineticConstruction } from "app/research/kinetics";
 import { ParticleFactory } from "app/machines/particle-factory";
 import { MachineProperties } from "app/machines/machine";
 import { Globals } from "app/globals";
+import { KineticEngineering } from "app/research/kinetics2";
 
 export class QuarkScoop extends ConstructionProject {
     private particleFactory = new ParticleFactory();
@@ -46,7 +46,7 @@ export class QuarkScoop extends ConstructionProject {
 
     preconditions(): boolean {
         return this.isResearched(new Quarks3()) &&
-            this.isResearched(new KineticConstruction());
+            this.isResearched(new KineticEngineering());
     }
 
     upQuarkCost() {
