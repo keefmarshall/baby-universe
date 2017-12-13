@@ -24,7 +24,7 @@ export class Photovoltaics extends ResearchProject {
 export class Photoelectrics extends ResearchProject {
 
     constructor() {
-        super("Photoelectrics", "Quadruples efficiency of Photon Collectors", 500);
+        super("Photoelectrics", "Quadruples efficiency of Photon Collectors", 450);
     }
 
     preconditions(universe: Universe): boolean {
@@ -56,7 +56,7 @@ export class LinearPolarisation extends ResearchProject {
 export class CircularPolarisation extends ResearchProject {
 
     constructor() {
-        super("Circular Polarisation", "Trebles efficiency of Philosophers", 75);
+        super("Circular Polarisation", "Trebles efficiency of Philosophers", 65);
     }
 
     preconditions(universe: Universe): boolean {
@@ -71,7 +71,7 @@ export class CircularPolarisation extends ResearchProject {
 export class EllipticalPolarisation extends ResearchProject {
 
     constructor() {
-        super("Elliptical Polarisation", "Quadruples efficiency of Philosophers", 1000);
+        super("Elliptical Polarisation", "Quadruples efficiency of Philosophers", 800);
     }
 
     preconditions(universe: Universe): boolean {

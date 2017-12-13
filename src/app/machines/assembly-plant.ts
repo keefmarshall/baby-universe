@@ -53,7 +53,8 @@ export class AssemblyPlant extends ConstructionProject {
     }
 
     preconditions(): boolean {
-        return this.isResearched(new KineticEngineering());
+        return this.isResearched(new KineticEngineering()) &&
+            this.machineQuantity('Paser') > 0;
     }
 
     displayCost(count: number = 1): string {

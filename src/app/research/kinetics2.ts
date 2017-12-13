@@ -24,7 +24,7 @@ export class KineticEnergyRecovery extends ResearchProject {
 export class KineticEngineering extends ResearchProject {
 
     constructor() {
-        super("Kinetic Engineering", "Advanced construction skills", 5000);
+        super("Kinetic Engineering", "Advanced construction skills", 3500);
     }
 
     preconditions(universe: Universe): boolean {
