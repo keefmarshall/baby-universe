@@ -37,9 +37,15 @@ export class QuarkScoop extends ConstructionProject {
             const qn = Math.floor(this.accumulator);
             this.accumulator = this.accumulator - qn;
 
+            const funnelCount = this.machineQuantity("MatterFunnel");
+
+            // TODO: this is going to get crazy when efficiency rises
+            // - need to do a random distribution calculation I think,
+            // and add many multiples at once.
             for (let i = 0; i < qn; i++) {
                 const quark = this.quarkUtils.randomQuark(u);
-                this.particleFactory.collectQuark(u, quark);
+                const q = Math.max(1, (funnelCount * 100));
+                this.particleFactory.collectQuark(u, quark, q);
             }
         }
     }
