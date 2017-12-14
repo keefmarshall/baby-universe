@@ -8,7 +8,7 @@ export class QuantumElectrodynamics extends ResearchProject {
     }
 
     preconditions(universe: Universe): boolean {
-        return this.machineQuantity(universe, "QuarkScoop") >= 10;
+        return this.machineQuantity(universe, "QuarkScoop") >= 5;
     }
 
     onCompletion(universe: Universe) {
