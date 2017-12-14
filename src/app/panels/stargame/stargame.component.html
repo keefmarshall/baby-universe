@@ -31,7 +31,12 @@
     </p>
     <p class="info">
       Quark Scoops: {{ universeService.universe.machines['QuarkScoop'].quantity }}
+      <span *ngIf="universeService.universe.machines['MatterFunnel']">
+          <br/>
+          Matter Funnels: {{ universeService.universe.machines['MatterFunnel'].quantity }}
+      </span>
     </p>
-  </div>
+</div>
+
 
 </div>
