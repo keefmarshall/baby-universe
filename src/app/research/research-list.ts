@@ -3,7 +3,7 @@ import { KineticEnergyRecovery, KineticEngineering } from "app/research/kinetics
 import { ResearchProject } from "app/research/research-project";
 import { Leptons, Fermions, Quarks3, Quarks2, Quarks1 } from "app/research/matter";
 import { Photovoltaics, LinearPolarisation, CircularPolarisation, EllipticalPolarisation,
-     Photoelectrics, Reflection } from "app/research/photons";
+     Photoelectrics, Reflection, Refraction } from "app/research/photons";
 import { PhotonAmplification } from "app/research/amplification";
 import { QuantumElectrodynamics, QuantumChromodynamics } from "app/research/collection";
 
@@ -20,6 +20,7 @@ export class ResearchList {
             new CircularPolarisation(),
             new EllipticalPolarisation(),
             new Reflection(),
+            new Refraction(),
             new KineticConstruction(),
             new KineticEnergyRecovery(),
             new KineticEngineering(),

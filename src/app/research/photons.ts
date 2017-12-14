@@ -97,3 +97,19 @@ export class Reflection extends ResearchProject {
         universe.machines['PhotonicPhilosopher'].extras.maxAllowed += 5;
     }
 }
+
+export class Refraction extends ResearchProject {
+
+    constructor() {
+        super("Refraction", "Greatly increases Philosopher efficiency", 4500);
+    }
+
+    preconditions(universe: Universe): boolean {
+        return this.isResearched(universe, new EllipticalPolarisation()) &&
+            this.machineQuantity(universe, 'PhotonicPhilosopher') > 50;
+    }
+
+    onCompletion(universe: Universe) {
+        universe.machines['PhotonicPhilosopher'].efficiency *= 5;
+    }
+}
