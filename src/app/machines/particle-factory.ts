@@ -29,4 +29,12 @@ export class ParticleFactory {
         universe.particles[type] += count;
         universe.antiparticles[type] += count;
     }
+
+    collectGluons(universe: Universe, count: number = 1) {
+        if (universe.particles['gluon'] == null) {
+            universe.particles['gluon'] = 0;
+        }
+
+        universe.particles['gluon'] += count;
+    }
 }
