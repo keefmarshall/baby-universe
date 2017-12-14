@@ -84,7 +84,8 @@ export class Assembler extends Machine {
     // Internal functions
 
     energyCost(amount: number = 1): number {
-        const q = this.properties().quantity || 0;
+        const q = (this.properties().quantity || 0) +
+            (this.machineQuantity('AssemblyPlant') * 10);
 
         const cost = this.baseEnergyCost *
             Globals.geometricProgressionSum(q, q + amount - 1, this.costMultiplier);
