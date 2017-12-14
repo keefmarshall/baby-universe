@@ -106,7 +106,7 @@ export class Refraction extends ResearchProject {
 
     preconditions(universe: Universe): boolean {
         return this.isResearched(universe, new EllipticalPolarisation()) &&
-            this.machineQuantity(universe, 'PhotonicPhilosopher') > 50;
+            this.machineQuantity(universe, 'PhotonicPhilosopher') >= 50;
     }
 
     onCompletion(universe: Universe) {
