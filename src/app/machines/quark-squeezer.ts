@@ -28,7 +28,7 @@ export class QuarkSqueezer extends ConstructionProject {
             }
         });
 
-        const q = Math.floor(totalQuarks * this.properties().efficiency * 0.01);
+        const q = Math.ceil(totalQuarks * this.properties().efficiency * 0.005);
 
         this.particleFactory.collectGluons(u, q);
     }
