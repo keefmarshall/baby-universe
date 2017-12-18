@@ -54,16 +54,18 @@ export class CharmQuarkStar extends Star {
     radiusFactor = 1.6; // more points seems to make it harder to catch
 }
 
+// In reality top quarks are orders of magnitude more massive than the others
+// but we're a bit limited here by the relative sizes in the detector!
 export class TopQuarkStar extends Star {
     type = "top quark";
-    difficulty = Math.random() / 4 + .2; // .2 -> .45
-    points = 7;
-    radiusFactor = 2;
+    difficulty = Math.random() / 4 + .15; // .15 -> .40
+    points = 8;
+    radiusFactor = 2.5;
 }
 
 export class BottomQuarkStar extends Star {
     type = "bottom quark";
-    difficulty = Math.random() / 4 + .15; // .15 -> .40
-    points = 8;
+    difficulty = Math.random() / 4 + .2; // .2 -> .45
+    points = 7;
     radiusFactor = 2;
 }
