@@ -47,6 +47,10 @@ export class AppComponent implements OnInit  {
     return cp;
   }
 
+  showTemperaturePanel(): boolean {
+    return this.machineService.exists('Thermometer');
+  }
+
   showMatterCollectionPanel(): boolean {
     const props = this.universeService.universe.research[new Quarks1().name];
     return props != null ? props.researched : false;

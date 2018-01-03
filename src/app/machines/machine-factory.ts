@@ -19,6 +19,7 @@ import { AssemblyPlant } from 'app/machines/assembly-plant';
 import { QuarkScoop } from 'app/machines/quark-scoop';
 import { QuarkSqueezer } from 'app/machines/quark-squeezer';
 import { MatterFunnel } from 'app/machines/matter-funnel';
+import { Thermometer } from 'app/machines/thermometer';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -48,6 +49,7 @@ export class MachineFactory {
         this.allMachines = {
             'PhotonCollector': new PhotonCollector(this.universeService),
             'PhotonicPhilosopher': new PhotonicPhilosopher(this.universeService, this.researchService),
+            'Thermometer': new Thermometer(this.universeService, this.meteringService),
             'Assembler': new Assembler(this.universeService, this.constructionService, this.meteringService),
             'AssemblyPlant': new AssemblyPlant(this.universeService, this.constructionService, this.meteringService),
             'FieldMirror': new FieldMirror(this.universeService),

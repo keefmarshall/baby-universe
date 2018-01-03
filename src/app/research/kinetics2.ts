@@ -3,16 +3,33 @@ import { Universe } from "app/services/universe";
 import { KineticConstruction } from "app/research/kinetics";
 import { Assembler } from "app/machines/assembler";
 
-export class KineticEnergyRecovery extends ResearchProject {
+export class Heat extends ResearchProject {
     constructor() {
-        super("Kinetic Energy Recovery", "Recover work energy lost as heat", 750);
+        super("Heat", "Why are assemblers so inefficient?", 150);
     }
 
     preconditions(universe: Universe): boolean {
         const kcResearched = this.isResearched(universe, new KineticConstruction());
         const assemblersBuilt = this.machineQuantity(universe, "Assembler");
 
-        return kcResearched && assemblersBuilt > 4;
+        return kcResearched && assemblersBuilt > 1;
+    }
+
+    onCompletion(universe: Universe) {
+        // makes other stuff available
+    }
+}
+
+export class KineticEnergyRecovery extends ResearchProject {
+    constructor() {
+        super("Kinetic Energy Recovery", "Recover work energy lost as heat", 750);
+    }
+
+    preconditions(universe: Universe): boolean {
+        const heatResearched = this.isResearched(universe, new Heat());
+        const assemblersBuilt = this.machineQuantity(universe, "Assembler");
+
+        return heatResearched && assemblersBuilt > 4;
     }
 
     onCompletion(universe: Universe) {

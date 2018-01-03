@@ -24,12 +24,12 @@ export class MeteringService {
     this.meters.set('energy', new EnergyMeter(u));
     this.meters.set('construction-energy-cost', new ConstructionEnergyCostMeter());
     this.meters.set('work', new WorkMeter());
-    
+
     tickerService.tick$.subscribe(n => this.onTick(n));
   }
 
   onTick(n: number) {
-    if (n % this.ticksPerSecond == 0) {
+    if (n % this.ticksPerSecond === 0) {
       const u = this.universeService.universe;
       this.meters.forEach(meter => {
         meter.everySecond(u);
@@ -43,5 +43,9 @@ export class MeteringService {
 
   addQuantity(meterName: string, quantity: number) {
     this.meters.get(meterName).addQuantity(quantity);
+  }
+
+  addMeter(meterName: string, meter: Meter) {
+    this.meters.set(meterName, meter);
   }
 }

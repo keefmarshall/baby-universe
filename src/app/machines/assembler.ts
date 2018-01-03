@@ -57,7 +57,7 @@ export class Assembler extends Machine {
     }
 
     displayCost(count: number = 1): string {
-        return Globals.round(this.energyCost(count), 1) + ' MeV';
+        return parseFloat(this.energyCost(count).toPrecision(3)) + ' MeV';
     }
 
     payFor(amount: number = 1): boolean {

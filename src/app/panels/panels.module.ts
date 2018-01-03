@@ -17,6 +17,7 @@ import { StargameDialogComponent } from 'app/panels/stargame/stargame-dialog.com
 import { GameModule } from 'app/games/game.module';
 import { LogPanelComponent } from './log-panel/log-panel.component';
 import { TickerComponent } from 'app/ticker.component';
+import { TemperaturePanelComponent } from './temperature-panel/temperature-panel.component';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { TickerComponent } from 'app/ticker.component';
     StargameComponent,
     StargameDialogComponent,
     LogPanelComponent,
-    TickerComponent
+    TickerComponent,
+    TemperaturePanelComponent
   ],
   entryComponents: [
     StargameDialogComponent
@@ -49,7 +51,8 @@ import { TickerComponent } from 'app/ticker.component';
     StargameComponent,
     StargameDialogComponent,
     LogPanelComponent,
-    TickerComponent
+    TickerComponent,
+    TemperaturePanelComponent
   ]
 })
 export class PanelsModule { }
