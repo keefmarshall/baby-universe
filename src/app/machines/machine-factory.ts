@@ -55,7 +55,7 @@ export class MachineFactory {
             'Thermometer': new Thermometer(this.universeService, this.meteringService),
             'Assembler': new Assembler(this.universeService, this.constructionService, this.meteringService),
             'AssemblyPlant': new AssemblyPlant(this.universeService, this.constructionService, this.meteringService),
-            'SpaceHeater': new SpaceHeater(this.universeService, this.heatingService),
+            'SpaceHeater': new SpaceHeater(this.universeService, this.heatingService, this.meteringService),
             'FieldMirror': new FieldMirror(this.universeService),
             'MatterDetector': new MatterDetector(this.universeService, this.stargameService),
             'Paser': new Paser(this.universeService),

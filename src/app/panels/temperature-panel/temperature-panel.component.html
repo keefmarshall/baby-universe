@@ -14,7 +14,7 @@
     <mat-slide-toggle 
       [checked]="isHeating()"
       (change)="onSwitchChange($event)"
-      >Heater {{ isHeating() ? "on" : "off" }}</mat-slide-toggle>
+      >Heating {{ isHeating() ? "on" : "off" }}</mat-slide-toggle>
 
     <p *ngIf="isHeating()">
       <mat-progress-bar
@@ -26,6 +26,16 @@
         mode="query">
       </mat-progress-bar>
     </p>
+
+    <div class="clearfix">
+        <p class="info info-left">
+            Space Heaters: {{ universeService.universe.machines["SpaceHeater"].quantity }}<br/>
+            <span [ngClass]="energyCostColour()">
+                Energy draw: {{ readEnergyCostMeter() }} MeV/s
+            </span>
+        </p>
+    </div>
+
   </div>
 </div>
 

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Thermometer } from 'app/machines/thermometer';
 import { MachineService } from 'app/services/machine.service';
 import { HeatingService } from 'app/services/heating.service';
+import { MeteringService } from 'app/services/metering.service';
+import { UniverseService } from 'app/services/universe.service';
 
 @Component({
   selector: 'app-temperature-panel',
@@ -11,7 +13,9 @@ import { HeatingService } from 'app/services/heating.service';
 export class TemperaturePanelComponent implements OnInit {
   constructor(
     private machineService: MachineService,
-    private heatingService: HeatingService
+    private heatingService: HeatingService,
+    private meteringService: MeteringService,
+    private universeService: UniverseService
   ) { }
 
   ngOnInit() {
@@ -41,4 +45,33 @@ export class TemperaturePanelComponent implements OnInit {
   heaterExists(): boolean {
     return this.machineService.exists("SpaceHeater");
   }
+
+  // TODO: these two copy-pasted from construction panel - need some
+  // better re-use. Too much duplicated code between Assmbler/construction
+  // and Heater / temperature
+  
+  readEnergyCostMeter(): number {
+    return this.meteringService.read('heater-energy-cost');
+  }
+
+  energyCostColour(): string {
+    if (!this.isHeating()) {
+      return 'green';
+    }
+
+    const usage = this.readEnergyCostMeter();
+    const supply = this.meteringService.read('energy');
+    const totalEnergy = this.universeService.universe.energy;
+    if (supply <= 0) {
+      if (totalEnergy < usage * 10) {
+        return 'red';
+      } else {
+        return 'orange';
+      }
+    } else {
+      return 'green';
+    }
+
+  }
+
 }

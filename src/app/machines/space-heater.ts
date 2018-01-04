@@ -3,6 +3,7 @@ import { UniverseService } from "app/services/universe.service";
 import { HeatingService } from "app/services/heating.service";
 import { Heat } from "app/research/kinetics2";
 import { Globals } from "app/globals";
+import { MeteringService } from "app/services/metering.service";
 
 /**
  * This is essentially an Assembler that does no useful work.
@@ -16,6 +17,7 @@ export class SpaceHeater extends Machine {
 
     constructor(universeService: UniverseService,
         private heatingService: HeatingService,
+        private meteringService: MeteringService,
         _name = 'SpaceHeater',
         _displayName = 'Space Heater',
         _description = "Converts stored energy to heat"
@@ -36,6 +38,7 @@ export class SpaceHeater extends Machine {
             } else {
                 u.energy -= energyDraw;
                 u.heat += energyDraw;
+                this.meteringService.addQuantity('heater-energy-cost', energyDraw);
             }
         }
     }
