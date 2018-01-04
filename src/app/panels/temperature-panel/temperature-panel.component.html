@@ -9,5 +9,23 @@
       {{ mantissa() }} x 10<sup>{{ exponent() }}</sup>K
     </span>
   </p>
+
+  <div *ngIf="heaterExists()">
+    <mat-slide-toggle 
+      [checked]="isHeating()"
+      (change)="onSwitchChange($event)"
+      >Heater {{ isHeating() ? "on" : "off" }}</mat-slide-toggle>
+
+    <p *ngIf="isHeating()">
+      <mat-progress-bar
+        color="accent"
+        mode="indeterminate">
+      </mat-progress-bar>
+      <mat-progress-bar
+        color="accent"
+        mode="query">
+      </mat-progress-bar>
+    </p>
+  </div>
 </div>
 

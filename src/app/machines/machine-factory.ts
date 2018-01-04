@@ -20,6 +20,8 @@ import { QuarkScoop } from 'app/machines/quark-scoop';
 import { QuarkSqueezer } from 'app/machines/quark-squeezer';
 import { MatterFunnel } from 'app/machines/matter-funnel';
 import { Thermometer } from 'app/machines/thermometer';
+import { SpaceHeater } from 'app/machines/space-heater';
+import { HeatingService } from 'app/services/heating.service';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -40,7 +42,8 @@ export class MachineFactory {
         private researchService: ResearchService,
         private constructionService: ConstructionService,
         private meteringService: MeteringService,
-        private stargameService: StargameService
+        private stargameService: StargameService,
+        private heatingService: HeatingService
     ) {
         this.resetMachines();
     }
@@ -52,6 +55,7 @@ export class MachineFactory {
             'Thermometer': new Thermometer(this.universeService, this.meteringService),
             'Assembler': new Assembler(this.universeService, this.constructionService, this.meteringService),
             'AssemblyPlant': new AssemblyPlant(this.universeService, this.constructionService, this.meteringService),
+            'SpaceHeater': new SpaceHeater(this.universeService, this.heatingService),
             'FieldMirror': new FieldMirror(this.universeService),
             'MatterDetector': new MatterDetector(this.universeService, this.stargameService),
             'Paser': new Paser(this.universeService),

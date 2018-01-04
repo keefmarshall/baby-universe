@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { 
+import {
   MatToolbarModule,
   MatGridListModule,
   MatButtonModule,
   MatCardModule,
   MatDialogModule,
   MatProgressBarModule,
-  MatIconModule
+  MatIconModule,
+  MatSlideToggleModule,
+  MatSlideToggle
 } from '@angular/material';
 
 @NgModule({
@@ -20,7 +22,8 @@ import {
     MatCardModule,
     MatDialogModule,
     MatProgressBarModule,
-    MatIconModule
+    MatIconModule,
+    MatSlideToggleModule
   ],
   exports: [
     MatToolbarModule,
@@ -29,7 +32,8 @@ import {
     MatCardModule,
     MatDialogModule,
     MatProgressBarModule,
-    MatIconModule
+    MatIconModule,
+    MatSlideToggleModule
   ],
   declarations: []
 })
