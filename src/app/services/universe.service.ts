@@ -57,5 +57,14 @@ export class UniverseService {
           "Within the empty void, matter and energy spontaneously " +
           "flash into existence, only to decay almost instantly. "];
     }
+
+    if (u.machines['Assembler'] && !u.machines['Assembler'].extras['energyDraw']) {
+      u.machines['Assembler'].extras['energyDraw'] = 1;
+    }
+
+    if (u.machines['SpaceHeater'] && !u.machines['SpaceHeater'].extras['energyDraw']) {
+      u.machines['SpaceHeater'].extras['energyDraw'] = 1;
+    }
+
   }
 }

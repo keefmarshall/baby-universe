@@ -1,4 +1,4 @@
-import { Machine } from "app/machines/machine";
+import { Machine, MachineProperties } from "app/machines/machine";
 import { Globals } from "app/globals";
 import { KineticConstruction } from "app/research/kinetics";
 import { UniverseService } from "app/services/universe.service";
@@ -33,7 +33,7 @@ export class Assembler extends Machine {
             // The lost energy is converted to universal heat.
             const u = this.universeService.universe;
             const q = this.properties().quantity;
-            const energyDraw = this.baseEnergyDraw * q;
+            const energyDraw = this.properties().extras['energyDraw']  * q;
             if (u.energy < energyDraw) {
                 // do nothing, there's not enough for us to work!
                 console.log("Assembler: not enough energy to work!");
@@ -78,6 +78,13 @@ export class Assembler extends Machine {
 
     affordable(amount: number = 1): boolean {
         return this.universeService.universe.energy >= this.energyCost(amount);
+    }
+
+    // override
+    defaultProperties(): MachineProperties {
+        const props = super.defaultProperties();
+        props.extras['energyDraw'] = this.baseEnergyDraw;
+        return props;
     }
 
     // ////////////////////////////////

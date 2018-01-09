@@ -6,7 +6,7 @@ import { ConstructionProject } from "app/machines/construction-project";
 import { KineticEngineering } from "app/research/kinetics2";
 
 export class AssemblyPlant extends ConstructionProject {
-    protected baseEnergyDraw = 100;
+    // protected baseEnergyDraw = 100;
     private assemblerCost = 10; // 10 Assemblers make a Plant
 
     constructor(universeService: UniverseService,
@@ -16,7 +16,7 @@ export class AssemblyPlant extends ConstructionProject {
         super('AssemblyPlant',
             "Assembly Plant",
             "Combines assemblers to draw 10x energy",
-            universeService, 2500, Math.SQRT2);
+            universeService, 2500, 1.2);
     }
 
     // cut-and-paste from Assembler, can't find easy way to share the code
@@ -31,7 +31,8 @@ export class AssemblyPlant extends ConstructionProject {
             const u = this.universeService.universe;
             const q = this.properties().quantity;
             const eff = this.universeService.universe.machines['Assembler'].efficiency;
-            const energyDraw = this.baseEnergyDraw * q;
+            const baseEnergyDraw = this.universeService.universe.machines['Assembler'].extras['energyDraw'] * 100;
+            const energyDraw = baseEnergyDraw * q;
             if (u.energy < energyDraw) {
                 // do nothing, there's not enough for us to work!
                 console.log("Assembly Plant: not enough energy to work!");
