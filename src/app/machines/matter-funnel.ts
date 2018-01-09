@@ -10,7 +10,7 @@ export class MatterFunnel extends ConstructionProject {
         super('MatterFunnel',
             "Matter Funnel",
             "Focus quarks from a wide area (max 1 per scoop)",
-            universeService, 50000, Math.SQRT2);
+            universeService, 50000, 1.1);
     }
 
     onComplete() {
