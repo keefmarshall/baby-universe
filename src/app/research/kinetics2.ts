@@ -20,6 +20,41 @@ export class Heat extends ResearchProject {
     }
 }
 
+export class HeatEngines extends ResearchProject {
+    constructor() {
+        super("Heat Engines", "Double the energy draw of assemblers and heaters", 1500);
+    }
+
+    preconditions(universe: Universe): boolean {
+        const kcResearched = this.isResearched(universe, new Heat());
+
+        return kcResearched;
+    }
+
+    onCompletion(universe: Universe) {
+        universe.machines['Assembler'].extras['energyDraw'] *= 2
+        universe.machines['SpaceHeater'].extras['energyDraw'] *= 2
+    }
+}
+
+export class HeatPumps extends ResearchProject {
+    constructor() {
+        super("Heat Pumps", "Double the energy draw of assemblers and heaters", 5000);
+    }
+
+    preconditions(universe: Universe): boolean {
+        const kcResearched = this.isResearched(universe, new HeatEngines());
+        const keResearched = this.isResearched(universe, new KineticEngineering());
+        return kcResearched && keResearched;
+    }
+
+    onCompletion(universe: Universe) {
+        universe.machines['Assembler'].extras['energyDraw'] *= 2
+        universe.machines['SpaceHeater'].extras['energyDraw'] *= 2
+    }
+}
+
+
 export class KineticEnergyRecovery extends ResearchProject {
     constructor() {
         super("Kinetic Energy Recovery", "Recover work energy lost as heat", 750);
