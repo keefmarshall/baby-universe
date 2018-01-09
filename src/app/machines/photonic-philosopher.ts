@@ -89,8 +89,10 @@ export class PhotonicPhilosopher extends Machine {
         if (q >= 25) cm = 3;
         if (q >= 50) cm = 5;
         if (q >= 80) cm = 10;
+        if (q >= 110) cm = 20;
         if (q >= 150) cm = 50;
-        
+        if (q >= 200) cm = 100;
+
         return cm;
     }
 

@@ -13,7 +13,7 @@ export class Paser extends ConstructionProject {
         super('Paser',
             "Paser",
             "Multiplies energy from photons by 10",
-            universeService, 5000, 2);
+            universeService, 5000, 1.75);
     }
 
     onComplete() {

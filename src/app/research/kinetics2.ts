@@ -39,7 +39,7 @@ export class HeatEngines extends ResearchProject {
 
 export class HeatPumps extends ResearchProject {
     constructor() {
-        super("Heat Pumps", "Double the energy draw of assemblers and heaters", 5000);
+        super("Heat Pumps", "Treble the energy draw of assemblers and heaters", 5000);
     }
 
     preconditions(universe: Universe): boolean {
@@ -49,8 +49,26 @@ export class HeatPumps extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        universe.machines['Assembler'].extras['energyDraw'] *= 2
-        universe.machines['SpaceHeater'].extras['energyDraw'] *= 2
+        universe.machines['Assembler'].extras['energyDraw'] *= 3
+        universe.machines['SpaceHeater'].extras['energyDraw'] *= 3
+    }
+}
+
+export class AdvancedThermodynamics extends ResearchProject {
+    constructor() {
+        super("Advanced Thermodynamics", "Enhanced heating techniques", 20000);
+    }
+
+    preconditions(universe: Universe): boolean {
+        const kcResearched = this.isResearched(universe, new HeatPumps());
+        return kcResearched;
+    }
+
+    onCompletion(universe: Universe) {
+        universe.machines['Assembler'].extras['energyDraw'] *= 4
+        universe.machines['SpaceHeater'].extras['energyDraw'] *= 4
+        // also enables advanced heating machinery
+        universe.logs.push("Now we're cooking.");
     }
 }
 

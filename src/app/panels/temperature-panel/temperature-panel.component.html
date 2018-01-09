@@ -30,6 +30,9 @@
     <div class="clearfix">
         <p class="info info-left">
             Space Heaters: {{ universeService.universe.machines["SpaceHeater"].quantity }}<br/>
+            <span *ngIf="universeService.universe.machines['HeatingArray']">
+              Heating Arrays: {{ universeService.universe.machines["HeatingArray"].quantity }}<br/>
+            </span>
             <span [ngClass]="energyCostColour()">
                 Energy draw: {{ readEnergyCostMeter() }} MeV/s
             </span>

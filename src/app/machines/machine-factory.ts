@@ -22,6 +22,8 @@ import { MatterFunnel } from 'app/machines/matter-funnel';
 import { Thermometer } from 'app/machines/thermometer';
 import { SpaceHeater } from 'app/machines/space-heater';
 import { HeatingService } from 'app/services/heating.service';
+import { HeatingArray } from 'app/machines/heating-array';
+import { ThermalResistor } from 'app/machines/thermal-resistor';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -56,6 +58,8 @@ export class MachineFactory {
             'Assembler': new Assembler(this.universeService, this.constructionService, this.meteringService),
             'AssemblyPlant': new AssemblyPlant(this.universeService, this.constructionService, this.meteringService),
             'SpaceHeater': new SpaceHeater(this.universeService, this.heatingService, this.meteringService),
+            'HeatingArray': new HeatingArray(this.universeService, this.heatingService, this.meteringService),
+            'ThermalResistor': new ThermalResistor(this.universeService),
             'FieldMirror': new FieldMirror(this.universeService),
             'MatterDetector': new MatterDetector(this.universeService, this.stargameService),
             'Paser': new Paser(this.universeService),
