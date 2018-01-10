@@ -5,6 +5,7 @@ import { ParticleFactory } from "app/machines/particle-factory";
 import { MachineProperties } from "app/machines/machine";
 import { Globals } from "app/globals";
 import { KineticEngineering } from "app/research/kinetics2";
+import { QuantumElectrodynamics } from "app/research/collection";
 
 export class QuarkScoop extends ConstructionProject {
     private particleFactory = new ParticleFactory();
@@ -39,14 +40,22 @@ export class QuarkScoop extends ConstructionProject {
 
             const funnelCount = this.machineQuantity("MatterFunnel");
 
-            // TODO: this is going to get crazy when efficiency rises
-            // - need to do a random distribution calculation I think,
-            // and add many multiples at once.
-            for (let i = 0; i < qn; i++) {
-                const quark = this.quarkUtils.randomQuark(u);
-                const q = Math.max(1, (funnelCount * 100));
+            // // TODO: this is going to get crazy when efficiency rises
+            // // - need to do a random distribution calculation I think,
+            // // and add many multiples at once.
+            // for (let i = 0; i < qn; i++) {
+            //     const quark = this.quarkUtils.randomQuark(u);
+            //     const q = Math.max(1, (funnelCount * 100));
+            //     this.particleFactory.collectQuark(u, quark, q);
+            // }
+
+            // This way ought to be a lot more efficient
+            const numQuarks = qn * Math.max(1, (funnelCount * 100));
+            const quarks = this.quarkUtils.randomQuarks(u, numQuarks);
+            quarks.toSet().forEach(quark => {
+                const q = quarks.count(quark);
                 this.particleFactory.collectQuark(u, quark, q);
-            }
+            });
         }
     }
 
