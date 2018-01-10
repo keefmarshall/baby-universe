@@ -4,9 +4,9 @@ import { Heat } from "app/research/kinetics2";
 import { Meter } from "app/meters/meter";
 import { Universe } from "app/services/universe";
 import { MeteringService } from "app/services/metering.service";
+import { Globals } from "app/globals";
 
 export class Thermometer extends ConstructionProject implements Meter {
-    private readonly boltzmann = 8.617e-11; // MeV per K (8.617e-5eV/K)
     meterValue: number;
     exponent: number;
 
@@ -39,7 +39,7 @@ export class Thermometer extends ConstructionProject implements Meter {
     }
 
     everySecond(universe: Universe) {
-        this.meterValue = universe.heat / this.boltzmann; // temp in K
+        this.meterValue = universe.heat / Globals.boltzmann; // temp in K
         this.exponent = Math.floor(Math.log(this.meterValue) / Math.log(10));
     }
 

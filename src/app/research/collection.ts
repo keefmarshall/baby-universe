@@ -1,5 +1,6 @@
 import { ResearchProject } from "app/research/research-project";
 import { Universe } from "app/services/universe";
+import { Globals } from "app/globals";
 
 export class QuantumElectrodynamics extends ResearchProject {
 
@@ -32,6 +33,31 @@ export class QuantumChromodynamics extends ResearchProject {
     onCompletion(universe: Universe) {
         // allows stuff to be built
         universe.logs.push("Gluons? where did they come from?!")
+    }
+
+}
+
+export class ColourDeconfinement extends ResearchProject {
+
+    constructor() {
+        super("Colour Deconfinement", "Increase efficiency of the Quark Squeezer", 20000);
+    }
+
+    preconditions(universe: Universe): boolean {
+        // Going to cheat - the actual required temperature for colour deconfinement
+        // is around 170MeV which we reach very quickly.
+        // const requiredTemp = 2e12; // deconfinement temp in Kelvin
+        // const requiredHeat = Globals.boltzmann * requiredTemp; // MeV
+        const requiredHeat = 2e12; // Invented MeV value. Developer's licence.
+
+        return this.machineQuantity(universe, 'QuarkSqueezer') > 0 &&
+            this.machineQuantity(universe, 'Thermometer') > 0 &&
+            universe.heat > requiredHeat;
+    }
+
+    onCompletion(universe: Universe) {
+        universe.machines['QuarkSqueezer'].efficiency *= 5;
+        universe.logs.push("What we have here is a Quark-Gluon plasma. Heat it up (a lot) to see what happens next!");
     }
 
 }

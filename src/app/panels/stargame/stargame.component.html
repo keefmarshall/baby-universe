@@ -35,7 +35,11 @@
           <br/>
           Matter Funnels: {{ universeService.universe.machines['MatterFunnel'].quantity }}
       </span>
-    </p>
+      <span *ngIf="universeService.universe.machines['ParticleAttractor']">
+        <br/>
+        Particle Attractors: {{ universeService.universe.machines['ParticleAttractor'].quantity }}
+    </span>
+  </p>
 </div>
 
 

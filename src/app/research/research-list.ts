@@ -5,7 +5,7 @@ import { Leptons, Fermions, Quarks3, Quarks2, Quarks1 } from "app/research/matte
 import { Photovoltaics, LinearPolarisation, CircularPolarisation, EllipticalPolarisation,
      Photoelectrics, Reflection, Refraction } from "app/research/photons";
 import { PhotonAmplification } from "app/research/amplification";
-import { QuantumElectrodynamics, QuantumChromodynamics } from "app/research/collection";
+import { QuantumElectrodynamics, QuantumChromodynamics, ColourDeconfinement } from "app/research/collection";
 
 export class ResearchList {
     public projectList: Array<ResearchProject> = [];
@@ -30,6 +30,7 @@ export class ResearchList {
             new KineticEngineering(),
             new QuantumElectrodynamics(),
             new QuantumChromodynamics(),
+            new ColourDeconfinement(),
             new Fermions(),
             new Quarks1(),
             new Quarks2(),

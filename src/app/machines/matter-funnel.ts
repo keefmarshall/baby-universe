@@ -15,6 +15,10 @@ export class MatterFunnel extends ConstructionProject {
 
     onComplete() {
         this.machineService.addMachine(this);
+        if (this.properties().quantity === 10) {
+            this.universeService.universe.logs.push(
+                "Use Particle Attractors to increase collection.");
+        }
     }
 
     onTick() {

@@ -24,6 +24,7 @@ import { SpaceHeater } from 'app/machines/space-heater';
 import { HeatingService } from 'app/services/heating.service';
 import { HeatingArray } from 'app/machines/heating-array';
 import { ThermalResistor } from 'app/machines/thermal-resistor';
+import { ParticleAttractor } from 'app/machines/particle-attractor';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -65,7 +66,8 @@ export class MachineFactory {
             'Paser': new Paser(this.universeService),
             'QuarkScoop': new QuarkScoop(this.universeService),
             'QuarkSqueezer': new QuarkSqueezer(this.universeService),
-            'MatterFunnel': new MatterFunnel(this.universeService)
+            'MatterFunnel': new MatterFunnel(this.universeService),
+            'ParticleAttractor': new ParticleAttractor(this.universeService)
         };
 
         this.allMachineNames = [];

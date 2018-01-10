@@ -33,3 +33,6 @@ universe is 10^80. This number would include the total of the number of
 protons, neutrons, neutrinos and electrons.
 
 https://www.quora.com/How-many-particles-are-there-in-the-universe#
+
+Colour deconfinement starts at ~ 2 x 10^12K as per:
+https://www.uni-frankfurt.de/45167383/Stock
