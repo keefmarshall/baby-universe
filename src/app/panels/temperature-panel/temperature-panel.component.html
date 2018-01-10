@@ -33,6 +33,9 @@
             <span *ngIf="universeService.universe.machines['HeatingArray']">
               Heating Arrays: {{ universeService.universe.machines["HeatingArray"].quantity }}<br/>
             </span>
+            <span *ngIf="universeService.universe.machines['ThermalResistor']">
+              Thermal Resistors: {{ universeService.universe.machines["ThermalResistor"].quantity }}<br/>
+            </span>
             <span [ngClass]="energyCostColour()">
                 Energy draw: {{ readEnergyCostMeter() }} MeV/s
             </span>
