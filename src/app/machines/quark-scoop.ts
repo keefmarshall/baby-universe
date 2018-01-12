@@ -43,7 +43,7 @@ export class QuarkScoop extends ConstructionProject {
 
             // This way ought to be a lot more efficient than the previous
             const numQuarks = qn * Math.max(1, (funnelCount * 100))
-                * Math.pow(5, attractorCount);
+                * Math.pow(7.5, attractorCount);
             const quarks = this.quarkUtils.randomQuarks(u, numQuarks);
             quarks.toSet().forEach(quark => {
                 const q = quarks.count(quark);
