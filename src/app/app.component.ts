@@ -1,4 +1,4 @@
-import { Component, OnInit, isDevMode } from '@angular/core';
+import { Component, OnInit, isDevMode, ViewChild, Renderer2, ElementRef } from '@angular/core';
 import { AutosaveService } from './services/autosave.service';
 import { MachineService } from './services/machine.service';
 import { TimeService } from './services/time.service';
@@ -17,6 +17,8 @@ export class AppComponent implements OnInit  {
   title = 'Baby Universe';
   showDebug = isDevMode();
 
+  @ViewChild('bigbang') mainDivRef: ElementRef;
+
   // Add services here to ensure they're started at application
   // load time, otherwise things may not get kicked off correctly.
   constructor(
@@ -24,7 +26,8 @@ export class AppComponent implements OnInit  {
     private machineService: MachineService,
     private stateManagementService: StateManagementService,
     private timeService: TimeService,
-    private universeService: UniverseService
+    private universeService: UniverseService,
+    private renderer: Renderer2
   ) { }
 
   ngOnInit() {
@@ -54,5 +57,15 @@ export class AppComponent implements OnInit  {
   showMatterCollectionPanel(): boolean {
     const props = this.universeService.universe.research[new Quarks1().name];
     return props != null ? props.researched : false;
+  }
+
+  bigBang() {
+    this.renderer.addClass(this.mainDivRef.nativeElement, "bigbang");
+    this.renderer.addClass(this.renderer.parentNode(this.mainDivRef.nativeElement), "black");
+  }
+
+  noBigBang() {
+    this.renderer.removeClass(this.mainDivRef.nativeElement, "bigbang");
+    this.renderer.removeClass(this.renderer.parentNode(this.mainDivRef.nativeElement), "black");
   }
 }

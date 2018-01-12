@@ -26,3 +26,30 @@
 @media all and (min-width: 480px) and (max-width: 839px) {
     .col3 { grid-column-start: 1; grid-column-end: span 8; }    
 }
+
+/* big bang */
+@keyframes bigbang {
+    from {
+        transform: none;
+    }
+
+    to {
+        transform: scale3d(0, 0, 0) rotate(720deg) skew(360deg, 180deg);
+        transform-origin: 300 300 0;
+    }    
+}
+
+.bigbang {
+    animation-name: bigbang;
+    animation-duration: 7.5s;
+    animation-fill-mode: forwards;
+    height: 90vh;
+}
+
+.black {
+    background: black;
+}
+
+.debug {
+    display: none;
+}

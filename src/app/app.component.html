@@ -4,13 +4,15 @@
   <app-ticker class="desktop-only"></app-ticker>
 </mat-toolbar> 
 
-<!-- <blockquote>
-    "The sea of baby universes, in which our universe moves, 
-    evolves by exchanging information between past and future universes."
-    - Sidney Coleman
-</blockquote> -->
+<div>
+  Big Bang
+  <button mat-button (click)="bigBang()">ON</button>
+  <button mat-button (click)="noBigBang()">OFF</button>
+</div>
 
-<div class="mdc-layout-grid" id="main-content">
+<div id="main-wrapper">
+
+ <div class="mdc-layout-grid" id="main-content" #bigbang>
   <div class="mdc-layout-grid__inner">
 
     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
@@ -30,8 +32,6 @@
     </div>
 
     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 col3">
-      <!-- <app-stargame [width]="248" [height]="248"
-        *ngIf="showMatterCollectionPanel()"></app-stargame> -->
       <app-stargame [width]="300" [height]="300"
         *ngIf="showMatterCollectionPanel()"></app-stargame>
     </div>
@@ -43,25 +43,9 @@
         
       <app-dev-panel></app-dev-panel>
         
-      <!-- <p>
-          The vacuum contains neither matter nor energy, but it does contain
-          ''fluctuations,'' transitions between something and nothing in which
-            potential existence can be transformed into real existence by the
-          addition of energy.
-      </p>
-      <p>
-          The vacuum's totally empty space is actually a seething 
-          turmoil of creation and annihilation, which to the ordinary world
-          appears calm because the scale of fluctuations in the vacuum is tiny 
-          and the fluctuations tend to cancel each other out. 
-      </p>
-  
-      <p>
-          Every conceivable kind of subnuclear particle is constantly popping
-          into existence in the vacuum only to be immediately reunited with
-          its antiparticle in mutual annihilation. 
-      </p> -->
     </div>
       
   </div>
+ </div>
+
 </div>
