@@ -7,6 +7,8 @@ import { Assembler } from 'app/machines/assembler';
 import { UniverseService } from 'app/services/universe.service';
 import { StateManagementService } from 'app/services/state-management.service';
 import { Quarks1 } from 'app/research/matter';
+import { TickerService } from 'app/services/ticker.service';
+import { StargameService } from 'app/games/stargame/stargame.service';
 
 @Component({
   selector: 'app-root',
@@ -25,9 +27,11 @@ export class AppComponent implements OnInit  {
     private autosaveService: AutosaveService,
     private machineService: MachineService,
     private stateManagementService: StateManagementService,
+    private tickerService: TickerService,
     private timeService: TimeService,
     private universeService: UniverseService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private stargameService: StargameService
   ) { }
 
   ngOnInit() {
@@ -62,10 +66,26 @@ export class AppComponent implements OnInit  {
   bigBang() {
     this.renderer.addClass(this.mainDivRef.nativeElement, "bigbang");
     this.renderer.addClass(this.renderer.parentNode(this.mainDivRef.nativeElement), "black");
+    setTimeout(() => {
+      console.log("BB animation done, pausing the universe");
+      this.pauseUniverse();
+    }, 7500);
   }
 
   noBigBang() {
     this.renderer.removeClass(this.mainDivRef.nativeElement, "bigbang");
     this.renderer.removeClass(this.renderer.parentNode(this.mainDivRef.nativeElement), "black");
+    this.resumeUniverse();
   }
+
+  pauseUniverse() {
+    this.tickerService.pause();
+    this.stargameService.pauseGame();
+  }
+
+  resumeUniverse() {
+    this.tickerService.resume();
+    this.stargameService.resumeGame();
+  }
+
 }
