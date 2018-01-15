@@ -89,7 +89,7 @@ export class StargameService {
 
   resumeGame() {
     createjs.Ticker.setPaused(false);
-    // createjs.Touch.enable(this.stage);
+    createjs.Touch.enable(this.stage);
     this.stage.update();
   }
 
