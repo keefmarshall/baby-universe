@@ -9,13 +9,15 @@ import { StateManagementService } from 'app/services/state-management.service';
 import { Quarks1 } from 'app/research/matter';
 import { TickerService } from 'app/services/ticker.service';
 import { StargameService } from 'app/games/stargame/stargame.service';
+import { BigBangService } from 'app/services/big-bang.service';
+import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit  {
+export class AppComponent implements OnInit, AfterViewInit  {
   title = 'Baby Universe';
   showDebug = isDevMode();
 
@@ -25,6 +27,7 @@ export class AppComponent implements OnInit  {
   // load time, otherwise things may not get kicked off correctly.
   constructor(
     private autosaveService: AutosaveService,
+    private bigBangService: BigBangService,
     private machineService: MachineService,
     private stateManagementService: StateManagementService,
     private tickerService: TickerService,
@@ -36,6 +39,10 @@ export class AppComponent implements OnInit  {
 
   ngOnInit() {
     this.autosaveService.enabled = true;
+  }
+
+  ngAfterViewInit() {
+    this.bigBangService.setElementRef(this.mainDivRef);
   }
 
   showDeploymentPanel(): boolean {
@@ -64,28 +71,19 @@ export class AppComponent implements OnInit  {
   }
 
   bigBang() {
-    this.renderer.addClass(this.mainDivRef.nativeElement, "bigbang");
-    this.renderer.addClass(this.renderer.parentNode(this.mainDivRef.nativeElement), "black");
-    setTimeout(() => {
-      console.log("BB animation done, pausing the universe");
-      this.pauseUniverse();
-    }, 7500);
+    this.bigBangService.bigBang();
   }
 
   noBigBang() {
-    this.renderer.removeClass(this.mainDivRef.nativeElement, "bigbang");
-    this.renderer.removeClass(this.renderer.parentNode(this.mainDivRef.nativeElement), "black");
-    this.resumeUniverse();
+    this.bigBangService.noBigBang();
   }
 
   pauseUniverse() {
-    this.tickerService.pause();
-    this.stargameService.pauseGame();
+    this.bigBangService.pauseUniverse();
   }
 
   resumeUniverse() {
-    this.tickerService.resume();
-    this.stargameService.resumeGame();
+    this.bigBangService.resumeUniverse();
   }
 
 }

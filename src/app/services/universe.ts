@@ -25,8 +25,7 @@ export class Universe {
     currentResearchProject: string = null;
 
     // Log
-    logs = [//"...", "...", "...", "...", "...", "...",
-            "Within the empty void, matter and energy spontaneously " +
+    logs = ["Within the empty void, matter and energy spontaneously " +
             "flash into existence, only to decay almost instantly. "];
 
 }
