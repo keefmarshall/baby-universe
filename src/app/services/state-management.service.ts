@@ -59,7 +59,7 @@ export class StateManagementService {
 
     this.machineService.resetMachines(machines, machineNames);
 
-    console.log('Got machine instances: ' + JSON.stringify(machines));
+    // console.log('Got machine instances: ' + JSON.stringify(machines));
     console.log('Rationalising machine availability against preconditions...');
 
     this.updateMachineAvailability();
