@@ -4,7 +4,7 @@
   <app-ticker class="desktop-only"></app-ticker>
 </mat-toolbar> 
 
-<div>
+<div *ngIf="showDebug">
   Big Bang
   <button mat-button (click)="bigBang()">ON</button>
   <button mat-button (click)="noBigBang()">OFF</button>
@@ -55,3 +55,11 @@
     </div>
   </div>
 </div>
+
+<footer>
+  <address>
+    &copy; 2018 Keith Marshall
+    | <span (click)="resetUniverse()" class="start-again">start again</span>
+    | v0.2.0-alpha
+</address>
+</footer>
