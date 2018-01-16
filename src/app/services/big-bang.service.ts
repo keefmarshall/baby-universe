@@ -6,6 +6,7 @@ import { UniverseService } from 'app/services/universe.service';
 @Injectable()
 export class BigBangService {
   private elementRef: ElementRef;
+  private finalScoreElementRef: ElementRef;
   private renderer: Renderer2;
 
   constructor(
@@ -29,12 +30,17 @@ export class BigBangService {
     this.elementRef = er;
   }
 
+  setFinalScoreElementRef(fser: ElementRef) {
+    this.finalScoreElementRef = fser;
+  }
+
   bigBang() {
     this.renderer.addClass(this.elementRef.nativeElement, "bigbang");
     this.renderer.addClass(this.renderer.parentNode(this.elementRef.nativeElement), "black");
     setTimeout(() => {
       console.log("BB animation done, pausing the universe");
       this.pauseUniverse();
+      this.renderer.setStyle(this.finalScoreElementRef.nativeElement, "display", "block");
     }, 7500);
   }
 

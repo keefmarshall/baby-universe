@@ -34,12 +34,12 @@
     }
 
     99% {
-        transform: scale3d(0, 0, 0) rotate(720deg) skew(360deg, 180deg);
+        transform: scale3d(0, 0, 0) rotate(720deg) skew(180deg, 180deg);
         transform-origin: 300 300 0;
     }    
 
     to {
-        transform: scale3d(0, 0, 0) rotate(720deg) skew(360deg, 180deg);
+        transform: scale3d(0, 0, 0) rotate(720deg) skew(180deg, 180deg);
         transform-origin: 300 300 0;
         display: none;
     }    
@@ -56,6 +56,29 @@
     background: black;
 }
 
+.final-score {
+    position: relative;
+    margin: 0 auto;
+    top: 25%;
+
+    background-color: white;
+    color: black;
+    padding: 20px;
+    max-width: 50vw;
+}
+
+.final-score-container {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+    text-align: center;
+    display: none;
+}
+
+.final-score > table {
+    align-self: center;
+}
 /* .debug {
     display: none;
 } */

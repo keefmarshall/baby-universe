@@ -22,6 +22,7 @@ export class AppComponent implements OnInit, AfterViewInit  {
   showDebug = isDevMode();
 
   @ViewChild('bigbang') mainDivRef: ElementRef;
+  @ViewChild('finalscore') fsDivRef: ElementRef;
 
   // Add services here to ensure they're started at application
   // load time, otherwise things may not get kicked off correctly.
@@ -43,6 +44,7 @@ export class AppComponent implements OnInit, AfterViewInit  {
 
   ngAfterViewInit() {
     this.bigBangService.setElementRef(this.mainDivRef);
+    this.bigBangService.setFinalScoreElementRef(this.fsDivRef);
   }
 
   showDeploymentPanel(): boolean {
