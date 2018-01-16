@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UniverseService } from 'app/services/universe.service';
+import { AutosaveService } from 'app/services/autosave.service';
 
 @Component({
   selector: 'app-final-score',
@@ -8,7 +9,10 @@ import { UniverseService } from 'app/services/universe.service';
 })
 export class FinalScoreComponent implements OnInit {
 
-  constructor(private universeService: UniverseService) { }
+  constructor(private universeService: UniverseService,
+    private autoSaveService: AutosaveService) {
+
+  }
 
   ngOnInit() {
   }
@@ -30,6 +34,7 @@ export class FinalScoreComponent implements OnInit {
     const confirm = window.confirm('This will erase all progress, are you sure?');
     if (confirm) {
       this.universeService.resetUniverse();
+      this.autoSaveService.autosave();
       window.location.reload();
     }
   }

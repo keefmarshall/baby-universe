@@ -88,4 +88,13 @@ export class AppComponent implements OnInit, AfterViewInit  {
     this.bigBangService.resumeUniverse();
   }
 
+  resetUniverse() {
+    const confirm = window.confirm('This will erase all progress, are you sure?');
+    if (confirm) {
+      this.universeService.resetUniverse();
+      this.autosaveService.autosave();
+      window.location.reload();
+    }
+  }
+
 }
