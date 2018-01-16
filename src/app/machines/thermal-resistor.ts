@@ -21,7 +21,8 @@ export class ThermalResistor extends ConstructionProject {
     }
 
     preconditions(): boolean {
-        return this.isResearched(new AdvancedThermodynamics())
+        return this.isResearched(new AdvancedThermodynamics()) &&
+            this.machineQuantity("HeatingArray") > 4
     }
 
 }
