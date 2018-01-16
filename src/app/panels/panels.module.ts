@@ -19,6 +19,7 @@ import { LogPanelComponent } from './log-panel/log-panel.component';
 import { TickerComponent } from 'app/ticker.component';
 import { TemperaturePanelComponent } from './temperature-panel/temperature-panel.component';
 import { PipesModule } from 'app/pipes/pipes.module';
+import { MatterTableComponent } from './matter-table/matter-table.component';
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import { PipesModule } from 'app/pipes/pipes.module';
     StargameDialogComponent,
     LogPanelComponent,
     TickerComponent,
-    TemperaturePanelComponent
+    TemperaturePanelComponent,
+    MatterTableComponent
   ],
   entryComponents: [
     StargameDialogComponent
@@ -54,7 +56,8 @@ import { PipesModule } from 'app/pipes/pipes.module';
     StargameDialogComponent,
     LogPanelComponent,
     TickerComponent,
-    TemperaturePanelComponent
+    TemperaturePanelComponent,
+    MatterTableComponent
   ]
 })
 export class PanelsModule { }

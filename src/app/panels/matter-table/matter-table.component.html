@@ -1,0 +1,13 @@
+<table *ngIf="getParticles().length > 0">
+  <tr>
+    <th>Particle</th>
+    <th class="right-align">Matter</th>
+    <th class="right-align">Antimatter</th>
+  </tr>
+
+  <tr *ngFor="let p of getParticles()">
+    <td>{{ p }}</td>
+    <td class="right-align">{{ universeService.universe.particles[p] | scientific }}</td>
+    <td class="right-align">{{ universeService.universe.antiparticles[p] | scientific }}</td>
+  </tr>
+</table>
