@@ -27,8 +27,9 @@ export class HeatEngines extends ResearchProject {
 
     preconditions(universe: Universe): boolean {
         const kcResearched = this.isResearched(universe, new Heat());
+        const heatersBuilt = this.machineQuantity(universe, "SpaceHeater");
 
-        return kcResearched;
+        return kcResearched && heatersBuilt > 0;
     }
 
     onCompletion(universe: Universe) {
