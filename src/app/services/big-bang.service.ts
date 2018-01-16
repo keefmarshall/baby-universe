@@ -35,11 +35,12 @@ export class BigBangService {
   }
 
   bigBang() {
+    console.log("Big bang, pausing universe, starting animation");
+    this.pauseUniverse();
     this.renderer.addClass(this.elementRef.nativeElement, "bigbang");
     this.renderer.addClass(this.renderer.parentNode(this.elementRef.nativeElement), "black");
     setTimeout(() => {
-      console.log("BB animation done, pausing the universe");
-      this.pauseUniverse();
+      console.log("BB animation done, showing final score");
       this.renderer.setStyle(this.finalScoreElementRef.nativeElement, "display", "block");
     }, 7500);
   }
