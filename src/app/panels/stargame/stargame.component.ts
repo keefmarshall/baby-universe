@@ -24,16 +24,5 @@ export class StargameComponent implements AfterViewInit {
     this.stargameService.initGame("stargame-canvas");
   }
 
-  getParticles() {
-    return Object.keys(this.universeService.universe.particles);
-  }
-
-  getParticleCount(p: string) {
-    return this.universeService.universe.particles[p];
-  }
-
-  getAntiParticleCount(p: string) {
-    return this.universeService.universe.antiparticles[p];
-  }
 
 }

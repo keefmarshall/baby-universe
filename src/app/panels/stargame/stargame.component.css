@@ -1,21 +1,3 @@
-th {
-    text-align: left;
-}
-
-td, th {
-    padding-right: 10px;
-}
-
-.right-align {
-    text-align: right;
-}
-
-table {
-    font-size: 0.75em;
-    padding: 5px;
-    min-width: 240px;
-}
-
 canvas {
     float: left;
     cursor: crosshair;

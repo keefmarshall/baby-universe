@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Globals } from '../globals';
+import { Observable } from 'rxjs/Rx';
 
 import { Universe } from './universe';
 import { UniverseService } from './universe.service';
@@ -27,7 +28,11 @@ export class MeteringService {
     this.meters.set('work', new WorkMeter());
     this.meters.set('heater-energy-cost', new HeaterEnergyCostMeter());
 
-    tickerService.tick$.subscribe(n => this.onTick(n));
+    // For now, the metering service has its own tick, which means it correctly
+    // moves meters to zero when the universe is paused - otherwise it just stays
+    // stuck on the last known value.
+    // tickerService.tick$.subscribe(n => this.onTick(n));
+    Observable.interval(1000 * Globals.secondsPerTick).subscribe(n => this.onTick(n));
   }
 
   onTick(n: number) {

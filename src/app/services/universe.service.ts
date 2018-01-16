@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Universe } from './universe';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class UniverseService {
   public universe: Universe;
 
   public readonly id: number;
+
+  public phase$ = new Subject<number>();
 
   constructor() {
     this.id = Math.floor(Math.random() * 100);

@@ -26,3 +26,88 @@
 @media all and (min-width: 480px) and (max-width: 839px) {
     .col3 { grid-column-start: 1; grid-column-end: span 8; }    
 }
+
+/* big bang */
+@keyframes bigbang {
+    from {
+        transform: none;
+    }
+
+    99% {
+        transform: scale3d(0, 0, 0) rotate(720deg) skew(180deg, 180deg);
+        transform-origin: 300 300 0;
+    }    
+
+    to {
+        transform: scale3d(0, 0, 0) rotate(720deg) skew(180deg, 180deg);
+        transform-origin: 300 300 0;
+        display: none;
+    }    
+}
+
+.bigbang {
+    animation-name: bigbang;
+    animation-duration: 7.5s;
+    animation-fill-mode: forwards;
+    height: 90vh;
+}
+
+.black {
+    background: black;
+}
+
+@keyframes finalscore {
+    from {
+        transform: scale3d(0, 0, 0) rotate(360deg);
+    }
+
+    to {
+        transform: none;
+    }
+}
+
+.final-score {
+    animation-name: finalscore;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+
+    position: relative;
+    margin: 0 auto;
+    top: 25%;
+
+    background-color: white;
+    color: black;
+    padding: 20px;
+    max-width: 50vw;
+
+    border-radius: 25px; /* rounded corners */
+    box-shadow: 3px 3px 5px 6px #ccc; /* drop-shadow */
+}
+
+.final-score-container {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+    text-align: center;
+    display: none;
+}
+
+.final-score > table {
+    align-self: center;
+}
+
+footer {
+    border-top: solid 1px black;
+    padding: 5px;
+    font-size: 0.80em;
+}
+
+.start-again {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* .debug {
+    display: none;
+} */

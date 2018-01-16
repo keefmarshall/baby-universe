@@ -41,6 +41,12 @@ export class Thermometer extends ConstructionProject implements Meter {
     everySecond(universe: Universe) {
         this.meterValue = universe.heat / Globals.boltzmann; // temp in K
         this.exponent = Math.floor(Math.log(this.meterValue) / Math.log(10));
+
+        if (this.exponent >= 32 && universe.phase === 1) {
+            // we're done with phase one, start big bang by changing universe state..
+            this.universeService.universe.phase = 2;
+            this.universeService.phase$.next(2);
+        }
     }
 
     addQuantity(n: number) {
