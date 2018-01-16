@@ -11,7 +11,7 @@ export class ScientificPipe implements PipeTransform {
     if (value > 1e10) {
       return value.toPrecision(4);
     } else {
-      return this.decimalPipe.transform(value, '1.1-1');
+      return this.decimalPipe.transform(value, '1.0-1');
     }
   }
 }

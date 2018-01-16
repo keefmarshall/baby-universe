@@ -12,7 +12,7 @@ import { Universe } from './services/universe';
     <span>
       <!-- {{ ticker }} | -->
       Energy: {{ universe().energy | scientific }} MeV
-      | {{ meteringService.read('energy') | number:'1.1-1' }} MeV/s
+      | {{ meteringService.read('energy') | scientific }} MeV/s
       <!-- | {{ universe().elapsedSeconds | number:'1.0-0' }} -->
     </span>`,
 })
