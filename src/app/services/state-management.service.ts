@@ -5,6 +5,8 @@ import { TickerService } from 'app/services/ticker.service';
 import { UniverseService } from 'app/services/universe.service';
 import { ConstructionService } from 'app/services/construction.service';
 import { ConstructionProject } from 'app/machines/construction-project';
+import { StargameService } from 'app/games/stargame/stargame.service';
+import { BigBangService } from 'app/services/big-bang.service';
 
 /**
  * This service exists to break circular dependencies between 
@@ -24,6 +26,7 @@ export class StateManagementService {
     private constructionService: ConstructionService,
     private machineFactory: MachineFactory,
     private machineService: MachineService,
+    private stargameService: StargameService,
     private tickerService: TickerService,
     private universeService: UniverseService
   ) {
@@ -59,7 +62,7 @@ export class StateManagementService {
 
     this.machineService.resetMachines(machines, machineNames);
 
-    console.log('Got machine instances: ' + JSON.stringify(machines));
+    // console.log('Got machine instances: ' + JSON.stringify(machines));
     console.log('Rationalising machine availability against preconditions...');
 
     this.updateMachineAvailability();

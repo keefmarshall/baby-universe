@@ -13,8 +13,8 @@ export class FieldMirror extends ConstructionProject {
             "FieldMirror",
             "Field Mirror",
             "Allows more Philosophers",
-            universeService, 12.5, 2
-        )
+            universeService, 12.5, Math.sqrt(3)
+        );
     }
 
     onComplete() {
@@ -27,7 +27,7 @@ export class FieldMirror extends ConstructionProject {
     }
 
     preconditions(): boolean {
-        return this.isResearched(new Reflection()) && 
+        return this.isResearched(new Reflection()) &&
             this.machineQuantity('Assembler') > 0;
     }
 

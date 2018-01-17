@@ -6,7 +6,7 @@ import { KineticEngineering } from "app/research/kinetics2";
 export class PhotonAmplification extends ResearchProject {
 
     constructor() {
-        super("Photon Amplification", "The science of turning one photon into many", 7500);
+        super("Photon Amplification", "The science of turning one photon into many", 5000);
     }
 
     preconditions(universe: Universe): boolean {

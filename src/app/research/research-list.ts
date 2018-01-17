@@ -1,10 +1,11 @@
 import { KineticConstruction } from "app/research/kinetics";
-import { KineticEnergyRecovery, KineticEngineering } from "app/research/kinetics2";
+import { KineticEnergyRecovery, KineticEngineering, Heat, HeatEngines, HeatPumps, AdvancedThermodynamics } from "app/research/kinetics2";
 import { ResearchProject } from "app/research/research-project";
 import { Leptons, Fermions, Quarks3, Quarks2, Quarks1 } from "app/research/matter";
 import { Photovoltaics, LinearPolarisation, CircularPolarisation, EllipticalPolarisation,
-     Photoelectrics, Reflection } from "app/research/photons";
+     Photoelectrics, Reflection, Refraction } from "app/research/photons";
 import { PhotonAmplification } from "app/research/amplification";
+import { QuantumElectrodynamics, QuantumChromodynamics, ColourDeconfinement } from "app/research/collection";
 
 export class ResearchList {
     public projectList: Array<ResearchProject> = [];
@@ -19,9 +20,17 @@ export class ResearchList {
             new CircularPolarisation(),
             new EllipticalPolarisation(),
             new Reflection(),
+            new Refraction(),
             new KineticConstruction(),
+            new Heat(),
+            new HeatEngines(),
+            new HeatPumps(),
+            new AdvancedThermodynamics(),
             new KineticEnergyRecovery(),
             new KineticEngineering(),
+            new QuantumElectrodynamics(),
+            new QuantumChromodynamics(),
+            new ColourDeconfinement(),
             new Fermions(),
             new Quarks1(),
             new Quarks2(),

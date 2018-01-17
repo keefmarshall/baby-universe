@@ -15,6 +15,16 @@ import { FieldMirror } from 'app/machines/field-mirror';
 import { StargameService } from 'app/games/stargame/stargame.service';
 import { MatterDetector } from 'app/machines/matter-detector';
 import { Paser } from 'app/machines/paser';
+import { AssemblyPlant } from 'app/machines/assembly-plant';
+import { QuarkScoop } from 'app/machines/quark-scoop';
+import { QuarkSqueezer } from 'app/machines/quark-squeezer';
+import { MatterFunnel } from 'app/machines/matter-funnel';
+import { Thermometer } from 'app/machines/thermometer';
+import { SpaceHeater } from 'app/machines/space-heater';
+import { HeatingService } from 'app/services/heating.service';
+import { HeatingArray } from 'app/machines/heating-array';
+import { ThermalResistor } from 'app/machines/thermal-resistor';
+import { ParticleAttractor } from 'app/machines/particle-attractor';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -35,7 +45,8 @@ export class MachineFactory {
         private researchService: ResearchService,
         private constructionService: ConstructionService,
         private meteringService: MeteringService,
-        private stargameService: StargameService
+        private stargameService: StargameService,
+        private heatingService: HeatingService
     ) {
         this.resetMachines();
     }
@@ -44,10 +55,19 @@ export class MachineFactory {
         this.allMachines = {
             'PhotonCollector': new PhotonCollector(this.universeService),
             'PhotonicPhilosopher': new PhotonicPhilosopher(this.universeService, this.researchService),
+            'Thermometer': new Thermometer(this.universeService, this.meteringService),
             'Assembler': new Assembler(this.universeService, this.constructionService, this.meteringService),
+            'AssemblyPlant': new AssemblyPlant(this.universeService, this.constructionService, this.meteringService),
+            'SpaceHeater': new SpaceHeater(this.universeService, this.heatingService, this.meteringService),
+            'HeatingArray': new HeatingArray(this.universeService, this.heatingService, this.meteringService),
+            'ThermalResistor': new ThermalResistor(this.universeService),
             'FieldMirror': new FieldMirror(this.universeService),
             'MatterDetector': new MatterDetector(this.universeService, this.stargameService),
-            'Paser': new Paser(this.universeService)
+            'Paser': new Paser(this.universeService),
+            'QuarkScoop': new QuarkScoop(this.universeService),
+            'QuarkSqueezer': new QuarkSqueezer(this.universeService),
+            'MatterFunnel': new MatterFunnel(this.universeService),
+            'ParticleAttractor': new ParticleAttractor(this.universeService)
         };
 
         this.allMachineNames = [];

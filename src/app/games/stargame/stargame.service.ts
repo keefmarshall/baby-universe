@@ -89,7 +89,7 @@ export class StargameService {
 
   resumeGame() {
     createjs.Ticker.setPaused(false);
-    // createjs.Touch.enable(this.stage);
+    createjs.Touch.enable(this.stage);
     this.stage.update();
   }
 
@@ -133,7 +133,7 @@ export class StargameService {
     const easiness = 0.25 / star.difficulty;
     const delay = 1000 + (3000 * easiness);
 
-    console.log("Easiness = " + easiness + ", delay = " + delay);
+    // console.log("Easiness = " + easiness + ", delay = " + delay);
 
     const starTween = createjs.Tween.get(starSprite)
         .to({alpha: 1, rotation: 720}, delay, createjs.Ease.getPowInOut(2))

@@ -17,23 +17,12 @@ export class StargameComponent implements AfterViewInit {
   // lose the option of embedding it into the main page.
   constructor(
     private stargameService: StargameService,
-    private universeService: UniverseService
+    public universeService: UniverseService
   ) { }
 
   ngAfterViewInit() {
     this.stargameService.initGame("stargame-canvas");
   }
 
-  getParticles() {
-    return Object.keys(this.universeService.universe.particles);
-  }
-
-  getParticleCount(p: string) {
-    return this.universeService.universe.particles[p];
-  }
-
-  getAntiParticleCount(p: string) {
-    return this.universeService.universe.antiparticles[p];
-  }
 
 }

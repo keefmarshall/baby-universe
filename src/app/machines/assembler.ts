@@ -1,4 +1,4 @@
-import { Machine } from "app/machines/machine";
+import { Machine, MachineProperties } from "app/machines/machine";
 import { Globals } from "app/globals";
 import { KineticConstruction } from "app/research/kinetics";
 import { UniverseService } from "app/services/universe.service";
@@ -7,19 +7,19 @@ import { MeteringService } from "app/services/metering.service";
 import { ConstructionEnergyCostMeter } from "app/meters/construction-energy-cost-meter";
 
 export class Assembler extends Machine {
-    private baseEnergyCost = 3000;
-    private costMultiplier = 1.05;
+    protected baseEnergyCost = 3000;
+    protected costMultiplier = 1.05;
 
-    private baseEnergyDraw = 1;
+    protected baseEnergyDraw = 1;
 
     constructor(universeService: UniverseService,
         private constructionService: ConstructionService,
-        private meteringService: MeteringService
+        private meteringService: MeteringService,
+        _name = 'Assembler',
+        _displayName = 'Assembler',
+        _description = "Converts stored energy to useful work"
     ) {
-        super('Assembler',
-            "Assembler",
-            "Converts stored energy to useful work",
-            universeService);
+        super(_name, _displayName, _description, universeService);
     }
 
     // ////////////////////////////////
@@ -33,7 +33,7 @@ export class Assembler extends Machine {
             // The lost energy is converted to universal heat.
             const u = this.universeService.universe;
             const q = this.properties().quantity;
-            const energyDraw = this.baseEnergyDraw * q;
+            const energyDraw = this.properties().extras['energyDraw']  * q;
             if (u.energy < energyDraw) {
                 // do nothing, there's not enough for us to work!
                 console.log("Assembler: not enough energy to work!");
@@ -41,7 +41,7 @@ export class Assembler extends Machine {
                 // NB if efficiency goes above 10, we start taking heat from
                 // the universe to work! Not sure if I'll use this.
                 u.energy -= energyDraw;
-                const work = this.properties().efficiency * q * 0.1;
+                const work = this.properties().efficiency * energyDraw * 0.1;
                 u.heat += (energyDraw - work);
                 this.constructionService.addWork(work);
                 this.meteringService.addQuantity('construction-energy-cost', energyDraw);
@@ -57,7 +57,7 @@ export class Assembler extends Machine {
     }
 
     displayCost(count: number = 1): string {
-        return Globals.round(this.energyCost(count), 1) + ' MeV';
+        return parseFloat(this.energyCost(count).toPrecision(3)) + ' MeV';
     }
 
     payFor(amount: number = 1): boolean {
@@ -80,11 +80,19 @@ export class Assembler extends Machine {
         return this.universeService.universe.energy >= this.energyCost(amount);
     }
 
+    // override
+    defaultProperties(): MachineProperties {
+        const props = super.defaultProperties();
+        props.extras['energyDraw'] = this.baseEnergyDraw;
+        return props;
+    }
+
     // ////////////////////////////////
     // Internal functions
 
     energyCost(amount: number = 1): number {
-        const q = this.properties().quantity || 0;
+        const q = (this.properties().quantity || 0) +
+            (this.machineQuantity('AssemblyPlant') * 10);
 
         const cost = this.baseEnergyCost *
             Globals.geometricProgressionSum(q, q + amount - 1, this.costMultiplier);

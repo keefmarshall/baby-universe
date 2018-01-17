@@ -5,23 +5,25 @@
   </p>
 
   <canvas [width]="width" [height]="height" id="stargame-canvas"></canvas>
-  <!-- 
-  <button (click)="stargameService.startGame()">Start</button>
-  <button (click)="stargameService.resumeGame()">Resume</button>
-  <button (click)="stargameService.pauseGame()">Pause</button> 
-  -->
 
-  <table *ngIf="getParticles().length > 0">
-    <tr>
-      <th>Particle</th>
-      <th class="right-align">Matter</th>
-      <th class="right-align">Antimatter</th>
-    </tr>
+  <app-matter-table></app-matter-table>
 
-    <tr *ngFor="let p of getParticles()">
-      <td>{{ p }}</td>
-      <td class="right-align">{{ universeService.universe.particles[p] }}</td>
-      <td class="right-align">{{ universeService.universe.antiparticles[p] }}</td>
-    </tr>
-  </table>
+  <div *ngIf="universeService.universe.machines['QuarkScoop']">
+    <p class="info info-right">
+      Efficiency: {{ universeService.universe.machines['QuarkScoop'].efficiency }}
+    </p>
+    <p class="info">
+      Quark Scoops: {{ universeService.universe.machines['QuarkScoop'].quantity }}
+      <span *ngIf="universeService.universe.machines['MatterFunnel']">
+          <br/>
+          Matter Funnels: {{ universeService.universe.machines['MatterFunnel'].quantity }}
+      </span>
+      <span *ngIf="universeService.universe.machines['ParticleAttractor']">
+        <br/>
+        Particle Attractors: {{ universeService.universe.machines['ParticleAttractor'].quantity }}
+    </span>
+  </p>
+</div>
+
+
 </div>

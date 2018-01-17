@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Universe } from './universe';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class UniverseService {
   public universe: Universe;
 
   public readonly id: number;
+
+  public phase$ = new Subject<number>();
 
   constructor() {
     this.id = Math.floor(Math.random() * 100);
@@ -57,5 +60,14 @@ export class UniverseService {
           "Within the empty void, matter and energy spontaneously " +
           "flash into existence, only to decay almost instantly. "];
     }
+
+    if (u.machines['Assembler'] && !u.machines['Assembler'].extras['energyDraw']) {
+      u.machines['Assembler'].extras['energyDraw'] = 1;
+    }
+
+    if (u.machines['SpaceHeater'] && !u.machines['SpaceHeater'].extras['energyDraw']) {
+      u.machines['SpaceHeater'].extras['energyDraw'] = 1;
+    }
+
   }
 }

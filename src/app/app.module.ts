@@ -25,6 +25,8 @@ import { TickerComponent } from './ticker.component';
 import { ConstructionService } from 'app/services/construction.service';
 import { StateManagementService } from 'app/services/state-management.service';
 import { LogService } from 'app/services/log.service';
+import { HeatingService } from 'app/services/heating.service';
+import { BigBangService } from 'app/services/big-bang.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { LogService } from 'app/services/log.service';
   ],
   providers: [
     AutosaveService,
+    BigBangService,
     ConstructionService,
+    HeatingService,
     LogService,
     MachineFactory,
     MachineService,
