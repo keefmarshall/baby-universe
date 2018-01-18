@@ -68,3 +68,7 @@ in the display component
 
 8. Some use for idle philosophers in late-stage game
 - possibly to enhance assembly plants which get a bit slow later on
+
+9. Add some kind of analytics/callback
+- monitor how many people start
+- monitor how many people are reaching the end

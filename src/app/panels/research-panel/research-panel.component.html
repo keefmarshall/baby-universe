@@ -1,4 +1,25 @@
 <div id="research-panel" class="panel delay-2">
+    <div class="info-right" *ngIf="universeService.universe.machines['ParadoxGenerator']">
+        <button 
+          mat-raised-button
+          class="deploy-button"
+          (click)="generateParadox()"
+          [disabled]="distracted || canResearch">
+
+        <small *ngIf="!distracted">Generate<br/>Paradox</small>
+        <small *ngIf="distracted">DISTRACTED!</small>
+
+        <mat-progress-bar
+          *ngIf="distracted"
+          color="accent"
+          [value]="distractionProgress()">
+        </mat-progress-bar>
+
+      </button>
+
+
+  </div>
+
   <p class="panel-title">
     <mat-icon color="accent">lightbulb_outline</mat-icon>
      Research

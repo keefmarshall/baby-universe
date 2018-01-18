@@ -50,6 +50,22 @@ export class ResearchService {
     }
   }
 
+  stopProject() {
+    if (this.currentProject != null) {
+      const p = this.currentProject;
+      const u = this.universeService.universe;
+      console.log("Stopping research on " + p.name);
+
+      p.reset();
+      u.research[p.name] = null;
+      this.currentProject = null;
+      u.currentResearchProject = null;
+
+    } else {
+      console.log("no project to stop!");
+    }
+  }
+
   private openProject(project: ResearchProject) {
     this.currentProject = project;
     this.universeService.universe.currentResearchProject = project.name;

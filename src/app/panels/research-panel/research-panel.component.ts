@@ -6,6 +6,7 @@ import { MachineService } from 'app/services/machine.service';
 import { TickerService } from 'app/services/ticker.service';
 import { UniverseService } from 'app/services/universe.service';
 import { ResearchService } from 'app/services/research.service';
+import { Globals } from 'app/globals';
 
 @Component({
   selector: 'app-research-panel',
@@ -15,6 +16,9 @@ import { ResearchService } from 'app/services/research.service';
 export class ResearchPanelComponent implements OnInit {
   projectList: Array<ResearchProject>;
   private canResearch: boolean = false;
+  private distracted: boolean = false;
+  private distractionTicks = 30 / Globals.secondsPerTick;
+  private distractionTicksRemaining: number = 0;
 
   constructor(
     public universeService: UniverseService,
@@ -39,9 +43,18 @@ export class ResearchPanelComponent implements OnInit {
       project.canSee = project.preconditions(u);
     });
 
-    this.canResearch = 
+    this.canResearch =
       (this.researchService.scienceCount > 0) &&
-      !this.researchService.isResearching();
+      !this.researchService.isResearching() &&
+      !this.distracted;
+
+    if (this.distracted) {
+      this.distractionTicksRemaining --;
+      if (this.distractionTicksRemaining <= 0) {
+        this.distracted = false;
+      }
+    }
+
   }
 
   researchProject(project: ResearchProject) {
@@ -55,5 +68,16 @@ export class ResearchPanelComponent implements OnInit {
   isComplete(project: ResearchProject) {
     const u = this.universeService.universe;
     return (u.research[project.name] != null && u.research[project.name].researched);
+  }
+
+  generateParadox() {
+    this.distracted = true;
+    this.distractionTicksRemaining = this.distractionTicks;
+    this.researchService.stopProject();
+  }
+
+  distractionProgress() {
+    return (this.distractionTicks - this.distractionTicksRemaining) * 100 /
+      this.distractionTicks;
   }
 }

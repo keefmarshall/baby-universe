@@ -21,3 +21,10 @@
 p.info {
     font-size: 0.64em;
 }
+
+.info-right {
+    float: right;
+    text-align: right;
+    margin: 0px;
+    margin-top: 5px;
+}

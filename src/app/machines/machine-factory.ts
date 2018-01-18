@@ -25,6 +25,7 @@ import { HeatingService } from 'app/services/heating.service';
 import { HeatingArray } from 'app/machines/heating-array';
 import { ThermalResistor } from 'app/machines/thermal-resistor';
 import { ParticleAttractor } from 'app/machines/particle-attractor';
+import { ParadoxGenerator } from 'app/machines/paradox-generator';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -55,6 +56,7 @@ export class MachineFactory {
         this.allMachines = {
             'PhotonCollector': new PhotonCollector(this.universeService),
             'PhotonicPhilosopher': new PhotonicPhilosopher(this.universeService, this.researchService),
+            'ParadoxGenerator': new ParadoxGenerator(this.universeService),
             'Thermometer': new Thermometer(this.universeService, this.meteringService),
             'Assembler': new Assembler(this.universeService, this.constructionService, this.meteringService),
             'AssemblyPlant': new AssemblyPlant(this.universeService, this.constructionService, this.meteringService),
