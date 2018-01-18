@@ -84,7 +84,10 @@ export class PhotonicPhilosopher extends Machine {
 
     costMultiplier(): number {
         const q = this.properties().quantity || 0;
-        let cm = 1;
+        let cm = 0.5;
+        if (q === 1) cm = 0.65;
+        if (q === 2) cm = 0.8;
+        if (q > 2) cm = 1;
         if (q >= 10) cm = 2;
         if (q >= 25) cm = 3;
         if (q >= 50) cm = 5;

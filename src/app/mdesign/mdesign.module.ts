@@ -8,6 +8,7 @@ import {
   MatCardModule,
   MatDialogModule,
   MatProgressBarModule,
+  MatProgressSpinnerModule,
   MatIconModule,
   MatSlideToggleModule,
   MatSlideToggle
@@ -22,6 +23,7 @@ import {
     MatCardModule,
     MatDialogModule,
     MatProgressBarModule,
+    MatProgressSpinnerModule,
     MatIconModule,
     MatSlideToggleModule
   ],
@@ -32,6 +34,7 @@ import {
     MatCardModule,
     MatDialogModule,
     MatProgressBarModule,
+    MatProgressSpinnerModule,
     MatIconModule,
     MatSlideToggleModule
   ],

@@ -26,6 +26,11 @@
       ></mat-progress-bar>
     </p>
 
+    <p *ngIf="constructionService.sabotaged">
+        REPAIRING...
+        <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
+    </p>
+
     <div class="clearfix">
         <p class="info info-left" *ngIf="universeService.universe.machines['AssemblyPlant']">
             Assembly Plants: {{ universeService.universe.machines["AssemblyPlant"].quantity }}

@@ -38,6 +38,10 @@ export abstract class ConstructionProject extends Machine {
         }
     }
 
+    reset() {
+        this.workGained = 0;
+    }
+
     affordable() {
         return (this.universeService.universe.currentConstructionProject === null);
     }

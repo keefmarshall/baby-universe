@@ -12,6 +12,7 @@ export class ConstructionService {
   
   private currentWork: number = 0;
   public energyDrawPerSecond: number = 0;
+  public sabotaged = false;
 
   constructor(
     private universeService: UniverseService,
@@ -45,7 +46,7 @@ export class ConstructionService {
   }
 
   addWork(work: number) {
-    if (this.isConstructing()) {
+    if (this.isConstructing() && !this.sabotaged) {
       this.currentWork += work;
       if (this.currentProject.addWork(work)) {
         // project complete:
@@ -64,4 +65,18 @@ export class ConstructionService {
     return this.currentProject != null;
   }
 
+  sabotage() {
+    this.sabotaged = true;
+    setTimeout(() => this.repaired(), 30000);
+    if (this.isConstructing()) {
+      this.currentProject.reset();
+      this.currentProject = null;
+      this.universeService.universe.currentConstructionProject = null;
+      this.universeService.universe.currentConstructionWork = 0;
+    }
+  }
+
+  repaired() {
+    this.sabotaged = false;
+  }
 }
