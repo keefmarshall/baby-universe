@@ -7,8 +7,6 @@ export class ThermalSpanner extends Machine {
     private baseEnergyCost = 6500;
     private costMultiplier = 1.02;
 
-    private machineService: MachineService;
-
     constructor(universeService: UniverseService,
         private constructionService: ConstructionService) {
 

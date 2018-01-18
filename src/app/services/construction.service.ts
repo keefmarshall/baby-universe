@@ -12,7 +12,7 @@ export class ConstructionService {
   
   private currentWork: number = 0;
   public energyDrawPerSecond: number = 0;
-  private sabotaged = false;
+  public sabotaged = false;
 
   constructor(
     private universeService: UniverseService,
