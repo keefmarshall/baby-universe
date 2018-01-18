@@ -36,3 +36,35 @@ https://www.quora.com/How-many-particles-are-there-in-the-universe#
 
 Colour deconfinement starts at ~ 2 x 10^12K as per:
 https://www.uni-frankfurt.de/45167383/Stock
+
+TODO 2018-01-18
+===============
+
+1. Number formats on purchase buttons
+- option 1: take code from DecimalPipe and call it from every research/machine 
+to format displayCOst()
+- option 2: convert displayCOst() to a hash of string/number pairs and format 
+in the display component
+
+2. Interrupt long-running research
+- Paradox Generator, paradoxes disrupt philosophers
+- some cost and time for buying a paradox, increases with use
+
+3. Interrupt long-running construction
+- Thermal Spanner - some recovery time for assemblers after use
+ - constant seconds? related to work done so far? total cost of project?
+
+4. Number formats in meters
+- just need a review of them all
+
+5. Heating rate display
+- currently thermometer doesn't show the rate of change?
+
+6. Dampen energy meter rate of change to reduce flipping
+
+7. Some way to enable bulk purchase
+- press-and-hold on a button produces popup with more options?
+- need to ensure it's aware not everything can be bulk purchased
+
+8. Some use for idle philosophers in late-stage game
+- possibly to enhance assembly plants which get a bit slow later on
