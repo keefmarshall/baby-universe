@@ -24,7 +24,7 @@ export class NumberFormatter {
         }
 
         // what tier? (determines SI prefix)
-        let tier = Math.log10(num) / 3 | 0;
+        let tier = Math.log10(Math.abs(num)) / 3 | 0;
 
         if (tier >= prefixes.length) {
             tier = prefixes.length - 1;
