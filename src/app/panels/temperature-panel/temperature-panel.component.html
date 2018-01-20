@@ -37,7 +37,7 @@
               Thermal Resistors: {{ universeService.universe.machines["ThermalResistor"].quantity }}<br/>
             </span>
             <span [ngClass]="energyCostColour()">
-                Energy draw: {{ readEnergyCostMeter() }} MeV/s
+                Energy draw: {{ readEnergyCostMeter() | mev }}/s
             </span>
         </p>
     </div>

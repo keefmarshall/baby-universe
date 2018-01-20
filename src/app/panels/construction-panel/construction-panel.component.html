@@ -13,7 +13,7 @@
         <p class="info info-left" *ngIf="universeService.universe.machines['Assembler']">
             Assemblers: {{ universeService.universe.machines["Assembler"].quantity }}<br/>
             <span [ngClass]="energyCostColour()">
-                Energy draw: {{ readEnergyCostMeter() }} MeV/s
+                Energy draw: {{ readEnergyCostMeter() | mev }}/s
             </span>
         </p>
     </div>
