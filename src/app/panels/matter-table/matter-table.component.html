@@ -7,7 +7,9 @@
 
   <tr *ngFor="let p of getParticles()">
     <td>{{ p }}</td>
-    <td class="right-align">{{ universeService.universe.particles[p] | scientific }}</td>
-    <td class="right-align">{{ universeService.universe.antiparticles[p] | scientific }}</td>
+    <td class="right-align">{{ universeService.universe.particles[p] | illion }}</td>
+    <td class="right-align" *ngIf="universeService.universe.antiparticles[p]">
+      {{ universeService.universe.antiparticles[p] | illion }}
+    </td>
   </tr>
 </table>

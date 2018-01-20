@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ScientificPipe } from './scientific.pipe';
 import {DecimalPipe} from '@angular/common';
 import { MevPipe } from './mev.pipe';
+import { IllionPipe } from './illion.pipe';
 
 @NgModule({
   providers: [DecimalPipe],
@@ -11,11 +12,13 @@ import { MevPipe } from './mev.pipe';
   ],
   declarations: [
     ScientificPipe,
-    MevPipe
+    MevPipe,
+    IllionPipe
   ],
   exports: [
     ScientificPipe,
-    MevPipe
+    MevPipe,
+    IllionPipe
   ]
 })
 export class PipesModule { }
