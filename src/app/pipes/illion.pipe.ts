@@ -8,7 +8,7 @@ export class IllionPipe implements PipeTransform {
   private readonly numberFormatter = new NumberFormatter();
 
   transform(value: number, args?: string): string {
-    return this.numberFormatter.abbreviateNumber(value, 4, true, "NUM");
+    return this.numberFormatter.abbreviateNumber(value, 4, true, "NUM", true, true);
   }
 
 }

@@ -16,7 +16,7 @@ export class NumberFormatter {
     };
 
     // adapted from https://stackoverflow.com/a/40724354
-    abbreviateNumber(num: number, precision = 4, lowfixed = false, type = "SI") {
+    abbreviateNumber(num: number, precision = 4, lowfixed = false, type = "SI", skipFirst = false, integer = false) {
         const prefixes = this.TYPES[type];
 
         if (!prefixes) {
@@ -28,6 +28,11 @@ export class NumberFormatter {
 
         if (tier >= prefixes.length) {
             tier = prefixes.length - 1;
+        }
+
+        // Sometimes we don't want e.g. 1.1k, but 1,100.
+        if (tier === 1 && skipFirst) {
+            tier = 0;
         }
 
         // get prefix 
@@ -54,7 +59,11 @@ export class NumberFormatter {
 
         // format number and add prefix as suffix
         //return scaled.toFixed(1) + prefix;
-        const prec = scaled.toPrecision(precision);
+        let prec = scaled.toPrecision(precision);
+        if (integer && tier === 0) {
+            prec = scaled.toFixed(0);
+        }
+        
         return (scaled > 999 ? this.numberWithCommas(parseFloat(prec)) : prec) + " " + prefix;
     }
 
