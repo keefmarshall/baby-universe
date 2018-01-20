@@ -17,14 +17,8 @@
       >Heating {{ isHeating() ? "on" : "off" }}</mat-slide-toggle>
 
     <p *ngIf="isHeating()">
-      <mat-progress-bar
-        color="accent"
-        mode="indeterminate">
-      </mat-progress-bar>
-      <mat-progress-bar
-        color="accent"
-        mode="query">
-      </mat-progress-bar>
+      <mat-progress-bar color="accent" mode="indeterminate"></mat-progress-bar>
+      <mat-progress-bar color="accent" mode="query"></mat-progress-bar>
     </p>
 
     <div class="clearfix">
