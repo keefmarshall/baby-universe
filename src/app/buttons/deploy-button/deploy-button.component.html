@@ -3,10 +3,16 @@
   mat-raised-button color="primary" 
   class="deploy-button"
   (click)="deployMachine()"
-  [disabled]="!machine.canBuy">
+  [disabled]="!machine.canBuy"
+  [matTooltip]="machine.displayName + ': ' + machine.displayPurpose"
+  matTooltipPosition="right"
+  [matTooltipClass]="{'butooltip': true}"
+  >
 
-  {{ machine.displayName }} ({{ machine.displayCost() }})
+  {{ machine.displayName }}
+  <span class="mobile-only">({{ machine.displayCost() }})</span>
   <br/>
-  <small>{{ machine.displayPurpose }}</small>
+  <small class="desktop-only">{{ machine.displayCost() }}</small>
+  <small class="mobile-only">{{ machine.displayPurpose }}</small>
 
 </button>
