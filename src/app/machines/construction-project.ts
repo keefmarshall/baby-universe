@@ -60,7 +60,8 @@ export abstract class ConstructionProject extends Machine {
     }
 
     displayCost(count: number): string {
-        return Math.floor(this.workCost()) + " Work";
+        // return Math.floor(this.workCost()) + " Work";
+        return this.numberFormatter.numberWithCommas(Math.floor(this.workCost())) + " Work";
     }
 
     payFor(count: number): boolean {

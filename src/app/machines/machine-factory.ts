@@ -56,22 +56,22 @@ export class MachineFactory {
     resetMachines() {
         this.allMachines = {
             'PhotonCollector': new PhotonCollector(this.universeService),
+            'Paser': new Paser(this.universeService),
             'PhotonicPhilosopher': new PhotonicPhilosopher(this.universeService, this.researchService),
             'ParadoxGenerator': new ParadoxGenerator(this.universeService),
-            'Thermometer': new Thermometer(this.universeService, this.meteringService),
+            'FieldMirror': new FieldMirror(this.universeService),
             'Assembler': new Assembler(this.universeService, this.constructionService, this.meteringService),
             'AssemblyPlant': new AssemblyPlant(this.universeService, this.constructionService, this.meteringService),
+            'ThermalSpanner': new ThermalSpanner(this.universeService, this.constructionService),
+            'Thermometer': new Thermometer(this.universeService, this.meteringService),
             'SpaceHeater': new SpaceHeater(this.universeService, this.heatingService, this.meteringService),
             'HeatingArray': new HeatingArray(this.universeService, this.heatingService, this.meteringService),
             'ThermalResistor': new ThermalResistor(this.universeService),
-            'FieldMirror': new FieldMirror(this.universeService),
             'MatterDetector': new MatterDetector(this.universeService, this.stargameService),
-            'Paser': new Paser(this.universeService),
             'QuarkScoop': new QuarkScoop(this.universeService),
             'QuarkSqueezer': new QuarkSqueezer(this.universeService),
             'MatterFunnel': new MatterFunnel(this.universeService),
-            'ParticleAttractor': new ParticleAttractor(this.universeService),
-            'ThermalSpanner': new ThermalSpanner(this.universeService, this.constructionService)
+            'ParticleAttractor': new ParticleAttractor(this.universeService)
         };
 
         this.allMachineNames = [];

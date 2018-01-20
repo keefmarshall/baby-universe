@@ -56,11 +56,11 @@ blockquote, .log {
 
 @media all and (min-width: 769px) {
     .mobile-only {display: none;}
-    .desktop-only { display: block; }
+    .desktop-only { display: initial; }
 }
 
 @media all and (max-width: 768px) {
-    .mobile-only {display: block;}
+    .mobile-only {display: initial;}
     .desktop-only { display: none; }
 }
 

@@ -10,10 +10,8 @@ import { Universe } from './services/universe';
   selector: 'app-ticker',
   template: `
     <span>
-      <!-- {{ ticker }} | -->
-      Energy: {{ universe().energy | scientific:'1.1-1' }} MeV
-      | {{ meteringService.read('energy') | scientific }} MeV/s
-      <!-- | {{ universe().elapsedSeconds | number:'1.0-0' }} -->
+      Energy: {{ universe().energy | mev }}
+      | {{ meteringService.read('energy') | mev }}/s
     </span>`,
 })
 export class TickerComponent implements OnInit {

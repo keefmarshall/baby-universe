@@ -4,16 +4,18 @@
         Collection
     </p> -->
 
-    <table class="energy-ticker mobile-only">
+    <div class="energy-ticker mobile-only">
+      <table>
         <tr>
             <th>Energy: </th>
-            <td>{{ universeService.universe.energy | number:'1.1-1' }} MeV</td>
+            <td>{{ universeService.universe.energy | mev }} </td>
         </tr>
         <tr>
             <th>Rate: </th>
-            <td>{{ meteringService.read('energy') | number:'1.1-1' }} MeV/s</td>
+            <td>{{ meteringService.read('energy') | mev }}/s</td>
         </tr>
-    </table>
+      </table>
+    </div>
 
     <p class="info info-right">
         <span *ngIf='universeService.universe.machines["PhotonCollector"]'>
