@@ -8,7 +8,7 @@ export class MevPipe implements PipeTransform {
   private readonly numberFormatter = new NumberFormatter();
 
   transform(value: number, args?: string): string {
-    return this.numberFormatter.abbreviateNumber(value * 1e6) + "eV";
+    return this.numberFormatter.abbreviateNumber(value * 1e6, 4, true, "SI") + "eV";
   }
 
 }
