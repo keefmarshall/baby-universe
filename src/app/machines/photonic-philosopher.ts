@@ -38,7 +38,8 @@ export class PhotonicPhilosopher extends Machine {
     }
 
     displayCost(amount: number = 1): string {
-        return Globals.round(this.energyCost(amount), 1) + ' MeV';
+        // return Globals.round(this.energyCost(amount), 1) + ' MeV';
+        return this.numberFormatter.abbreviateNumber(this.energyCost(amount) * 1e6, 2) + 'eV';
     }
 
     payFor(amount: number = 1): boolean {

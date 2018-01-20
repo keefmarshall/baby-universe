@@ -46,12 +46,12 @@ export class Paser extends ConstructionProject {
 
     displayCost(count: number = 1): string {
         let quarkCostString;
+        const strangeCost = this.numberFormatter.numberWithCommas(this.strangeQuarkCost(count));
+        const topCost = this.numberFormatter.numberWithCommas(this.topQuarkCost()) ;
         if (this.antiCycle()) {
-            quarkCostString = this.strangeQuarkCost(count) + " anti strange quarks, " +
-                this.topQuarkCost() + " top quark";
+            quarkCostString = strangeCost + " anti strange quarks, " + topCost + " top quark";
         } else {
-            quarkCostString = this.strangeQuarkCost(count) + " strange quarks, " +
-                this.topQuarkCost() + " anti top quark";
+            quarkCostString = strangeCost + " strange quarks, " + topCost+ " anti top quark";
         }
 
         return super.displayCost(count) + ", " + quarkCostString +
