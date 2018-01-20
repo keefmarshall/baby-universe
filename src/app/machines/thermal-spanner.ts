@@ -26,7 +26,8 @@ export class ThermalSpanner extends Machine {
     }
 
     displayCost(count: number = 1): string {
-        return this.energyCost(count) + " MeV";
+        // return this.energyCost(count) + " MeV";
+        return this.numberFormatter.abbreviateNumber(this.energyCost(count) * 1e6) + 'eV';
     }
 
     payFor(count: number = 1): boolean {

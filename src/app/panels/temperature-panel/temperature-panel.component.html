@@ -17,14 +17,8 @@
       >Heating {{ isHeating() ? "on" : "off" }}</mat-slide-toggle>
 
     <p *ngIf="isHeating()">
-      <mat-progress-bar
-        color="accent"
-        mode="indeterminate">
-      </mat-progress-bar>
-      <mat-progress-bar
-        color="accent"
-        mode="query">
-      </mat-progress-bar>
+      <mat-progress-bar color="accent" mode="indeterminate"></mat-progress-bar>
+      <mat-progress-bar color="accent" mode="query"></mat-progress-bar>
     </p>
 
     <div class="clearfix">
@@ -37,7 +31,7 @@
               Thermal Resistors: {{ universeService.universe.machines["ThermalResistor"].quantity }}<br/>
             </span>
             <span [ngClass]="energyCostColour()">
-                Energy draw: {{ readEnergyCostMeter() }} MeV/s
+                Energy draw: {{ readEnergyCostMeter() | mev }}/s
             </span>
         </p>
     </div>

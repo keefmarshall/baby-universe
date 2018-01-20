@@ -47,7 +47,8 @@ export class SpaceHeater extends Machine {
     }
 
     displayCost(count: number): string {
-        return parseFloat(this.energyCost(count).toPrecision(3)) + ' MeV';
+        // return parseFloat(this.energyCost(count).toPrecision(3)) + ' MeV';
+        return this.numberFormatter.abbreviateNumber(this.energyCost(count) * 1e6) + 'eV';
     }
 
     payFor(amount: number): boolean {

@@ -2,12 +2,14 @@ import { Globals } from '../globals';
 import { Universe } from '../services/universe';
 import { UniverseService } from '../services/universe.service';
 import { ResearchProject } from 'app/research/research-project';
+import { NumberFormatter } from 'app/util/number-formatter';
 
 
 export abstract class Machine {
     //readonly name: string;
 
     public readonly needsConstruction: boolean = false;
+    public readonly numberFormatter = new NumberFormatter();
 
     public canSee: boolean = false;
     public canBuy: boolean = false;

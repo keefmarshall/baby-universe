@@ -37,6 +37,12 @@ https://www.quora.com/How-many-particles-are-there-in-the-universe#
 Colour deconfinement starts at ~ 2 x 10^12K as per:
 https://www.uni-frankfurt.de/45167383/Stock
 
+
+SI UNIT PREFIXES:
+=================
+https://www.unc.edu/~rowlett/units/prefixes.html
+
+
 TODO 2018-01-18
 ===============
 
@@ -45,12 +51,13 @@ TODO 2018-01-18
 to format displayCOst()
 - option 2: convert displayCOst() to a hash of string/number pairs and format 
 in the display component
+- option 3: write a custom formatter for each unit type, MeV, GeV, TeV etc.
 
-2. Interrupt long-running research
+2. (DONE) Interrupt long-running research
 - Paradox Generator, paradoxes disrupt philosophers
 - some cost and time for buying a paradox, increases with use
 
-3. Interrupt long-running construction
+3. (DONE) Interrupt long-running construction
 - Thermal Spanner - some recovery time for assemblers after use
  - constant seconds? related to work done so far? total cost of project?
 
@@ -60,7 +67,7 @@ in the display component
 5. Heating rate display
 - currently thermometer doesn't show the rate of change?
 
-6. Dampen energy meter rate of change to reduce flipping
+6. Dampen energy meter rate of change to reduce flipping - PROBLEMATIC
 
 7. Some way to enable bulk purchase
 - press-and-hold on a button produces popup with more options?
@@ -72,3 +79,12 @@ in the display component
 9. Add some kind of analytics/callback
 - monitor how many people start
 - monitor how many people are reaching the end
+
+10. Deployment panel gets quite cluttered
+- should I remove early machines by limiting? e.g. only 20 quark squeezers etc?
+- could move things into related panels.. but that might unbalance the whole display
+- Just ordering the buttons or grouping might help
+- and sorting the number formats (see [1] above)
+
+11. Add link to Reddit forum thread for feedback?
+https://www.reddit.com/r/incremental_games/comments/7qzn8k/new_cosmologybased_game_seeking_alpha_feedback/

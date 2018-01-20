@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { Machine } from '../../machines/machine';
 import { MachineFactory } from '../../machines/machine-factory';
@@ -9,7 +9,8 @@ import { ConstructionProject } from 'app/machines/construction-project';
 @Component({
   selector: 'app-deploy-button',
   templateUrl: './deploy-button.component.html',
-  styleUrls: ['./deploy-button.component.css']
+  styleUrls: ['./deploy-button.component.css'],
+  encapsulation: ViewEncapsulation.None // this is so we can adjust the tooltip styling
 })
 export class DeployButtonComponent implements OnInit {
   @Input() machineName: string;

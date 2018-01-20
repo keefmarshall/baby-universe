@@ -5,6 +5,7 @@ import { UniverseService } from "app/services/universe.service";
 import { ConstructionService } from "app/services/construction.service";
 import { MeteringService } from "app/services/metering.service";
 import { ConstructionEnergyCostMeter } from "app/meters/construction-energy-cost-meter";
+import { NumberFormatter } from "app/util/number-formatter";
 
 export class Assembler extends Machine {
     protected baseEnergyCost = 3000;
@@ -57,7 +58,8 @@ export class Assembler extends Machine {
     }
 
     displayCost(count: number = 1): string {
-        return parseFloat(this.energyCost(count).toPrecision(3)) + ' MeV';
+        // return parseFloat(this.energyCost(count).toPrecision(3)) + ' MeV';
+        return this.numberFormatter.abbreviateNumber(this.energyCost(count) * 1e6) + 'eV';
     }
 
     payFor(amount: number = 1): boolean {
