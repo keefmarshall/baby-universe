@@ -1,18 +1,22 @@
-<button 
+<div
   *ngIf="machine.canSee"
-  mat-raised-button color="primary" 
-  class="deploy-button"
-  (click)="deployMachine()"
-  [disabled]="!machine.canBuy"
   [matTooltip]="machine.displayName + ': ' + machine.displayPurpose"
   matTooltipPosition="right"
+  matTooltipDisabled="false"
   [matTooltipClass]="{'butooltip': true}"
   >
+  <button 
+    mat-raised-button color="primary" 
+    class="deploy-button"
+    (click)="deployMachine()"
+    [disabled]="!machine.canBuy"
+    >
 
-  {{ machine.displayName }}
-  <span class="mobile-only">({{ machine.displayCost() }})</span>
-  <br/>
-  <small class="desktop-only">{{ machine.displayCost() }}</small>
-  <small class="mobile-only">{{ machine.displayPurpose }}</small>
+    {{ machine.displayName }}
+    <span class="mobile-only">({{ machine.displayCost() }})</span>
+    <br/>
+    <small class="desktop-only">{{ machine.displayCost() }}</small>
+    <small class="mobile-only">{{ machine.displayPurpose }}</small>
 
-</button>
+  </button>
+</div>
