@@ -4,6 +4,8 @@ import { ConstructionService } from "app/services/construction.service";
 import { MeteringService } from "app/services/metering.service";
 import { ConstructionProject } from "app/machines/construction-project";
 import { KineticEngineering } from "app/research/kinetics2";
+import { ResearchService } from "app/services/research.service";
+import { IntelligentAssembly } from "app/research/photons";
 
 export class AssemblyPlant extends ConstructionProject {
     // protected baseEnergyDraw = 100;
@@ -11,7 +13,8 @@ export class AssemblyPlant extends ConstructionProject {
 
     constructor(universeService: UniverseService,
         private constructionService: ConstructionService,
-        private meteringService: MeteringService
+        private meteringService: MeteringService,
+        private researchService: ResearchService
     ) {
         super('AssemblyPlant',
             "Assembly Plant",
@@ -33,6 +36,7 @@ export class AssemblyPlant extends ConstructionProject {
             const eff = this.universeService.universe.machines['Assembler'].efficiency;
             const baseEnergyDraw = this.universeService.universe.machines['Assembler'].extras['energyDraw'] * 100;
             const energyDraw = baseEnergyDraw * q;
+
             if (u.energy < energyDraw) {
                 // do nothing, there's not enough for us to work!
                 console.log("Assembly Plant: not enough energy to work!");
@@ -40,13 +44,29 @@ export class AssemblyPlant extends ConstructionProject {
                 // NB if efficiency goes above 10, we start taking heat from
                 // the universe to work! Not sure if I'll use this.
                 u.energy -= energyDraw;
-                const work = eff * energyDraw * 0.1;
+                let work = eff * energyDraw * 0.1;
                 u.heat += (energyDraw - work);
+
+                // Artificial increase to efficiency from idle philosophers
+                // NB doesn't affect energy draw
+                work *= this.idlePhilosopherBoost();
+
                 this.constructionService.addWork(work);
                 this.meteringService.addQuantity('construction-energy-cost', energyDraw);
                 this.meteringService.addQuantity('work', work);
             }
         }
+    }
+
+    public idlePhilosopherBoost(): number {
+        let boost = 1;
+        if (this.isResearched(new IntelligentAssembly()) && !this.researchService.isResearching()) {
+            const numPhils = this.machineQuantity("PhotonicPhilosopher");
+            const philEff = this.universeService.universe.machines["PhotonicPhilosopher"].efficiency;
+            boost = 1 + (numPhils * philEff * 0.2);
+        }
+
+        return boost;
     }
 
     onComplete() {

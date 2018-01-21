@@ -13,12 +13,13 @@ export class FieldMirror extends ConstructionProject {
             "FieldMirror",
             "Field Mirror",
             "Allows more Philosophers",
-            universeService, 12.5, Math.sqrt(3)
+            universeService, 12.5, 1.5
         );
     }
 
     onComplete() {
-        this.universeService.universe.machines['PhotonicPhilosopher'].extras.maxAllowed += 5;
+        const eff = this.properties().efficiency * 10;
+        this.universeService.universe.machines['PhotonicPhilosopher'].extras.maxAllowed += (5 * eff);
         this.machineService.addMachine(this);
     }
 

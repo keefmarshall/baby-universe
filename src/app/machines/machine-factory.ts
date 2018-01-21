@@ -61,7 +61,7 @@ export class MachineFactory {
             'ParadoxGenerator': new ParadoxGenerator(this.universeService),
             'FieldMirror': new FieldMirror(this.universeService),
             'Assembler': new Assembler(this.universeService, this.constructionService, this.meteringService),
-            'AssemblyPlant': new AssemblyPlant(this.universeService, this.constructionService, this.meteringService),
+            'AssemblyPlant': new AssemblyPlant(this.universeService, this.constructionService, this.meteringService, this.researchService),
             'ThermalSpanner': new ThermalSpanner(this.universeService, this.constructionService),
             'Thermometer': new Thermometer(this.universeService, this.meteringService),
             'SpaceHeater': new SpaceHeater(this.universeService, this.heatingService, this.meteringService),

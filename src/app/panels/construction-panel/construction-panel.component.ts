@@ -6,6 +6,7 @@ import { ConstructionEnergyCostMeter } from 'app/meters/construction-energy-cost
 import { MachineFactory } from 'app/machines/machine-factory';
 import { Assembler } from 'app/machines/assembler';
 import { Globals } from 'app/globals';
+import { AssemblyPlant } from 'app/machines/assembly-plant';
 
 
 @Component({
@@ -36,6 +37,11 @@ export class ConstructionPanelComponent implements OnInit {
       return this.meteringService.read('work');
   }
   
+  idlePhilosopherBoost(): number {
+    const ap = this.machineFactory.newMachine("AssemblyPlant") as AssemblyPlant;
+    return ap ? ap.idlePhilosopherBoost() : 1;
+  }
+
   energyCostColour(): string {
     if (!this.constructionService.isConstructing()) {
       return 'green';
