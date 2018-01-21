@@ -3,43 +3,46 @@ import { CommonModule } from '@angular/common';
 
 import {
   MatToolbarModule,
-  MatGridListModule,
+  // MatGridListModule,
   MatButtonModule,
-  MatCardModule,
+  // MatCardModule,
   MatDialogModule,
   MatProgressBarModule,
-  MatProgressSpinnerModule,
+  // MatProgressSpinnerModule,
   MatIconModule,
   MatSlideToggleModule,
   MatSlideToggle,
-  MatTooltipModule
+  MatTooltipModule,
+  MatTabsModule
 } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     MatToolbarModule,
-    MatGridListModule,
+    // MatGridListModule,
     MatButtonModule,
-    MatCardModule,
+    // MatCardModule,
     MatDialogModule,
     MatProgressBarModule,
-    MatProgressSpinnerModule,
+    // MatProgressSpinnerModule,
     MatIconModule,
     MatSlideToggleModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatTabsModule
   ],
   exports: [
     MatToolbarModule,
-    MatGridListModule,
+    // MatGridListModule,
     MatButtonModule,
-    MatCardModule,
+    // MatCardModule,
     MatDialogModule,
     MatProgressBarModule,
-    MatProgressSpinnerModule,
+    // MatProgressSpinnerModule,
     MatIconModule,
     MatSlideToggleModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatTabsModule
   ],
   declarations: []
 })
