@@ -8,7 +8,7 @@
       <mat-tab label="Machines">
         <app-help-machines></app-help-machines>
       </mat-tab>
-      <mat-tab label="Research">
+      <mat-tab label="Research" *ngIf="universeService.universe.machines['PhotonicPhilosopher']">
         <app-help-research></app-help-research>
       </mat-tab>
     </mat-tab-group>
