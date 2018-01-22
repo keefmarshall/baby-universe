@@ -1,0 +1,15 @@
+<p>Machines discovered so far</p>
+
+<table>
+  <tr>
+    <th>Machine</th>
+    <th>Purpose</th>
+    <th>Quantity</th>
+  </tr>
+  
+  <tr *ngFor="let machine of machines">
+    <td>{{ machine.displayName }}</td>
+    <td>{{ machine.displayPurpose }}</td>
+    <td class="numeric">{{ machine.properties().quantity }}</td>
+  </tr>
+</table>

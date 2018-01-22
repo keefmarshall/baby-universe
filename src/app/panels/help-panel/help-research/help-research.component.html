@@ -1,0 +1,22 @@
+<p>Research topics completed or available:</p>
+
+<table>
+  <tr>
+    <th>Research</th>
+    <th>Description</th>
+    <th>Completed</th>
+  </tr>
+  
+  <tr *ngFor="let project of research">
+    <td>{{ project.name }}</td>
+    <td>{{ project.description }}</td>
+    <td class="numeric">
+      <span *ngIf="project.isResearched(universeService.universe, project)">
+        <mat-icon>check</mat-icon>
+      </span>
+      <span *ngIf="!project.isResearched(universeService.universe, project)">
+        <mat-icon>close</mat-icon>
+      </span>
+    </td>
+  </tr>
+</table>

@@ -23,6 +23,8 @@ import { MatterTableComponent } from './matter-table/matter-table.component';
 import { FinalScoreComponent } from './final-score/final-score.component';
 import { HelpPanelComponent } from './help-panel/help-panel.component';
 import { HelpUnitsComponent } from './help-panel/help-units/help-units.component';
+import { HelpMachinesComponent } from './help-panel/help-machines/help-machines.component';
+import { HelpResearchComponent } from './help-panel/help-research/help-research.component';
 
 @NgModule({
   imports: [
@@ -47,7 +49,9 @@ import { HelpUnitsComponent } from './help-panel/help-units/help-units.component
     MatterTableComponent,
     FinalScoreComponent,
     HelpPanelComponent,
-    HelpUnitsComponent
+    HelpUnitsComponent,
+    HelpMachinesComponent,
+    HelpResearchComponent
   ],
   entryComponents: [
     StargameDialogComponent,
