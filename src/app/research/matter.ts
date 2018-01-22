@@ -69,7 +69,7 @@ export class Quarks3 extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        universe.logs.push("Quarks: from the Top to the Bottom.");
+        universe.logs.push("Quarks: from the top to the bottom. They might come in handy later.");
     }
 
 }

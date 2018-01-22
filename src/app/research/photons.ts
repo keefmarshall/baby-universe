@@ -21,14 +21,31 @@ export class Photovoltaics extends ResearchProject {
     }
 }
 
-export class Photoelectrics extends ResearchProject {
+export class QuantumPhotovoltaics extends ResearchProject {
 
     constructor() {
-        super("Photoelectrics", "Quadruples efficiency of Photon Collectors", 450);
+        super("Quantum Photovoltaics", "Trebles efficiency of Photon Collectors", 125);
     }
 
     preconditions(universe: Universe): boolean {
         return this.isResearched(universe, new Photovoltaics());
+    }
+
+    onCompletion(universe: Universe) {
+        // in theory we can't get here without at least some photon collectors
+        universe.machines['PhotonCollector'].efficiency *= 3;
+        universe.logs.push("More energy!");
+    }
+}
+
+export class Photoelectrics extends ResearchProject {
+
+    constructor() {
+        super("Photoelectrics", "Quadruples efficiency of Photon Collectors", 850);
+    }
+
+    preconditions(universe: Universe): boolean {
+        return this.isResearched(universe, new QuantumPhotovoltaics());
     }
 
     onCompletion(universe: Universe) {

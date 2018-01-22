@@ -16,7 +16,7 @@ export class Thermometer extends ConstructionProject implements Meter {
             "Thermometer",
             "Universal Thermometer",
             "Measures the temperature of the Universe",
-            universeService, 200, 1.1
+            universeService, 125, 1.1
         );
 
         // bootstrap:

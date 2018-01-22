@@ -17,6 +17,7 @@ export class Heat extends ResearchProject {
 
     onCompletion(universe: Universe) {
         // makes other stuff available
+        universe.logs.push("Maybe if we build some new machines, we can find out how to make Assembly more efficient?");
     }
 }
 
