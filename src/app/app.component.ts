@@ -11,6 +11,8 @@ import { TickerService } from 'app/services/ticker.service';
 import { StargameService } from 'app/games/stargame/stargame.service';
 import { BigBangService } from 'app/services/big-bang.service';
 import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { MatDialog } from '@angular/material';
+import { HelpPanelComponent } from 'app/panels/help-panel/help-panel.component';
 
 @Component({
   selector: 'app-root',
@@ -35,7 +37,8 @@ export class AppComponent implements OnInit, AfterViewInit  {
     private timeService: TimeService,
     private universeService: UniverseService,
     private renderer: Renderer2,
-    private stargameService: StargameService
+    private stargameService: StargameService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -97,4 +100,7 @@ export class AppComponent implements OnInit, AfterViewInit  {
     }
   }
 
+  openHelp() {
+    this.dialog.open(HelpPanelComponent);
+  }
 }

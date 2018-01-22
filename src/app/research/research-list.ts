@@ -22,7 +22,7 @@ export class ResearchList {
             new Refraction(),
             new Reflection(),
             new HemisphericalReflectance(),
-            new DirectionalReflectance(),            
+            new DirectionalReflectance(),
             new KineticConstruction(),
             new IntelligentAssembly(),
             new Heat(),

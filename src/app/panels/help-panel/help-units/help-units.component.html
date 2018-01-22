@@ -1,0 +1,17 @@
+<table>
+  <tr>
+    <th>Number</th>
+    <th>Name</th>
+    <th>SI</th>
+    <th>Prefix</th>
+    <th>In full</th>
+  </tr>
+
+  <tr *ngFor="let line of unitData">
+    <td>10<sup>{{ line.exponent }}</sup></td>
+    <td>{{ line.name }}</td>
+    <td><strong>{{ line.si }}</strong></td>
+    <td>{{ line.prefix }}-</td>
+    <td>{{ line.infull }}</td>
+  </tr>
+</table>

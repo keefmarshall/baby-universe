@@ -1,0 +1,7 @@
+.right { float: right; }
+
+mat-dialog-content {
+    height: 50vh;
+}
+
+.mat-tab-body-content { height: 100%; }
