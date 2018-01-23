@@ -54,7 +54,8 @@ export class QuarkScoop extends ConstructionProject {
 
     preconditions(): boolean {
         return this.isResearched(new Quarks3()) &&
-            this.isResearched(new KineticEngineering());
+            this.isResearched(new KineticEngineering()) &&
+            this.properties().quantity < 20; // can only have 20
     }
 
     upQuarkCost() {
