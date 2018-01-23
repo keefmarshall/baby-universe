@@ -70,7 +70,13 @@ export class AdvancedThermodynamics extends ResearchProject {
         universe.machines['Assembler'].extras['energyDraw'] *= 4
         universe.machines['SpaceHeater'].extras['energyDraw'] *= 4
         // also enables advanced heating machinery
-        universe.logs.push("Now we're cooking.");
+        universe.logs.push("Now we're cooking. ");
+        setTimeout(() => {
+            universe.logs.push("Thermal Resistors boost heating dramatically.");
+        }, 5000);
+        setTimeout(() => {
+            universe.logs.push("Resistors need more matter to contain all that heat energy.");
+        }, 10000);
     }
 }
 

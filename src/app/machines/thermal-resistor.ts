@@ -25,4 +25,10 @@ export class ThermalResistor extends ConstructionProject {
             this.machineQuantity("HeatingArray") > 4
     }
 
+    affordable(): boolean {
+        return super.affordable() &&
+            this.universeService.universe.particles["gluon"] &&
+            this.universeService.universe.particles["gluon"] >
+                Math.pow(10, this.properties().quantity * 3);
+    }
 }
