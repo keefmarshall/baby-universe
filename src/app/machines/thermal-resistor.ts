@@ -29,6 +29,6 @@ export class ThermalResistor extends ConstructionProject {
         return super.affordable() &&
             this.universeService.universe.particles["gluon"] &&
             this.universeService.universe.particles["gluon"] >
-                Math.pow(10, this.properties().quantity * 3);
+                Math.pow(10, this.properties().quantity * 2);
     }
 }
