@@ -72,11 +72,11 @@ export class AdvancedThermodynamics extends ResearchProject {
         // also enables advanced heating machinery
         universe.logs.push("Now we're cooking. ");
         setTimeout(() => {
-            universe.logs.push("Thermal Resistors boost heating dramatically.");
-        }, 5000);
+            universe.logs.push("Boost heating dramatically with Thermal Resistors.");
+        }, 60000);
         setTimeout(() => {
-            universe.logs.push("Resistors need more matter to contain all that heat energy.");
-        }, 10000);
+            universe.logs.push("Thermal Resistors need more matter to contain all that heat energy.");
+        }, 120000);
     }
 }
 
