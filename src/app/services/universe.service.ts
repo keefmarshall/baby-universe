@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Universe } from './universe';
 import { Subject } from 'rxjs/Subject';
+import { UUID } from 'angular2-uuid';
 
 @Injectable()
 export class UniverseService {
@@ -44,6 +45,7 @@ export class UniverseService {
    * need to initialise it properly otherwise stuff breaks
    */
   initialiseNew(u: Universe) {
+    if (u.id == null) u.id = UUID.UUID();
     if (u.phase == null) u.phase = 1;
     if (u.machines == null) u.machines = {};
     if (u.research == null) u.research = {};
@@ -56,7 +58,7 @@ export class UniverseService {
     if (!u.antiparticles) u.antiparticles = {};
 
     if (!u.logs) {
-      u.logs = ["...", "...", "...", "...", "...", "...",
+      u.logs = [ // "...", "...", "...", "...", "...", "...",
           "Within the empty void, matter and energy spontaneously " +
           "flash into existence, only to decay almost instantly. "];
     }
