@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UniverseService } from 'app/services/universe.service';
 import { AutosaveService } from 'app/services/autosave.service';
+import { AnalyticsService } from 'app/services/analytics.service';
 
 @Component({
   selector: 'app-final-score',
@@ -10,11 +11,12 @@ import { AutosaveService } from 'app/services/autosave.service';
 export class FinalScoreComponent implements OnInit {
 
   constructor(private universeService: UniverseService,
-    private autoSaveService: AutosaveService) {
-
-  }
+    private autoSaveService: AutosaveService,
+    private analytics: AnalyticsService
+  ) { }
 
   ngOnInit() {
+    this.analytics.endPhase1(this.universeService.universe, this.finalScore());
   }
 
   finalScore(): number {
