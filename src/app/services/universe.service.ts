@@ -74,4 +74,17 @@ export class UniverseService {
     }
 
   }
+
+  finalScorePhase1(): number {
+    // arbitrary number - goes up with order of magnitude of particles,
+    // down with the total number of seconds elapsed.
+
+    // can't be bothered to add up all the particles for now, let's just
+    // use gluons as a decent measure:
+    const u = this.universe;
+    const particleScore = Math.pow(Math.log10(u.particles["gluon"]), 2) * 1000;
+    const timeScore = u.elapsedSeconds / 60;
+
+    return Math.round(particleScore / timeScore);
+  }
 }

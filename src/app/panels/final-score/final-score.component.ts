@@ -16,20 +16,10 @@ export class FinalScoreComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.analytics.endPhase1(this.universeService.universe, this.finalScore());
   }
 
   finalScore(): number {
-    // arbitrary number - goes up with order of magnitude of particles,
-    // down with the total number of seconds elapsed.
-
-    // can't be bothered to add up all the particles for now, let's just
-    // use gluons as a decent measure:
-    const u = this.universeService.universe;
-    const particleScore = Math.pow(Math.log10(u.particles["gluon"]), 2) * 1000;
-    const timeScore = u.elapsedSeconds / 60;
-
-    return Math.round(particleScore / timeScore);
+    return this.universeService.finalScorePhase1();
   }
 
   resetUniverse() {
