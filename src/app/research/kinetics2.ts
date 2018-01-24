@@ -71,12 +71,20 @@ export class AdvancedThermodynamics extends ResearchProject {
         universe.machines['SpaceHeater'].extras['energyDraw'] *= 4
         // also enables advanced heating machinery
         universe.logs.push("Now we're cooking. ");
-        setTimeout(() => {
-            universe.logs.push("Boost heating dramatically with Thermal Resistors.");
-        }, 60000);
-        setTimeout(() => {
-            universe.logs.push("Thermal Resistors need more matter to contain all that heat energy.");
-        }, 120000);
+
+        // Encouragement message - see also HeatArray
+        const met = universe.machines['HeatArray'] &&
+            universe.machines['HeatArray'].quantity > 4
+        if (met && !universe.machines['HeatArray'].extras['met']) {
+            universe.machines['HeatArray'].extras['met'] = true;
+            setTimeout(() => {
+                universe.logs.push("Boost heating dramatically with Thermal Resistors.");
+            }, 20000);
+            setTimeout(() => {
+                universe.logs.push("Thermal Resistors need more matter to contain all that heat energy.");
+            }, 60000);
+        }
+
     }
 }
 
