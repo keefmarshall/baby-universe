@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Universe } from './universe';
 import { Subject } from 'rxjs/Subject';
 import { UUID } from 'angular2-uuid';
+import { AnalyticsService } from 'app/services/analytics.service';
 
 @Injectable()
 export class UniverseService {
@@ -11,7 +12,7 @@ export class UniverseService {
 
   public phase$ = new Subject<number>();
 
-  constructor() {
+  constructor(private analytics: AnalyticsService) {
     this.id = Math.floor(Math.random() * 100);
 
     this.loadUniverse();
@@ -32,6 +33,7 @@ export class UniverseService {
     } else {
       console.log("Creating fresh universe..");
       this.universe = new Universe;
+      this.analytics.start(this.universe);
     }
   }
 

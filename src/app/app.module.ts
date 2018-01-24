@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+// import { HttpModule } from '@angular/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -27,6 +27,8 @@ import { StateManagementService } from 'app/services/state-management.service';
 import { LogService } from 'app/services/log.service';
 import { HeatingService } from 'app/services/heating.service';
 import { BigBangService } from 'app/services/big-bang.service';
+import { AnalyticsService } from 'app/services/analytics.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -36,12 +38,13 @@ import { BigBangService } from 'app/services/big-bang.service';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MdesignModule,
     PanelsModule
   ],
   providers: [
+    AnalyticsService,
     AutosaveService,
     BigBangService,
     ConstructionService,
