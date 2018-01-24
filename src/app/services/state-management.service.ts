@@ -6,7 +6,6 @@ import { UniverseService } from 'app/services/universe.service';
 import { ConstructionService } from 'app/services/construction.service';
 import { ConstructionProject } from 'app/machines/construction-project';
 import { StargameService } from 'app/games/stargame/stargame.service';
-import { BigBangService } from 'app/services/big-bang.service';
 
 /**
  * This service exists to break circular dependencies between 
