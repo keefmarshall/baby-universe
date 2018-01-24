@@ -16,11 +16,11 @@ export class HelpUnitsComponent implements OnInit {
     new UnitData(18, "Quintillion", "E", "Exa-", "1,000,000,000,000,000,000"),
     new UnitData(21, "Sextillion", "Z", "Zetta-", "1,000,000,000,000,000,000,000"),
     new UnitData(24, "Septillion", "Y", "Yotta-", "1,000,000,000,000,000,000,000,000"),
-    new UnitData(27, "Octillion", "", "", ""),
-    new UnitData(30, "Nonillion", "", "", ""),
-    new UnitData(33, "Decillion", "", "", ""),
-    new UnitData(36, "Undecillion", "", "", ""),
-    new UnitData(39, "Duodecillion", "", "", "")
+    new UnitData(27, "Octillion", "kY", "kiloYotta-", ""),
+    new UnitData(30, "Nonillion", "MY", "MegaYotta-", ""),
+    new UnitData(33, "Decillion", "GY", "GigaYotta-", ""),
+    new UnitData(36, "Undecillion", "TY", "TeraYotta-", ""),
+    new UnitData(39, "Duodecillion", "PY", "PetaYotta-", "")
   ];
 
   constructor() { }
