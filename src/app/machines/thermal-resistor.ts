@@ -21,8 +21,25 @@ export class ThermalResistor extends ConstructionProject {
     }
 
     preconditions(): boolean {
-        return this.isResearched(new AdvancedThermodynamics()) &&
+        const met = this.isResearched(new AdvancedThermodynamics()) &&
             this.machineQuantity("HeatingArray") > 4
+
+        return met;
     }
 
+    affordable(): boolean {
+        return super.affordable() && this.enoughMatter();
+    }
+
+    // Override
+    displayCost(count: number = 1): string {
+        const extraText = this.enoughMatter() ? "" : " [requires more matter!]";
+        return super.displayCost(count) + extraText;
+    }
+
+    private enoughMatter(): boolean {
+        return this.universeService.universe.particles["gluon"] &&
+            this.universeService.universe.particles["gluon"] >
+                Math.pow(10, this.properties().quantity * 2);
+    }
 }

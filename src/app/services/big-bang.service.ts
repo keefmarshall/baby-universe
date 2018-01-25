@@ -2,6 +2,7 @@ import { ElementRef, Injectable, Renderer2, RendererFactory2 } from '@angular/co
 import { StargameService } from 'app/games/stargame/stargame.service';
 import { TickerService } from 'app/services/ticker.service';
 import { UniverseService } from 'app/services/universe.service';
+import { AnalyticsService } from 'app/services/analytics.service';
 
 @Injectable()
 export class BigBangService {
@@ -13,13 +14,16 @@ export class BigBangService {
     private rendererFactory2: RendererFactory2,
     private stargameService: StargameService,
     private tickerService: TickerService,
-    private universeService: UniverseService
+    private universeService: UniverseService,
+    private analytics: AnalyticsService
   ) {
     this.universeService.phase$.subscribe(phase => {
       if (phase === 2) {
         // we're up
         console.log("Phase change detected: BIG BANG!!!");
         this.bigBang();
+        this.analytics.endPhase1(this.universeService.universe,
+            this.universeService.finalScorePhase1());
       }
     });
 

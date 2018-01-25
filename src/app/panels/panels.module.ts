@@ -21,6 +21,10 @@ import { TemperaturePanelComponent } from './temperature-panel/temperature-panel
 import { PipesModule } from 'app/pipes/pipes.module';
 import { MatterTableComponent } from './matter-table/matter-table.component';
 import { FinalScoreComponent } from './final-score/final-score.component';
+import { HelpPanelComponent } from './help-panel/help-panel.component';
+import { HelpUnitsComponent } from './help-panel/help-units/help-units.component';
+import { HelpMachinesComponent } from './help-panel/help-machines/help-machines.component';
+import { HelpResearchComponent } from './help-panel/help-research/help-research.component';
 
 @NgModule({
   imports: [
@@ -43,10 +47,15 @@ import { FinalScoreComponent } from './final-score/final-score.component';
     TickerComponent,
     TemperaturePanelComponent,
     MatterTableComponent,
-    FinalScoreComponent
+    FinalScoreComponent,
+    HelpPanelComponent,
+    HelpUnitsComponent,
+    HelpMachinesComponent,
+    HelpResearchComponent
   ],
   entryComponents: [
-    StargameDialogComponent
+    StargameDialogComponent,
+    HelpPanelComponent
   ],
   exports: [
     DevPanelComponent,
@@ -60,7 +69,8 @@ import { FinalScoreComponent } from './final-score/final-score.component';
     TickerComponent,
     TemperaturePanelComponent,
     MatterTableComponent,
-    FinalScoreComponent
+    FinalScoreComponent,
+    HelpPanelComponent
   ]
 })
 export class PanelsModule { }

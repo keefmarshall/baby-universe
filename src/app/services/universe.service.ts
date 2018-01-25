@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Universe } from './universe';
 import { Subject } from 'rxjs/Subject';
+import { UUID } from 'angular2-uuid';
+import { AnalyticsService } from 'app/services/analytics.service';
 
 @Injectable()
 export class UniverseService {
@@ -10,7 +12,7 @@ export class UniverseService {
 
   public phase$ = new Subject<number>();
 
-  constructor() {
+  constructor(private analytics: AnalyticsService) {
     this.id = Math.floor(Math.random() * 100);
 
     this.loadUniverse();
@@ -31,6 +33,7 @@ export class UniverseService {
     } else {
       console.log("Creating fresh universe..");
       this.universe = new Universe;
+      this.analytics.start(this.universe);
     }
   }
 
@@ -44,6 +47,7 @@ export class UniverseService {
    * need to initialise it properly otherwise stuff breaks
    */
   initialiseNew(u: Universe) {
+    if (u.id == null) u.id = UUID.UUID();
     if (u.phase == null) u.phase = 1;
     if (u.machines == null) u.machines = {};
     if (u.research == null) u.research = {};
@@ -56,7 +60,7 @@ export class UniverseService {
     if (!u.antiparticles) u.antiparticles = {};
 
     if (!u.logs) {
-      u.logs = ["...", "...", "...", "...", "...", "...",
+      u.logs = [ // "...", "...", "...", "...", "...", "...",
           "Within the empty void, matter and energy spontaneously " +
           "flash into existence, only to decay almost instantly. "];
     }
@@ -69,5 +73,18 @@ export class UniverseService {
       u.machines['SpaceHeater'].extras['energyDraw'] = 1;
     }
 
+  }
+
+  finalScorePhase1(): number {
+    // arbitrary number - goes up with order of magnitude of particles,
+    // down with the total number of seconds elapsed.
+
+    // can't be bothered to add up all the particles for now, let's just
+    // use gluons as a decent measure:
+    const u = this.universe;
+    const particleScore = Math.pow(Math.log10(u.particles["gluon"]), 2) * 1000;
+    const timeScore = u.elapsedSeconds / 60;
+
+    return Math.round(particleScore / timeScore);
   }
 }

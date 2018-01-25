@@ -1,7 +1,7 @@
 import { UniverseService } from "app/services/universe.service";
 import { MeteringService } from "app/services/metering.service";
 import { ConstructionProject } from "app/machines/construction-project";
-import { KineticEngineering, HeatPumps } from "app/research/kinetics2";
+import { KineticEngineering, HeatPumps, AdvancedThermodynamics } from "app/research/kinetics2";
 import { HeatingService } from "app/services/heating.service";
 
 export class HeatingArray extends ConstructionProject {
@@ -44,6 +44,16 @@ export class HeatingArray extends ConstructionProject {
 
     onComplete() {
         this.machineService.addMachine(this);
+
+        const met = this.properties().quantity > 4 &&
+            this.isResearched(new AdvancedThermodynamics());
+        if (met && !this.properties().extras['met']) {
+            this.properties().extras['met'] = true;
+            this.universeService.universe.logs.push("Boost heating dramatically with Thermal Resistors.");
+            setTimeout(() => {
+                this.universeService.universe.logs.push("Thermal Resistors need more matter to contain all that heat energy.");
+            }, 60000);
+        }
     }
 
     preconditions(): boolean {

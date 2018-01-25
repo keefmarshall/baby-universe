@@ -17,6 +17,7 @@ export class Heat extends ResearchProject {
 
     onCompletion(universe: Universe) {
         // makes other stuff available
+        universe.logs.push("Maybe if we build some new machines, we can find out how to make Assembly more efficient?");
     }
 }
 
@@ -69,7 +70,21 @@ export class AdvancedThermodynamics extends ResearchProject {
         universe.machines['Assembler'].extras['energyDraw'] *= 4
         universe.machines['SpaceHeater'].extras['energyDraw'] *= 4
         // also enables advanced heating machinery
-        universe.logs.push("Now we're cooking.");
+        universe.logs.push("Now we're cooking. ");
+
+        // Encouragement message - see also HeatArray
+        const met = universe.machines['HeatArray'] &&
+            universe.machines['HeatArray'].quantity > 4
+        if (met && !universe.machines['HeatArray'].extras['met']) {
+            universe.machines['HeatArray'].extras['met'] = true;
+            setTimeout(() => {
+                universe.logs.push("Boost heating dramatically with Thermal Resistors.");
+            }, 20000);
+            setTimeout(() => {
+                universe.logs.push("Thermal Resistors need more matter to contain all that heat energy.");
+            }, 60000);
+        }
+
     }
 }
 

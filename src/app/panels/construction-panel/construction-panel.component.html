@@ -32,6 +32,9 @@
     </p>
 
     <div class="clearfix">
+        <p class="info info-right" *ngIf="constructionService.isConstructing() && idlePhilosopherBoost() > 1">
+            Intelligent assembly boost: {{ idlePhilosopherBoost() - 1 | number }}
+        </p>
         <p class="info info-left" *ngIf="universeService.universe.machines['AssemblyPlant']">
             Assembly Plants: {{ universeService.universe.machines["AssemblyPlant"].quantity }}
         </p>

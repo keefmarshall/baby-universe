@@ -2,6 +2,9 @@
   <span>{{title}}</span>
   <span class="space-filler"></span>
   <app-ticker class="desktop-only"></app-ticker>
+  <button mat-icon-button (click)="openHelp()">
+    <mat-icon>help_outline</mat-icon>
+  </button>
 </mat-toolbar> 
 
 <!-- <div *ngIf="showDebug">
@@ -60,6 +63,6 @@
   <address>
     &copy; 2018 Keith Marshall
     | <span (click)="resetUniverse()" class="start-again">start again</span>
-    | v0.2.2-alpha
+    | v0.2.3-alpha
 </address>
 </footer>

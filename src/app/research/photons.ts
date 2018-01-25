@@ -21,14 +21,31 @@ export class Photovoltaics extends ResearchProject {
     }
 }
 
-export class Photoelectrics extends ResearchProject {
+export class QuantumPhotovoltaics extends ResearchProject {
 
     constructor() {
-        super("Photoelectrics", "Quadruples efficiency of Photon Collectors", 450);
+        super("Quantum Photovoltaics", "Trebles efficiency of Photon Collectors", 125);
     }
 
     preconditions(universe: Universe): boolean {
         return this.isResearched(universe, new Photovoltaics());
+    }
+
+    onCompletion(universe: Universe) {
+        // in theory we can't get here without at least some photon collectors
+        universe.machines['PhotonCollector'].efficiency *= 3;
+        universe.logs.push("More energy!");
+    }
+}
+
+export class Photoelectrics extends ResearchProject {
+
+    constructor() {
+        super("Photoelectrics", "Quadruples efficiency of Photon Collectors", 850);
+    }
+
+    preconditions(universe: Universe): boolean {
+        return this.isResearched(universe, new QuantumPhotovoltaics());
     }
 
     onCompletion(universe: Universe) {
@@ -98,6 +115,37 @@ export class Reflection extends ResearchProject {
     }
 }
 
+export class HemisphericalReflectance extends ResearchProject {
+
+    constructor() {
+        super("Hemispherical Reflectance", "New field mirrors are twice as effective", 3250);
+    }
+
+    preconditions(universe: Universe): boolean {
+        return this.machineQuantity(universe, "FieldMirror") >= 10;
+    }
+
+    onCompletion(universe: Universe) {
+        universe.machines['FieldMirror'].efficiency *= 2;
+    }
+}
+
+export class DirectionalReflectance extends ResearchProject {
+
+    constructor() {
+        super("Directional Reflectance", "New field mirrors are twice as effective", 12500);
+    }
+
+    preconditions(universe: Universe): boolean {
+        return this.machineQuantity(universe, "FieldMirror") >= 20 && 
+            this.isResearched(universe, new HemisphericalReflectance());
+    }
+
+    onCompletion(universe: Universe) {
+        universe.machines['FieldMirror'].efficiency *= 2;
+    }
+}
+
 export class Refraction extends ResearchProject {
 
     constructor() {
@@ -111,5 +159,20 @@ export class Refraction extends ResearchProject {
 
     onCompletion(universe: Universe) {
         universe.machines['PhotonicPhilosopher'].efficiency *= 5;
+    }
+}
+
+export class IntelligentAssembly extends ResearchProject {
+
+    constructor() {
+        super("Intelligent Assembly", "Idle philosophers optimise assembly plant processes", 35000);
+    }
+
+    preconditions(universe: Universe): boolean {
+        return this.machineQuantity(universe, 'AssemblyPlant') >= 20;
+    }
+
+    onCompletion(universe: Universe) {
+        // see assembly plant
     }
 }
