@@ -6,6 +6,7 @@ import { Photovoltaics, LinearPolarisation, CircularPolarisation, EllipticalPola
      Photoelectrics, Reflection, Refraction, IntelligentAssembly, HemisphericalReflectance, DirectionalReflectance, QuantumPhotovoltaics } from "app/research/photons";
 import { PhotonAmplification } from "app/research/amplification";
 import { QuantumElectrodynamics, QuantumChromodynamics, ColourDeconfinement } from "app/research/collection";
+import { BulkDeployment, AdvancedBulkDeployment } from "app/research/bulk-deployment";
 
 export class ResearchList {
     public projectList: Array<ResearchProject> = [];
@@ -17,6 +18,8 @@ export class ResearchList {
             new QuantumPhotovoltaics(),
             new Photoelectrics(),
             new PhotonAmplification(),
+            new BulkDeployment(),
+            new AdvancedBulkDeployment(),
             new LinearPolarisation(),
             new CircularPolarisation(),
             new EllipticalPolarisation(),

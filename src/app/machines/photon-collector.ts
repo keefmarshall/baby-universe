@@ -18,7 +18,8 @@ export class PhotonCollector extends Machine {
         super('PhotonCollector',
             "Photon Collector",
             "Converts stray photons into energy",
-            universeService);
+            universeService,
+            true);
     }
 
     // ////////////////////////////////

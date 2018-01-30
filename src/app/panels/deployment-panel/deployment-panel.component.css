@@ -1,0 +1,41 @@
+p.info {
+    font-size: 0.64em;
+}
+
+.info-right {
+    float: right;
+    text-align: right;
+    margin: 0px;
+    margin-top: 5px;
+}
+
+mat-button-toggle-group {
+    margin-top: 10px;
+}
+
+.multiplier-button {
+    font-size: 0.65em;
+    font-weight: 400;
+
+    animation-name: bounceIn;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.multiplier-button:not(disabled):hover {
+    box-shadow: inset 0 0 0 99999px rgba(128,128,128,0.2);
+}
+
+/** 
+    NOTE this doesn't work here due to encapsulation - it's
+    duplicated in the core styles.css file instead. I could
+    set the view mode to encaspulation: none but that exposes
+    the other styles in this file globally, which is not what
+    I want :(
+        
+.multiplier-button .mat-button-toggle-label-content {
+  padding: 2px;
+  line-height: 1;
+}
+
+*/
