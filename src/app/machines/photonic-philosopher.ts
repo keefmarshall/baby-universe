@@ -18,7 +18,8 @@ export class PhotonicPhilosopher extends Machine {
         super('PhotonicPhilosopher',
             "Photonic Philosopher",
             "Conducts scientific research",
-            universeService);
+            universeService,
+            true);
     }
 
     // ////////////////////////////////

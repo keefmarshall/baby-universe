@@ -22,7 +22,7 @@ export class SpaceHeater extends Machine {
         _displayName = 'Space Heater',
         _description = "Converts stored energy to heat"
     ) {
-        super(_name, _displayName, _description, universeService);
+        super(_name, _displayName, _description, universeService, true);
     }
 
     onTick() {
