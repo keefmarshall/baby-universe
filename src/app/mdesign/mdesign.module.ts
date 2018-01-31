@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
   MatToolbarModule,
   // MatGridListModule,
   MatButtonModule,
+  MatButtonToggleModule,
   // MatCardModule,
   MatDialogModule,
   MatProgressBarModule,
@@ -19,9 +21,12 @@ import {
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule, ReactiveFormsModule,
+    
     MatToolbarModule,
     // MatGridListModule,
     MatButtonModule,
+    MatButtonToggleModule,
     // MatCardModule,
     MatDialogModule,
     MatProgressBarModule,
@@ -35,6 +40,7 @@ import {
     MatToolbarModule,
     // MatGridListModule,
     MatButtonModule,
+    MatButtonToggleModule,
     // MatCardModule,
     MatDialogModule,
     MatProgressBarModule,

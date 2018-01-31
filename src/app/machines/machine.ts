@@ -14,8 +14,8 @@ export abstract class Machine {
     public canSee: boolean = false;
     public canBuy: boolean = false;
     public canBuy10: boolean = false;
-    public canBuy100: boolean = false;
-    public canBuy1k: boolean = false;
+    public canBuy20: boolean = false;
+    public canBuy50: boolean = false;
 
     abstract onTick();
     abstract preconditions(): boolean;
@@ -27,7 +27,8 @@ export abstract class Machine {
         public readonly name: string,
         public readonly displayName: string,
         public readonly displayPurpose: string,
-        protected universeService: UniverseService
+        protected universeService: UniverseService,
+        public canBuyMultiple = false
     ) { }
 
     defaultProperties(): MachineProperties {

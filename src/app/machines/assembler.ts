@@ -20,7 +20,7 @@ export class Assembler extends Machine {
         _displayName = 'Assembler',
         _description = "Converts stored energy to useful work"
     ) {
-        super(_name, _displayName, _description, universeService);
+        super(_name, _displayName, _description, universeService, true);
     }
 
     // ////////////////////////////////
