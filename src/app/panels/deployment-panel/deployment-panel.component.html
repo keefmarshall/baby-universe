@@ -1,4 +1,5 @@
 <div id="deployment-panel" class="panel delay-1">
+
   <div class="info-right" *ngIf="bulk1()">
     <mat-button-toggle-group [(value)]="multiplier" color="primary">
       <mat-button-toggle class="multiplier-button" value="1">1x</mat-button-toggle>
@@ -14,9 +15,11 @@
   </p>
 
   <div *ngFor="let machine of machineFactory.allMachineNames">
-    <app-deploy-button [machineName]="machine"></app-deploy-button>
+    <app-deploy-button 
+      [machineName]="machine"
+      [multiplier]="this.multiplier">
+    </app-deploy-button>
   </div>
 
-  <p>Multipler: {{ multiplier }}</p>
 </div>
   

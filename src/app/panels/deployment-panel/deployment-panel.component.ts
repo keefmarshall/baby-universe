@@ -9,7 +9,7 @@ import { BulkDeployment, AdvancedBulkDeployment } from 'app/research/bulk-deploy
   styleUrls: ['./deployment-panel.component.css']
 })
 export class DeploymentPanelComponent implements OnInit {
-  public multiplier: number = 1;
+  multiplier: number = 1;
 
   constructor(public machineFactory: MachineFactory,
     public universeService: UniverseService) { }

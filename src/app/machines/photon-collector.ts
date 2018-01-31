@@ -43,6 +43,8 @@ export class PhotonCollector extends Machine {
 
     displayCost(amount: number = 1): string {
         // return Globals.round(this.energyCost(amount), 1) + ' MeV';
+        // const tmp = this.energyCost(1);
+        // const tmp2 = this.energyCost(amount);
         return this.numberFormatter.abbreviateNumber(this.energyCost(amount) * 1e6) + 'eV';
     }
 
