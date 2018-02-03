@@ -1,10 +1,11 @@
 canvas {
     float: left;
     cursor: crosshair;
+    margin-right: 5px;
 }
 
 p.info {
-    font-size:0.7em
+    font-size:0.7em;
 }
 
 .info-right {
