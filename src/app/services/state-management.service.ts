@@ -109,9 +109,11 @@ export class StateManagementService {
       const machine = this.machineFactory.newMachine(m);
       machine.canSee = machine.preconditions();
       machine.canBuy = machine.affordable(1);
-      machine.canBuy10 = machine.affordable(10);
-      machine.canBuy100 = machine.affordable(100);
-      machine.canBuy1k = machine.affordable(1000);
+      if (machine.canBuyMultiple) {
+        machine.canBuy10 = machine.affordable(10);
+        machine.canBuy20 = machine.affordable(20);
+        machine.canBuy50 = machine.affordable(50);
+      }
     });
   }
 

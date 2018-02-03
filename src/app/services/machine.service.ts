@@ -54,7 +54,7 @@ export class MachineService {
    * 
    * @param machine instance to add
    */
-  addMachine(machine: Machine) {
+  addMachine(machine: Machine, quantity: number = 1) {
     const exists = this.machineNames.includes(machine.name);
     const universe = this.universeService.universe;
 
@@ -68,7 +68,7 @@ export class MachineService {
     }
 
     // increment the quantity
-    universe.machines[machine.name].quantity += 1;
+    universe.machines[machine.name].quantity += quantity;
   }
 
   exists(name: string) {

@@ -9,13 +9,17 @@
     mat-raised-button color="primary" 
     class="deploy-button"
     (click)="deployMachine()"
-    [disabled]="!machine.canBuy"
+    [disabled]="!canBuy()"
     >
 
+    <span *ngIf="quantity > 1" class="deployment-quantity">
+      {{ quantity }}x
+    </span>
+
     {{ machine.displayName }}
-    <span class="mobile-only">({{ machine.displayCost() }})</span>
+    <span class="mobile-only">({{ machine.displayCost(quantity) }})</span>
     <br/>
-    <small class="desktop-only">{{ machine.displayCost() }}</small>
+    <small class="desktop-only">{{ machine.displayCost(quantity) }}</small>
     <small class="mobile-only">{{ machine.displayPurpose }}</small>
 
   </button>

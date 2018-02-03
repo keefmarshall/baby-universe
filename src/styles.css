@@ -130,3 +130,12 @@ blockquote, .log {
 .delay-5 {
   animation-delay: 1000ms;
 }
+
+
+
+/*************************************************/
+
+.multiplier-button .mat-button-toggle-label-content {
+  padding: 0 6px;
+  line-height: 20px;
+}

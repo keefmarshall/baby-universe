@@ -3,6 +3,7 @@ import { Universe } from './universe';
 import { Subject } from 'rxjs/Subject';
 import { UUID } from 'angular2-uuid';
 import { AnalyticsService } from 'app/services/analytics.service';
+import { ResearchProject } from 'app/research/research-project';
 
 @Injectable()
 export class UniverseService {
@@ -86,5 +87,14 @@ export class UniverseService {
     const timeScore = u.elapsedSeconds / 60;
 
     return Math.round(particleScore / timeScore);
+  }
+
+  isResearched(research: ResearchProject) {
+    const u = this.universe;
+    if (u.research[research.name] && u.research[research.name].researched) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

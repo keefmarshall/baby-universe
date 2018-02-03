@@ -30,12 +30,12 @@ export class StargameComponent implements AfterViewInit {
 
   /**
    * Screen-reader-only functionality
-   *
-   * @param n
    */
-  addQuarks(n: number) {
+  addQuarks() {
     const qu = new QuarkUtils();
     const u = this.universeService.universe;
+    const numDetectors = u.machines['MatterDetector'] ? u.machines['MatterDetector'].quantity : 0;
+    const n = 1 + numDetectors;
     for (let i = 0; i < n; i++) {
       const quark = qu.randomQuark(u);
       this.particleFactory.collectQuark(u, quark);
