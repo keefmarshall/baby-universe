@@ -30,6 +30,8 @@ import { BigBangService } from 'app/services/big-bang.service';
 import { AnalyticsService } from 'app/services/analytics.service';
 import { HttpClientModule } from '@angular/common/http';
 
+import {ToastyModule} from 'ng2-toasty';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -41,7 +43,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     BrowserAnimationsModule,
     MdesignModule,
-    PanelsModule
+    PanelsModule,
+    ToastyModule.forRoot()
   ],
   providers: [
     AnalyticsService,

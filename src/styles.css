@@ -5,6 +5,7 @@
 /* @import '~@angular/material/prebuilt-themes/purple-green.css'; */
 
 @import '~@material/layout-grid/dist/mdc.layout-grid.min.css';
+@import '~ng2-toasty/style-material.css';
 
 body {
     margin: 0;

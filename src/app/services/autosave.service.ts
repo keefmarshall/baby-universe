@@ -4,6 +4,7 @@ import { TickerService } from './ticker.service';
 import { UniverseService } from './universe.service';
 
 import { Globals } from '../globals';
+import { ToastyService } from 'ng2-toasty';
 
 @Injectable()
 export class AutosaveService {
@@ -13,13 +14,15 @@ export class AutosaveService {
 
   constructor(
     private tickerService: TickerService,
-    private universeService: UniverseService
+    private universeService: UniverseService,
+    private toastyService: ToastyService
   ) {
     this.tickerService.tick$.subscribe(n => {
       // every 5 seconds
       const interval = (this.frequency / Globals.secondsPerTick);
       if (n % interval === 0) { 
         this.autosave();
+        this.toastyService.info("Autosave");
       }
     });
   }

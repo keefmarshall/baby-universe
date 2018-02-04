@@ -13,6 +13,7 @@ import { BigBangService } from 'app/services/big-bang.service';
 import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { MatDialog } from '@angular/material';
 import { HelpPanelComponent } from 'app/panels/help-panel/help-panel.component';
+import { ToastyConfig } from 'ng2-toasty';
 
 @Component({
   selector: 'app-root',
@@ -38,8 +39,11 @@ export class AppComponent implements OnInit, AfterViewInit  {
     private universeService: UniverseService,
     private renderer: Renderer2,
     private stargameService: StargameService,
-    private dialog: MatDialog
-  ) { }
+    private dialog: MatDialog,
+    private toastyConfig: ToastyConfig
+  ) {
+    toastyConfig.theme = "material";
+  }
 
   ngOnInit() {
     this.autosaveService.enabled = true;
