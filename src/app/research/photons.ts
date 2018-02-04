@@ -88,7 +88,7 @@ export class CircularPolarisation extends ResearchProject {
 export class EllipticalPolarisation extends ResearchProject {
 
     constructor() {
-        super("Elliptical Polarisation", "Quadruples efficiency of Philosophers", 800);
+        super("Elliptical Polarisation", "Quadruples efficiency of Philosophers", 700);
     }
 
     preconditions(universe: Universe): boolean {

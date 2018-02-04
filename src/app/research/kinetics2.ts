@@ -91,7 +91,7 @@ export class AdvancedThermodynamics extends ResearchProject {
 
 export class KineticEnergyRecovery extends ResearchProject {
     constructor() {
-        super("Kinetic Energy Recovery", "Recover work energy lost as heat", 750);
+        super("Kinetic Energy Recovery", "Recover work energy lost as heat", 300);
     }
 
     preconditions(universe: Universe): boolean {
@@ -110,7 +110,7 @@ export class KineticEnergyRecovery extends ResearchProject {
 export class KineticEngineering extends ResearchProject {
 
     constructor() {
-        super("Kinetic Engineering", "Advanced construction skills", 3500);
+        super("Kinetic Engineering", "Advanced construction skills", 2750);
     }
 
     preconditions(universe: Universe): boolean {
