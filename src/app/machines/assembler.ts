@@ -52,9 +52,7 @@ export class Assembler extends Machine {
     }
 
     preconditions(): boolean {
-        const kcres = 
-            this.universeService.universe.research[new KineticConstruction().name];
-        return kcres != null ? kcres.researched : false;
+        return this.isResearched(new KineticConstruction());
     }
 
     displayCost(count: number = 1): string {

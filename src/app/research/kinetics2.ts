@@ -1,7 +1,6 @@
 import { ResearchProject } from "app/research/research-project";
 import { Universe } from "app/services/universe";
 import { KineticConstruction } from "app/research/kinetics";
-import { Assembler } from "app/machines/assembler";
 
 export class Heat extends ResearchProject {
     constructor() {
