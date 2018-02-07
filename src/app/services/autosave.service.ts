@@ -18,14 +18,14 @@ export class AutosaveService {
     this.tickerService.tick$.subscribe(n => {
       // every 5 seconds
       const interval = (this.frequency / Globals.secondsPerTick);
-      if (n % interval === 0) { 
+      if (n % interval === 0) {
         this.autosave();
       }
     });
   }
 
   autosave() {
-    if (this.enabled) {
+    if (this.enabled && this.tickerService.resumeFor < 1) {
       console.log('Autosave..');
       this.universeService.saveUniverse();
     }

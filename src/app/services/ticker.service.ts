@@ -16,7 +16,7 @@ export class TickerService {
   private pauser = new Subject<PausedState>();
 
   private hiddenAt: number = null;
-  private resumeFor: number = 0;
+  public resumeFor: number = 0;
 
   private internalTicker$: Observable<number>;
 
@@ -79,7 +79,7 @@ export class TickerService {
         const hiddenFor = (event.timeStamp - this.hiddenAt);
         console.log("Was hidden for: " + hiddenFor);
         this.hiddenAt = null;
-        this.resumeFor = Math.round(hiddenFor / (1000 * Globals.secondsPerTick));
+        this.resumeFor += Math.round(hiddenFor / (1000 * Globals.secondsPerTick));
         this.resume();
       }
     }
@@ -87,20 +87,45 @@ export class TickerService {
 
   catcherUpper(): Observable<number> {
     console.log("CatcherUpper: resuming for " + this.resumeFor + " ticks..");
-    return Observable.create((observer: Subscriber<number>) => {
+    const cuObs = Observable.create((observer: Subscriber<number>) => {
       const localResumeFor = this.resumeFor;
       let tracker = 0;
 
       while (tracker < localResumeFor) {
         tracker++;
+        this.resumeFor --;
         observer.next(tracker);
         // console.log("CatcherUpper: returning " + tracker + "(localrf = " + localResumeFor + ")");
       }
 
       observer.complete();
       this.resumeFor = 0;
-      // this.run();
       console.log("CatcherUpper: done");
-    });
+    }) as Observable<number>;
+
+    return cuObs;
+
+    // Various failed attempts to slow this down, or yield every
+    // <x> ticks.
+    //
+    // interval(), delay() and timer() all seem to be completely
+    // ignored when used in this context, I have no idea why.
+
+    // return Observable.zip(
+    //   cuObs,
+    //   // Observable.interval(2000),
+    //   this.internalTicker$,
+    //   (n, i) => n
+    // ) as Observable<number>;
+
+    // Doesn't work
+    // const delayer = Observable.empty().delay(2000);
+    // return cuObs.concatMap(n => {
+    //   return Observable.of(n).concat(delayer); // put some time after the item
+    // }) as Observable<number>;
+
+    // delayWithSelector(n => { // delayWithDelector not implemented!
+    //   return Observable.timer((n % 5) * 100);
+    // });
   }
 }
