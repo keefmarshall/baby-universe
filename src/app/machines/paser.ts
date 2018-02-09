@@ -17,7 +17,8 @@ export class Paser extends ConstructionProject {
     }
 
     onComplete() {
-        this.universeService.universe.machines["PhotonCollector"].efficiency *= 10;
+        const eff = this.properties().efficiency * 50; // efficiency starts at 0.1, so 5x multiplier
+        this.universeService.universe.machines["PhotonCollector"].efficiency *= eff;
         this.machineService.addMachine(this);
     }
 

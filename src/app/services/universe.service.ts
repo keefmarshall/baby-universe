@@ -74,6 +74,16 @@ export class UniverseService {
       u.machines['SpaceHeater'].extras['energyDraw'] = 1;
     }
 
+    if (!u.release || u.release < 0.25) {
+      u.release = 0.25;
+      // hobble Pasers, they used to be more powerful
+      if (u.machines['Paser'] && u.machines['Paser'].quantity > 0) {
+        const npasers = u.machines['Paser'].quantity
+        u.machines['PhotonCollector'].efficiency /= Math.pow(2, npasers);
+        u.logs.push("A strange force ripples through your machines, rendering your Pasers less effective.");
+        u.logs.push("Maybe you can find new ways to bring them back to their previous power?");
+      }
+    }
   }
 
   finalScorePhase1(): number {

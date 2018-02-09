@@ -4,7 +4,7 @@ import { ResearchProject } from "app/research/research-project";
 import { Leptons, Fermions, Quarks3, Quarks2, Quarks1 } from "app/research/matter";
 import { Photovoltaics, LinearPolarisation, CircularPolarisation, EllipticalPolarisation,
      Photoelectrics, Reflection, Refraction, IntelligentAssembly, HemisphericalReflectance, DirectionalReflectance, QuantumPhotovoltaics } from "app/research/photons";
-import { PhotonAmplification } from "app/research/amplification";
+import { PhotonAmplification, QSwitching, ModeLocking } from "app/research/amplification";
 import { QuantumElectrodynamics, QuantumChromodynamics, ColourDeconfinement } from "app/research/collection";
 import { BulkDeployment, AdvancedBulkDeployment } from "app/research/bulk-deployment";
 
@@ -18,6 +18,8 @@ export class ResearchList {
             new QuantumPhotovoltaics(),
             new Photoelectrics(),
             new PhotonAmplification(),
+            new QSwitching(),
+            new ModeLocking(),
             new BulkDeployment(),
             new AdvancedBulkDeployment(),
             new LinearPolarisation(),
