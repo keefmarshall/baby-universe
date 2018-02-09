@@ -93,3 +93,20 @@ in the display component
 
 11. Add link to Reddit forum thread for feedback?
 https://www.reddit.com/r/incremental_games/comments/7qzn8k/new_cosmologybased_game_seeking_alpha_feedback/
+
+
+
+PASER balancing
+================
+
+Reduce initial multiplier a lot (2.5x?)
+- use Paser efficiency for this.
+
+Extra research: 
+Q-switching
+Mode locking
+
+ - enhance paser efficiency, which means we have to retrospectively enhance
+ photon collector efficiency as the pasers are normally a one-shot eff gain.
+ - or we change the photon collector algorithm to take into account the number of pasers
+ and the current paser efficiency.
