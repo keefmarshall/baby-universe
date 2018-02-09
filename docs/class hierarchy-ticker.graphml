@@ -18,7 +18,7 @@
       <data key="d6">
         <y:GenericNode configuration="ShinyPlateNodeWithShadow">
           <y:Geometry height="46.0" width="106.0" x="202.12301587301587" y="862.8282106082729"/>
-          <y:Fill color="#FF9900" transparent="false"/>
+          <y:Fill color="#99CC00" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="52.158203125" x="26.9208984375" y="13.93359375">Machine<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
@@ -34,7 +34,7 @@
       <data key="d6">
         <y:GenericNode configuration="ShinyPlateNodeWithShadow">
           <y:Geometry height="46.0" width="106.0" x="440.62301587301585" y="132.0714285714286"/>
-          <y:Fill color="#FF9900" transparent="false"/>
+          <y:Fill color="#339966" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="98.201171875" x="3.8994140625" y="13.93359375">Machine Factory<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
@@ -50,7 +50,7 @@
       <data key="d6">
         <y:GenericNode configuration="ShinyPlateNodeWithShadow">
           <y:Geometry height="46.0" width="106.0" x="266.12301587301585" y="705.6431817657285"/>
-          <y:Fill color="#FF9900" transparent="false"/>
+          <y:Fill color="#CC99FF" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="96.525390625" x="4.7373046875" y="13.93359375">Machine Service<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
@@ -66,7 +66,7 @@
       <data key="d6">
         <y:GenericNode configuration="ShinyPlateNodeWithShadow">
           <y:Geometry height="46.0" width="106.0" x="282.12301587301585" y="572.2081529231841"/>
-          <y:Fill color="#FF9900" transparent="false"/>
+          <y:Fill color="#99CC00" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="32.265625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="79.005859375" x="13.4970703125" y="6.8671875">Construction
 Project<y:LabelModel>
@@ -83,7 +83,7 @@ Project<y:LabelModel>
       <data key="d6">
         <y:GenericNode configuration="ShinyPlateNodeWithShadow">
           <y:Geometry height="46.0" width="106.0" x="467.1230158730159" y="409.54148625651743"/>
-          <y:Fill color="#FF9900" transparent="false"/>
+          <y:Fill color="#CC99FF" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="32.265625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="79.005859375" x="13.4970703125" y="6.8671875">Construction
 Service<y:LabelModel>
@@ -100,7 +100,7 @@ Service<y:LabelModel>
       <data key="d6">
         <y:GenericNode configuration="ShinyPlateNodeWithShadow">
           <y:Geometry height="46.0" width="106.0" x="350.62301587301585" y="269.9414862565174"/>
-          <y:Fill color="#FF9900" transparent="false"/>
+          <y:Fill color="#99CC00" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="65.01953125" x="20.490234375" y="13.93359375">Assembler<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
@@ -116,7 +116,7 @@ Service<y:LabelModel>
       <data key="d6">
         <y:GenericNode configuration="ShinyPlateNodeWithShadow">
           <y:Geometry height="46.0" width="106.0" x="188.87301587301587" y="1347.426406699109"/>
-          <y:Fill color="#FF9900" transparent="false"/>
+          <y:Fill color="#C0C0C0" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="53.83984375" x="26.080078125" y="13.93359375">Universe<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
@@ -132,7 +132,7 @@ Service<y:LabelModel>
       <data key="d6">
         <y:GenericNode configuration="ShinyPlateNodeWithShadow">
           <y:Geometry height="46.0" width="106.0" x="435.12301587301585" y="1193.5563490140203"/>
-          <y:Fill color="#FF9900" transparent="false"/>
+          <y:Fill color="#CC99FF" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="32.265625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="53.83984375" x="26.080078125" y="6.8671875">Universe
 Service<y:LabelModel>
@@ -149,7 +149,7 @@ Service<y:LabelModel>
       <data key="d6">
         <y:GenericNode configuration="ShinyPlateNodeWithShadow">
           <y:Geometry height="46.0" width="106.0" x="197.62301587301587" y="409.54148625651743"/>
-          <y:Fill color="#FF9900" transparent="false"/>
+          <y:Fill color="#99CC00" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="71.30078125" x="17.349609375" y="13.93359375">Field MIrror<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
@@ -165,7 +165,7 @@ Service<y:LabelModel>
       <data key="d6">
         <y:GenericNode configuration="ShinyPlateNodeWithShadow">
           <y:Geometry height="46.0" width="106.0" x="97.12301587301587" y="572.2081529231841"/>
-          <y:Fill color="#FF9900" transparent="false"/>
+          <y:Fill color="#99CC00" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="72.47265625" x="16.763671875" y="13.93359375">Philosopher<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
@@ -181,7 +181,7 @@ Service<y:LabelModel>
       <data key="d6">
         <y:GenericNode configuration="ShinyPlateNodeWithShadow">
           <y:Geometry height="46.0" width="106.0" x="509.1230158730159" y="0.0"/>
-          <y:Fill color="#FF9900" transparent="false"/>
+          <y:Fill color="#CC99FF" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="32.265625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="70.05859375" x="17.970703125" y="6.8671875">State Mgmt
 Service<y:LabelModel>
@@ -198,7 +198,7 @@ Service<y:LabelModel>
       <data key="d6">
         <y:GenericNode configuration="ShinyPlateNodeWithShadow">
           <y:Geometry height="46.0" width="106.0" x="620.1230158730159" y="705.6431817657285"/>
-          <y:Fill color="#FF9900" transparent="false"/>
+          <y:Fill color="#CC99FF" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="32.265625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="57.572265625" x="24.2138671875" y="6.8671875">AutoSave
 Service<y:LabelModel>
@@ -231,7 +231,7 @@ Service<y:LabelModel>
       <data key="d6">
         <y:GenericNode configuration="ShinyPlateNodeWithShadow">
           <y:Geometry height="46.0" width="106.0" x="588.1230158730159" y="862.8282106082729"/>
-          <y:Fill color="#FF9900" transparent="false"/>
+          <y:Fill color="#CC99FF" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="39.8125" x="33.09375" y="13.93359375">Ticker<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
@@ -247,7 +247,7 @@ Service<y:LabelModel>
       <data key="d6">
         <y:GenericNode configuration="ShinyPlateNodeWithShadow">
           <y:Geometry height="46.0" width="106.0" x="65.12301587301587" y="705.6431817657285"/>
-          <y:Fill color="#FF9900" transparent="false"/>
+          <y:Fill color="#CC99FF" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="32.265625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="56.20703125" x="24.896484375" y="6.8671875">Research
 Service<y:LabelModel>
@@ -264,7 +264,7 @@ Service<y:LabelModel>
       <data key="d6">
         <y:GenericNode configuration="ShinyPlateNodeWithShadow">
           <y:Geometry height="46.0" width="106.0" x="120.37301587301587" y="1193.5563490140203"/>
-          <y:Fill color="#FF9900" transparent="false"/>
+          <y:Fill color="#CCFFFF" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="32.265625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="56.20703125" x="24.896484375" y="6.8671875">Research
 Project<y:LabelModel>
@@ -281,7 +281,7 @@ Project<y:LabelModel>
       <data key="d6">
         <y:GenericNode configuration="ShinyPlateNodeWithShadow">
           <y:Geometry height="46.0" width="106.0" x="41.05595238095238" y="862.8282106082729"/>
-          <y:Fill color="#FF9900" transparent="false"/>
+          <y:Fill color="#33CCCC" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="32.265625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="56.20703125" x="24.896484375" y="6.8671875">Research
 List<y:LabelModel>
@@ -298,7 +298,7 @@ List<y:LabelModel>
       <data key="d6">
         <y:GenericNode configuration="ShinyPlateNodeWithShadow">
           <y:Geometry height="46.0" width="106.0" x="435.12301587301585" y="705.6431817657285"/>
-          <y:Fill color="#FF9900" transparent="false"/>
+          <y:Fill color="#CC99FF" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="32.265625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="55.50390625" x="25.248046875" y="6.8671875">Metering
 Service<y:LabelModel>
@@ -315,7 +315,7 @@ Service<y:LabelModel>
       <data key="d6">
         <y:GenericNode configuration="ShinyPlateNodeWithShadow">
           <y:Geometry height="46.0" width="106.0" x="894.1230158730159" y="862.8282106082729"/>
-          <y:Fill color="#FF9900" transparent="false"/>
+          <y:Fill color="#CC99FF" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="56.3125" x="24.84375" y="13.93359375">Analytics<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
@@ -331,7 +331,7 @@ Service<y:LabelModel>
       <data key="d6">
         <y:GenericNode configuration="ShinyPlateNodeWithShadow">
           <y:Geometry height="46.0" width="106.0" x="823.4563492063492" y="705.6431817657285"/>
-          <y:Fill color="#FF9900" transparent="false"/>
+          <y:Fill color="#CC99FF" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="54.109375" x="25.9453125" y="13.93359375">Big Bang<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
@@ -347,7 +347,7 @@ Service<y:LabelModel>
       <data key="d6">
         <y:GenericNode configuration="ShinyPlateNodeWithShadow">
           <y:Geometry height="46.0" width="106.0" x="757.1230158730159" y="862.8282106082729"/>
-          <y:Fill color="#FF9900" transparent="false"/>
+          <y:Fill color="#CC99FF" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="58.486328125" x="23.7568359375" y="13.93359375">Stargame<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
@@ -363,7 +363,7 @@ Service<y:LabelModel>
       <data key="d6">
         <y:GenericNode configuration="ShinyPlateNodeWithShadow">
           <y:Geometry height="46.0" width="106.0" x="571.1230158730159" y="1193.5563490140203"/>
-          <y:Fill color="#FF9900" transparent="false"/>
+          <y:Fill color="#339966" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="32.265625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="46.427734375" x="29.7861328125" y="6.8671875">Particle
 Factory<y:LabelModel>
@@ -380,7 +380,7 @@ Factory<y:LabelModel>
       <data key="d6">
         <y:GenericNode configuration="ShinyPlateNodeWithShadow">
           <y:Geometry height="46.0" width="106.0" x="686.4563492063492" y="409.54148625651743"/>
-          <y:Fill color="#FF9900" transparent="false"/>
+          <y:Fill color="#99CC00" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="32.265625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="53.763671875" x="26.1181640625" y="6.8671875">Matter
 Detector<y:LabelModel>
