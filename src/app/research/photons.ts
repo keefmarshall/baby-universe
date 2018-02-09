@@ -118,11 +118,11 @@ export class Reflection extends ResearchProject {
 export class HemisphericalReflectance extends ResearchProject {
 
     constructor() {
-        super("Hemispherical Reflectance", "New field mirrors are twice as effective", 3250);
+        super("Hemispherical Reflectance", "New field mirrors are twice as effective", 2000);
     }
 
     preconditions(universe: Universe): boolean {
-        return this.machineQuantity(universe, "FieldMirror") >= 10;
+        return this.machineQuantity(universe, "PhotonicPhilosopher") >= 50;
     }
 
     onCompletion(universe: Universe) {
@@ -133,11 +133,11 @@ export class HemisphericalReflectance extends ResearchProject {
 export class DirectionalReflectance extends ResearchProject {
 
     constructor() {
-        super("Directional Reflectance", "New field mirrors are twice as effective", 12500);
+        super("Directional Reflectance", "New field mirrors are twice as effective", 9000);
     }
 
     preconditions(universe: Universe): boolean {
-        return this.machineQuantity(universe, "FieldMirror") >= 20 && 
+        return this.machineQuantity(universe, "PhotonicPhilosopher") >= 100 && 
             this.isResearched(universe, new HemisphericalReflectance());
     }
 
