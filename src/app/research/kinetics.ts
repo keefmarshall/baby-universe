@@ -5,7 +5,7 @@ import { Photovoltaics } from "app/research/photons";
 export class KineticConstruction extends ResearchProject {
 
     constructor() {
-        super("Kinetic Construction", "How to convert energy into useful work", 10);
+        super("Kinetic Construction", "How to convert energy into useful work", 15);
     }
 
     preconditions(universe: Universe): boolean {

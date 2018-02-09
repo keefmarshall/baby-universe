@@ -103,7 +103,7 @@ export class EllipticalPolarisation extends ResearchProject {
 export class Reflection extends ResearchProject {
 
     constructor() {
-        super("Reflection", "Allows building more Philosophers", 30);
+        super("Reflection", "Allows building more Philosophers", 15);
     }
 
     preconditions(universe: Universe): boolean {

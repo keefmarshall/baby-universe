@@ -38,7 +38,7 @@ export class QSwitching extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        const qsBoost = 1.6;
+        const qsBoost = Math.SQRT2;
         const npasers = this.machineQuantity(universe, "Paser") 
 
         // We have to enhance Paser efficiency, but also 'catch up' for any existing Pasers
@@ -59,17 +59,17 @@ export class ModeLocking extends ResearchProject {
         const paResearched = this.isResearched(universe, new QSwitching());
         const npasers = this.machineQuantity(universe, "Paser");
 
-        return paResearched && npasers > 10;
+        return paResearched && npasers >= 6;
     }
 
     onCompletion(universe: Universe) {
-        const qsBoost = 1.25;
+        const qsBoost = Math.SQRT2;
         const npasers = this.machineQuantity(universe, "Paser") 
 
         // We have to enhance Paser efficiency, but also 'catch up' for any existing Pasers
         universe.machines['Paser'].efficiency *= qsBoost;
         universe.machines['PhotonCollector'].efficiency *= Math.pow(qsBoost, npasers);
 
-        universe.logs.push("Pasers cumulatively enhanced. More energy than you can dream of.");
+        universe.logs.push("Pasers cumulatively enhanced.");
     }
 }
