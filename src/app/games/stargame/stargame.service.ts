@@ -5,7 +5,6 @@ import { Star, UpQuarkStar, DownQuarkStar, StrangeQuarkStar, CharmQuarkStar, Top
 import { ResearchProject } from 'app/research/research-project';
 import { Quarks2, Quarks3, QuarkUtils } from 'app/research/matter';
 import { ParticleFactory } from 'app/machines/particle-factory';
-import { MatterDetector } from 'app/machines/matter-detector';
 
 @Injectable()
 export class StargameService {
