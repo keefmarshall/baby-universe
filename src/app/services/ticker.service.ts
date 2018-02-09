@@ -87,7 +87,14 @@ export class TickerService {
 
   catcherUpper(): Observable<number> {
     console.log("CatcherUpper: resuming for " + this.resumeFor + " ticks..");
-    Globals.tickFactor = this.resumeFor > 1000 ? 200 : Math.min(this.resumeFor, 10);
+    if (this.resumeFor > 100000) {
+      Globals.tickFactor = 5000;
+    } else if (this.resumeFor > 1000) {
+      Globals.tickFactor = 200;
+    } else if (this.resumeFor > 100) {
+      Globals.tickFactor = 10;
+    }
+
     const cuObs = Observable.create((observer: Subscriber<number>) => {
       const localResumeFor = this.resumeFor;
       let tracker = 0;
@@ -106,28 +113,5 @@ export class TickerService {
     }) as Observable<number>;
 
     return cuObs;
-
-    // Various failed attempts to slow this down, or yield every
-    // <x> ticks.
-    //
-    // interval(), delay() and timer() all seem to be completely
-    // ignored when used in this context, I have no idea why.
-
-    // return Observable.zip(
-    //   cuObs,
-    //   // Observable.interval(2000),
-    //   this.internalTicker$,
-    //   (n, i) => n
-    // ) as Observable<number>;
-
-    // Doesn't work
-    // const delayer = Observable.empty().delay(2000);
-    // return cuObs.concatMap(n => {
-    //   return Observable.of(n).concat(delayer); // put some time after the item
-    // }) as Observable<number>;
-
-    // delayWithSelector(n => { // delayWithDelector not implemented!
-    //   return Observable.timer((n % 5) * 100);
-    // });
   }
 }
