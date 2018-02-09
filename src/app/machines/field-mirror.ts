@@ -23,7 +23,7 @@ export class FieldMirror extends ConstructionProject {
         this.machineService.addMachine(this);
     }
 
-    onTick() {
+    onTick(tickFactor: number) {
         // do nothing, we function just by existing
     }
 

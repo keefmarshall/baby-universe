@@ -37,11 +37,13 @@ export class ResearchPanelComponent implements OnInit {
   }
 
   onTick(n: number) {
-    // Update availability of projects
-    const u = this.universeService.universe;
-    this.projectList.forEach(project => {
-      project.canSee = project.preconditions(u);
-    });
+    if (this.tickerService.resumeFor < 1) { // save calculations when catching up
+      // Update availability of projects
+      const u = this.universeService.universe;
+      this.projectList.forEach(project => {
+        project.canSee = project.preconditions(u);
+      });
+    }
 
     this.canResearch =
       (this.researchService.scienceCount > 0) &&
@@ -49,7 +51,7 @@ export class ResearchPanelComponent implements OnInit {
       !this.distracted;
 
     if (this.distracted) {
-      this.distractionTicksRemaining --;
+      this.distractionTicksRemaining -= Globals.tickFactor; // usually 1 but can speed up during catchup
       if (this.distractionTicksRemaining <= 0) {
         this.distracted = false;
       }

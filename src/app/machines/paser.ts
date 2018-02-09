@@ -21,7 +21,7 @@ export class Paser extends ConstructionProject {
         this.machineService.addMachine(this);
     }
 
-    onTick() {
+    onTick(tickFactor: number) {
         // does nothing
     }
 

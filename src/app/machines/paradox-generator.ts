@@ -11,7 +11,7 @@ export class ParadoxGenerator extends Machine {
             universeService);
     }
 
-    onTick() {
+    onTick(tickFactor: number) {
         // do nothing (for now - do something if distracting?)
     }
 

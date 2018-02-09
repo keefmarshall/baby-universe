@@ -21,7 +21,7 @@ export class HeatingArray extends ConstructionProject {
     // cut-and-paste from Assembler, can't find easy way to share the code
     // - we can't just extend Assembler as this has to be a construction project
     // - could factor out into a Utils class but there's a ton of dependencies
-    onTick() {
+    onTick(tickFactor: number) {
         // We only take energy while heating
         // which makes this a bit complex
         if (this.heatingService.isHeating()) {
@@ -30,7 +30,7 @@ export class HeatingArray extends ConstructionProject {
             const q = this.properties().quantity;
             const baseEnergyDraw = this.universeService.universe.machines['SpaceHeater'].extras['energyDraw'] * 100;
             const resq = this.machineQuantity('ThermalResistor');
-            const energyDraw = baseEnergyDraw * q * Math.pow(10, resq);
+            const energyDraw = baseEnergyDraw * q * Math.pow(10, resq) * tickFactor;
             if (u.energy < energyDraw) {
                 // do nothing, there's not enough for us to work!
                 console.log("Heating Array: not enough energy to work!");

@@ -87,18 +87,20 @@ export class TickerService {
 
   catcherUpper(): Observable<number> {
     console.log("CatcherUpper: resuming for " + this.resumeFor + " ticks..");
+    Globals.tickFactor = this.resumeFor > 1000 ? 200 : Math.min(this.resumeFor, 10);
     const cuObs = Observable.create((observer: Subscriber<number>) => {
       const localResumeFor = this.resumeFor;
       let tracker = 0;
 
       while (tracker < localResumeFor) {
-        tracker++;
-        this.resumeFor --;
+        tracker += Globals.tickFactor;
+        this.resumeFor -= Globals.tickFactor;
         observer.next(tracker);
         // console.log("CatcherUpper: returning " + tracker + "(localrf = " + localResumeFor + ")");
       }
 
       observer.complete();
+      Globals.tickFactor = 1;
       this.resumeFor = 0;
       console.log("CatcherUpper: done");
     }) as Observable<number>;

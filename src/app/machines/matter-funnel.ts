@@ -21,7 +21,7 @@ export class MatterFunnel extends ConstructionProject {
         }
     }
 
-    onTick() {
+    onTick(tickFactor: number) {
         // do nothing - calculation is applied in Quark Scoop machine code
     }
 

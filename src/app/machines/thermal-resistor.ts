@@ -16,7 +16,7 @@ export class ThermalResistor extends ConstructionProject {
         this.machineService.addMachine(this);
     }
 
-    onTick() {
+    onTick(tickFactor: number) {
         // does nothing - see Heating Array code for details
     }
 

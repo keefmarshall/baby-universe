@@ -13,6 +13,7 @@ import { BigBangService } from 'app/services/big-bang.service';
 import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { MatDialog } from '@angular/material';
 import { HelpPanelComponent } from 'app/panels/help-panel/help-panel.component';
+import { Globals } from 'app/globals';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,8 @@ import { HelpPanelComponent } from 'app/panels/help-panel/help-panel.component';
 export class AppComponent implements OnInit, AfterViewInit  {
   title = 'Baby Universe';
   showDebug = isDevMode();
+
+  globals = Globals; // export for template
 
   @ViewChild('bigbang') mainDivRef: ElementRef;
   @ViewChild('finalscore') fsDivRef: ElementRef;

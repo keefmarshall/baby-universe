@@ -25,7 +25,7 @@ export class AssemblyPlant extends ConstructionProject {
     // cut-and-paste from Assembler, can't find easy way to share the code
     // - we can't just extend Assembler as this has to be a construction project
     // - could factor out into a Utils class but there's a ton of dependencies
-    onTick() {
+    onTick(tickFactor: number) {
         // We only take energy and produce work while something is being built
         // which makes this a bit complex
         if (this.constructionService.isConstructing()) {
@@ -35,7 +35,7 @@ export class AssemblyPlant extends ConstructionProject {
             const q = this.properties().quantity;
             const eff = this.universeService.universe.machines['Assembler'].efficiency;
             const baseEnergyDraw = this.universeService.universe.machines['Assembler'].extras['energyDraw'] * 100;
-            const energyDraw = baseEnergyDraw * q;
+            const energyDraw = baseEnergyDraw * q * tickFactor;
 
             if (u.energy < energyDraw) {
                 // do nothing, there's not enough for us to work!

@@ -19,7 +19,7 @@ export class QuarkSqueezer extends ConstructionProject {
         this.machineService.addMachine(this);
     }
 
-    onTick() {
+    onTick(tickFactor: number) {
         const u = this.universeService.universe;
         let totalQuarks = 0;
         Object.keys(u.particles).forEach(particle => {
@@ -28,7 +28,7 @@ export class QuarkSqueezer extends ConstructionProject {
             }
         });
 
-        const q = Math.ceil(totalQuarks * this.properties().efficiency * 0.0005);
+        const q = Math.ceil(totalQuarks * this.properties().efficiency * 0.0005 * tickFactor);
 
         this.particleFactory.collectGluons(u, q);
     }

@@ -23,7 +23,7 @@ export class MatterDetector extends ConstructionProject {
         this.machineService.addMachine(this);
     }
 
-    onTick() {
+    onTick(tickFactor: number) {
         // do nothing
     }
 

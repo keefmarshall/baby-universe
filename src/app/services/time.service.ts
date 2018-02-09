@@ -14,10 +14,10 @@ export class TimeService {
   ) {
     console.log("********** TimeService: Subscribing to ticker..");
     tickerService.tick$.subscribe(n => {
-      this.universeService.universe.elapsedTicks += 1;
+      this.universeService.universe.elapsedTicks += Globals.tickFactor;
       this.universeService.universe.elapsedSeconds =
         Globals.round(
-          this.universeService.universe.elapsedSeconds + Globals.secondsPerTick,
+          this.universeService.universe.elapsedSeconds + (Globals.secondsPerTick * Globals.tickFactor),
           12);
 
       // if (n % 10 === 0) {

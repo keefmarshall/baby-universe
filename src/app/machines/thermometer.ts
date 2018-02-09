@@ -30,7 +30,7 @@ export class Thermometer extends ConstructionProject implements Meter {
         this.meteringService.addMeter("thermometer", this);
     }
 
-    onTick() {
+    onTick(tickFactor: number) {
         // do nothing (metering service already calls this.everySecond();
     }
 

@@ -25,10 +25,10 @@ export class PhotonCollector extends Machine {
     // ////////////////////////////////
     // Abstract method implementations
 
-    onTick() {
+    onTick(tickFactor: number) {
         // accumulate fractions of photons
         const props = this.properties();
-        this.photonCount += props.quantity * props.efficiency;
+        this.photonCount += props.quantity * props.efficiency * tickFactor;
         if (this.photonCount >= 1) { // we have at least one whole one
             const newPhotons = Math.floor(this.photonCount);
             this.photonCount -= newPhotons;

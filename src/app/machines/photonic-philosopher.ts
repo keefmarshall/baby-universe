@@ -23,8 +23,8 @@ export class PhotonicPhilosopher extends Machine {
     // ////////////////////////////////
     // Abstract method implementations
 
-    onTick() {
-        const science = this.properties().quantity * this.properties().efficiency;
+    onTick(tickFactor: number) {
+        const science = this.properties().quantity * this.properties().efficiency * tickFactor;
         this.researchService.addScience(science);
     }
 

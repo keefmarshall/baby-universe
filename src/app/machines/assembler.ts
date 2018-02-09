@@ -26,7 +26,7 @@ export class Assembler extends Machine {
     // ////////////////////////////////
     // Abstract method implementations
 
-    onTick() {
+    onTick(tickFactor: number) {
         // We only take energy and produce work while something is being built
         // which makes this a bit complex
         if (this.constructionService.isConstructing()) {
@@ -34,7 +34,7 @@ export class Assembler extends Machine {
             // The lost energy is converted to universal heat.
             const u = this.universeService.universe;
             const q = this.properties().quantity;
-            const energyDraw = this.properties().extras['energyDraw']  * q;
+            const energyDraw = this.properties().extras['energyDraw'] * q * tickFactor;
             if (u.energy < energyDraw) {
                 // do nothing, there's not enough for us to work!
                 console.log("Assembler: not enough energy to work!");

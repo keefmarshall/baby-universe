@@ -17,7 +17,7 @@ export abstract class Machine {
     public canBuy20: boolean = false;
     public canBuy50: boolean = false;
 
-    abstract onTick();
+    abstract onTick(factor: number);
     abstract preconditions(): boolean;
     abstract displayCost(count: number): string;
     abstract payFor(count: number): boolean;
