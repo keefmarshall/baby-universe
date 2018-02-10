@@ -32,5 +32,5 @@ export class Universe {
     logs = ["Within the empty void, matter and energy spontaneously " +
             "flash into existence, only to decay almost instantly. "];
 
-    release = 0.25;
+    release = 0.251;
 }
