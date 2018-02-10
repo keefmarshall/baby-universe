@@ -12,12 +12,12 @@ export class Paser extends ConstructionProject {
     ) {
         super('Paser',
             "Paser",
-            "Multiplies energy from photons by 10",
+            "Multiplies energy from photons (cumulative)",
             universeService, 5000, 1.75);
     }
 
     onComplete() {
-        const eff = this.properties().efficiency * 50; // efficiency starts at 0.1, so 5x multiplier
+        const eff = this.properties().efficiency * 40; // efficiency starts at 0.1, so 4x multiplier
         this.universeService.universe.machines["PhotonCollector"].efficiency *= eff;
         this.machineService.addMachine(this);
     }

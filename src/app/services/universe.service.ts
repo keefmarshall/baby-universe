@@ -74,14 +74,33 @@ export class UniverseService {
       u.machines['SpaceHeater'].extras['energyDraw'] = 1;
     }
 
+    /////////////////////////////////////////////////////////////////
+    // PASER REBALANCING
+
     if (!u.release || u.release < 0.25) {
       u.release = 0.25;
       // hobble Pasers, they used to be more powerful
       if (u.machines['Paser'] && u.machines['Paser'].quantity > 0) {
-        const npasers = u.machines['Paser'].quantity
+        const npasers = u.machines['Paser'].quantity;
         u.machines['PhotonCollector'].efficiency /= Math.pow(2, npasers);
         u.logs.push("A strange force ripples through your machines, rendering your Pasers less effective.");
         u.logs.push("Maybe you can find new ways to bring them back to their previous power?");
+      }
+    }
+
+    if (u.release && u.release === 0.25) {
+      u.release = 0.251
+      // hobble Pasers, they used to be more powerful
+      if (u.machines['Paser'] && u.machines['Paser'].quantity > 0) {
+        const npasers = u.machines['Paser'].quantity;
+        if (!this.isResearchedByName("QSwitching")) {
+          u.machines['PhotonCollector'].efficiency /= Math.pow(1.25, npasers); // from 5 to 4
+        } else if (!this.isResearchedByName("ModeLocking")) {
+          u.machines['PhotonCollector'].efficiency /= Math.pow(1.118, npasers); // from (5 * root2) to (4 * root 2.5)
+          u.machines['Paser'].efficiency = 0.1 * Math.sqrt(2.5);
+        } else {
+          u.machines['Paser'].efficiency = 0.25;          
+        }
       }
     }
   }
@@ -100,11 +119,16 @@ export class UniverseService {
   }
 
   isResearched(research: ResearchProject) {
+    return this.isResearchedByName(research.name);
+  }
+
+  isResearchedByName(researchName: string) {
     const u = this.universe;
-    if (u.research[research.name] && u.research[research.name].researched) {
+    if (u.research[researchName] && u.research[researchName].researched) {
       return true;
     } else {
       return false;
     }
   }
+
 }
