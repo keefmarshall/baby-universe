@@ -2,8 +2,6 @@ import { Machine, MachineProperties } from "app/machines/machine";
 import { Universe } from "app/services/universe";
 import { UniverseService } from "app/services/universe.service";
 import { Globals } from "app/globals";
-import { ResearchProject } from "app/research/research-project";
-import { ResearchList } from "app/research/research-list";
 import { ResearchService } from "app/services/research.service";
 
 export class PhotonicPhilosopher extends Machine {
@@ -25,8 +23,8 @@ export class PhotonicPhilosopher extends Machine {
     // ////////////////////////////////
     // Abstract method implementations
 
-    onTick() {
-        const science = this.properties().quantity * this.properties().efficiency;
+    onTick(tickFactor: number) {
+        const science = this.properties().quantity * this.properties().efficiency * tickFactor;
         this.researchService.addScience(science);
     }
 

@@ -16,7 +16,7 @@ export class ParticleAttractor extends ConstructionProject {
         this.machineService.addMachine(this);
     }
 
-    onTick() {
+    onTick(tickFactor: number) {
         // do nothing - calculation is applied in Quark Scoop machine code
     }
 

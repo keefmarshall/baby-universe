@@ -1,4 +1,3 @@
-import { Machine } from "app/machines/machine";
 import { UniverseService } from "app/services/universe.service";
 import { Quarks1 } from "app/research/matter";
 import { ConstructionProject } from "app/machines/construction-project";
@@ -24,7 +23,7 @@ export class MatterDetector extends ConstructionProject {
         this.machineService.addMachine(this);
     }
 
-    onTick() {
+    onTick(tickFactor: number) {
         // do nothing
     }
 

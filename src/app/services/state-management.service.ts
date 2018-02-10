@@ -31,7 +31,10 @@ export class StateManagementService {
   ) {
     this.reloadUniverse();
     tickerService.tick$.subscribe(n => {
-      this.updateMachineAvailability();
+      // reduce calculations during catchup process
+      if (this.tickerService.resumeFor < 1) {
+        this.updateMachineAvailability();
+      }
     });
   }
 

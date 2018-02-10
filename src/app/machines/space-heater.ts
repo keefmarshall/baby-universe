@@ -25,13 +25,13 @@ export class SpaceHeater extends Machine {
         super(_name, _displayName, _description, universeService, true);
     }
 
-    onTick() {
+    onTick(tickFactor: number) {
         // We only take energy and produce heat while the heating is on
         if (this.heatingService.isHeating()) {
             // We take 1 energy per tick and convert to universal heat.
             const u = this.universeService.universe;
             const q = this.properties().quantity;
-            const energyDraw = this.properties().extras['energyDraw'] * q;
+            const energyDraw = this.properties().extras['energyDraw'] * q * tickFactor;
             if (u.energy < energyDraw) {
                 // do nothing, there's not enough for us to work!
                 console.log("Space Heater: not enough energy to work!");

@@ -20,10 +20,14 @@ server {
     listen 80;
     root /var/www/bu;
 
-    try_files $uri $uri/ index.html;
+    try_files $uri $uri/ index.html =404;
 
     error_log /var/log/nginx/bu_error.log;
     access_log /var/log/nginx/bu_access.log;
+
+    gzip on;
+    gzip_disable "msie6";
+    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
 }
 
 http://www.astro.ucla.edu/~wright/BBhistory.html
@@ -33,6 +37,7 @@ universe is 10^80. This number would include the total of the number of
 protons, neutrons, neutrinos and electrons.
 
 https://www.quora.com/How-many-particles-are-there-in-the-universe#
+https://www.popularmechanics.com/space/a27259/how-many-particles-are-in-the-entire-universe/
 
 Colour deconfinement starts at ~ 2 x 10^12K as per:
 https://www.uni-frankfurt.de/45167383/Stock
@@ -88,3 +93,20 @@ in the display component
 
 11. Add link to Reddit forum thread for feedback?
 https://www.reddit.com/r/incremental_games/comments/7qzn8k/new_cosmologybased_game_seeking_alpha_feedback/
+
+
+
+PASER balancing
+================
+
+Reduce initial multiplier a lot (2.5x?)
+- use Paser efficiency for this.
+
+Extra research: 
+Q-switching
+Mode locking
+
+ - enhance paser efficiency, which means we have to retrospectively enhance
+ photon collector efficiency as the pasers are normally a one-shot eff gain.
+ - or we change the photon collector algorithm to take into account the number of pasers
+ and the current paser efficiency.

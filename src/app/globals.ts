@@ -1,5 +1,6 @@
 export class Globals {
     static secondsPerTick = 0.1;
+    static tickFactor = 1; // increase this during catch up to reduce calculations
 
     static readonly boltzmann = 8.617e-11; // MeV per K (8.617e-5eV/K)
 

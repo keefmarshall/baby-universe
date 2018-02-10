@@ -45,7 +45,7 @@ export class MachineService {
 
     // This is the core machine loop. Here's where the magic happens!
     this.machines.forEach(machine => {
-      machine.onTick();
+      machine.onTick(Globals.tickFactor);
     });
   }
 

@@ -16,7 +16,7 @@ export class ThermalSpanner extends Machine {
             universeService);
     }
 
-    onTick() {
+    onTick(tickFactor: number) {
         // do nothing
     }
 

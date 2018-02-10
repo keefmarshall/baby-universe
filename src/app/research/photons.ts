@@ -88,7 +88,7 @@ export class CircularPolarisation extends ResearchProject {
 export class EllipticalPolarisation extends ResearchProject {
 
     constructor() {
-        super("Elliptical Polarisation", "Quadruples efficiency of Philosophers", 800);
+        super("Elliptical Polarisation", "Quadruples efficiency of Philosophers", 700);
     }
 
     preconditions(universe: Universe): boolean {
@@ -103,7 +103,7 @@ export class EllipticalPolarisation extends ResearchProject {
 export class Reflection extends ResearchProject {
 
     constructor() {
-        super("Reflection", "Allows building more Philosophers", 30);
+        super("Reflection", "Allows building more Philosophers", 15);
     }
 
     preconditions(universe: Universe): boolean {
@@ -118,11 +118,11 @@ export class Reflection extends ResearchProject {
 export class HemisphericalReflectance extends ResearchProject {
 
     constructor() {
-        super("Hemispherical Reflectance", "New field mirrors are twice as effective", 3250);
+        super("Hemispherical Reflectance", "New field mirrors are twice as effective", 2000);
     }
 
     preconditions(universe: Universe): boolean {
-        return this.machineQuantity(universe, "FieldMirror") >= 10;
+        return this.machineQuantity(universe, "PhotonicPhilosopher") >= 50;
     }
 
     onCompletion(universe: Universe) {
@@ -133,11 +133,11 @@ export class HemisphericalReflectance extends ResearchProject {
 export class DirectionalReflectance extends ResearchProject {
 
     constructor() {
-        super("Directional Reflectance", "New field mirrors are twice as effective", 12500);
+        super("Directional Reflectance", "New field mirrors are twice as effective", 9000);
     }
 
     preconditions(universe: Universe): boolean {
-        return this.machineQuantity(universe, "FieldMirror") >= 20 && 
+        return this.machineQuantity(universe, "PhotonicPhilosopher") >= 100 && 
             this.isResearched(universe, new HemisphericalReflectance());
     }
 

@@ -29,11 +29,11 @@ export class QuarkScoop extends ConstructionProject {
         this.machineService.addMachine(this);
     }
 
-    onTick() {
+    onTick(tickFactor: number) {
         const u = this.universeService.universe;
         const quantity = this.properties().quantity;
         const eff = this.properties().efficiency;
-        this.accumulator += quantity * eff;
+        this.accumulator += quantity * eff * tickFactor;
         if (this.accumulator > 1) {
             const qn = Math.floor(this.accumulator);
             this.accumulator = this.accumulator - qn;
