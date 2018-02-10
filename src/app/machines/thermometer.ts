@@ -50,7 +50,7 @@ export class Thermometer extends ConstructionProject implements Meter {
             } else if (this.exponent >= 25 && !this.properties().extras['encmsg']) {
                 // Message of encouragement
                 this.properties().extras['encmsg'] = true;
-                universe.logs.push("Your matter soup is gettng warmer, but it's not hot enough yet!");
+                universe.logs.push("Your matter soup is getting warmer, but it's not hot enough yet!");
             }
         }
     }
