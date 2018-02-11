@@ -122,7 +122,7 @@ export class HemisphericalReflectance extends ResearchProject {
     }
 
     preconditions(universe: Universe): boolean {
-        return this.machineQuantity(universe, "PhotonicPhilosopher") >= 50;
+        return this.machineQuantity(universe, "FieldMirror") >= 5;
     }
 
     onCompletion(universe: Universe) {
@@ -137,7 +137,7 @@ export class DirectionalReflectance extends ResearchProject {
     }
 
     preconditions(universe: Universe): boolean {
-        return this.machineQuantity(universe, "PhotonicPhilosopher") >= 100 && 
+        return this.machineQuantity(universe, "FieldMirror") >= 10 && 
             this.isResearched(universe, new HemisphericalReflectance());
     }
 
