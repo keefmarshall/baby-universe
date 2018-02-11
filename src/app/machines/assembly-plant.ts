@@ -35,26 +35,27 @@ export class AssemblyPlant extends ConstructionProject {
             const q = this.properties().quantity;
             const eff = this.universeService.universe.machines['Assembler'].efficiency;
             const baseEnergyDraw = this.universeService.universe.machines['Assembler'].extras['energyDraw'] * 100;
-            const energyDraw = baseEnergyDraw * q * tickFactor;
+            let energyDraw = baseEnergyDraw * q * tickFactor;
 
             if (u.energy < energyDraw) {
-                // do nothing, there's not enough for us to work!
-                console.log("Assembly Plant: not enough energy to work!");
-            } else {
-                // NB if efficiency goes above 10, we start taking heat from
-                // the universe to work! Not sure if I'll use this.
-                u.energy -= energyDraw;
-                let work = eff * energyDraw * 0.1;
-                u.heat += (energyDraw - work);
-
-                // Artificial increase to efficiency from idle philosophers
-                // NB doesn't affect energy draw
-                work *= this.idlePhilosopherBoost();
-
-                this.constructionService.addWork(work);
-                this.meteringService.addQuantity('construction-energy-cost', energyDraw);
-                this.meteringService.addQuantity('work', work);
+                // there's not enough for us to work! But, we'll take what there is.
+                // console.log("Assembly Plant: not enough energy to work!");
+                energyDraw = u.energy;
             }
+
+            // NB if efficiency goes above 10, we start taking heat from
+            // the universe to work! Not sure if I'll use this.
+            u.energy -= energyDraw;
+            let work = eff * energyDraw * 0.1;
+            u.heat += (energyDraw - work);
+
+            // Artificial increase to efficiency from idle philosophers
+            // NB doesn't affect energy draw
+            work *= this.idlePhilosopherBoost();
+
+            this.constructionService.addWork(work);
+            this.meteringService.addQuantity('construction-energy-cost', energyDraw);
+            this.meteringService.addQuantity('work', work);
         }
     }
 

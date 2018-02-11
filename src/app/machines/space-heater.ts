@@ -31,15 +31,16 @@ export class SpaceHeater extends Machine {
             // We take 1 energy per tick and convert to universal heat.
             const u = this.universeService.universe;
             const q = this.properties().quantity;
-            const energyDraw = this.properties().extras['energyDraw'] * q * tickFactor;
+            let energyDraw = this.properties().extras['energyDraw'] * q * tickFactor;
             if (u.energy < energyDraw) {
-                // do nothing, there's not enough for us to work!
-                console.log("Space Heater: not enough energy to work!");
-            } else {
-                u.energy -= energyDraw;
-                u.heat += energyDraw;
-                this.meteringService.addQuantity('heater-energy-cost', energyDraw);
+                // there's not enough for us to work but we'll take what there is
+                // console.log("Space Heater: not enough energy to work!");
+                energyDraw = u.energy;
             }
+
+            u.energy -= energyDraw;
+            u.heat += energyDraw;
+            this.meteringService.addQuantity('heater-energy-cost', energyDraw);
         }
     }
     preconditions(): boolean {

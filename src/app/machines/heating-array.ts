@@ -30,15 +30,16 @@ export class HeatingArray extends ConstructionProject {
             const q = this.properties().quantity;
             const baseEnergyDraw = this.universeService.universe.machines['SpaceHeater'].extras['energyDraw'] * 100;
             const resq = this.machineQuantity('ThermalResistor');
-            const energyDraw = baseEnergyDraw * q * Math.pow(10, resq) * tickFactor;
+            let energyDraw = baseEnergyDraw * q * Math.pow(10, resq) * tickFactor;
             if (u.energy < energyDraw) {
-                // do nothing, there's not enough for us to work!
-                console.log("Heating Array: not enough energy to work!");
-            } else {
-                u.energy -= energyDraw;
-                u.heat += energyDraw;
-                this.meteringService.addQuantity('heater-energy-cost', energyDraw);
+                // there's not enough for us to work! but we'll take what there is
+                // console.log("Heating Array: not enough energy to work!");
+                energyDraw = u.energy;
             }
+
+            u.energy -= energyDraw;
+            u.heat += energyDraw;
+            this.meteringService.addQuantity('heater-energy-cost', energyDraw);
         }
     }
 
