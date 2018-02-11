@@ -15,7 +15,7 @@ export class HeatingArray extends ConstructionProject {
         super('HeatingArray',
             "Heating Array",
             "Combines space heaters to draw 10x energy",
-            universeService, 2500, 1.2);
+            universeService, 5000, 1.2);
     }
 
     // cut-and-paste from Assembler, can't find easy way to share the code
@@ -46,13 +46,13 @@ export class HeatingArray extends ConstructionProject {
     onComplete() {
         this.machineService.addMachine(this);
 
-        const met = this.properties().quantity > 4 &&
+        const met = this.properties().quantity > 19 &&
             this.isResearched(new AdvancedThermodynamics());
         if (met && !this.properties().extras['met']) {
             this.properties().extras['met'] = true;
             this.universeService.universe.logs.push("Boost heating dramatically with Thermal Resistors.");
             setTimeout(() => {
-                this.universeService.universe.logs.push("Thermal Resistors need more matter to contain all that heat energy.");
+                this.universeService.universe.logs.push("Thermal Resistors need matter to contain all that heat energy.");
             }, 60000);
         }
     }
