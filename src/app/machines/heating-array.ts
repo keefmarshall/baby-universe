@@ -15,7 +15,7 @@ export class HeatingArray extends ConstructionProject {
         super('HeatingArray',
             "Heating Array",
             "Combines space heaters to draw 10x energy",
-            universeService, 5000, 1.2);
+            universeService, 5000, 1.3);
     }
 
     // cut-and-paste from Assembler, can't find easy way to share the code

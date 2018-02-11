@@ -150,7 +150,7 @@ Construction
           <y:Fill color="#FF9900" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="46.3984375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="104.576171875" x="12.2119140625" y="7.30078125">Heating Array
-2500 Work,
+5000 Work,
 10 Space Heaters<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -315,7 +315,7 @@ Philosopher
           <y:Fill color="#FF9900" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="32.265625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="101.93359375" x="13.533203125" y="14.3671875">Particle Attractor
-100,000 Work<y:LabelModel>
+250,000 Work<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -478,7 +478,7 @@ Chromodynamics
           <y:Fill color="#FF9900" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="32.265625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="102.47265625" x="13.263671875" y="14.3671875">Thermal Resistor
-100,000 Work<y:LabelModel>
+500,000 Work<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -901,7 +901,7 @@ Assembly
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="219.48293650793653" width="132.04685714285716" x="-1.5234285714285818" y="-976.8579365079365"/>
+              <y:Geometry height="219.48293650793653" width="132.04685714285716" x="-1.5234285714285818" y="-274.6269841269841"/>
               <y:Fill hasColor="false" transparent="false"/>
               <y:BorderStyle color="#000000" type="dotted" width="1.0"/>
               <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="21.666015625" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="132.04685714285716" x="0.0" y="0.0">Key</y:NodeLabel>
@@ -928,7 +928,7 @@ Assembly
           <data key="d5"/>
           <data key="d6">
             <y:GenericNode configuration="ShinyPlateNodeWithShadow">
-              <y:Geometry height="35.27200000000005" width="102.04685714285715" x="13.476571428571425" y="-939.1915555555554"/>
+              <y:Geometry height="35.27200000000005" width="102.04685714285715" x="13.476571428571425" y="-236.96060317460297"/>
               <y:Fill color="#99CC00" transparent="false"/>
               <y:BorderStyle hasColor="false" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="56.20703125" x="22.919912946428575" y="8.569593749999967">Research<y:LabelModel>
@@ -945,7 +945,7 @@ Assembly
           <data key="d5"/>
           <data key="d6">
             <y:GenericNode configuration="ShinyPlateNodeWithShadow">
-              <y:Geometry height="35.27200000000005" width="102.04685714285715" x="13.476571428571425" y="-873.9193333333333"/>
+              <y:Geometry height="35.27200000000005" width="102.04685714285715" x="13.476571428571425" y="-171.68838095238084"/>
               <y:Fill color="#FF9900" transparent="false"/>
               <y:BorderStyle hasColor="false" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="79.005859375" x="11.520498883928575" y="8.569593749999967">Construction<y:LabelModel>
@@ -962,7 +962,7 @@ Assembly
           <data key="d5"/>
           <data key="d6">
             <y:GenericNode configuration="ShinyPlateNodeWithShadow">
-              <y:Geometry height="35.27200000000005" width="102.04685714285715" x="13.476571428571425" y="-808.6471111111109"/>
+              <y:Geometry height="35.27200000000005" width="102.04685714285715" x="13.476571428571425" y="-106.41615873015849"/>
               <y:Fill color="#00CCFF" transparent="false"/>
               <y:BorderStyle hasColor="false" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="52.158203125" x="24.944327008928575" y="8.569593749999967">Machine<y:LabelModel>
