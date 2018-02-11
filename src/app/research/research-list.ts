@@ -7,6 +7,7 @@ import { Photovoltaics, LinearPolarisation, CircularPolarisation, EllipticalPola
 import { PhotonAmplification, QSwitching, ModeLocking } from "app/research/amplification";
 import { QuantumElectrodynamics, QuantumChromodynamics, ColourDeconfinement } from "app/research/collection";
 import { BulkDeployment, AdvancedBulkDeployment } from "app/research/bulk-deployment";
+import { InstructionPipelining, SuperscalarPipelining } from "app/research/assembly";
 
 export class ResearchList {
     public projectList: Array<ResearchProject> = [];
@@ -37,6 +38,8 @@ export class ResearchList {
             new AdvancedThermodynamics(),
             new KineticEnergyRecovery(),
             new KineticEngineering(),
+            new InstructionPipelining(),
+            new SuperscalarPipelining(),
             new QuantumElectrodynamics(),
             new QuantumChromodynamics(),
             new ColourDeconfinement(),
