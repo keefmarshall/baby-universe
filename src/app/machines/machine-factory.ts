@@ -27,6 +27,8 @@ import { ThermalResistor } from 'app/machines/thermal-resistor';
 import { ParticleAttractor } from 'app/machines/particle-attractor';
 import { ParadoxGenerator } from 'app/machines/paradox-generator';
 import { ThermalSpanner } from 'app/machines/thermal-spanner';
+import { Supervisor } from 'app/machines/supervisor';
+import { TickerService } from 'app/services/ticker.service';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -48,7 +50,8 @@ export class MachineFactory {
         private constructionService: ConstructionService,
         private meteringService: MeteringService,
         private stargameService: StargameService,
-        private heatingService: HeatingService
+        private heatingService: HeatingService,
+        private tickerService: TickerService
     ) {
         this.resetMachines();
     }
@@ -59,6 +62,7 @@ export class MachineFactory {
             'Paser': new Paser(this.universeService),
             'PhotonicPhilosopher': new PhotonicPhilosopher(this.universeService, this.researchService),
             'ParadoxGenerator': new ParadoxGenerator(this.universeService),
+            'Supervisor': new Supervisor(this.universeService, this.tickerService),
             'FieldMirror': new FieldMirror(this.universeService),
             'Assembler': new Assembler(this.universeService, this.constructionService, this.meteringService),
             'AssemblyPlant': new AssemblyPlant(this.universeService, this.constructionService, this.meteringService, this.researchService),

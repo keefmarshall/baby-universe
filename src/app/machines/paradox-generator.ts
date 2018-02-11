@@ -21,7 +21,8 @@ export class ParadoxGenerator extends Machine {
     }
 
     displayCost(count: number): string {
-        return this.baseCost + " MeV";
+        // return this.baseCost + " MeV";
+        return this.numberFormatter.abbreviateNumber(this.baseCost * 1e6) + 'eV';
     }
 
     payFor(count: number = 1): boolean {

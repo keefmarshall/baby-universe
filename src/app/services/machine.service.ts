@@ -18,6 +18,8 @@ export class MachineService {
   private machines: Array<Machine> = [];
   private machineNames: Array<string> = [];
 
+  public supervisorMessageSeen = false;
+
   constructor(
     private machineFactory: MachineFactory,
     private tickerService: TickerService,
@@ -25,6 +27,13 @@ export class MachineService {
   ) {
     console.log('Machine Service constructor, starting tick subscription now');
     this.tickerService.tick$.subscribe(n => this.onTick(n));
+
+    this.supervisorMessageSeen = universeService.universe.supervisorMessageSeen;
+
+    // Detect page going into the background and back out
+    document.addEventListener("visibilitychange", (event) => {
+      this.handleVisibilityChangeEvent(event);
+    });
   }
 
   /**
@@ -79,6 +88,24 @@ export class MachineService {
   getMachine(name: string): Machine {
     const matches = this.machines.filter(m => m.name === name);
     return matches.length > 0 ? matches[0] : null;
+  }
+
+
+  
+  handleVisibilityChangeEvent(event) {
+    // See the same function in TickerService for the main code, this
+    // is just to notify the user the first time they put the page into
+    // the background, that they'll need to do something to make the
+    // machines work.
+    if (!document.hidden && !this.supervisorMessageSeen && !this.exists("Supervisor")) {
+      this.supervisorMessageSeen = true;
+      this.universeService.universe.logs.push(
+        "Your machines are delicate and complex. " +
+        "For them to work when you're not here they'll need supervision.");
+
+      this.supervisorMessageSeen = true;
+      this.universeService.universe.supervisorMessageSeen = true;
+    }
   }
 
 }
