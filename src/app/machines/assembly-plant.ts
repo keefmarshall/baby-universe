@@ -18,7 +18,7 @@ export class AssemblyPlant extends ConstructionProject {
     ) {
         super('AssemblyPlant',
             "Assembly Plant",
-            "Combines assemblers to draw 10x energy",
+            "Combines assemblers to increase energy draw",
             universeService, 2500, 1.2);
     }
 
@@ -34,7 +34,9 @@ export class AssemblyPlant extends ConstructionProject {
             const u = this.universeService.universe;
             const q = this.properties().quantity;
             const eff = this.universeService.universe.machines['Assembler'].efficiency;
-            const baseEnergyDraw = this.universeService.universe.machines['Assembler'].extras['energyDraw'] * 100;
+            const boost = this.universeService.universe.machines['AssemblyPlant'].efficiency * 300; // efficiency starts at 0.1 so this is 30x
+            
+            const baseEnergyDraw = this.universeService.universe.machines['Assembler'].extras['energyDraw'] * boost; // boost was 100 in v < 0.2.6
             let energyDraw = baseEnergyDraw * q * tickFactor;
 
             if (u.energy < energyDraw) {
