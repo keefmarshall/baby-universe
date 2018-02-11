@@ -3,9 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs/Rx';
 import { Globals } from '../globals';
 import { Subscriber } from 'rxjs/Subscriber';
+import { GameModule } from 'app/games/game.module';
 
 enum PausedState {
   RUNNING, PAUSED, RESUMING
+}
+
+enum GameState {
+  STARTED, SUPERVISED, ENDGAME
 }
 
 @Injectable()
@@ -19,6 +24,9 @@ export class TickerService {
   public resumeFor: number = 0;
 
   private internalTicker$: Observable<number>;
+
+  private gameState: GameState = GameState.STARTED;
+  public supervisorEfficiency: number = 0.1;
 
   constructor() {
     // Trying to make this pausable, doesn't currently work.
@@ -76,11 +84,19 @@ export class TickerService {
       this.pause();
     } else {
       if (this.hiddenAt) {
-        const hiddenFor = (event.timeStamp - this.hiddenAt);
-        console.log("Was hidden for: " + hiddenFor);
-        this.hiddenAt = null;
-        this.resumeFor += Math.round(hiddenFor / (1000 * Globals.secondsPerTick));
-        this.resume();
+        switch (this.gameState) {
+          case GameState.SUPERVISED:
+            const hiddenFor = (event.timeStamp - this.hiddenAt);
+            console.log("Was hidden for: " + Math.round(hiddenFor / 1000) + " seconds");
+            this.hiddenAt = null;
+            this.resumeFor += Math.round(hiddenFor * this.supervisorEfficiency / (1000 * Globals.secondsPerTick));
+            this.resume();
+            break;
+          case GameState.ENDGAME:
+            break; // don't restart
+          default:
+            this.run();
+        }
       }
     }
   }
@@ -113,5 +129,20 @@ export class TickerService {
     }) as Observable<number>;
 
     return cuObs;
+  }
+
+  ///////////////////////////////////////////////////////////////////
+  // Game state management
+
+  gameSupervised() {
+    this.gameState = GameState.SUPERVISED;
+  }
+
+  gameEnd() {
+    this.gameState = GameState.ENDGAME;
+  }
+
+  isSupervised(): boolean {
+    return this.gameState === GameState.SUPERVISED;
   }
 }

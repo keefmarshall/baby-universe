@@ -110,3 +110,11 @@ Mode locking
  photon collector efficiency as the pasers are normally a one-shot eff gain.
  - or we change the photon collector algorithm to take into account the number of pasers
  and the current paser efficiency.
+
+
+UNSUPERVISED running
+====================
+
+First build a supervisor (research something first?)
+
+Offline running only goes at e.g. 10%, you have to improve it through subsequent builds/research
