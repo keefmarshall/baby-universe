@@ -14,6 +14,15 @@
       Deployment
   </p>
 
+  <div class="clearfix supervision" *ngIf="universeService.universe.machines['Supervisor']">
+    <p class="info info-right">
+      Unattended efficiency: {{ universeService.universe.machines['Supervisor'].quantity * 10 }}%
+    </p>
+    <p class="info info-left">
+      Supervisors: {{ universeService.universe.machines["Supervisor"].quantity }}
+    </p>
+  </div>
+
   <div *ngFor="let machine of machineFactory.allMachineNames">
     <app-deploy-button 
       [machineName]="machine"
