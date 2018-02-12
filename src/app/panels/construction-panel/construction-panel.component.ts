@@ -7,6 +7,8 @@ import { MachineFactory } from 'app/machines/machine-factory';
 import { Assembler } from 'app/machines/assembler';
 import { Globals } from 'app/globals';
 import { AssemblyPlant } from 'app/machines/assembly-plant';
+import { MachineService } from '../../services/machine.service';
+import { ThermalSpanner } from '../../machines/thermal-spanner';
 
 
 @Component({
@@ -19,6 +21,7 @@ export class ConstructionPanelComponent implements OnInit {
     public universeService: UniverseService,
     public constructionService: ConstructionService,
     private machineFactory: MachineFactory,
+    private machineService: MachineService,
     private meteringService: MeteringService
   ) { }
 
@@ -36,7 +39,7 @@ export class ConstructionPanelComponent implements OnInit {
   readWorkMeter(): number {
       return this.meteringService.read('work');
   }
-  
+
   idlePhilosopherBoost(): number {
     const ap = this.machineFactory.newMachine("AssemblyPlant") as AssemblyPlant;
     return ap ? ap.idlePhilosopherBoost() : 1;
@@ -60,5 +63,11 @@ export class ConstructionPanelComponent implements OnInit {
       return 'green';
     }
 
+  }
+
+  sabotage() {
+    const spanner = this.machineService.getMachine("ThermalSpanner") as ThermalSpanner;
+    spanner.trigger();
+    this.universeService.universe.machines["ThermalSpanner"].quantity --;
   }
 }

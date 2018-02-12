@@ -1,4 +1,16 @@
 <div id="construction-panel" class="panel alt-theme delay-3">
+
+    <div class="info-right" *ngIf="universeService.universe.machines['ThermalSpanner']?.quantity > 0">
+        <button 
+          mat-raised-button
+          class="deploy-button"
+          (click)="sabotage()"
+          [disabled]="!this.constructionService.isConstructing()">
+
+            <small>Thermal<br/>Spanner</small>
+        </button>
+    </div>
+
     <p class="panel-title">
       <mat-icon color="accent">build</mat-icon>
        Construction

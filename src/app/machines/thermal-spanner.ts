@@ -22,7 +22,8 @@ export class ThermalSpanner extends Machine {
 
     preconditions(): boolean {
         return (this.machineQuantity("Assembler") > 0
-                || this.machineQuantity("AssemblyPlant") > 0);
+                || this.machineQuantity("AssemblyPlant") > 0)
+                && this.properties().quantity < 1;
     }
 
     displayCost(count: number = 1): string {
@@ -33,10 +34,11 @@ export class ThermalSpanner extends Machine {
     payFor(count: number = 1): boolean {
         if (this.affordable(count)) {
             this.universeService.universe.energy -= this.energyCost(count);
-            this.universeService.universe.logs.push(
-                "A spanner in the works... Some damage may result.");
-            setTimeout(() => this.sabotage(), 30000);
-            this.constructionService.sabotage();
+            // Now triggered by button in construction panel:
+            // this.universeService.universe.logs.push(
+            //     "A spanner in the works... Some damage may result.");
+            // setTimeout(() => this.sabotage(), 30000);
+            // this.constructionService.sabotage();
 
             return true;
         } else {
@@ -45,8 +47,8 @@ export class ThermalSpanner extends Machine {
     }
 
     affordable(amount: number = 1): boolean {
-        return (this.universeService.universe.energy >= this.energyCost(amount)) &&
-            this.constructionService.isConstructing();
+        return (this.universeService.universe.energy >= this.energyCost(amount));
+             // && this.constructionService.isConstructing();
     }
 
     // ////////////////////////////////
@@ -60,6 +62,13 @@ export class ThermalSpanner extends Machine {
             Globals.geometricProgressionSum(q, q + amount - 1, this.costMultiplier);
 
         return Math.round(cost);
+    }
+
+    trigger() {
+        this.universeService.universe.logs.push(
+            "A spanner in the works... Some damage may result.");
+        setTimeout(() => this.sabotage(), 30000);
+        this.constructionService.sabotage();
     }
 
     sabotage() {
@@ -81,6 +90,5 @@ export class ThermalSpanner extends Machine {
             u.machines['AssemblyPlant'].quantity -= apchance;
             u.machines['Assembler'].quantity += apchance * 10;
         }
-
     }
 }
