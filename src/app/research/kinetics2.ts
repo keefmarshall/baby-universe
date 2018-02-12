@@ -62,25 +62,26 @@ export class AdvancedThermodynamics extends ResearchProject {
 
     preconditions(universe: Universe): boolean {
         const kcResearched = this.isResearched(universe, new HeatPumps());
-        return kcResearched;
+        const narrays = this.machineQuantity(universe, "HeatingArray")
+        return kcResearched && narrays > 4;
     }
 
     onCompletion(universe: Universe) {
         universe.machines['Assembler'].extras['energyDraw'] *= 4
         universe.machines['SpaceHeater'].extras['energyDraw'] *= 4
         // also enables advanced heating machinery
-        universe.logs.push("Now we're cooking. ");
+        universe.logs.push("With this advanced research, our Assemblers and Heaters can draw much more energy. ");
 
-        // Encouragement message - see also HeatArray
-        const met = universe.machines['HeatArray'] &&
-            universe.machines['HeatArray'].quantity > 4
-        if (met && !universe.machines['HeatArray'].extras['met']) {
-            universe.machines['HeatArray'].extras['met'] = true;
+        // Encouragement message - see also HeatingArray
+        const narrays = this.machineQuantity(universe, "HeatingArray")
+        const met = narrays > 19
+        if (met && !universe.machines['HeatingArray'].extras['met']) {
+            universe.machines['HeatingArray'].extras['met'] = true;
             setTimeout(() => {
                 universe.logs.push("Boost heating dramatically with Thermal Resistors.");
             }, 20000);
             setTimeout(() => {
-                universe.logs.push("Thermal Resistors need more matter to contain all that heat energy.");
+                universe.logs.push("Thermal Resistors need matter to contain all that heat energy.");
             }, 60000);
         }
 
@@ -124,3 +125,4 @@ export class KineticEngineering extends ResearchProject {
         universe.machines['Assembler'].efficiency *= (10 / 3);
     }
 }
+

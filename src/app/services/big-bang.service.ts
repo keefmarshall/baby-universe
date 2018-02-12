@@ -57,6 +57,7 @@ export class BigBangService {
 
   pauseUniverse() {
     this.tickerService.pause();
+    this.tickerService.gameEnd(); // set state so it doesn't get unpaused.
     this.stargameService.pauseGame();
   }
 

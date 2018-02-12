@@ -3,6 +3,7 @@ import { Universe } from "app/services/universe";
 import { PhotonCollector } from "app/machines/photon-collector";
 import { PhotonicPhilosopher } from "app/machines/photonic-philosopher";
 import { KineticEngineering } from "app/research/kinetics2";
+import { SuperscalarPipelining } from "app/research/assembly";
 
 export class Photovoltaics extends ResearchProject {
 
@@ -122,7 +123,7 @@ export class HemisphericalReflectance extends ResearchProject {
     }
 
     preconditions(universe: Universe): boolean {
-        return this.machineQuantity(universe, "PhotonicPhilosopher") >= 50;
+        return this.machineQuantity(universe, "FieldMirror") >= 7;
     }
 
     onCompletion(universe: Universe) {
@@ -137,7 +138,7 @@ export class DirectionalReflectance extends ResearchProject {
     }
 
     preconditions(universe: Universe): boolean {
-        return this.machineQuantity(universe, "PhotonicPhilosopher") >= 100 && 
+        return this.machineQuantity(universe, "FieldMirror") >= 12 && 
             this.isResearched(universe, new HemisphericalReflectance());
     }
 
@@ -165,11 +166,11 @@ export class Refraction extends ResearchProject {
 export class IntelligentAssembly extends ResearchProject {
 
     constructor() {
-        super("Intelligent Assembly", "Idle philosophers optimise assembly plant processes", 35000);
+        super("Intelligent Assembly", "Idle philosophers optimise assembly plant processes", 50000);
     }
 
     preconditions(universe: Universe): boolean {
-        return this.machineQuantity(universe, 'AssemblyPlant') >= 20;
+        return this.machineQuantity(universe, 'AssemblyPlant') >= 20 && this.isResearched(universe, new SuperscalarPipelining());
     }
 
     onCompletion(universe: Universe) {

@@ -9,7 +9,7 @@ export class ThermalResistor extends ConstructionProject {
         super('ThermalResistor',
             "Thermal Resistor",
             "Protects heating array components, dramatically increasing energy draw",
-            universeService, 100000, 1.6);
+            universeService, 500000, 1.45);
     }
 
     onComplete() {
@@ -22,7 +22,7 @@ export class ThermalResistor extends ConstructionProject {
 
     preconditions(): boolean {
         const met = this.isResearched(new AdvancedThermodynamics()) &&
-            this.machineQuantity("HeatingArray") > 4
+            this.machineQuantity("HeatingArray") > 19
 
         return met;
     }

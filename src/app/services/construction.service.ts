@@ -9,7 +9,7 @@ export class ConstructionService {
   public currentProject: ConstructionProject = null;
 
   private readonly ticksPerSecond = Math.round(1 / Globals.secondsPerTick);
-  
+
   private currentWork: number = 0;
   public energyDrawPerSecond: number = 0;
   public sabotaged = false;

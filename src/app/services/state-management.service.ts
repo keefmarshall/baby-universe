@@ -68,6 +68,14 @@ export class StateManagementService {
     console.log('Rationalising machine availability against preconditions...');
 
     this.updateMachineAvailability();
+
+    if (this.universeService.universe.machines["Supervisor"]) {
+      console.log("initialising Supervision...");
+      const eff = this.universeService.universe.machines["Supervisor"].efficiency;
+      const q = this.universeService.universe.machines["Supervisor"].quantity;
+      this.tickerService.supervisorEfficiency = q * eff;
+      this.tickerService.gameSupervised();
+    }
   }
 
   resetConstruction() {

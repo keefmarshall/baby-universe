@@ -34,20 +34,21 @@ export class Assembler extends Machine {
             // The lost energy is converted to universal heat.
             const u = this.universeService.universe;
             const q = this.properties().quantity;
-            const energyDraw = this.properties().extras['energyDraw'] * q * tickFactor;
+            let energyDraw = this.properties().extras['energyDraw'] * q * tickFactor;
             if (u.energy < energyDraw) {
-                // do nothing, there's not enough for us to work!
-                console.log("Assembler: not enough energy to work!");
-            } else {
-                // NB if efficiency goes above 10, we start taking heat from
-                // the universe to work! Not sure if I'll use this.
-                u.energy -= energyDraw;
-                const work = this.properties().efficiency * energyDraw * 0.1;
-                u.heat += (energyDraw - work);
-                this.constructionService.addWork(work);
-                this.meteringService.addQuantity('construction-energy-cost', energyDraw);
-                this.meteringService.addQuantity('work', work);
+                // There's not enough for us to work! But we'll take what there is
+                // console.log("Assembler: not enough energy to work!");
+                energyDraw = u.energy;
             }
+
+            // NB if efficiency goes above 10, we start taking heat from
+            // the universe to work! Not sure if I'll use this.
+            u.energy -= energyDraw;
+            const work = this.properties().efficiency * energyDraw * 0.1;
+            u.heat += (energyDraw - work);
+            this.constructionService.addWork(work);
+            this.meteringService.addQuantity('construction-energy-cost', energyDraw);
+            this.meteringService.addQuantity('work', work);
         }
     }
 

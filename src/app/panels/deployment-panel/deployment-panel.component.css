@@ -2,11 +2,28 @@ p.info {
     font-size: 0.64em;
 }
 
+.info-left {
+    float: left; 
+    margin: 0px;
+    margin-top: 5px;
+}
+
 .info-right {
     float: right;
     text-align: right;
     margin: 0px;
     margin-top: 5px;
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.supervision {
+    margin-top: -15px;
+    margin-bottom: 5px;
 }
 
 mat-button-toggle-group {

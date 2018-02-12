@@ -9,7 +9,7 @@ export class ParticleAttractor extends ConstructionProject {
         super('ParticleAttractor',
             "Particle Attractor",
             "Increase effectiveness of Matter Funnels",
-            universeService, 100000, 1.2);
+            universeService, 250000, 1.2);
     }
 
     onComplete() {
