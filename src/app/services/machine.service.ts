@@ -28,7 +28,7 @@ export class MachineService {
     console.log('Machine Service constructor, starting tick subscription now');
     this.tickerService.tick$.subscribe(n => this.onTick(n));
 
-    this.supervisorMessageSeen = universeService.universe.supervisorMessageSeen;
+    this.supervisorMessageSeen = universeService.universe.supervisorMessageSeen || false;
 
     // Detect page going into the background and back out
     document.addEventListener("visibilitychange", (event) => {
@@ -46,7 +46,7 @@ export class MachineService {
 
   /**
    * Core tick loop for machine processing
-   * 
+   *
    * @param n tick number, arbitrary number that increases per tick
    */
   onTick(n: number) {
@@ -60,7 +60,7 @@ export class MachineService {
 
   /**
    * Add a machine instance to the universe
-   * 
+   *
    * @param machine instance to add
    */
   addMachine(machine: Machine, quantity: number = 1) {
@@ -91,7 +91,6 @@ export class MachineService {
   }
 
 
-  
   handleVisibilityChangeEvent(event) {
     // See the same function in TickerService for the main code, this
     // is just to notify the user the first time they put the page into
