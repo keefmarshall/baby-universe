@@ -38,7 +38,7 @@ export class Supervisor extends Machine {
                     "One Supervisor alone can only manage to keep the machines running at 10% capacity. You may want to deploy more.");
             } else if (q === 9) {
                 this.universeService.universe.logs.push(
-                    "With ten Supervisors your machines can now run happily at their full rate when you're not here.");
+                    "With ten supervisors your machines can now run happily at their full rate when you're not here.");
             }
 
             const eff = this.properties().efficiency;
