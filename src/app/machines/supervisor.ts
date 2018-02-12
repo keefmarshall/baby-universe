@@ -44,7 +44,7 @@ export class Supervisor extends Machine {
             const eff = this.properties().efficiency;
             this.tickerService.supervisorEfficiency = (q + 1) * eff;
             this.tickerService.gameSupervised();
-      
+
             return true;
         } else {
             return false;
@@ -62,6 +62,5 @@ export class Supervisor extends Machine {
             Globals.geometricProgressionSum(q, q + count - 1, this.costMultiplier);
 
         return cost;
-        
     }
 }
