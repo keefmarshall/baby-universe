@@ -118,3 +118,16 @@ UNSUPERVISED running
 First build a supervisor (research something first?)
 
 Offline running only goes at e.g. 10%, you have to improve it through subsequent builds/research
+
+
+POST 0.2.6:
+===========
+
+Need two levels of intelligent assembly, to moderate the boost when first researched
+ - too powerful right now. The higher level should be insane - e.g. 100,000 science
+
+Hide matter collector after first Matter Funnel built
+- add a show/hide toggle button like the "generate paradox" or "spanner" ones..
+
+Find a suitable icon for the paradox generator 
+- (and maybe for the new detector toggle, see above)
