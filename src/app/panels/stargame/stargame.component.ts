@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, OnDestroy } from '@angular/core';
 import { StargameService } from 'app/games/stargame/stargame.service';
 import { UniverseService } from 'app/services/universe.service';
 import { ParticleFactory } from 'app/machines/particle-factory';
@@ -9,7 +9,7 @@ import { QuarkUtils } from 'app/research/matter';
   templateUrl: './stargame.component.html',
   styleUrls: ['./stargame.component.css']
 })
-export class StargameComponent implements AfterViewInit {
+export class StargameComponent implements AfterViewInit, OnDestroy {
   @Input() width =  380; //248;
   @Input() height = 380; //300;
 
@@ -42,5 +42,8 @@ export class StargameComponent implements AfterViewInit {
     }
   }
 
+  ngOnDestroy() {
+    this.stargameService.pauseGame();
+  }
 
 }

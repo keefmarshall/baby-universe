@@ -1,0 +1,13 @@
+app-stargame {
+    float: left;
+}
+
+p.info {
+    font-size: 0.7em;
+}
+
+.info-right {
+    float: right; 
+    text-align: right;
+    margin: 0px;
+}

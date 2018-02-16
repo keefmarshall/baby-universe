@@ -25,6 +25,7 @@ import { HelpPanelComponent } from './help-panel/help-panel.component';
 import { HelpUnitsComponent } from './help-panel/help-units/help-units.component';
 import { HelpMachinesComponent } from './help-panel/help-machines/help-machines.component';
 import { HelpResearchComponent } from './help-panel/help-research/help-research.component';
+import { MatterCollectionPanelComponent } from './matter-collection-panel/matter-collection-panel.component';
 
 @NgModule({
   imports: [
@@ -51,7 +52,8 @@ import { HelpResearchComponent } from './help-panel/help-research/help-research.
     HelpPanelComponent,
     HelpUnitsComponent,
     HelpMachinesComponent,
-    HelpResearchComponent
+    HelpResearchComponent,
+    MatterCollectionPanelComponent
   ],
   entryComponents: [
     StargameDialogComponent,
@@ -70,7 +72,8 @@ import { HelpResearchComponent } from './help-panel/help-research/help-research.
     TemperaturePanelComponent,
     MatterTableComponent,
     FinalScoreComponent,
-    HelpPanelComponent
+    HelpPanelComponent,
+    MatterCollectionPanelComponent
   ]
 })
 export class PanelsModule { }
