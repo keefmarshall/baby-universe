@@ -177,3 +177,18 @@ export class IntelligentAssembly extends ResearchProject {
         // see assembly plant
     }
 }
+
+export class MultiLevelSequencePlanning extends ResearchProject {
+
+    constructor() {
+        super("Multi-Level Sequence Planning", "Treble intelligent assembly boost from idle philosophers", 100000);
+    }
+
+    preconditions(universe: Universe): boolean {
+        return this.machineQuantity(universe, 'AssemblyPlant') >= 30 && this.isResearched(universe, new IntelligentAssembly());
+    }
+
+    onCompletion(universe: Universe) {
+        // see assembly plant
+    }
+}

@@ -1,7 +1,9 @@
 import { Universe } from "app/services/universe";
+import { NumberFormatter } from "app/util/number-formatter";
 
 export abstract class ResearchProject {
     
+    private readonly numberFormatter = new NumberFormatter();
 
     public canBuy: boolean = false;
     public canSee: boolean = false;
@@ -39,7 +41,7 @@ export abstract class ResearchProject {
     }
 
     displayCost() {
-        return this.scienceRequired + " science";
+        return this.numberFormatter.abbreviateNumber(this.scienceRequired, 4, true, "NUM", true, true) + " science";
     }
 
     reset() {

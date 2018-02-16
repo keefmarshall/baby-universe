@@ -5,7 +5,7 @@ import { MeteringService } from "app/services/metering.service";
 import { ConstructionProject } from "app/machines/construction-project";
 import { KineticEngineering } from "app/research/kinetics2";
 import { ResearchService } from "app/services/research.service";
-import { IntelligentAssembly } from "app/research/photons";
+import { IntelligentAssembly, MultiLevelSequencePlanning } from "app/research/photons";
 
 export class AssemblyPlant extends ConstructionProject {
     // protected baseEnergyDraw = 100;
@@ -69,7 +69,8 @@ export class AssemblyPlant extends ConstructionProject {
         if (this.isResearched(new IntelligentAssembly()) && !this.researchService.isResearching()) {
             const numPhils = this.machineQuantity("PhotonicPhilosopher");
             const philEff = this.universeService.universe.machines["PhotonicPhilosopher"].efficiency;
-            boost = 1 + (numPhils * philEff * 0.2);
+            const boostMultiplier = this.isResearched(new MultiLevelSequencePlanning()) ? 0.2 : (0.2/3);
+            boost = 1 + (numPhils * philEff * boostMultiplier);
         }
 
         return boost;
