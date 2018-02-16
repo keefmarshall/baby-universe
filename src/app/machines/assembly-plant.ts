@@ -34,9 +34,12 @@ export class AssemblyPlant extends ConstructionProject {
             const u = this.universeService.universe;
             const q = this.properties().quantity;
             const eff = this.universeService.universe.machines['Assembler'].efficiency;
-            const boost = this.universeService.universe.machines['AssemblyPlant'].efficiency * 300; // efficiency starts at 0.1 so this is 30x
-            
-            const baseEnergyDraw = this.universeService.universe.machines['Assembler'].extras['energyDraw'] * boost; // boost was 100 in v < 0.2.6
+
+            // efficiency starts at 0.1 so this is 30x
+            const boost = this.universeService.universe.machines['AssemblyPlant'].efficiency * 300;
+
+            // boost was 100 in v < 0.2.6
+            const baseEnergyDraw = this.universeService.universe.machines['Assembler'].extras['energyDraw'] * boost;
             let energyDraw = baseEnergyDraw * q * tickFactor;
 
             if (u.energy < energyDraw) {

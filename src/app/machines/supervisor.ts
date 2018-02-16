@@ -11,7 +11,7 @@ export class Supervisor extends Machine {
         private tickerService: TickerService) {
         super('Supervisor',
             "Supervisor",
-            "Tend the machines in your absence",
+            "Tends the machines in your absence",
             universeService);
     }
 
