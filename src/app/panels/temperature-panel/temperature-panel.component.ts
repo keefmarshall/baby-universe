@@ -34,6 +34,11 @@ export class TemperaturePanelComponent implements OnInit {
     return (this.temperature() / Math.pow(10, this.exponent())).toPrecision(4);
   }
 
+  phase1Progress(): number {
+    const therm = this.machineService.getMachine('Thermometer') as Thermometer;
+    return therm.phase1Progress;
+  }
+
   onSwitchChange($event) {
     this.heatingService.setHeating($event.source.checked);
   }
