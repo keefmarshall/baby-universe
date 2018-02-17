@@ -19,8 +19,20 @@
     font-style: italic;
 }
 
+.paradox-button small {
+    float: right;
+}
+
 .deploy-button:enabled:hover {
     box-shadow: inset 0 0 0 99999px rgba(128,128,128,0.2);
+}
+
+.deploy-button .mat-icon {
+    float: left;
+    font-size: smaller;
+    height: auto;
+    width: auto;
+    vertical-align: center;
 }
 
 p.info {

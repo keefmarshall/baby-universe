@@ -2,10 +2,11 @@
     <div class="info-right" *ngIf="universeService.universe.machines['ParadoxGenerator']">
         <button 
           mat-raised-button
-          class="deploy-button"
+          class="deploy-button paradox-button"
           (click)="generateParadox()"
           [disabled]="distracted || canResearch">
 
+        <mat-icon>compare_arrows</mat-icon>
         <small *ngIf="!distracted">Generate<br/>Paradox</small>
         <small *ngIf="distracted">DISTRACTED!</small>
 
