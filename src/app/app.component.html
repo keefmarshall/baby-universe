@@ -37,8 +37,9 @@
     </div>
 
     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 col3">
-      <app-stargame [width]="300" [height]="300"
-        *ngIf="showMatterCollectionPanel()"></app-stargame>
+      <app-matter-collection-panel *ngIf="showMatterCollectionPanel()"></app-matter-collection-panel>
+      <!-- <app-stargame [width]="300" [height]="300"
+        *ngIf="showMatterCollectionPanel()"></app-stargame> -->
     </div>
   
     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 debug"
@@ -64,7 +65,7 @@
     <span>
       &copy; 2018 Keith Marshall
       | <span (click)="resetUniverse()" class="start-again">start again</span>
-      | v0.2.6-alpha
+      | v0.2.7-alpha
     </span>
     <span class="space-filler"></span>
     Favicon courtesy NASA/JPL-Caltech.

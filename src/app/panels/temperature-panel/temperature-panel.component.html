@@ -1,4 +1,15 @@
 <div id="temperature-panel" class="panel alt-theme delay-3">
+  <div class="info-right progress">
+    <small>Goal:</small>
+    <mat-progress-spinner
+      color="accent"
+      mode="determinate"
+      [value]="phase1Progress()"
+      diameter="40"
+      strokeWidth="30"
+      ></mat-progress-spinner>
+  </div>
+
   <p class="panel-title">
       <mat-icon color="primary">trending_up</mat-icon>
       Heat
@@ -6,7 +17,7 @@
   <p>
     Universe temperature: 
     <span color="accent">
-      {{ mantissa() }} x 10<sup>{{ exponent() }}</sup>K
+      {{ mantissa() }}&nbsp;x&nbsp;10<sup>{{ exponent() }}</sup>K
     </span>
   </p>
 

@@ -17,6 +17,11 @@ p.info {
     margin: 0px;
 }
 
+.progress {
+    margin-top: 5px;
+    width: 50px;
+}
+
 .clearfix:after {
     content: "";
     display: table;

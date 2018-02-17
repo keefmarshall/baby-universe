@@ -9,6 +9,9 @@ import { Globals } from "app/globals";
 export class Thermometer extends ConstructionProject implements Meter {
     meterValue: number;
     exponent: number;
+    phase1Progress: number = 0; // percentage complete 0->100
+
+    private readonly phase1Max: number;
 
     constructor(universeService: UniverseService,
          private meteringService: MeteringService) {
@@ -23,6 +26,8 @@ export class Thermometer extends ConstructionProject implements Meter {
         if (this.machineQuantity("Thermometer") > 0) {
             this.meteringService.addMeter("thermometer", this);
         }
+
+        this.phase1Max = this.phase1ProgressCalc(1e32);
     }
 
     onComplete() {
@@ -42,6 +47,8 @@ export class Thermometer extends ConstructionProject implements Meter {
         this.meterValue = universe.heat / Globals.boltzmann; // temp in K
         this.exponent = Math.floor(Math.log(this.meterValue) / Math.log(10));
 
+        this.phase1Progress = this.phase1ProgressCalc(this.meterValue) * 100 / this.phase1Max;
+
         if (universe.phase === 1) {
             if (this.exponent >= 32) {
                 // we're done with phase one, start big bang by changing universe state..
@@ -53,6 +60,11 @@ export class Thermometer extends ConstructionProject implements Meter {
                 universe.logs.push("Your matter soup is getting warmer, but it's not hot enough yet!");
             }
         }
+    }
+
+    phase1ProgressCalc(n: number): number {
+        const x = Math.log10(n);
+        return x * Math.pow(1.1, x);
     }
 
     addQuantity(n: number) {

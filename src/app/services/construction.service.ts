@@ -33,7 +33,7 @@ export class ConstructionService {
   }
 
   construct(project: ConstructionProject): boolean {
-    if (this.isConstructing()) {
+    if (this.isConstructing() || this.sabotaged) {
       console.log("Can't build construction, already constructing!");
       return false;
     } else if (project.payFor(1)) {

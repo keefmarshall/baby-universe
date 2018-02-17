@@ -5,7 +5,7 @@ import { MeteringService } from "app/services/metering.service";
 import { ConstructionProject } from "app/machines/construction-project";
 import { KineticEngineering } from "app/research/kinetics2";
 import { ResearchService } from "app/services/research.service";
-import { IntelligentAssembly } from "app/research/photons";
+import { IntelligentAssembly, MultiLevelSequencePlanning } from "app/research/photons";
 
 export class AssemblyPlant extends ConstructionProject {
     // protected baseEnergyDraw = 100;
@@ -34,9 +34,12 @@ export class AssemblyPlant extends ConstructionProject {
             const u = this.universeService.universe;
             const q = this.properties().quantity;
             const eff = this.universeService.universe.machines['Assembler'].efficiency;
-            const boost = this.universeService.universe.machines['AssemblyPlant'].efficiency * 300; // efficiency starts at 0.1 so this is 30x
-            
-            const baseEnergyDraw = this.universeService.universe.machines['Assembler'].extras['energyDraw'] * boost; // boost was 100 in v < 0.2.6
+
+            // efficiency starts at 0.1 so this is 30x
+            const boost = this.universeService.universe.machines['AssemblyPlant'].efficiency * 300;
+
+            // boost was 100 in v < 0.2.6
+            const baseEnergyDraw = this.universeService.universe.machines['Assembler'].extras['energyDraw'] * boost;
             let energyDraw = baseEnergyDraw * q * tickFactor;
 
             if (u.energy < energyDraw) {
@@ -66,7 +69,8 @@ export class AssemblyPlant extends ConstructionProject {
         if (this.isResearched(new IntelligentAssembly()) && !this.researchService.isResearching()) {
             const numPhils = this.machineQuantity("PhotonicPhilosopher");
             const philEff = this.universeService.universe.machines["PhotonicPhilosopher"].efficiency;
-            boost = 1 + (numPhils * philEff * 0.2);
+            const boostMultiplier = this.isResearched(new MultiLevelSequencePlanning()) ? 0.2 : (0.2/3);
+            boost = 1 + (numPhils * philEff * boostMultiplier);
         }
 
         return boost;
