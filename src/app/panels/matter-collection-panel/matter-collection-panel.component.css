@@ -11,3 +11,20 @@ p.info {
     text-align: right;
     margin: 0px;
 }
+
+.deploy-button {
+    margin-top: 5px;
+}
+
+.deploy-button small {
+    font-style: italic;
+    float: right;
+}
+
+.deploy-button .mat-icon {
+    float: left;
+    font-size: smaller;
+    height: auto;
+    width: auto;
+    vertical-align: center;
+}

@@ -7,6 +7,7 @@ import { UniverseService } from 'app/services/universe.service';
   styleUrls: ['./matter-collection-panel.component.css']
 })
 export class MatterCollectionPanelComponent implements OnInit {
+  private gameOn = false;
 
   constructor(public universeService: UniverseService) { }
 
@@ -15,6 +16,10 @@ export class MatterCollectionPanelComponent implements OnInit {
 
   showStargame() {
     // TODO: use presence of matter funnels and toggle button to decide
-    return !this.universeService.universe.machines['MatterFunnel'];
+    return !this.universeService.universe.machines['MatterFunnel'] || this.gameOn;
+  }
+
+  toggleStargame() {
+    this.gameOn = !this.gameOn;
   }
 }

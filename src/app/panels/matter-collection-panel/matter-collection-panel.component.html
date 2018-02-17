@@ -1,4 +1,17 @@
 <div class="stargame" class="panel delay-4">
+
+    <div class="info-right" *ngIf="universeService.universe.machines['MatterFunnel']?.quantity > 0">
+        <button 
+          mat-raised-button
+          class="deploy-button"
+          (click)="toggleStargame()">
+
+          <mat-icon>star</mat-icon>
+          <small *ngIf="!showStargame()">Show<br/>Detector</small>
+          <small *ngIf="showStargame()">Hide<br/>Detector</small>
+        </button>
+    </div>
+
     <p class="panel-title">
         <mat-icon>input</mat-icon>
         Matter Collection

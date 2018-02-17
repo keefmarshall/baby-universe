@@ -25,7 +25,13 @@ export class StargameComponent implements AfterViewInit, OnDestroy {
   ) { }
 
   ngAfterViewInit() {
+    console.log("stargame component after view init");
     this.stargameService.initGame("stargame-canvas");
+  }
+
+  ngOnDestroy() {
+    this.stargameService.stopGame();
+    console.log("stargame component destroyed");
   }
 
   /**
@@ -40,10 +46,6 @@ export class StargameComponent implements AfterViewInit, OnDestroy {
       const quark = qu.randomQuark(u);
       this.particleFactory.collectQuark(u, quark);
     }
-  }
-
-  ngOnDestroy() {
-    this.stargameService.pauseGame();
   }
 
 }

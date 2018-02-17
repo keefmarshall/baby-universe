@@ -48,6 +48,13 @@
 
   <button mat-raised-button (click)="resetUniverse();" color="warn">RESET</button>
 
+  <br/>
+  <button mat-raised-button (click)="stargameService.stopGame();">Stop stargame</button>  
+  <button mat-raised-button (click)="stargameService.pauseGame();">Pause stargame</button>  
+  <button mat-raised-button (click)="stargameService.resumeGame();">Resume stargame</button>
+  <button mat-raised-button (click)="stargameService.initStage();">Init stage</button>
+  
+
   <div id="universe-debug" class="desktop-only">
     <pre>{{ universeService.universe | json }}</pre>
   </div>
