@@ -60,12 +60,13 @@ export class QuarkScoop extends ConstructionProject {
 
     upQuarkCost() {
         const q = this.properties().quantity;
-        return Math.round(this.upQuarkBaseCost + (2 * Math.pow(q, 1.8)));
+        // return Math.round(this.upQuarkBaseCost + (2 * Math.pow(q, 1.8)));
+        return Math.round(this.upQuarkBaseCost * Math.pow(1.6, q));
     }
 
     downQuarkCost() {
         const q = this.properties().quantity;
-        return Math.round(this.downQuarkBaseCost + Math.pow(q, 1.8));
+        return Math.round(this.downQuarkBaseCost * Math.pow(1.6, q));
     }
 
 
