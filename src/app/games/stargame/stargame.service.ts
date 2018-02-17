@@ -17,6 +17,8 @@ export class StargameService {
   private startr: number = 10;
   private readonly radiusDivisor: number = 70; // bigger -> smaller stars
 
+  private activeTimeoutIds = [];
+
   private particleFactory: ParticleFactory;
 
   constructor(
@@ -66,24 +68,35 @@ export class StargameService {
     const matterDetectors = this.machineQuantity("MatterDetector");
     console.log("Starting " + matterDetectors + " matter detectors..");
     for (let i = 0; i < matterDetectors; i++) {
-      setTimeout(() => this.doStar(), Math.random() * 3000);
+      this.queueNewStar(Math.random() * 3000);
     }
   }
 
   stopGame() {
+    // Stop existing stars
+    createjs.Tween.removeAllTweens();
+
+    // Stop any new stars
+    this.activeTimeoutIds.forEach((tid) => {
+      clearTimeout(tid);
+    });
+
+    // Shut down the ticker:
+    createjs.Ticker.setPaused(true);
+    if (this.tickListener) {
+      createjs.Ticker.removeEventListener("tick", this.tickListener);
+    }
+
+    // clear the canvas stage
     if (this.stage) {
       this.stage.removeAllChildren();
       this.stage.removeAllEventListeners();
-      // createjs.Touch.disable(this.stage);
-      createjs.Ticker.reset(); // this can kill the canvas under some conditions
+      this.stage.enableDOMEvents(false); // otherwise everything slows down to a crawl after a few stop/starts
+      this.stage.update();
+      createjs.Touch.disable(this.stage);
+      // createjs.Ticker.reset(); // this can kill the canvas under some conditions
       // createjs.Ticker.removeAllEventListeners("tick"); // as can this
-      // createjs.Ticker.setPaused(true); // not enough, doesn't stop existing stars
     }
-
-    // This doesn't reset existing stars either
-    // if (this.tickListener) {
-    //   createjs.Ticker.removeEventListener("tick", this.tickListener);
-    // }
   }
 
   resumeGame() {
@@ -182,9 +195,15 @@ export class StargameService {
     starContainer.removeChild(starSprite);
     this.stage.removeChild(starContainer);
 
-    setTimeout(() => {
-        this.doStar();
-    }, (Math.random() * 3000) + 1000);
+    this.queueNewStar((Math.random() * 3000) + 1000);
+  }
+
+  queueNewStar(delay: number) {
+    const tid = setTimeout(() => {
+      this.doStar();
+      this.activeTimeoutIds.splice(this.activeTimeoutIds.indexOf(tid), 1);
+    }, delay);
+    this.activeTimeoutIds.push(tid);
   }
 
   starClicked(event) {
