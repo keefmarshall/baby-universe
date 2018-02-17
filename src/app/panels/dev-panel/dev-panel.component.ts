@@ -24,7 +24,7 @@ export class DevPanelComponent implements OnInit {
     public universeService: UniverseService,
     private researchService: ResearchService,
     private constructionService: ConstructionService,
-    private stargameService: StargameService,
+    public stargameService: StargameService,
     private autosaveService: AutosaveService,
     private logService: LogService
   ) { }
