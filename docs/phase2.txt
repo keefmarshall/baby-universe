@@ -30,6 +30,17 @@ https://www.astro.ufl.edu/~guzman/ast7939/lectures/basics/lect03.html
 Higgs and gravity not correlated:
 https://profmattstrassler.com/2012/10/15/why-the-higgs-and-gravity-are-unrelated/
 
+This one is a better summary, and goes further in subsequent pages:
+https://www.cfa.harvard.edu/~ejchaisson/cosmic_evolution/docs/fr_1/fr_1_part3.html
+
+Galaxy formation:
+https://www.cfa.harvard.edu/~ejchaisson/cosmic_evolution/docs/fr_1/fr_1_gal.html
+"collisional excitation", “monolithic collapse.”, "hierarchical clustering"
+angular momentum
+Seems like dark matter may have been required.. might ignore that.
+
+
+
 
 ====================================================
 Game mechanics
