@@ -1,0 +1,30 @@
+<div class="mdc-layout-grid" id="main-content" #bigbang>
+  <div class="mdc-layout-grid__inner">
+
+    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+      <app-log-panel></app-log-panel>
+    </div>
+
+    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4">
+        <app-collection-panel></app-collection-panel>
+        <app-deployment-panel *ngIf="showDeploymentPanel()"></app-deployment-panel>
+    </div>
+
+    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4">
+      <app-research-panel *ngIf="showResearchPanel()"></app-research-panel>
+      <app-construction-panel *ngIf="showConstructionPanel()"></app-construction-panel>
+      <app-temperature-panel *ngIf="showTemperaturePanel()"></app-temperature-panel>
+    </div>
+
+    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 col3">
+      <app-matter-collection-panel *ngIf="showMatterCollectionPanel()"></app-matter-collection-panel>
+    </div>
+
+  </div>
+</div>
+
+<div class="final-score-container" #finalscore>
+  <div class="final-score">
+    <app-final-score></app-final-score>
+  </div>
+</div>

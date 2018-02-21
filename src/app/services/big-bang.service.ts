@@ -42,7 +42,7 @@ export class BigBangService {
     console.log("Big bang, pausing universe, starting animation");
     this.pauseUniverse();
     this.renderer.addClass(this.elementRef.nativeElement, "bigbang");
-    this.renderer.addClass(this.renderer.parentNode(this.elementRef.nativeElement), "black");
+    this.renderer.addClass(this.parentOf(this.parentOf(this.elementRef.nativeElement)), "black");
     setTimeout(() => {
       console.log("BB animation done, showing final score");
       this.renderer.setStyle(this.finalScoreElementRef.nativeElement, "display", "block");
@@ -64,6 +64,10 @@ export class BigBangService {
   resumeUniverse() {
     this.tickerService.resume();
     this.stargameService.resumeGame();
+  }
+
+  private parentOf(elementRef: ElementRef): ElementRef {
+    return this.renderer.parentNode(elementRef);
   }
 
 }

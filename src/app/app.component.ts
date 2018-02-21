@@ -20,78 +20,26 @@ import { Globals } from 'app/globals';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, AfterViewInit  {
+export class AppComponent implements OnInit {
   title = 'Baby Universe';
   showDebug = isDevMode();
 
   globals = Globals; // export for template
 
-  @ViewChild('bigbang') mainDivRef: ElementRef;
-  @ViewChild('finalscore') fsDivRef: ElementRef;
-
   // Add services here to ensure they're started at application
   // load time, otherwise things may not get kicked off correctly.
   constructor(
     private autosaveService: AutosaveService,
-    private bigBangService: BigBangService,
     private machineService: MachineService,
     private stateManagementService: StateManagementService,
     private tickerService: TickerService,
     private timeService: TimeService,
     private universeService: UniverseService,
-    private renderer: Renderer2,
-    private stargameService: StargameService,
     private dialog: MatDialog
   ) { }
 
   ngOnInit() {
     this.autosaveService.enabled = true;
-  }
-
-  ngAfterViewInit() {
-    this.bigBangService.setElementRef(this.mainDivRef);
-    this.bigBangService.setFinalScoreElementRef(this.fsDivRef);
-  }
-
-  showDeploymentPanel(): boolean {
-    return this.universeService.universe.photonCount >= 10;
-  }
-
-  showResearchPanel(): boolean {
-    const rp =  this.machineService.exists('PhotonicPhilosopher');
-    // console.log("Show research panel: " + rp);
-    return rp;
-  }
-
-  showConstructionPanel(): boolean {
-    const cp = this.machineService.exists('Assembler');
-    // console.log("Show constrruction panel :" + cp);
-    return cp;
-  }
-
-  showTemperaturePanel(): boolean {
-    return this.machineService.exists('Thermometer');
-  }
-
-  showMatterCollectionPanel(): boolean {
-    const props = this.universeService.universe.research[new Quarks1().name];
-    return props != null ? props.researched : false;
-  }
-
-  bigBang() {
-    this.bigBangService.bigBang();
-  }
-
-  noBigBang() {
-    this.bigBangService.noBigBang();
-  }
-
-  pauseUniverse() {
-    this.bigBangService.pauseUniverse();
-  }
-
-  resumeUniverse() {
-    this.bigBangService.resumeUniverse();
   }
 
   resetUniverse() {

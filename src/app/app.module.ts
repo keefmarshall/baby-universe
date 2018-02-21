@@ -29,10 +29,12 @@ import { HeatingService } from 'app/services/heating.service';
 import { BigBangService } from 'app/services/big-bang.service';
 import { AnalyticsService } from 'app/services/analytics.service';
 import { HttpClientModule } from '@angular/common/http';
+import { PhaseOneComponent } from './phases/phase-one/phase-one.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PhaseOneComponent
     // TickerComponent
   ],
   imports: [
