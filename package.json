@@ -30,6 +30,7 @@
     "createjs-module": "^0.8.3",
     "ng2-toasty": "^4.0.3",
     "rxjs": "^5.5.6",
+    "typed.js": "^2.0.6",
     "typescript-collections": "^1.2.5",
     "zone.js": "^0.8.20"
   },
