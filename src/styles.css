@@ -25,6 +25,16 @@ blockquote, .log {
   overflow:hidden;
 }
 
+@media all and (min-width: 769px) {
+  .mobile-only {display: none;}
+  .desktop-only { display: initial; }
+}
+
+@media all and (max-width: 768px) {
+  .mobile-only {display: initial;}
+  .desktop-only { display: none; }
+}
+
 /*************************************
  PANELS
  *************************************/
@@ -62,16 +72,6 @@ blockquote, .log {
 .panel-title > .mat-icon {
     line-height: 19px!important;
     font-size: 16px;
-}
-
-@media all and (min-width: 769px) {
-    .mobile-only {display: none;}
-    .desktop-only { display: initial; }
-}
-
-@media all and (max-width: 768px) {
-    .mobile-only {display: initial;}
-    .desktop-only { display: none; }
 }
 
 @keyframes bounceIn {
