@@ -131,3 +131,14 @@ Hide matter collector after first Matter Funnel built
 
 Find a suitable icon for the paradox generator 
 - (and maybe for the new detector toggle, see above)
+
+
+BU COLOURS:
+babyblue: 018cad
+babypink: e17e9b
+lens flare: movie prime: brightness 141
+
+http://mcg.mbitson.com
+http://paletton.com
+
+http://www.palettefx.com/

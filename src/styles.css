@@ -11,6 +11,27 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+.red { color: red }
+.orange { color: #e36b00 }
+.green { color: #739b53 }
+
+
+#loading {
+  background-color: #040010;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+#loading img {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
+}
+
 blockquote, .log {
     font-family: 'Lora', serif;
 }
