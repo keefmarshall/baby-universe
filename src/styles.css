@@ -17,7 +17,7 @@ body {
 
 
 #loading {
-  background-color: #040010;
+  background-color: #223344;
   margin: 0;
   width: 100vw;
   height: 100vh;
@@ -46,12 +46,12 @@ blockquote, .log {
   overflow:hidden;
 }
 
-@media all and (min-width: 769px) {
+@media all and (min-width: 840px) { /* was 769 */
   .mobile-only {display: none;}
   .desktop-only { display: initial; }
 }
 
-@media all and (max-width: 768px) {
+@media all and (max-width: 839px) { /* was 839 */
   .mobile-only {display: initial;}
   .desktop-only { display: none; }
 }

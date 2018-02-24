@@ -1,6 +1,8 @@
 app-stargame {
     float: left;
+    max-width: 305px;
 }
+
 
 p.info {
     font-size: 0.7em;
