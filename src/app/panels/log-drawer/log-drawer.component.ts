@@ -39,7 +39,7 @@ export class LogDrawerComponent implements OnInit, OnDestroy, AfterViewInit {
     this.typed = new Typed(".log-line", {
       strings: [""],
       showCursor: false,
-      typeSpeed: 50,
+      typeSpeed: 40,
       onComplete: (typed) => { this.typingComplete(typed) }
     });
   }
@@ -67,6 +67,6 @@ export class LogDrawerComponent implements OnInit, OnDestroy, AfterViewInit {
     this.collapseTimerId = setTimeout(() => {
       this.logDrawerState = "collapsed";
       this.busy = false;
-    }, 5000);
+    }, 3000);
    }
 }

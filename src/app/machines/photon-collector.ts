@@ -58,7 +58,7 @@ export class PhotonCollector extends Machine {
 
             const q = this.properties().quantity || 0;
             if (q === 9) {
-                this.universeService.universe.logs.push(
+                this.logService.addLog(
                     "The light of the void can help unlock a myriad of possibilities."
                 );
             }
