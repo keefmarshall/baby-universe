@@ -14,6 +14,7 @@ import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { MatDialog } from '@angular/material';
 import { HelpPanelComponent } from 'app/panels/help-panel/help-panel.component';
 import { Globals } from 'app/globals';
+import { LogService } from 'app/services/log.service';
 
 @Component({
   selector: 'app-root',
@@ -35,7 +36,8 @@ export class AppComponent implements OnInit {
     private tickerService: TickerService,
     private timeService: TimeService,
     private universeService: UniverseService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private logService: LogService
   ) { }
 
   ngOnInit() {
@@ -53,5 +55,9 @@ export class AppComponent implements OnInit {
 
   openHelp() {
     this.dialog.open(HelpPanelComponent);
+  }
+
+  openLogs() {
+    this.logService.toggleDrawer();
   }
 }
