@@ -58,7 +58,7 @@ export class LogDrawerComponent implements OnInit, OnDestroy, AfterViewInit {
       clearTimeout(this.collapseTimerId);
     }
     this.logDrawerState = "expanded";
-    this.typed.strings = [text];
+    this.typed.strings = [text + "  "];
     this.typed.reset(true);
    }
 

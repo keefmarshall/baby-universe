@@ -7,16 +7,18 @@
     background: linear-gradient(to bottom, white, map-get($md-babypink, 100));
     border-bottom: solid 2px map-get($md-babypink, 900);
     // overflow: auto;
-    font-size: 0.86em;
-
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 24px;
-    padding-right: 24px;
+    // font-size: 0.86em;
 
     position: absolute;
-    width: 100vw;
+    width: 100%;
     z-index: 1;
 
     min-height: 15px;
+}
+
+.log-line {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 24px;
+    padding-right: 24px;
 }
