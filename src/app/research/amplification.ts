@@ -22,7 +22,7 @@ export class PhotonAmplification extends ResearchProject {
 
     onCompletion(universe: Universe) {
         // Does nothing, but enables Pasers to be constructed
-        universe.logs.push("Build Pasers to amplify the energy collected from each photon");
+        this.log("Build Pasers to amplify the energy collected from each photon");
     }
 }
 
@@ -47,7 +47,7 @@ export class QSwitching extends ResearchProject {
         universe.machines['Paser'].efficiency *= qsBoost;
         universe.machines['PhotonCollector'].efficiency *= Math.pow(qsBoost, npasers);
 
-        universe.logs.push("Now our Pasers are a lot more effective");
+        this.log("Now our Pasers are a lot more effective");
     }
 }
 
@@ -72,6 +72,6 @@ export class ModeLocking extends ResearchProject {
         universe.machines['Paser'].efficiency *= qsBoost;
         universe.machines['PhotonCollector'].efficiency *= Math.pow(qsBoost, npasers);
 
-        universe.logs.push("Pasers cumulatively enhanced.");
+        this.log("Pasers cumulatively enhanced.");
     }
 }
