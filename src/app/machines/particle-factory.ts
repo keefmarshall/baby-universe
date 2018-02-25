@@ -1,19 +1,20 @@
 import { Globals } from '../globals';
 import { Universe } from '../services/universe';
+import { LogService } from '../services/log.service';
 
 export class ParticleFactory {
 
-    collectPhoton(universe: Universe, count: number = 1) {
+    collectPhoton(universe: Universe, logService: LogService, count: number = 1) {
         // low energy photons, 0.1MeV to 1MeV. An annihilation between a positron
         // and electron at rest is about 0.5 MeV, for comparison.
         universe.energy += (0.5 * count);
         universe.photonCount += (1 * count);
 
         if (universe.photonCount === 1) {
-            universe.logs.push("It all begins with one photon, collected from the void and stored as pure energy.");
+            logService.addLog("It all begins with one photon, collected from the void and stored as pure energy.");
         }
         if (universe.photonCount === 10) {
-            universe.logs.push("Stored energy can be useful.");
+            logService.addLog("Stored energy can be useful.");
         }
     }
 

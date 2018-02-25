@@ -2,17 +2,19 @@ import { ConstructionProject } from "app/machines/construction-project";
 import { UniverseService } from "app/services/universe.service";
 import { ParticleFactory } from "app/machines/particle-factory";
 import { QuantumChromodynamics } from "app/research/collection";
+import { LogService } from "../services/log.service";
 
 export class QuarkSqueezer extends ConstructionProject {
     private particleFactory = new ParticleFactory();
 
     constructor(
-        universeService: UniverseService
+        universeService: UniverseService,
+        logService: LogService
     ) {
         super('QuarkSqueezer',
             "Quark Squeezer",
             "Compress quarks to produce gluons",
-            universeService, 25000, 1.1);
+            universeService, logService, 25000, 1.1);
     }
 
     onComplete() {

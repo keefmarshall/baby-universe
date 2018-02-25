@@ -3,6 +3,7 @@ import { Universe } from '../services/universe';
 import { UniverseService } from '../services/universe.service';
 import { ResearchProject } from 'app/research/research-project';
 import { NumberFormatter } from 'app/util/number-formatter';
+import { LogService } from '../services/log.service';
 
 
 export abstract class Machine {
@@ -28,6 +29,7 @@ export abstract class Machine {
         public readonly displayName: string,
         public readonly displayPurpose: string,
         protected universeService: UniverseService,
+        protected logService: LogService,
         public canBuyMultiple = false
     ) { }
 

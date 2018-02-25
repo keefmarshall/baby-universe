@@ -6,6 +6,7 @@ import { StargameComponent } from 'app/panels/stargame/stargame.component';
 import { Quarks1 } from 'app/research/matter';
 import { StargameDialogComponent } from 'app/panels/stargame/stargame-dialog.component';
 import { MeteringService } from 'app/services/metering.service';
+import { LogService } from '../../services/log.service';
 
 @Component({
   selector: 'app-collection-panel',
@@ -18,6 +19,7 @@ export class CollectionPanelComponent implements OnInit {
   constructor(
     public universeService: UniverseService,
     public meteringService: MeteringService,
+    private logService: LogService,
     public dialog: MatDialog
   ) { }
 
@@ -26,7 +28,7 @@ export class CollectionPanelComponent implements OnInit {
 
   collectPhoton() {
     console.log('Collected photon!');
-    this.particleFactory.collectPhoton(this.universeService.universe);
+    this.particleFactory.collectPhoton(this.universeService.universe, this.logService);
   }
 
   collectMatter() {

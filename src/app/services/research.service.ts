@@ -3,6 +3,7 @@ import { ResearchProject } from 'app/research/research-project';
 import { UniverseService } from 'app/services/universe.service';
 import { Universe } from 'app/services/universe';
 import { ResearchList } from 'app/research/research-list';
+import { LogService } from './log.service';
 
 @Injectable()
 export class ResearchService {
@@ -13,10 +14,11 @@ export class ResearchService {
   // rate of change! it does not represent the total science
   public scienceCount: number = 0;
 
-  private readonly allProjects: {};
+  private readonly allProjects: { [key: string]: ResearchProject };
 
   constructor(
-    private universeService: UniverseService
+    private universeService: UniverseService,
+    private logService: LogService
   ) {
     this.researchList = new ResearchList();
     this.allProjects = this.researchList.projects;
@@ -99,7 +101,8 @@ export class ResearchService {
     const u = this.universeService.universe;
 
     Object.keys(this.allProjects).forEach(pname => {
-      const project = this.allProjects[pname];
+      const project: ResearchProject = this.allProjects[pname];
+      project.setLogService(this.logService);
       if (u.research[pname] != null && !u.research[pname].researched) {
         project.addScience(u.research[pname].scienceGained, u);
       } else {
