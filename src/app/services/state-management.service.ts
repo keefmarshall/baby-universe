@@ -6,14 +6,15 @@ import { UniverseService } from 'app/services/universe.service';
 import { ConstructionService } from 'app/services/construction.service';
 import { ConstructionProject } from 'app/machines/construction-project';
 import { StargameService } from 'app/games/stargame/stargame.service';
+import { LogService } from './log.service';
 
 /**
- * This service exists to break circular dependencies between 
+ * This service exists to break circular dependencies between
  * projects/machines and various services. Specifically it allows
  * the MachineService to exist without a dependency on the
  * MachineFactory - so all references to machines in the Service
  * have to be externally injected.
- * 
+ *
  * This class takes care of restoring the correct state when the universe
  * is reset, or loaded from autosave. It ensures machines have the correct
  * state at all times.
@@ -23,6 +24,7 @@ export class StateManagementService {
 
   constructor(
     private constructionService: ConstructionService,
+    private logService: LogService,
     private machineFactory: MachineFactory,
     private machineService: MachineService,
     private stargameService: StargameService,
@@ -39,6 +41,10 @@ export class StateManagementService {
   }
 
   reloadUniverse() {
+    if (!this.universeService.new) {
+      // loaded existing one, make sure it's in step with current code
+      this.updateUniverse();
+    }
     this.resetMachines();
     this.resetConstruction();
   }
@@ -100,11 +106,11 @@ export class StateManagementService {
   }
 
   /**
-   * Reset the machine availability based on the current universe 
+   * Reset the machine availability based on the current universe
    * state (most machines require some precondition which could occur
    * at any time) - this also sets whether the machine is currently
    * affordable.
-   * 
+   *
    * NB, although the machine objects contain functions to calculate this
    * on demand, we also need to set it in a variable so that Angular can
    * use it for [disabled] etc, as it doesn't like functions in these clauses.
@@ -126,6 +132,44 @@ export class StateManagementService {
         machine.canBuy50 = machine.affordable(50);
       }
     });
+  }
+
+  /**
+   * Handled here is any rebalancing between versions, where we need
+   * to update machine properties (efficiency etc) due to changes.
+   */
+  updateUniverse() {
+    const u = this.universeService.universe;
+
+    /////////////////////////////////////////////////////////////////
+    // PASER REBALANCING
+
+    if (!u.release || u.release < 0.25) {
+      u.release = 0.25;
+      // hobble Pasers, they used to be more powerful
+      if (u.machines['Paser'] && u.machines['Paser'].quantity > 0) {
+        const npasers = u.machines['Paser'].quantity;
+        u.machines['PhotonCollector'].efficiency /= Math.pow(2, npasers);
+        this.logService.addLog("A strange force ripples through your machines, rendering your Pasers less effective.");
+        this.logService.addLog("Maybe you can find new ways to bring your Pasers back to their previous power?");
+      }
+    }
+
+    if (u.release && u.release === 0.25) {
+      u.release = 0.251
+      // hobble Pasers, they used to be more powerful
+      if (u.machines['Paser'] && u.machines['Paser'].quantity > 0) {
+        const npasers = u.machines['Paser'].quantity;
+        if (!this.universeService.isResearchedByName("QSwitching")) {
+          u.machines['PhotonCollector'].efficiency /= Math.pow(1.25, npasers); // from 5 to 4
+        } else if (!this.universeService.isResearchedByName("ModeLocking")) {
+          u.machines['PhotonCollector'].efficiency /= Math.pow(1.118, npasers); // from (5 * root2) to (4 * root 2.5)
+          u.machines['Paser'].efficiency = 0.1 * Math.sqrt(2.5);
+        } else {
+          u.machines['Paser'].efficiency = 0.25;
+        }
+      }
+    }
   }
 
 }
