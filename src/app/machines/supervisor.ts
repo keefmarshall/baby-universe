@@ -2,17 +2,19 @@ import { Machine } from "app/machines/machine";
 import { UniverseService } from "app/services/universe.service";
 import { Globals } from "app/globals";
 import { TickerService } from "app/services/ticker.service";
+import { LogService } from "../services/log.service";
 
 export class Supervisor extends Machine {
     private baseEnergyCost = 2500;
     private costMultiplier = 2;
 
     constructor(universeService: UniverseService,
+        logService: LogService,
         private tickerService: TickerService) {
         super('Supervisor',
             "Supervisor",
             "Tends the machines in your absence",
-            universeService);
+            universeService, logService);
     }
 
     onTick(factor: number) {
@@ -34,10 +36,10 @@ export class Supervisor extends Machine {
 
             const q = this.properties().quantity || 0;
             if (q === 0) {
-                this.universeService.universe.logs.push(
+                this.logService.addLog(
                     "One Supervisor alone can only manage to keep the machines running at 10% capacity. You may want to deploy more.");
             } else if (q === 9) {
-                this.universeService.universe.logs.push(
+                this.logService.addLog(
                     "With ten supervisors your machines can now run happily at their full rate when you're not here.");
             }
 

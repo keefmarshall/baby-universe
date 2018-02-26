@@ -30,8 +30,8 @@ export class Quarks1 extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        universe.logs.push("Matter is born in equal amounts with antimatter.");
-        universe.logs.push("If we collect some common quarks, maybe we can discover more types.");
+        this.log("Matter is born in equal amounts with antimatter.");
+        this.log("If we collect some common quarks, maybe we can discover more types.");
     }
 
 }
@@ -50,7 +50,7 @@ export class Quarks2 extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        universe.logs.push("Quarks: strangeness and charm. Maybe there are still more to find?");
+        this.log("Quarks: strangeness and charm. Maybe there are still more to find?");
     }
 
 }
@@ -69,7 +69,7 @@ export class Quarks3 extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        universe.logs.push("Quarks: from the top to the bottom. They might come in handy later.");
+        this.log("Quarks: from the top to the bottom. They might come in handy later.");
     }
 
 }

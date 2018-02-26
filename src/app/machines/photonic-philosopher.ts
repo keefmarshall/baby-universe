@@ -3,6 +3,7 @@ import { Universe } from "app/services/universe";
 import { UniverseService } from "app/services/universe.service";
 import { Globals } from "app/globals";
 import { ResearchService } from "app/services/research.service";
+import { LogService } from "../services/log.service";
 
 export class PhotonicPhilosopher extends Machine {
 
@@ -11,12 +12,14 @@ export class PhotonicPhilosopher extends Machine {
 
     constructor(
         universeService: UniverseService,
+        logService: LogService,
         private researchService: ResearchService
      ) {
         super('PhotonicPhilosopher',
             "Photonic Philosopher",
             "Conducts scientific research",
             universeService,
+            logService,
             true);
     }
 
@@ -52,9 +55,7 @@ export class PhotonicPhilosopher extends Machine {
 
             const q = this.properties().quantity || 0;
             if (q === 0) {
-                this.universeService.universe.logs.push(
-                    "A world of knowledge opens up."
-                );
+                this.logService.addLog("A world of knowledge opens up.");
             }
             
             return true;

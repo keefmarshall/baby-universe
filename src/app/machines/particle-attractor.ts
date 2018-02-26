@@ -1,15 +1,17 @@
 import { ConstructionProject } from "app/machines/construction-project";
 import { UniverseService } from "app/services/universe.service";
+import { LogService } from "../services/log.service";
 
 export class ParticleAttractor extends ConstructionProject {
 
     constructor(
-        universeService: UniverseService
+        universeService: UniverseService,
+        logService: LogService
     ) {
         super('ParticleAttractor',
             "Particle Attractor",
             "Increase effectiveness of Matter Funnels",
-            universeService, 250000, 1.2);
+            universeService, logService, 250000, 1.2);
     }
 
     onComplete() {

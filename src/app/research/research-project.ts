@@ -1,5 +1,6 @@
 import { Universe } from "app/services/universe";
 import { NumberFormatter } from "app/util/number-formatter";
+import { LogService } from "../services/log.service";
 
 export abstract class ResearchProject {
     
@@ -10,6 +11,8 @@ export abstract class ResearchProject {
 
     private scienceGained = 0;
     private researched = false;
+
+    private logService: LogService;
 
     abstract preconditions(universe: Universe): boolean;
     abstract onCompletion(universe: Universe);
@@ -49,6 +52,10 @@ export abstract class ResearchProject {
         this.researched = false;
     }
 
+    setLogService(logService: LogService) {
+        this.logService = logService;
+    }
+
     /** This seems to come up quite frequently */
     protected machineQuantity(universe: Universe, machineName: string): number {
         if (universe.machines[machineName] == null) {
@@ -61,5 +68,11 @@ export abstract class ResearchProject {
     protected isResearched(universe: Universe, project: ResearchProject): boolean {
         const props = universe.research[project.name];
         return props != null ? props.researched : false;
+    }
+
+    protected log(text: string) {
+        if (this.logService) {
+            this.logService.addLog(text);
+        }
     }
 }

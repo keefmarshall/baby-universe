@@ -1,23 +1,24 @@
 import { ConstructionProject } from "app/machines/construction-project";
 import { UniverseService } from "app/services/universe.service";
 import { QuantumElectrodynamics } from "app/research/collection";
+import { LogService } from "../services/log.service";
 
 export class MatterFunnel extends ConstructionProject {
 
     constructor(
-        universeService: UniverseService
+        universeService: UniverseService,
+        logService: LogService
     ) {
         super('MatterFunnel',
             "Matter Funnel",
             "Focus quarks from a wide area (max 1 per scoop)",
-            universeService, 50000, 1.1);
+            universeService, logService, 50000, 1.1);
     }
 
     onComplete() {
         this.machineService.addMachine(this);
         if (this.properties().quantity === 10) {
-            this.universeService.universe.logs.push(
-                "Use Particle Attractors to increase collection.");
+            this.logService.addLog("Use Particle Attractors to increase collection.");
         }
     }
 

@@ -21,7 +21,7 @@
 
     <app-matter-table></app-matter-table>
   
-    <div *ngIf="universeService.universe.machines['QuarkScoop']">
+    <div *ngIf="universeService.universe.machines['QuarkScoop']" class="matter-machines">
       <p class="info info-right">
         Efficiency: {{ universeService.universe.machines['QuarkScoop'].efficiency }}
       </p>

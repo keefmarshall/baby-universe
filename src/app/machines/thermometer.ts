@@ -5,6 +5,7 @@ import { Meter } from "app/meters/meter";
 import { Universe } from "app/services/universe";
 import { MeteringService } from "app/services/metering.service";
 import { Globals } from "app/globals";
+import { LogService } from "../services/log.service";
 
 export class Thermometer extends ConstructionProject implements Meter {
     meterValue: number;
@@ -14,12 +15,13 @@ export class Thermometer extends ConstructionProject implements Meter {
     private readonly phase1Max: number;
 
     constructor(universeService: UniverseService,
+        logService: LogService,
          private meteringService: MeteringService) {
         super(
             "Thermometer",
             "Universal Thermometer",
             "Measures the temperature of the Universe",
-            universeService, 125, 1.1
+            universeService, logService, 125, 1.1
         );
 
         // bootstrap:
@@ -57,7 +59,7 @@ export class Thermometer extends ConstructionProject implements Meter {
             } else if (this.exponent >= 25 && !this.properties().extras['encmsg']) {
                 // Message of encouragement
                 this.properties().extras['encmsg'] = true;
-                universe.logs.push("Your matter soup is getting warmer, but it's not hot enough yet!");
+                this.logService.addLog("Your matter soup is getting warmer, but it's not hot enough yet!");
             }
         }
     }

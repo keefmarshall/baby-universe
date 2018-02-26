@@ -14,7 +14,7 @@ export class BulkDeployment extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        universe.logs.push("Not all machines can be deployed in bulk.");
+        this.log("Not all machines can be deployed in bulk.");
     }
 }
 
@@ -32,6 +32,6 @@ export class AdvancedBulkDeployment extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        universe.logs.push("Deploying more at once saves time.");
+        this.log("Deploying more at once saves time.");
     }
 }

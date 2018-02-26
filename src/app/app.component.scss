@@ -1,10 +1,22 @@
+@import '../style/babyblue-palette';
+@import '../style/babypink-palette';
+
 .space-filler {
     /* This fills the remaining space, by using flexbox. 
        Every toolbar row uses a flexbox row layout. */
     flex: 1 1 auto;
     flex-wrap: wrap;
 }
-  
+
+mat-toolbar img {
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+mat-toolbar mat-icon {
+    color: map-get($md-babypink, 600);
+}
+
 .debug {
     overflow-x: auto;
 }

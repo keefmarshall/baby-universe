@@ -9,7 +9,7 @@ import { LogService } from 'app/services/log.service';
 @Component({
   selector: 'app-log-panel',
   templateUrl: './log-panel.component.html',
-  styleUrls: ['./log-panel.component.css']
+  styleUrls: ['./log-panel.component.scss']
 })
 export class LogPanelComponent implements AfterViewInit {
 

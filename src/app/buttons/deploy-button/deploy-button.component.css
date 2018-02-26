@@ -34,11 +34,20 @@
     float: left;
 }
 
-.butooltip {
-    font-size: 0.8em;
-    font-weight: 400;
-    padding: 10px;
+@media all and (min-width: 840px) {
+    .butooltip {
+        font-size: 0.8em;
+        font-weight: 400;
+        padding: 10px;
+    }
 }
+
+@media all and (max-width: 839px) {
+    .butooltip {
+        display: none;
+    }    
+}
+
 
 .deploy-button span {
     vertical-align: baseline!important;

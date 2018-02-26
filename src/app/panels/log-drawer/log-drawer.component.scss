@@ -1,0 +1,24 @@
+@import '../../../style/babypink-palette';
+@import '../../../style/babydark-palette';
+
+.log-container {
+    // height: 20px; // 70px
+    color: map-get($md-babydark, 400);
+    background: linear-gradient(to bottom, white, map-get($md-babypink, 100));
+    border-bottom: solid 2px map-get($md-babypink, 900);
+    // overflow: auto;
+    // font-size: 0.86em;
+
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+
+    min-height: 15px;
+}
+
+.log-line {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 24px;
+    padding-right: 24px;
+}

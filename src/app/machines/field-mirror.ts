@@ -5,15 +5,16 @@ import { Reflection } from "app/research/photons";
 import { Globals } from "app/globals";
 import { MachineService } from "app/services/machine.service";
 import { MachineProperties } from "app/machines/machine";
+import { LogService } from "../services/log.service";
 
 export class FieldMirror extends ConstructionProject {
 
-    constructor(universeService: UniverseService) {
+    constructor(universeService: UniverseService, logService: LogService) {
         super(
             "FieldMirror",
             "Field Mirror",
             "Allows more Philosophers",
-            universeService, 12.5, 1.5
+            universeService, logService, 12.5, 1.5
         );
     }
 

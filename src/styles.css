@@ -11,8 +11,29 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+.red { color: red }
+.orange { color: #e36b00 }
+.green { color: #739b53 }
+
+
+#loading {
+  background-color: #223344;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+#loading img {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
+}
+
 blockquote, .log {
-    font-family: 'Lora', serif;
+    font-family: 'Alegreya', serif;
 }
 
 .screen-reader-only
@@ -25,12 +46,12 @@ blockquote, .log {
   overflow:hidden;
 }
 
-@media all and (min-width: 769px) {
+@media all and (min-width: 840px) { /* was 769 */
   .mobile-only {display: none;}
   .desktop-only { display: initial; }
 }
 
-@media all and (max-width: 768px) {
+@media all and (max-width: 839px) { /* was 839 */
   .mobile-only {display: initial;}
   .desktop-only { display: none; }
 }

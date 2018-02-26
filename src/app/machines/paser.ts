@@ -3,17 +3,19 @@ import { UniverseService } from "app/services/universe.service";
 import { PhotonCollector } from "app/machines/photon-collector";
 import { Globals } from "app/globals";
 import { PhotonAmplification } from "app/research/amplification";
+import { LogService } from "../services/log.service";
 
 export class Paser extends ConstructionProject {
     baseStrangeQuarkCost = 2;
 
     constructor(
-        universeService: UniverseService
+        universeService: UniverseService,
+        logService: LogService
     ) {
         super('Paser',
             "Paser",
             "Multiplies energy from photons (cumulative)",
-            universeService, 5000, 1.75);
+            universeService, logService, 5000, 1.75);
     }
 
     onComplete() {
