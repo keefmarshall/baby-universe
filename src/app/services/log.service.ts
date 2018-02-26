@@ -6,7 +6,8 @@ import { Subject } from 'rxjs/Subject';
 export class LogService {
   public logs: Array<String>;
 
-  public log$ = new Subject<string>();
+  private _log$ = new Subject<string>();
+  public log$ = this._log$.share();
 
   constructor(private universeService: UniverseService) {
     this.resetLogs();
@@ -18,7 +19,7 @@ export class LogService {
 
   addLog(log: string) {
     this.universeService.universe.logs.push(log);
-    this.log$.next(log);
+    this._log$.next(log);
   }
 
   toggleDrawer() {

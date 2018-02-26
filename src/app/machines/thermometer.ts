@@ -51,11 +51,10 @@ export class Thermometer extends ConstructionProject implements Meter {
 
         this.phase1Progress = this.phase1ProgressCalc(this.meterValue) * 100 / this.phase1Max;
 
-        if (universe.phase === 1) {
+        if (universe.phase <= 1) {
             if (this.exponent >= 32) {
                 // we're done with phase one, start big bang by changing universe state..
-                universe.phase = 2;
-                this.universeService.phase$.next(2);
+                this.universeService.transitionToPhase(1.5);
             } else if (this.exponent >= 25 && !this.properties().extras['encmsg']) {
                 // Message of encouragement
                 this.properties().extras['encmsg'] = true;

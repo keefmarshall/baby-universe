@@ -18,7 +18,7 @@ export class BigBangService {
     private analytics: AnalyticsService
   ) {
     this.universeService.phase$.subscribe(phase => {
-      if (phase === 2) {
+      if (phase === 1.5) {
         // we're up
         console.log("Phase change detected: BIG BANG!!!");
         this.bigBang();
