@@ -41,7 +41,7 @@ export class QSwitching extends ResearchProject {
 
     onCompletion(universe: Universe) {
         const qsBoost = SQRT25;
-        const npasers = this.machineQuantity(universe, "Paser") 
+        const npasers = this.machineQuantity(universe, "Paser");
 
         // We have to enhance Paser efficiency, but also 'catch up' for any existing Pasers
         universe.machines['Paser'].efficiency *= qsBoost;
@@ -66,7 +66,7 @@ export class ModeLocking extends ResearchProject {
 
     onCompletion(universe: Universe) {
         const qsBoost = SQRT25;
-        const npasers = this.machineQuantity(universe, "Paser") 
+        const npasers = this.machineQuantity(universe, "Paser");
 
         // We have to enhance Paser efficiency, but also 'catch up' for any existing Pasers
         universe.machines['Paser'].efficiency *= qsBoost;
