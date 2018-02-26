@@ -7,7 +7,7 @@ import { LogService } from '../services/log.service';
 
 
 export abstract class Machine {
-    //readonly name: string;
+    // readonly name: string;
 
     public readonly needsConstruction: boolean = false;
     public readonly numberFormatter = new NumberFormatter();
@@ -62,4 +62,3 @@ export class MachineProperties {
     efficiency = Globals.secondsPerTick;
     extras = {};
 }
- 
