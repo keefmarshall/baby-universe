@@ -15,7 +15,6 @@ import { ConstructionPanelComponent } from './construction-panel/construction-pa
 import { StargameComponent } from './stargame/stargame.component';
 import { StargameDialogComponent } from 'app/panels/stargame/stargame-dialog.component';
 import { GameModule } from 'app/games/game.module';
-import { LogPanelComponent } from './log-panel/log-panel.component';
 import { TickerComponent } from 'app/ticker.component';
 import { TemperaturePanelComponent } from './temperature-panel/temperature-panel.component';
 import { PipesModule } from 'app/pipes/pipes.module';
@@ -45,7 +44,6 @@ import { LogDrawerComponent } from './log-drawer/log-drawer.component';
     ConstructionPanelComponent,
     StargameComponent,
     StargameDialogComponent,
-    LogPanelComponent,
     TickerComponent,
     TemperaturePanelComponent,
     MatterTableComponent,
@@ -69,7 +67,6 @@ import { LogDrawerComponent } from './log-drawer/log-drawer.component';
     ConstructionPanelComponent,
     StargameComponent,
     StargameDialogComponent,
-    LogPanelComponent,
     TickerComponent,
     TemperaturePanelComponent,
     MatterTableComponent,
