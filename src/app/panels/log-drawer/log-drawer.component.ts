@@ -25,7 +25,7 @@ export class LogDrawerComponent implements OnInit, OnDestroy, AfterViewInit {
   private collapseTimerId;
   private busy = false;
 
-  constructor(private logService: LogService) { 
+  constructor(private logService: LogService) {
   }
 
   ngOnInit() {
@@ -49,8 +49,8 @@ export class LogDrawerComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   transition(text: string) {
-    if(this.busy) {
-      setTimeout(() => { this.transition(text);}, 1000);
+    if (this.busy) {
+      setTimeout(() => { this.transition(text); }, 1000);
       return;
     }
     this.busy = true;
