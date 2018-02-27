@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
     private stateManagementService: StateManagementService,
     private tickerService: TickerService,
     private timeService: TimeService,
-    private universeService: UniverseService,
+    public universeService: UniverseService,
     private dialog: MatDialog,
     private logService: LogService
   ) { }

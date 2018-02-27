@@ -29,11 +29,13 @@ import { AnalyticsService } from 'app/services/analytics.service';
 import { AppComponent } from './app.component';
 import { TickerComponent } from './ticker.component';
 import { PhaseOneComponent } from './phases/phase-one/phase-one.component';
+import { InterstitialZeroComponent } from './phases/interstitial-zero/interstitial-zero.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PhaseOneComponent
+    PhaseOneComponent,
+    InterstitialZeroComponent
     // TickerComponent
   ],
   imports: [
