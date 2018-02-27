@@ -31,11 +31,12 @@ import { TickerComponent } from './ticker.component';
 import { PhaseOneComponent } from './phases/phase-one/phase-one.component';
 import { InterstitialZeroComponent } from './phases/interstitial-zero/interstitial-zero.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     PhaseOneComponent,
-    InterstitialZeroComponent
+    InterstitialZeroComponent,
     // TickerComponent
   ],
   imports: [

@@ -56,6 +56,12 @@ blockquote, .log {
   .desktop-only { display: none; }
 }
 
+.space-filler {
+  /* This fills the remaining space, by using flexbox. */
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+}
+
 /*************************************
  PANELS
  *************************************/
@@ -88,6 +94,8 @@ blockquote, .log {
 
 .panel-title {
     /* display: inline-flex; */
+    font-family: 'Raleway', sans-serif;
+    /* font-size: 1.2em; */
 }
 
 .panel-title > .mat-icon {

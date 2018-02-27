@@ -1,0 +1,11 @@
+@import '../../../style/babyblue-palette';
+@import '../../../style/babypink-palette';
+
+mat-toolbar img {
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+mat-toolbar mat-icon {
+    color: map-get($md-babypink, 600);
+}

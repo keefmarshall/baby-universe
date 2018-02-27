@@ -26,6 +26,7 @@ import { HelpMachinesComponent } from './help-panel/help-machines/help-machines.
 import { HelpResearchComponent } from './help-panel/help-research/help-research.component';
 import { MatterCollectionPanelComponent } from './matter-collection-panel/matter-collection-panel.component';
 import { LogDrawerComponent } from './log-drawer/log-drawer.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   imports: [
@@ -53,7 +54,8 @@ import { LogDrawerComponent } from './log-drawer/log-drawer.component';
     HelpMachinesComponent,
     HelpResearchComponent,
     MatterCollectionPanelComponent,
-    LogDrawerComponent
+    LogDrawerComponent,
+    HeaderComponent
   ],
   entryComponents: [
     StargameDialogComponent,
@@ -73,7 +75,8 @@ import { LogDrawerComponent } from './log-drawer/log-drawer.component';
     FinalScoreComponent,
     HelpPanelComponent,
     MatterCollectionPanelComponent,
-    LogDrawerComponent
+    LogDrawerComponent,
+    HeaderComponent
   ]
 })
 export class PanelsModule { }

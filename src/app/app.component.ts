@@ -27,21 +27,21 @@ export class AppComponent implements OnInit {
 
   globals = Globals; // export for template
 
+  phaseToShow: number = 0.5;
+
   // Add services here to ensure they're started at application
   // load time, otherwise things may not get kicked off correctly.
   constructor(
     private autosaveService: AutosaveService,
-    private machineService: MachineService,
     private stateManagementService: StateManagementService,
     private tickerService: TickerService,
     private timeService: TimeService,
-    public universeService: UniverseService,
-    private dialog: MatDialog,
-    private logService: LogService
+    public universeService: UniverseService
   ) { }
 
   ngOnInit() {
     this.autosaveService.enabled = true;
+    this.setPhaseToShow();
   }
 
   resetUniverse() {
@@ -53,11 +53,18 @@ export class AppComponent implements OnInit {
     }
   }
 
-  openHelp() {
-    this.dialog.open(HelpPanelComponent);
+  setPhaseToShow() {
+    this.phaseToShow = this.universeService.universe.phase;
+    this.universeService.phase$.subscribe((phase) => {
+      switch (phase) {
+        case 1.5: // delay for big bang
+          setTimeout(() => {this.phaseToShow = 1.5; }, 7500);
+          break;
+
+        default:
+          this.phaseToShow = phase;
+      }
+    });
   }
 
-  openLogs() {
-    this.logService.toggleDrawer();
-  }
 }

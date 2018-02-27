@@ -1,9 +1,12 @@
-#main-content {
-    /* margin-top: -24px; */
-}
-
 #main-content.bigbang {
-    margin-top: 0px;
+    margin: 0px;
+
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
 }
 
 /* When matter collection drops below, it takes up full width */
