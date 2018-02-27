@@ -1,0 +1,26 @@
+@import '../../../style/babypink-palette';
+@import '../../../style/babydark-palette';
+
+.interstitial-zero {
+    position: absolute;
+
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100vw;
+
+    background-color: map-get($md-babydark, 800);
+    color: map-get($md-babypink, 200);
+
+    z-index: 2;
+}
+
+.interstitial-zero .log-area {
+    position: relative;
+    width: 50vw;
+    height: 50vh;
+    left: 25vw;
+    top: 25vh;
+
+    font-size: 1.5em;
+}

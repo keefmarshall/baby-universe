@@ -13,7 +13,8 @@
 <app-log-drawer></app-log-drawer>
 
 <div id="main-wrapper">
-  <app-phase-one></app-phase-one>
+    <app-interstitial-zero *ngIf="this.universeService.universe.phase === 0.5"></app-interstitial-zero>
+    <app-phase-one *ngIf="this.universeService.universe.phase === 1"></app-phase-one>
 </div>
 
 <div class="mdc-layout-grid" *ngIf="showDebug">
