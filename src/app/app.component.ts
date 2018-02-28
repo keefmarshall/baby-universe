@@ -44,20 +44,11 @@ export class AppComponent implements OnInit {
     this.setPhaseToShow();
   }
 
-  resetUniverse() {
-    const confirm = window.confirm('This will erase all progress, are you sure?');
-    if (confirm) {
-      this.universeService.resetUniverse();
-      this.autosaveService.autosave();
-      window.location.reload();
-    }
-  }
-
   setPhaseToShow() {
     this.phaseToShow = this.universeService.universe.phase;
     this.universeService.phase$.subscribe((phase) => {
       switch (phase) {
-        case 1.5: // delay for big bang
+        case 1.5: // delay for big bang animation
           setTimeout(() => {this.phaseToShow = 1.5; }, 7500);
           break;
 

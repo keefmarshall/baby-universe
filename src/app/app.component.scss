@@ -1,3 +1,7 @@
+#main-wrapper {
+    min-height: 400px;
+}
+
 .debug {
     overflow-x: auto;
 }
@@ -8,21 +12,6 @@
     width: 100vw;
 }
 
-footer {
-    border-top: solid 1px black;
-    padding: 5px;
-    font-size: 0.80em;
-}
-
-address {
-    display: flex;
-    flex-direction: row;
-}
-
-.start-again {
-    cursor: pointer;
-    text-decoration: underline;
-}
 
 /* .debug {
     display: none;

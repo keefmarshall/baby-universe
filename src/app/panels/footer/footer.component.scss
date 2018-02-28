@@ -1,0 +1,15 @@
+footer {
+    border-top: solid 1px black;
+    padding: 5px;
+    font-size: 0.80em;
+}
+
+address {
+    display: flex;
+    flex-direction: row;
+}
+
+.start-again {
+    cursor: pointer;
+    text-decoration: underline;
+}
