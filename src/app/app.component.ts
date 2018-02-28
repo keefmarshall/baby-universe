@@ -1,20 +1,13 @@
 import { Component, OnInit, isDevMode, ViewChild, Renderer2, ElementRef } from '@angular/core';
 import { AutosaveService } from './services/autosave.service';
-import { MachineService } from './services/machine.service';
 import { TimeService } from './services/time.service';
-import { PhotonicPhilosopher } from 'app/machines/photonic-philosopher';
-import { Assembler } from 'app/machines/assembler';
 import { UniverseService } from 'app/services/universe.service';
 import { StateManagementService } from 'app/services/state-management.service';
-import { Quarks1 } from 'app/research/matter';
 import { TickerService } from 'app/services/ticker.service';
-import { StargameService } from 'app/games/stargame/stargame.service';
-import { BigBangService } from 'app/services/big-bang.service';
 import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { MatDialog } from '@angular/material';
 import { HelpPanelComponent } from 'app/panels/help-panel/help-panel.component';
 import { Globals } from 'app/globals';
-import { LogService } from 'app/services/log.service';
 
 @Component({
   selector: 'app-root',
