@@ -24,6 +24,28 @@
 </head>
 <body>
   <app-root>
+    <style>
+      body {
+          margin: 0;
+      }
+
+      #loading {
+        background-color: #223344;
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+      }
+
+      #loading img {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 100%;
+        max-height: 100%;
+      }
+    </style>
+
     <div id="loading">
       <img src="/assets/img/bu-logo-640p.jpg" />
     </div>
