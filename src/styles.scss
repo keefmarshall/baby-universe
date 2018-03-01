@@ -4,7 +4,12 @@
 /* @import '~@angular/material/prebuilt-themes/pink-bluegrey.css'; */
 /* @import '~@angular/material/prebuilt-themes/purple-green.css'; */
 
+@import '~@angular/material/theming'; // allows z-helpers
 @import '~@material/layout-grid/dist/mdc.layout-grid.min.css';
+
+@import './style/babypink-palette';
+@import './style/babydark-palette';
+
 
 body {
     margin: 0;
@@ -16,7 +21,8 @@ body {
 .green { color: #739b53 }
 
 blockquote, .log {
-    font-family: 'Alegreya', serif;
+  font-family: 'Raleway', sans-serif;
+  /* font-family: 'Alegreya', serif; */
 }
 
 .screen-reader-only
@@ -68,7 +74,9 @@ blockquote, .log {
 }
 
 .panel {
-    border-top: solid 1px grey;
+    // @include mat-elevation(1);
+    border-top:  solid 1px map-get($md-babydark, 100); // grey
+    padding: 10px;
     margin-bottom: 20px;
     animation-duration: 1s;
     animation-fill-mode: both;

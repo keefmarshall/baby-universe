@@ -1,6 +1,12 @@
+@import '../../../style/babyblue-palette';
+@import '../../../style/babypink-palette';
+@import '../../../style/babydark-palette';
+
 footer {
-    border-top: solid 1px black;
-    padding: 5px;
+    // border-top: solid 1px black;
+    color: map-get($md-babypink, 200);
+    background-color: map-get($md-babydark, 500);
+    padding: 15px;
     font-size: 0.80em;
 }
 
