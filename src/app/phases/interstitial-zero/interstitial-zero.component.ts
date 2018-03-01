@@ -33,7 +33,7 @@ export class InterstitialZeroComponent implements OnInit {
 
   private readonly introtext = [
     "Within the empty void, matter and energy spontaneously " +
-    "flash into existence, only to decay almost instantly..."
+    "flash into existence... ^2000 <br/><br/>...only to decay almost instantly."
   ]
 
   constructor(private universeService: UniverseService) { }

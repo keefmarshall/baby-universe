@@ -25,6 +25,12 @@
     font-size: 1.5em;
 }
 
+@media all and (max-width: 839px) { /* was 839 */
+    .interstitial-zero .log-area {
+        font-size: 1em;
+    }
+}
+
 .bu img {
     position: fixed;
     left: 50%;

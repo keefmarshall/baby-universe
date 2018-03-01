@@ -11,7 +11,7 @@ export class ParticleFactory {
         universe.photonCount += (1 * count);
 
         if (universe.photonCount === 1) {
-            logService.addLog("It all begins with one photon, collected from the void and stored as pure energy.");
+            logService.addLog("It all begins with one photon, harvested from the void and stored as pure energy.");
         }
         if (universe.photonCount === 10) {
             logService.addLog("Stored energy can be useful.");
