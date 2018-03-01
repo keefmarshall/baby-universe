@@ -16,7 +16,7 @@ import { Globals } from 'app/globals';
 })
 export class AppComponent implements OnInit {
   title = 'Baby Universe';
-  showDebug = false; // isDevMode();
+  showDebug = isDevMode();
 
   globals = Globals; // export for template
 
