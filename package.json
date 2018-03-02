@@ -24,6 +24,8 @@
     "@angular/platform-browser-dynamic": "^5.2.6",
     "@angular/platform-server": "^5.2.6",
     "@angular/router": "^5.2.6",
+    "@fortawesome/fontawesome": "^1.1.4",
+    "@fortawesome/fontawesome-free-solid": "^5.0.8",
     "@material/layout-grid": "^0.23.0",
     "angular2-uuid": "^1.1.1",
     "core-js": "^2.5.3",
