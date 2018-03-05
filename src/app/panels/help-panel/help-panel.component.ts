@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 import { UniverseService } from 'app/services/universe.service';
 
 @Component({
@@ -11,7 +11,6 @@ export class HelpPanelComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<HelpPanelComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
     public universeService: UniverseService
   ) { }
 

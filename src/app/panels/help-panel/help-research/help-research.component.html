@@ -1,5 +1,5 @@
-<p>Research topics completed or available:</p>
-
+<!-- <p>Research topics completed or available:</p>
+ -->
 <table>
   <tr>
     <th>Research</th>
@@ -12,10 +12,10 @@
     <td>{{ project.description }}</td>
     <td class="numeric">
       <span *ngIf="project.isResearched(universeService.universe, project)">
-        <mat-icon>check</mat-icon>
+        <mat-icon color="accent">check</mat-icon>
       </span>
       <span *ngIf="!project.isResearched(universeService.universe, project)">
-        <mat-icon>close</mat-icon>
+        <mat-icon color="warn">close</mat-icon>
       </span>
     </td>
   </tr>

@@ -1,3 +1,7 @@
+h1 {
+    font-family: 'Raleway', sans-serif;
+}
+
 .right { float: right; }
 
 mat-dialog-content {
