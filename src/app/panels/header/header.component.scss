@@ -1,5 +1,10 @@
-@import '../../../style/babyblue-palette';
-@import '../../../style/babypink-palette';
+@import '../../../theme.scss';
+@import '../../../style/badge.scss';
+
+@include badge-theme($butheme, -2px);
+
+$primary: map-get($alt-theme, primary);
+$accent: map-get($alt-theme, accent);
 
 mat-toolbar img {
     margin-left: 10px;
@@ -7,5 +12,5 @@ mat-toolbar img {
 }
 
 mat-toolbar mat-icon {
-    color: map-get($md-babypink, 600);
+    color: map-get($accent, 600);
 }

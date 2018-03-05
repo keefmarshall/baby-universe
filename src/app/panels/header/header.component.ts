@@ -23,8 +23,12 @@ export class HeaderComponent implements OnInit {
   }
 
   openLogs() {
-    this.logService.toggleDrawer();
+    // this.logService.toggleDrawer();
+    // TODO show log panel
+    this.logService.clearNewLogs();
   }
 
-
+  newLogs(): number {
+    return this.logService.newLogs;
+  }
 }

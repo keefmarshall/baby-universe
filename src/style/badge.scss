@@ -1,0 +1,25 @@
+@import '~@angular/material/theming';
+
+@mixin badge-theme($theme, $offset: "-10px") {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+
+    .badge {
+        position:relative;
+    }
+
+    .badge[data-badge]:after {
+        content:attr(data-badge);
+        position:absolute;
+        top: $offset;
+        right: $offset;
+        font-size:.7em;
+        background-color: mat-color($accent, 800);
+        color: mat-color($accent, 100);
+        width:18px;height:18px;
+        text-align:center;
+        line-height:18px;
+        border-radius:50%;
+        box-shadow:0 0 1px #333;
+    }
+}

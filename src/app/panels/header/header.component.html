@@ -5,7 +5,10 @@
   <button mat-icon-button (click)="openHelp()">
     <mat-icon>help</mat-icon> <!--help_outline -->
   </button>
-  <button mat-icon-button (click)="openLogs()">
+  <button mat-icon-button
+      (click)="openLogs()" 
+      [class.badge]="newLogs() > 0" 
+      [attr.data-badge]="newLogs()">
     <mat-icon>book</mat-icon> <!-- library_books -->
   </button>
 </mat-toolbar> 
