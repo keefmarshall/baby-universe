@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LogService } from '../../services/log.service';
 import { HelpPanelComponent } from '../help-panel/help-panel.component';
 import { MatDialog } from '@angular/material';
+import { LogPanelComponent } from '../log-panel/log-panel.component';
 
 @Component({
   selector: 'app-header',
@@ -25,7 +26,7 @@ export class HeaderComponent implements OnInit {
   openLogs() {
     // this.logService.toggleDrawer();
     // TODO show log panel
-    this.logService.clearNewLogs();
+    this.dialog.open(LogPanelComponent);
   }
 
   newLogs(): number {

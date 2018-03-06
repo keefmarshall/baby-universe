@@ -28,6 +28,7 @@ import { MatterCollectionPanelComponent } from './matter-collection-panel/matter
 import { LogDrawerComponent } from './log-drawer/log-drawer.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { LogPanelComponent } from './log-panel/log-panel.component';
 
 @NgModule({
   imports: [
@@ -57,11 +58,13 @@ import { FooterComponent } from './footer/footer.component';
     MatterCollectionPanelComponent,
     LogDrawerComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LogPanelComponent
   ],
   entryComponents: [
     StargameDialogComponent,
-    HelpPanelComponent
+    HelpPanelComponent,
+    LogPanelComponent
   ],
   exports: [
     DevPanelComponent,

@@ -1,0 +1,13 @@
+<button class="right" mat-button mat-dialog-close>Close</button>
+<h1 mat-dialog-title>Messages</h1>
+<mat-dialog-content class="log" #content>
+  <mat-list class="loglist">
+    <mat-list-item 
+      *ngFor="let log of logService.logs; let i = index"
+      [class.highlighted]="i >= logService.logs.length - logService.newLogs"
+      class="logitem"
+      #messages>
+      {{ log }}
+    </mat-list-item>
+  </mat-list>
+</mat-dialog-content>
