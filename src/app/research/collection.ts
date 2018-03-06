@@ -57,7 +57,7 @@ export class ColourDeconfinement extends ResearchProject {
 
     onCompletion(universe: Universe) {
         universe.machines['QuarkSqueezer'].efficiency *= 5;
-        this.log("What we have here is a Quark-Gluon plasma. Heat it up (a lot) to see what happens next!");
+        this.log("What we have here is a Quark-Gluon plasma. Heating it up could lead to something interesting...");
     }
 
 }

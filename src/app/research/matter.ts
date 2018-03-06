@@ -31,7 +31,7 @@ export class Quarks1 extends ResearchProject {
 
     onCompletion(universe: Universe) {
         this.log("Matter is born in equal amounts with antimatter.");
-        this.log("If we collect some common quarks, maybe we can discover more types.");
+        this.log("Maybe collecting common quarks will lead us to rarer types.");
     }
 
 }

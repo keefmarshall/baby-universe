@@ -58,7 +58,19 @@ export class Thermometer extends ConstructionProject implements Meter {
             } else if (this.exponent >= 25 && !this.properties().extras['encmsg']) {
                 // Message of encouragement
                 this.properties().extras['encmsg'] = true;
-                this.logService.addLog("Your matter soup is getting warmer, but it's not hot enough yet!");
+                this.logService.addLog("Your matter soup is getting warmer, but you feel it can get hotter still.");
+            } else if (this.exponent >= 28 && !this.properties().extras['encmsg2']) {
+                // Message of encouragement
+                this.properties().extras['encmsg2'] = true;
+                this.logService.addLog("The plasma maelstrom seethes and bubbles as it grows hotter still; chaos incarnate.");
+            } else if (this.exponent >= 30 && !this.properties().extras['encmsg3']) {
+                // Message of encouragement
+                this.properties().extras['encmsg3'] = true;
+                this.logService.addLog("The machines are starting to struggle as the temperature rises further.");
+            } else if (this.exponent >= 31 && !this.properties().extras['encmsg4']) {
+                // Message of encouragement
+                this.properties().extras['encmsg4'] = true;
+                this.logService.addLog("Ripples of pure energy course through your proto-universe as it gets closer to... what?");
             }
         }
     }
