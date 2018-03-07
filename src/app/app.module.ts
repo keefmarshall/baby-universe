@@ -29,6 +29,7 @@ import { AppComponent } from './app.component';
 import { TickerComponent } from './ticker.component';
 import { PhaseOneComponent } from './phases/phase-one/phase-one.component';
 import { InterstitialZeroComponent } from './phases/interstitial-zero/interstitial-zero.component';
+import { PlasmaShockService } from './services/plasma-shock.service';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { InterstitialZeroComponent } from './phases/interstitial-zero/interstiti
     MachineFactory,
     MachineService,
     MeteringService,
+    PlasmaShockService,
     ResearchService,
     StateManagementService,
     TickerService,

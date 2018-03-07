@@ -30,6 +30,7 @@ import { ThermalSpanner } from 'app/machines/thermal-spanner';
 import { Supervisor } from 'app/machines/supervisor';
 import { TickerService } from 'app/services/ticker.service';
 import { LogService } from '../services/log.service';
+import { PlasmaShockService } from '../services/plasma-shock.service';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -53,7 +54,8 @@ export class MachineFactory {
         private meteringService: MeteringService,
         private stargameService: StargameService,
         private heatingService: HeatingService,
-        private tickerService: TickerService
+        private tickerService: TickerService,
+        private plasmaShockService: PlasmaShockService
     ) {
         this.resetMachines();
     }
@@ -69,7 +71,7 @@ export class MachineFactory {
             'Assembler': new Assembler(this.universeService, this.logService, this.constructionService, this.meteringService),
             'AssemblyPlant': new AssemblyPlant(this.universeService, this.logService, this.constructionService, this.meteringService, this.researchService),
             'ThermalSpanner': new ThermalSpanner(this.universeService, this.logService, this.constructionService),
-            'Thermometer': new Thermometer(this.universeService, this.logService, this.meteringService),
+            'Thermometer': new Thermometer(this.universeService, this.logService, this.meteringService, this.plasmaShockService),
             'SpaceHeater': new SpaceHeater(this.universeService, this.logService, this.heatingService, this.meteringService),
             'HeatingArray': new HeatingArray(this.universeService, this.logService, this.heatingService, this.meteringService),
             'ThermalResistor': new ThermalResistor(this.universeService, this.logService),

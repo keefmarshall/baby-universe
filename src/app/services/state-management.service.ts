@@ -7,6 +7,7 @@ import { ConstructionService } from 'app/services/construction.service';
 import { ConstructionProject } from 'app/machines/construction-project';
 import { StargameService } from 'app/games/stargame/stargame.service';
 import { LogService } from './log.service';
+import { PlasmaShockService } from './plasma-shock.service';
 
 /**
  * This service exists to break circular dependencies between
@@ -27,6 +28,7 @@ export class StateManagementService {
     private logService: LogService,
     private machineFactory: MachineFactory,
     private machineService: MachineService,
+    private plasmaShockService: PlasmaShockService,
     private stargameService: StargameService,
     private tickerService: TickerService,
     private universeService: UniverseService
@@ -47,6 +49,8 @@ export class StateManagementService {
     }
     this.resetMachines();
     this.resetConstruction();
+
+    this.resetPlasmaShock();
   }
 
   /**
@@ -172,4 +176,31 @@ export class StateManagementService {
     }
   }
 
+
+  /*
+   * overheating visual effects for phase 1
+   */
+  resetPlasmaShock() {
+    if (this.universeService.universe.phase === 1) {
+      const tprops = this.universeService.universe.machines['Thermometer'];
+      if (tprops) {
+        let shockLevel = 0;
+
+        if (tprops.extras['encmsg4']) {
+          shockLevel = 4;
+        } else if (tprops.extras['encmsg3']) {
+          shockLevel = 3;
+        } else if (tprops.extras['encmsg2']) {
+          shockLevel = 2;
+        } else if (tprops.extras['encmsg']) {
+          shockLevel = 1;
+        }
+
+        if (shockLevel > 0) {
+          this.plasmaShockService.shockLevel = shockLevel;
+          this.plasmaShockService.start();
+        }
+      }
+    }
+  }
 }

@@ -4,6 +4,7 @@ import { BigBangService } from '../../services/big-bang.service';
 import { MachineService } from '../../services/machine.service';
 import { UniverseService } from '../../services/universe.service';
 import { Quarks1 } from '../../research/matter';
+import { PlasmaShockService } from '../../services/plasma-shock.service';
 
 @Component({
   selector: 'app-phase-one',
@@ -16,6 +17,7 @@ export class PhaseOneComponent implements OnInit, AfterViewInit {
 
   constructor(
     private bigBangService: BigBangService,
+    private plasmaShockService: PlasmaShockService,
     private machineService: MachineService,
     private universeService: UniverseService
   ) { }
@@ -24,6 +26,7 @@ export class PhaseOneComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    this.plasmaShockService.setElementRef(this.mainDivRef);
     this.bigBangService.setElementRef(this.mainDivRef);
     this.bigBangService.setFinalScoreElementRef(this.fsDivRef);
   }

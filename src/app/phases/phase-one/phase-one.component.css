@@ -14,6 +14,9 @@
     .col3 { grid-column-start: 1; grid-column-end: span 8; }    
 }
 
+/* *************************************************************** */
+/* *************************************************************** */
+
 /* big bang */
 @keyframes bigbang {
     from {
@@ -38,6 +41,64 @@
     animation-fill-mode: forwards;
     height: 90vh;
 }
+
+/* *************************************************************** */
+/* *************************************************************** */
+
+/* plasma shock */
+
+@keyframes plasmashock {
+    from { transform: none; }
+    25% { transform: translate(20px, 20px); }    
+    to { transform: none; }    
+}
+
+.plasma-shock {
+    animation-name: plasmashock;
+    animation-duration: 0.1s;
+}
+
+@keyframes doubleshock {
+    from { transform: none; }
+    25% { transform: translate(20px, 20px); }    
+    40% { transform: none; }    
+    65% { transform: translate(-20px, 20px); }    
+    to { transform: none; }    
+}
+
+.double-shock {
+    animation-name: doubleshock;
+    animation-duration: 0.2s;
+}
+
+@keyframes skewshock {
+    from { transform: none; }
+    25% { transform: skew(45deg, 45deg); }    
+    to { transform: none; }    
+}
+
+.skew-shock {
+    animation-name: skewshock;
+    animation-duration: 0.1s;
+}
+
+@keyframes fadeshock {
+    from { opacity: 1; }
+    25% { opacity: 0; }   
+    40% { opacity: 1; background-color: black }    
+    65% { opacity: 0; }   
+    to { opacity: 1; background-color: white; }    
+}
+
+.fade-shock {
+    animation-name: fadeshock;
+    animation-duration: 0.2s;
+}
+
+
+/* *************************************************************** */
+/* *************************************************************** */
+
 
 @keyframes finalscore {
     from {

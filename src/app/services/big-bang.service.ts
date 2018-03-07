@@ -3,6 +3,7 @@ import { StargameService } from 'app/games/stargame/stargame.service';
 import { TickerService } from 'app/services/ticker.service';
 import { UniverseService } from 'app/services/universe.service';
 import { AnalyticsService } from 'app/services/analytics.service';
+import { PlasmaShockService } from './plasma-shock.service';
 
 @Injectable()
 export class BigBangService {
@@ -11,6 +12,7 @@ export class BigBangService {
   private renderer: Renderer2;
 
   constructor(
+    private plasmaShockService: PlasmaShockService,
     private rendererFactory2: RendererFactory2,
     private stargameService: StargameService,
     private tickerService: TickerService,
@@ -59,6 +61,7 @@ export class BigBangService {
     this.tickerService.pause();
     this.tickerService.gameEnd(); // set state so it doesn't get unpaused.
     this.stargameService.pauseGame();
+    this.plasmaShockService.stop();
   }
 
   resumeUniverse() {
