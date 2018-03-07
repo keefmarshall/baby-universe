@@ -6,6 +6,7 @@ export class PlasmaShockService {
   private renderer: Renderer2;
 
   private isStarted = false;
+  private paused = false;
   private timeoutId;
   private readonly baseInterval = 10000;
 
@@ -15,6 +16,9 @@ export class PlasmaShockService {
     private rendererFactory2: RendererFactory2,
   ) {
     this.renderer = rendererFactory2.createRenderer(null, null);
+    document.addEventListener("visibilitychange", (event) => {
+      this.handleVisibilityChangeEvent(event);
+    });
   }
 
   setElementRef(er: ElementRef) {
@@ -25,7 +29,9 @@ export class PlasmaShockService {
     if (!this.isStarted) {
       console.log("Plasma shock starting..");
       this.isStarted = true;
-      this.queueShock();
+      if (!this.paused) {
+        this.queueShock();
+      }
     }
   }
 
@@ -54,13 +60,15 @@ export class PlasmaShockService {
     const shockType = this.randomShockType();
     console.log(`doShock() level ${this.shockLevel} - ${shockType}`);
     this.renderer.addClass(this.elementRef.nativeElement, shockType);
-    this.timeoutId = setTimeout(() => this.clearShock(shockType), 500);
+    setTimeout(() => this.clearShock(shockType), 500);
   }
 
   clearShock(shockType: string) {
     console.log("clearShock()");
     this.renderer.removeClass(this.elementRef.nativeElement, shockType);
-    this.queueShock();
+    if (this.isStarted && !this.paused) {
+      this.queueShock();
+    }
   }
 
   randomShockType(): string {
@@ -69,9 +77,26 @@ export class PlasmaShockService {
     switch (rand) {
       case 1: shockType = "double-shock"; break;
       case 2: shockType = "fade-shock"; break;
-      case 3: shockType = "skew-shock"; break;
+      case 3: shockType = Math.random() < 0.5 ? "skew-shock" : "flicker-shock"; break;
       default: shockType = "plasma-shock";
     }
     return shockType;
+  }
+
+  handleVisibilityChangeEvent(event) {
+    if (this.isStarted) {
+      if (this.timeoutId) {
+        clearTimeout(this.timeoutId);
+      }
+
+      if (document.hidden) {
+        console.log("Pausing plasma shock..")
+        this.paused = true;
+      } else {
+        console.log("Resuming plasma shock..")
+        this.paused = false;
+        this.queueShock();
+      }
+    }
   }
 }
