@@ -3,7 +3,7 @@ import { NumberFormatter } from "app/util/number-formatter";
 import { LogService } from "../services/log.service";
 
 export abstract class ResearchProject {
-    
+
     private readonly numberFormatter = new NumberFormatter();
 
     public canBuy: boolean = false;
@@ -20,7 +20,9 @@ export abstract class ResearchProject {
     constructor(
         public readonly name: string,
         public readonly description: string,
-        protected readonly scienceRequired: number = 1
+        protected readonly scienceRequired: number = 1,
+        public readonly minPhase: number = 0,
+        public readonly maxPhase: number = 1
     ) {}
 
     addScience(quantity: number, universe: Universe) {
@@ -50,6 +52,10 @@ export abstract class ResearchProject {
     reset() {
         this.scienceGained = 0;
         this.researched = false;
+    }
+
+    correctPhase(universe: Universe): boolean {
+        return this.minPhase <= universe.phase && this.maxPhase >= universe.phase;
     }
 
     setLogService(logService: LogService) {

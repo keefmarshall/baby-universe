@@ -82,4 +82,10 @@ export class ResearchPanelComponent implements OnInit {
     return (this.distractionTicks - this.distractionTicksRemaining) * 100 /
       this.distractionTicks;
   }
+
+  shouldShow(project: ResearchProject): boolean {
+    return project.preconditions(this.universeService.universe) &&
+          !this.isComplete(project) &&
+          project.correctPhase(this.universeService.universe);
+  }
 }
