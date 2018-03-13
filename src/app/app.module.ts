@@ -31,6 +31,7 @@ import { PhaseOneComponent } from './phases/phase-one/phase-one.component';
 import { InterstitialZeroComponent } from './phases/interstitial-zero/interstitial-zero.component';
 import { PlasmaShockService } from './services/plasma-shock.service';
 import { InterstitialOneComponent } from './phases/interstitial-one/interstitial-one.component';
+import { PhaseTwoComponent } from './phases/phase-two/phase-two.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { InterstitialOneComponent } from './phases/interstitial-one/interstitial
     PhaseOneComponent,
     InterstitialZeroComponent,
     InterstitialOneComponent,
+    PhaseTwoComponent,
     // TickerComponent
   ],
   imports: [

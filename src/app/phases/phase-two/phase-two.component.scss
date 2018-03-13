@@ -1,0 +1,25 @@
+@import '../../../theme.scss';
+@import '../../../style/badge.scss';
+
+$primary: map-get($butheme, primary);
+$accent: map-get($butheme, accent);
+$altprimary: map-get($alt-theme, primary);
+$altaccent: map-get($alt-theme, accent);
+
+#phase-two {
+    background-color: map-get($primary, 500); // overridden by animation
+
+    animation-name: colourFade;
+    animation-duration: 5s;
+    animation-fill-mode: both;
+}
+
+@keyframes colourFade {
+  from {
+    background-color: map-get($primary, 500);
+  }
+
+  to {
+    background-color: white;
+  }
+}

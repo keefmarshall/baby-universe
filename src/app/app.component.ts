@@ -16,6 +16,7 @@ import { Globals } from 'app/globals';
 })
 export class AppComponent implements OnInit {
   @ViewChild('header') headerRef: ElementRef;
+  @ViewChild('footer') footerRef: ElementRef;
 
   title = 'Baby Universe';
   showDebug = isDevMode();
@@ -50,7 +51,12 @@ export class AppComponent implements OnInit {
       switch (phase) {
         case 1.5: // delay for big bang animation
           setTimeout(() => {this.phaseToShow = 1.5; }, 7500);
-          this.renderer.addClass(this.headerRef.nativeElement, "fadeOut");
+          this.fadeElements();
+          break;
+
+        case 2: // fade header back in
+          this.showElements();
+          this.phaseToShow = 2;
           break;
 
         default:
@@ -59,4 +65,15 @@ export class AppComponent implements OnInit {
     });
   }
 
+  private fadeElements() {
+    this.renderer.addClass(this.headerRef.nativeElement, "fadeOut");
+    this.renderer.addClass(this.footerRef.nativeElement, "fadeOut");
+  }
+
+  private showElements() {
+    this.renderer.removeClass(this.headerRef.nativeElement, "fadeOut");
+    this.renderer.removeClass(this.footerRef.nativeElement, "fadeOut");
+    this.renderer.addClass(this.headerRef.nativeElement, "fadeInLeft");
+    this.renderer.addClass(this.footerRef.nativeElement, "fadeInLeft");
+  }
 }

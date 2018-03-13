@@ -5,9 +5,10 @@
     <app-interstitial-zero *ngSwitchCase="0.5"></app-interstitial-zero>
     <app-phase-one *ngSwitchCase="1"></app-phase-one>
     <app-interstitial-one *ngSwitchCase="1.5"></app-interstitial-one>
+    <app-phase-two *ngSwitchCase="2"></app-phase-two>
 </div>
 
-<app-footer></app-footer>
+<app-footer #footer></app-footer>
 
 <div class="mdc-layout-grid" *ngIf="showDebug">
   <div class="mdc-layout-grid__inner">

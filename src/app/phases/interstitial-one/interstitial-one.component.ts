@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NumberFormatter } from '../../util/number-formatter';
 import { Animations } from '../../util/animations';
 import { trigger } from '@angular/animations';
+import { UniverseService } from '../../services/universe.service';
 
 @Component({
   selector: 'app-interstitial-one',
@@ -25,7 +26,7 @@ export class InterstitialOneComponent implements OnInit {
     "^2000 <br/><br/>Your seething plasma needs only one more ingredient before " +
     "it can give birth to a shiny new baby universe...";
 
-  constructor() { }
+  constructor(private universeService: UniverseService) { }
 
   ngOnInit() {
     this.stars = [];
@@ -50,7 +51,8 @@ export class InterstitialOneComponent implements OnInit {
   }
 
   transition() {
-    console.log("TODO: transition to phase 2");
+    console.log("Transition to phase 2");
+    this.universeService.transitionToPhase(2);
   }
 }
 
