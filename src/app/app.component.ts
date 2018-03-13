@@ -1,4 +1,4 @@
-import { Component, OnInit, isDevMode, ViewChild, Renderer2, ElementRef } from '@angular/core';
+import { Component, OnInit, isDevMode, ViewChild, Renderer2, ElementRef, RendererFactory2 } from '@angular/core';
 import { AutosaveService } from './services/autosave.service';
 import { TimeService } from './services/time.service';
 import { UniverseService } from 'app/services/universe.service';
@@ -15,6 +15,8 @@ import { Globals } from 'app/globals';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  @ViewChild('header') headerRef: ElementRef;
+
   title = 'Baby Universe';
   showDebug = isDevMode();
 
@@ -22,15 +24,20 @@ export class AppComponent implements OnInit {
 
   phaseToShow: number = 0.5;
 
+  private renderer: Renderer2;
+
   // Add services here to ensure they're started at application
   // load time, otherwise things may not get kicked off correctly.
   constructor(
     private autosaveService: AutosaveService,
+    private rendererFactory2: RendererFactory2,
     private stateManagementService: StateManagementService,
     private tickerService: TickerService,
     private timeService: TimeService,
     public universeService: UniverseService
-  ) { }
+  ) {
+    this.renderer = rendererFactory2.createRenderer(null, null);
+  }
 
   ngOnInit() {
     this.autosaveService.enabled = true;
@@ -43,6 +50,7 @@ export class AppComponent implements OnInit {
       switch (phase) {
         case 1.5: // delay for big bang animation
           setTimeout(() => {this.phaseToShow = 1.5; }, 7500);
+          this.renderer.addClass(this.headerRef.nativeElement, "fadeOut");
           break;
 
         default:

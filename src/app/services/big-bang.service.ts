@@ -45,7 +45,7 @@ export class BigBangService {
     this.pauseUniverse();
     this.renderer.addClass(this.elementRef.nativeElement, "bigbang");
     const mainWrapper = this.parentOf(this.parentOf(this.elementRef.nativeElement));
-    // TODO: fade out header, somehow
+    // Header is faded out in app.component
     this.renderer.addClass(mainWrapper, "black");
     setTimeout(() => {
       console.log("BB animation done, showing final score");
