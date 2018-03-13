@@ -4,6 +4,7 @@
 <div id="main-wrapper" [ngSwitch]="phaseToShow">
     <app-interstitial-zero *ngSwitchCase="0.5"></app-interstitial-zero>
     <app-phase-one *ngSwitchCase="1"></app-phase-one>
+    <app-interstitial-one *ngSwitchCase="1.5"></app-interstitial-one>
 </div>
 
 <app-footer></app-footer>

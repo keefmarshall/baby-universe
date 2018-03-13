@@ -1,0 +1,15 @@
+.interstitial-log-area {
+    position: relative;
+    width: 50vw;
+    height: 50vh;
+    left: 25vw;
+    top: 25vh;
+
+    font-size: 1.5em;
+}
+
+@media all and (max-width: 839px) { /* was 839 */
+    .interstitial-log-area {
+        font-size: 1em;
+    }
+}

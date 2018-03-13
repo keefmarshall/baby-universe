@@ -132,6 +132,22 @@ blockquote, .log {
   animation-name: bounceIn;
 }
 
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.fadeOut {
+    animation-name: fadeout;
+    animation-duration: 5s;
+    animation-fill-mode: both;
+}
+
 .delay-1 {
   animation-delay: 200ms;
 }

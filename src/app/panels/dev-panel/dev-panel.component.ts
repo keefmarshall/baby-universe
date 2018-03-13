@@ -77,6 +77,10 @@ export class DevPanelComponent implements OnInit {
     }
   }
 
+  switchPhase(p: number) {
+    this.universeService.transitionToPhase(p);
+  }
+
   windowHeight(): number { return window.innerHeight; }
   windowWidth(): number { return window.innerWidth; }
 

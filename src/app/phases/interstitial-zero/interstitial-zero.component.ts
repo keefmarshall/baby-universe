@@ -1,27 +1,17 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UniverseService } from '../../services/universe.service';
-import { trigger, style, state, transition, animate, group } from '@angular/animations';
+import { trigger } from '@angular/animations';
 import * as Typed from 'typed.js';
-
-const fadePresentTrigger = [
-  state('present', style({ opacity: 1 })),
-  state('faded', style({ opacity: 0 })),
-  transition('present => faded', [
-    animate('2000ms', style({ opacity: 0 }))
-  ]),
-  transition('faded => present', [
-    animate('2000ms', style({ opacity: 1 })),
-  ]),
-];
+import { Animations } from "../../util/animations";
 
 @Component({
   selector: 'app-interstitial-zero',
   templateUrl: './interstitial-zero.component.html',
   styleUrls: ['./interstitial-zero.component.scss'],
   animations: [
-    trigger('wrapperTrigger', fadePresentTrigger),
-    trigger('logTrigger', fadePresentTrigger),
-    trigger('imageTrigger', fadePresentTrigger)
+    trigger('wrapperTrigger', Animations.fadePresentTrigger),
+    trigger('logTrigger', Animations.fadePresentTrigger),
+    trigger('imageTrigger', Animations.fadePresentTrigger)
   ]
 })
 export class InterstitialZeroComponent implements OnInit {

@@ -29,6 +29,7 @@ import { LogDrawerComponent } from './log-drawer/log-drawer.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogPanelComponent } from './log-panel/log-panel.component';
+import { InterstitialLogComponent } from './interstitial-log/interstitial-log.component';
 
 @NgModule({
   imports: [
@@ -59,7 +60,8 @@ import { LogPanelComponent } from './log-panel/log-panel.component';
     LogDrawerComponent,
     HeaderComponent,
     FooterComponent,
-    LogPanelComponent
+    LogPanelComponent,
+    InterstitialLogComponent
   ],
   entryComponents: [
     StargameDialogComponent,
@@ -82,7 +84,8 @@ import { LogPanelComponent } from './log-panel/log-panel.component';
     MatterCollectionPanelComponent,
     LogDrawerComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    InterstitialLogComponent
   ]
 })
 export class PanelsModule { }
