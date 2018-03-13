@@ -46,6 +46,7 @@ export class UniverseService {
   }
 
   transitionToPhase(p: number) {
+    console.log(`UniverseService: setting phase to ${p}`);
     this.universe.phase = p;
     this.phase$.next(p);
   }

@@ -1,10 +1,9 @@
-import { Component, OnInit, isDevMode, ViewChild, Renderer2, ElementRef, RendererFactory2 } from '@angular/core';
+import { Component, OnInit, isDevMode, ViewChild, AfterViewInit, Renderer2, ElementRef, RendererFactory2 } from '@angular/core';
 import { AutosaveService } from './services/autosave.service';
 import { TimeService } from './services/time.service';
 import { UniverseService } from 'app/services/universe.service';
 import { StateManagementService } from 'app/services/state-management.service';
 import { TickerService } from 'app/services/ticker.service';
-import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { MatDialog } from '@angular/material';
 import { HelpPanelComponent } from 'app/panels/help-panel/help-panel.component';
 import { Globals } from 'app/globals';
@@ -14,7 +13,7 @@ import { Globals } from 'app/globals';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('header') headerRef: ElementRef;
   @ViewChild('footer') footerRef: ElementRef;
 
@@ -42,6 +41,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.autosaveService.enabled = true;
+  }
+
+  ngAfterViewInit() {
     this.setPhaseToShow();
   }
 
@@ -66,14 +68,29 @@ export class AppComponent implements OnInit {
   }
 
   private fadeElements() {
-    this.renderer.addClass(this.headerRef.nativeElement, "fadeOut");
-    this.renderer.addClass(this.footerRef.nativeElement, "fadeOut");
+    this.addClass(this.headerRef.nativeElement, "fadeOut");
+    this.addClass(this.footerRef.nativeElement, "fadeOut");
   }
 
   private showElements() {
-    this.renderer.removeClass(this.headerRef.nativeElement, "fadeOut");
-    this.renderer.removeClass(this.footerRef.nativeElement, "fadeOut");
-    this.renderer.addClass(this.headerRef.nativeElement, "fadeInLeft");
-    this.renderer.addClass(this.footerRef.nativeElement, "fadeInLeft");
+    this.removeClass(this.headerRef.nativeElement, "fadeOut");
+    this.removeClass(this.footerRef.nativeElement, "fadeOut");
+    this.addClass(this.headerRef.nativeElement, "fadeInLeft");
+    this.addClass(this.footerRef.nativeElement, "fadeInLeft");
   }
+
+  // For some reason I'm getting errors about these elements, unclear
+  // why at the moment..
+  private addClass(ref: ElementRef, cl: string) {
+    if (ref && ref.nativeElement) {
+      this.renderer.addClass(ref.nativeElement, cl);
+    }
+  }
+
+  private removeClass(ref: ElementRef, cl: string) {
+    if (ref && ref.nativeElement) {
+      this.renderer.removeClass(ref.nativeElement, cl);
+    }
+  }
+
 }

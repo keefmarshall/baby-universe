@@ -52,6 +52,7 @@ export class InterstitialOneComponent implements OnInit {
 
   transition() {
     console.log("Transition to phase 2");
+    // TODO: turn on the services again - autosave, machines etc
     this.universeService.transitionToPhase(2);
   }
 }
