@@ -9,9 +9,9 @@ import { Animations } from "../../util/animations";
   templateUrl: './interstitial-zero.component.html',
   styleUrls: ['./interstitial-zero.component.scss'],
   animations: [
-    trigger('wrapperTrigger', Animations.fadePresentTrigger),
-    trigger('logTrigger', Animations.fadePresentTrigger),
-    trigger('imageTrigger', Animations.fadePresentTrigger)
+    trigger('wrapperTrigger', Animations.fadePresentTrigger()),
+    trigger('logTrigger', Animations.fadePresentTrigger()),
+    trigger('imageTrigger', Animations.fadePresentTrigger())
   ]
 })
 export class InterstitialZeroComponent implements OnInit {

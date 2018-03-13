@@ -8,7 +8,7 @@ import { trigger } from '@angular/animations';
   templateUrl: './interstitial-log.component.html',
   styleUrls: ['./interstitial-log.component.scss'],
   animations: [
-    trigger('logTrigger', Animations.fadePresentTrigger)
+    trigger('logTrigger', Animations.fadePresentTrigger())
   ]
 })
 export class InterstitialLogComponent implements OnInit {

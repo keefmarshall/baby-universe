@@ -7,15 +7,21 @@ import { TickerService } from 'app/services/ticker.service';
 import { MatDialog } from '@angular/material';
 import { HelpPanelComponent } from 'app/panels/help-panel/help-panel.component';
 import { Globals } from 'app/globals';
+import { trigger } from '@angular/animations';
+import { Animations } from './util/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    trigger('headerTrigger', Animations.fadePresentTrigger()),
+    trigger('footerTrigger', Animations.fadePresentTrigger())
+  ]
 })
 export class AppComponent implements OnInit, AfterViewInit {
-  @ViewChild('header') headerRef: ElementRef;
-  @ViewChild('footer') footerRef: ElementRef;
+  headerState = "present";
+  footerState = "present";
 
   title = 'Baby Universe';
   showDebug = isDevMode();
@@ -51,6 +57,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.phaseToShow = this.universeService.universe.phase;
     this.universeService.phase$.subscribe((phase) => {
       switch (phase) {
+        case 1:
+          this.showElements();
+          break;
+
         case 1.5: // delay for big bang animation
           setTimeout(() => {this.phaseToShow = 1.5; }, 7500);
           this.fadeElements();
@@ -67,30 +77,16 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
   }
 
+  // These work, they just don't look very good, so disabled for now
+  // until I figure out a better look.
   private fadeElements() {
-    this.addClass(this.headerRef.nativeElement, "fadeOut");
-    this.addClass(this.footerRef.nativeElement, "fadeOut");
+    // this.headerState = "faded";
+    // this.footerState = "faded";
   }
 
   private showElements() {
-    this.removeClass(this.headerRef.nativeElement, "fadeOut");
-    this.removeClass(this.footerRef.nativeElement, "fadeOut");
-    this.addClass(this.headerRef.nativeElement, "fadeInLeft");
-    this.addClass(this.footerRef.nativeElement, "fadeInLeft");
-  }
-
-  // For some reason I'm getting errors about these elements, unclear
-  // why at the moment..
-  private addClass(ref: ElementRef, cl: string) {
-    if (ref && ref.nativeElement) {
-      this.renderer.addClass(ref.nativeElement, cl);
-    }
-  }
-
-  private removeClass(ref: ElementRef, cl: string) {
-    if (ref && ref.nativeElement) {
-      this.renderer.removeClass(ref.nativeElement, cl);
-    }
+    // this.headerState = "present";
+    // this.headerState = "present";
   }
 
 }

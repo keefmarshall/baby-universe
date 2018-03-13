@@ -9,8 +9,8 @@ import { UniverseService } from '../../services/universe.service';
   templateUrl: './interstitial-one.component.html',
   styleUrls: ['./interstitial-one.component.scss'],
   animations: [
-    trigger('wrapperTrigger', Animations.fadePresentTrigger),
-    trigger('logTrigger', Animations.fadePresentTrigger)
+    trigger('wrapperTrigger', Animations.fadePresentTrigger(2000)),
+    trigger('logTrigger', Animations.fadePresentTrigger(2000))
   ]
 })
 export class InterstitialOneComponent implements OnInit {

@@ -1,4 +1,7 @@
-<app-header #header></app-header>
+<div [@headerTrigger]="headerState" class="elementWrapper">
+  <app-header></app-header>
+</div>
+
 <app-log-drawer></app-log-drawer>
 
 <div id="main-wrapper" [ngSwitch]="phaseToShow">
@@ -8,7 +11,9 @@
     <app-phase-two *ngSwitchCase="2"></app-phase-two>
 </div>
 
-<app-footer #footer></app-footer>
+<div [@footerTrigger]="footerState" class="elementWrapper">
+  <app-footer></app-footer>
+</div>
 
 <div class="mdc-layout-grid" *ngIf="showDebug">
   <div class="mdc-layout-grid__inner">
