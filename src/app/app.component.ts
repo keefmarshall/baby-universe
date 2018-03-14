@@ -13,22 +13,15 @@ import { Animations } from './util/animations';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  animations: [
-    trigger('headerTrigger', Animations.fadePresentTrigger()),
-    trigger('footerTrigger', Animations.fadePresentTrigger())
-  ]
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, AfterViewInit {
-  headerState = "present";
-  footerState = "present";
-
+export class AppComponent implements OnInit {
   title = 'Baby Universe';
   showDebug = isDevMode();
 
   globals = Globals; // export for template
 
-  phaseToShow: number = 0.5;
+  phaseToShow: number;
 
   private renderer: Renderer2;
 
@@ -47,9 +40,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.autosaveService.enabled = true;
-  }
-
-  ngAfterViewInit() {
     this.setPhaseToShow();
   }
 
@@ -57,18 +47,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.phaseToShow = this.universeService.universe.phase;
     this.universeService.phase$.subscribe((phase) => {
       switch (phase) {
-        case 1:
-          this.showElements();
-          break;
-
         case 1.5: // delay for big bang animation
           setTimeout(() => {this.phaseToShow = 1.5; }, 7500);
-          this.fadeElements();
-          break;
-
-        case 2: // fade header back in
-          this.showElements();
-          this.phaseToShow = 2;
           break;
 
         default:
@@ -77,16 +57,5 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
   }
 
-  // These work, they just don't look very good, so disabled for now
-  // until I figure out a better look.
-  private fadeElements() {
-    // this.headerState = "faded";
-    // this.footerState = "faded";
-  }
-
-  private showElements() {
-    // this.headerState = "present";
-    // this.headerState = "present";
-  }
 
 }

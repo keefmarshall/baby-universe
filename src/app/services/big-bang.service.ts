@@ -50,7 +50,9 @@ export class BigBangService {
     setTimeout(() => {
       console.log("BB animation done, showing final score");
       // this.renderer.setStyle(this.finalScoreElementRef.nativeElement, "display", "block");
-      this.renderer.removeClass(mainWrapper, "black");
+      setTimeout(() => {
+        this.renderer.removeClass(mainWrapper, "black");
+      }, 4000);
     }, 7500);
   }
 
