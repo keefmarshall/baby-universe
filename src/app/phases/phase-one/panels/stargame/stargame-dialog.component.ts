@@ -7,7 +7,7 @@ import { StargameService } from 'app/games/stargame/stargame.service';
   selector: 'app-stargame-dialog',
   template: `
     <app-stargame [width]="width" [height]="height"></app-stargame>
-    <button (click)="closeDialog()">Close</button> 
+    <button (click)="closeDialog()">Close</button>
   `,
 })
 export class StargameDialogComponent {

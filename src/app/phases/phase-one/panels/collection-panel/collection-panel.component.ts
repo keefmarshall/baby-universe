@@ -32,7 +32,7 @@ export class CollectionPanelComponent implements OnInit {
   }
 
   collectMatter() {
-    let dialogRef = this.dialog.open(StargameDialogComponent, {
+    const dialogRef = this.dialog.open(StargameDialogComponent, {
       height: '500px',
       width: '500px',
       data: { width: "400", height: "400" }
