@@ -6,6 +6,7 @@ import { ConstructionService } from "app/services/construction.service";
 import { MeteringService } from "app/services/metering.service";
 import { ConstructionEnergyCostMeter } from "app/meters/construction-energy-cost-meter";
 import { NumberFormatter } from "app/util/number-formatter";
+import { LogService } from "../services/log.service";
 
 export class Assembler extends Machine {
     protected baseEnergyCost = 3000;
@@ -14,13 +15,14 @@ export class Assembler extends Machine {
     protected baseEnergyDraw = 1;
 
     constructor(universeService: UniverseService,
+        logService: LogService,
         private constructionService: ConstructionService,
         private meteringService: MeteringService,
         _name = 'Assembler',
         _displayName = 'Assembler',
         _description = "Converts stored energy to useful work"
     ) {
-        super(_name, _displayName, _description, universeService, true);
+        super(_name, _displayName, _description, universeService, logService, true);
     }
 
     // ////////////////////////////////
@@ -68,7 +70,7 @@ export class Assembler extends Machine {
 
             const q = this.properties().quantity || 0;
             if (q === 0) {
-                this.universeService.universe.logs.push(
+                this.logService.addLog(
                     "Assemblers use up energy while building. Inefficiency produces heat as waste.");
             }
             return true;

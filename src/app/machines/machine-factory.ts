@@ -29,6 +29,8 @@ import { ParadoxGenerator } from 'app/machines/paradox-generator';
 import { ThermalSpanner } from 'app/machines/thermal-spanner';
 import { Supervisor } from 'app/machines/supervisor';
 import { TickerService } from 'app/services/ticker.service';
+import { LogService } from '../services/log.service';
+import { PlasmaShockService } from '../services/plasma-shock.service';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -46,36 +48,38 @@ export class MachineFactory {
 
     constructor(
         private universeService: UniverseService,
+        private logService: LogService,
         private researchService: ResearchService,
         private constructionService: ConstructionService,
         private meteringService: MeteringService,
         private stargameService: StargameService,
         private heatingService: HeatingService,
-        private tickerService: TickerService
+        private tickerService: TickerService,
+        private plasmaShockService: PlasmaShockService
     ) {
         this.resetMachines();
     }
 
     resetMachines() {
         this.allMachines = {
-            'PhotonCollector': new PhotonCollector(this.universeService),
-            'Paser': new Paser(this.universeService),
-            'PhotonicPhilosopher': new PhotonicPhilosopher(this.universeService, this.researchService),
-            'ParadoxGenerator': new ParadoxGenerator(this.universeService),
-            'Supervisor': new Supervisor(this.universeService, this.tickerService),
-            'FieldMirror': new FieldMirror(this.universeService),
-            'Assembler': new Assembler(this.universeService, this.constructionService, this.meteringService),
-            'AssemblyPlant': new AssemblyPlant(this.universeService, this.constructionService, this.meteringService, this.researchService),
-            'ThermalSpanner': new ThermalSpanner(this.universeService, this.constructionService),
-            'Thermometer': new Thermometer(this.universeService, this.meteringService),
-            'SpaceHeater': new SpaceHeater(this.universeService, this.heatingService, this.meteringService),
-            'HeatingArray': new HeatingArray(this.universeService, this.heatingService, this.meteringService),
-            'ThermalResistor': new ThermalResistor(this.universeService),
-            'MatterDetector': new MatterDetector(this.universeService, this.stargameService),
-            'QuarkScoop': new QuarkScoop(this.universeService),
-            'QuarkSqueezer': new QuarkSqueezer(this.universeService),
-            'MatterFunnel': new MatterFunnel(this.universeService),
-            'ParticleAttractor': new ParticleAttractor(this.universeService)
+            'PhotonCollector': new PhotonCollector(this.universeService, this.logService),
+            'Paser': new Paser(this.universeService, this.logService),
+            'PhotonicPhilosopher': new PhotonicPhilosopher(this.universeService, this.logService, this.researchService),
+            'ParadoxGenerator': new ParadoxGenerator(this.universeService, this.logService),
+            'Supervisor': new Supervisor(this.universeService, this.logService, this.tickerService),
+            'FieldMirror': new FieldMirror(this.universeService, this.logService),
+            'Assembler': new Assembler(this.universeService, this.logService, this.constructionService, this.meteringService),
+            'AssemblyPlant': new AssemblyPlant(this.universeService, this.logService, this.constructionService, this.meteringService, this.researchService),
+            'ThermalSpanner': new ThermalSpanner(this.universeService, this.logService, this.constructionService),
+            'Thermometer': new Thermometer(this.universeService, this.logService, this.meteringService, this.plasmaShockService),
+            'SpaceHeater': new SpaceHeater(this.universeService, this.logService, this.heatingService, this.meteringService),
+            'HeatingArray': new HeatingArray(this.universeService, this.logService, this.heatingService, this.meteringService),
+            'ThermalResistor': new ThermalResistor(this.universeService, this.logService),
+            'MatterDetector': new MatterDetector(this.universeService, this.logService, this.stargameService),
+            'QuarkScoop': new QuarkScoop(this.universeService, this.logService),
+            'QuarkSqueezer': new QuarkSqueezer(this.universeService, this.logService),
+            'MatterFunnel': new MatterFunnel(this.universeService, this.logService),
+            'ParticleAttractor': new ParticleAttractor(this.universeService, this.logService)
         };
 
         this.allMachineNames = [];

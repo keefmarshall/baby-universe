@@ -10,6 +10,7 @@ export class UniverseService {
   public universe: Universe;
 
   public readonly id: number;
+  public new: boolean;
 
   public phase$ = new Subject<number>();
 
@@ -30,11 +31,13 @@ export class UniverseService {
     if (ustr != null) {
       console.log("Loading universe from local storage..");
       this.universe = JSON.parse(ustr);
-      this.initialiseNew(this.universe);
+      this.new = false;
+      this.updateCode();
     } else {
       console.log("Creating fresh universe..");
       this.universe = new Universe;
       this.analytics.start(this.universe);
+      this.new = true;
     }
   }
 
@@ -42,67 +45,10 @@ export class UniverseService {
     this.universe = new Universe;
   }
 
-  /**
-   * Mostly during development - this handles the case where there's a new
-   * property in the Universe object that is not in the saved version, we
-   * need to initialise it properly otherwise stuff breaks
-   */
-  initialiseNew(u: Universe) {
-    if (u.id == null) u.id = UUID.UUID();
-    if (u.phase == null) u.phase = 1;
-    if (u.machines == null) u.machines = {};
-    if (u.research == null) u.research = {};
-    
-    if (!u.currentResearchProject) u.currentResearchProject = null;
-    if (!u.currentConstructionProject) u.currentConstructionProject = null;
-    if (!u.currentConstructionWork) u.currentConstructionWork = 0;
-    
-    if (!u.particles) u.particles = {};
-    if (!u.antiparticles) u.antiparticles = {};
-
-    if (!u.logs) {
-      u.logs = [ // "...", "...", "...", "...", "...", "...",
-          "Within the empty void, matter and energy spontaneously " +
-          "flash into existence, only to decay almost instantly. "];
-    }
-
-    if (u.machines['Assembler'] && !u.machines['Assembler'].extras['energyDraw']) {
-      u.machines['Assembler'].extras['energyDraw'] = 1;
-    }
-
-    if (u.machines['SpaceHeater'] && !u.machines['SpaceHeater'].extras['energyDraw']) {
-      u.machines['SpaceHeater'].extras['energyDraw'] = 1;
-    }
-
-    /////////////////////////////////////////////////////////////////
-    // PASER REBALANCING
-
-    if (!u.release || u.release < 0.25) {
-      u.release = 0.25;
-      // hobble Pasers, they used to be more powerful
-      if (u.machines['Paser'] && u.machines['Paser'].quantity > 0) {
-        const npasers = u.machines['Paser'].quantity;
-        u.machines['PhotonCollector'].efficiency /= Math.pow(2, npasers);
-        u.logs.push("A strange force ripples through your machines, rendering your Pasers less effective.");
-        u.logs.push("Maybe you can find new ways to bring them back to their previous power?");
-      }
-    }
-
-    if (u.release && u.release === 0.25) {
-      u.release = 0.251
-      // hobble Pasers, they used to be more powerful
-      if (u.machines['Paser'] && u.machines['Paser'].quantity > 0) {
-        const npasers = u.machines['Paser'].quantity;
-        if (!this.isResearchedByName("QSwitching")) {
-          u.machines['PhotonCollector'].efficiency /= Math.pow(1.25, npasers); // from 5 to 4
-        } else if (!this.isResearchedByName("ModeLocking")) {
-          u.machines['PhotonCollector'].efficiency /= Math.pow(1.118, npasers); // from (5 * root2) to (4 * root 2.5)
-          u.machines['Paser'].efficiency = 0.1 * Math.sqrt(2.5);
-        } else {
-          u.machines['Paser'].efficiency = 0.25;          
-        }
-      }
-    }
+  transitionToPhase(p: number) {
+    console.log(`UniverseService: setting phase to ${p}`);
+    this.universe.phase = p;
+    this.phase$.next(p);
   }
 
   finalScorePhase1(): number {
@@ -128,6 +74,41 @@ export class UniverseService {
       return true;
     } else {
       return false;
+    }
+  }
+
+  /**
+   * Mostly during development - this handles the case where there's a new
+   * property in the Universe object that is not in the saved version, we
+   * need to initialise it properly otherwise stuff breaks
+   */
+  updateCode() {
+    const u = this.universe;
+
+    // tslint:disable:curly
+    if (u.id == null) u.id = UUID.UUID();
+    if (u.phase == null) u.phase = 1;
+    if (u.machines == null) u.machines = {};
+    if (u.research == null) u.research = {};
+
+    if (!u.currentResearchProject) u.currentResearchProject = null;
+    if (!u.currentConstructionProject) u.currentConstructionProject = null;
+    if (!u.currentConstructionWork) u.currentConstructionWork = 0;
+
+    if (!u.particles) u.particles = {};
+    if (!u.antiparticles) u.antiparticles = {};
+
+    if (!u.logs) {
+      u.logs = ["Within the empty void, matter and energy spontaneously " +
+                "flash into existence, only to decay almost instantly. "];
+    }
+
+    if (u.machines['Assembler'] && !u.machines['Assembler'].extras['energyDraw']) {
+      u.machines['Assembler'].extras['energyDraw'] = 1;
+    }
+
+    if (u.machines['SpaceHeater'] && !u.machines['SpaceHeater'].extras['energyDraw']) {
+      u.machines['SpaceHeater'].extras['energyDraw'] = 1;
     }
   }
 

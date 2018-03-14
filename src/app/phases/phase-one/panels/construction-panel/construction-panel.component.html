@@ -1,0 +1,57 @@
+<div id="construction-panel" class="panel alt-theme delay-3">
+
+    <div class="info-right" *ngIf="universeService.universe.machines['ThermalSpanner']?.quantity > 0">
+        <button 
+          mat-raised-button
+          class="deploy-button"
+          (click)="sabotage()"
+          [disabled]="!this.constructionService.isConstructing()">
+
+          <mat-icon>build</mat-icon>
+          <small>Throw<br/>Spanner</small>
+        </button>
+    </div>
+
+    <p class="panel-title">
+      <mat-icon color="primary">settings</mat-icon>
+       Construction
+    </p>
+
+    <div class="clearfix">
+        <p class="info info-right">
+            Efficiency: {{ readAssemblerEfficiency() }}<br/>
+            Work: {{ readWorkMeter() | number:'1.1-1'  }}/s
+        </p>
+
+        <p class="info info-left" *ngIf="universeService.universe.machines['Assembler']">
+            Assemblers: {{ universeService.universe.machines["Assembler"].quantity }}<br/>
+            <span [ngClass]="energyCostColour()">
+                Energy draw: {{ readEnergyCostMeter() | mev }}/s
+            </span>
+        </p>
+    </div>
+
+    <p *ngIf="constructionService.isConstructing()">
+      <small>Building: {{ constructionService.currentProject.displayName }}</small><br/>
+
+      <mat-progress-bar color="primary"
+        [value]="constructionService.currentProject.progress()"
+      ></mat-progress-bar>
+    </p>
+
+    <p *ngIf="constructionService.sabotaged">
+        REPAIRING...
+        <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+    </p>
+
+    <div class="clearfix">
+        <p class="info info-right" *ngIf="constructionService.isConstructing() && idlePhilosopherBoost() > 1">
+            Intelligent assembly boost: {{ idlePhilosopherBoost() - 1 | number }}
+        </p>
+        <p class="info info-left" *ngIf="universeService.universe.machines['AssemblyPlant']">
+            Assembly Plants: {{ universeService.universe.machines["AssemblyPlant"].quantity }}
+        </p>
+    </div>
+</div>
+  
+  

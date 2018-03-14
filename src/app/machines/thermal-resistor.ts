@@ -1,15 +1,17 @@
 import { ConstructionProject } from "app/machines/construction-project";
 import { UniverseService } from "app/services/universe.service";
 import { AdvancedThermodynamics } from "app/research/kinetics2";
+import { LogService } from "../services/log.service";
 
 export class ThermalResistor extends ConstructionProject {
     constructor(
-        universeService: UniverseService
+        universeService: UniverseService,
+        logService: LogService
     ) {
         super('ThermalResistor',
             "Thermal Resistor",
             "Protects heating array components, dramatically increasing energy draw",
-            universeService, 500000, 1.45);
+            universeService, logService, 500000, 1.45);
     }
 
     onComplete() {

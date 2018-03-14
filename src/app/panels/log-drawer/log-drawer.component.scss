@@ -1,0 +1,27 @@
+@import '../../../style/babypink-palette';
+@import '../../../style/babydark-palette';
+@import '../../../style/babyblue-palette';
+
+.log-container {
+    // color: map-get($md-babydark, 600);
+    color: map-get($md-babypink, 50);
+    background: map-get($md-babyblue, 800);
+    // background: linear-gradient(to bottom, map-get($md-babypink, 50), map-get($md-babyblue, 50));
+    // background: linear-gradient(to bottom, map-get($md-babyblue, 400), map-get($md-babyblue, 800));
+    // border-bottom: solid 1px map-get($md-babydark, 600);
+
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+
+    min-height: 15px;
+}
+
+.log-line {
+    padding-top: 10px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 24px;
+
+    font-weight: 600;
+}

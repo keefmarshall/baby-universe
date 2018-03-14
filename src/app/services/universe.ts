@@ -13,7 +13,7 @@ export class Universe {
     particles = {};
     antiparticles = {};
 
-    phase = 1; // pre/post big bang is 1/2
+    phase = 0.5; // pre/post big bang is 1/2, interstitials on .5
 
     // Photons
     photonCount = 0;
@@ -31,6 +31,7 @@ export class Universe {
     // Log
     logs = ["Within the empty void, matter and energy spontaneously " +
             "flash into existence, only to decay almost instantly. "];
+    newLogs = 0;
 
     release = 0.270;
 

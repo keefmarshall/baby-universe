@@ -2,6 +2,7 @@ import { Machine } from "app/machines/machine";
 import { UniverseService } from "app/services/universe.service";
 import { MachineService } from "app/services/machine.service";
 import { Globals } from "app/globals";
+import { LogService } from "../services/log.service";
 
 export abstract class ConstructionProject extends Machine {
     public readonly needsConstruction: boolean = true;
@@ -14,10 +15,11 @@ export abstract class ConstructionProject extends Machine {
         public readonly displayName: string,
         public readonly displayPurpose: string,
         protected universeService: UniverseService,
+        protected logService: LogService,
         protected readonly baseCost: number = 1,
         protected readonly costMultiplier: number = 1
     ) {
-        super(name, displayName, displayPurpose, universeService);
+        super(name, displayName, displayPurpose, universeService, logService);
     }
 
     // We can't inject this, due to circular dependency problems.

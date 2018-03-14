@@ -2,18 +2,21 @@ import { Machine } from "app/machines/machine";
 import { UniverseService } from "app/services/universe.service";
 import { ConstructionService } from "app/services/construction.service";
 import { Globals } from "app/globals";
+import { LogService } from "../services/log.service";
 
 export class ThermalSpanner extends Machine {
     private baseEnergyCost = 6500;
     private costMultiplier = 1.02;
 
     constructor(universeService: UniverseService,
+        logService: LogService,
         private constructionService: ConstructionService) {
 
         super('ThermalSpanner',
             "Thermal Spanner",
             "Sabotage assembler construction. Use with care.",
-            universeService);
+            universeService,
+            logService);
     }
 
     onTick(tickFactor: number) {
@@ -65,8 +68,7 @@ export class ThermalSpanner extends Machine {
     }
 
     trigger() {
-        this.universeService.universe.logs.push(
-            "A spanner in the works... Some damage may result.");
+        this.logService.addLog("A spanner in the works... Some damage may result.");
         setTimeout(() => this.sabotage(), 30000);
         this.constructionService.sabotage();
     }
@@ -79,14 +81,14 @@ export class ThermalSpanner extends Machine {
         const achance = Math.floor(Math.random() * qa * 0.2);
         if (achance > 0) {
             // You've lost some Assemblers
-            u.logs.push("Sabotage! It wasn't possible to repair all the Assemblers. Lost: " + achance);
+            this.logService.addLog("Sabotage! It wasn't possible to repair all the Assemblers. Lost: " + achance);
             u.machines['Assembler'].quantity -= achance;
         }
 
         const apchance = Math.floor(Math.random() * qap * 0.1);
         if (apchance > 0) {
             // You've lost some Assembly Plants
-            u.logs.push("Sabotage! Some Assembly Plants were broken up into Assemblers. Lost: " + apchance);
+            this.logService.addLog("Sabotage! Some Assembly Plants were broken up into Assemblers. Lost: " + apchance);
             u.machines['AssemblyPlant'].quantity -= apchance;
             u.machines['Assembler'].quantity += apchance * 10;
         }

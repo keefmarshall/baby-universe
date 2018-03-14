@@ -3,6 +3,7 @@ import { StargameService } from 'app/games/stargame/stargame.service';
 import { TickerService } from 'app/services/ticker.service';
 import { UniverseService } from 'app/services/universe.service';
 import { AnalyticsService } from 'app/services/analytics.service';
+import { PlasmaShockService } from './plasma-shock.service';
 
 @Injectable()
 export class BigBangService {
@@ -11,6 +12,7 @@ export class BigBangService {
   private renderer: Renderer2;
 
   constructor(
+    private plasmaShockService: PlasmaShockService,
     private rendererFactory2: RendererFactory2,
     private stargameService: StargameService,
     private tickerService: TickerService,
@@ -18,7 +20,7 @@ export class BigBangService {
     private analytics: AnalyticsService
   ) {
     this.universeService.phase$.subscribe(phase => {
-      if (phase === 2) {
+      if (phase === 1.5) {
         // we're up
         console.log("Phase change detected: BIG BANG!!!");
         this.bigBang();
@@ -42,10 +44,15 @@ export class BigBangService {
     console.log("Big bang, pausing universe, starting animation");
     this.pauseUniverse();
     this.renderer.addClass(this.elementRef.nativeElement, "bigbang");
-    this.renderer.addClass(this.renderer.parentNode(this.elementRef.nativeElement), "black");
+    const mainWrapper = this.parentOf(this.parentOf(this.elementRef.nativeElement));
+    // Header is faded out in app.component
+    this.renderer.addClass(mainWrapper, "black");
     setTimeout(() => {
       console.log("BB animation done, showing final score");
-      this.renderer.setStyle(this.finalScoreElementRef.nativeElement, "display", "block");
+      // this.renderer.setStyle(this.finalScoreElementRef.nativeElement, "display", "block");
+      setTimeout(() => {
+        this.renderer.removeClass(mainWrapper, "black");
+      }, 4000);
     }, 7500);
   }
 
@@ -59,11 +66,16 @@ export class BigBangService {
     this.tickerService.pause();
     this.tickerService.gameEnd(); // set state so it doesn't get unpaused.
     this.stargameService.pauseGame();
+    this.plasmaShockService.stop();
   }
 
   resumeUniverse() {
     this.tickerService.resume();
     this.stargameService.resumeGame();
+  }
+
+  private parentOf(elementRef: ElementRef): ElementRef {
+    return this.renderer.parentNode(elementRef);
   }
 
 }

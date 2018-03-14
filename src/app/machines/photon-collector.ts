@@ -5,6 +5,7 @@ import { Universe } from '../services/universe';
 import { UniverseService } from '../services/universe.service';
 
 import { ParticleFactory } from './particle-factory';
+import { LogService } from '../services/log.service';
 
 export class PhotonCollector extends Machine {
     private photonCount = 0;
@@ -14,11 +15,13 @@ export class PhotonCollector extends Machine {
     private readonly costMultipler = 1.1;
 
 
-    constructor(universeService: UniverseService) {
+    constructor(universeService: UniverseService,
+        logService: LogService) {
         super('PhotonCollector',
             "Photon Collector",
             "Converts stray photons into energy",
             universeService,
+            logService,
             true);
     }
 
@@ -33,7 +36,7 @@ export class PhotonCollector extends Machine {
             const newPhotons = Math.floor(this.photonCount);
             this.photonCount -= newPhotons;
             this.particleFactory.collectPhoton(
-                this.universeService.universe, newPhotons);
+                this.universeService.universe, this.logService, newPhotons);
         }
     }
 
@@ -55,7 +58,7 @@ export class PhotonCollector extends Machine {
 
             const q = this.properties().quantity || 0;
             if (q === 9) {
-                this.universeService.universe.logs.push(
+                this.logService.addLog(
                     "The light of the void can help unlock a myriad of possibilities."
                 );
             }

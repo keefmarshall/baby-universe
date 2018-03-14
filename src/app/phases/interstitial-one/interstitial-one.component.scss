@@ -1,0 +1,135 @@
+@import '../../../theme.scss';
+@import '../../../style/badge.scss';
+
+$primary: map-get($butheme, primary);
+$accent: map-get($butheme, accent);
+$altprimary: map-get($alt-theme, primary);
+$altaccent: map-get($alt-theme, accent);
+
+.interstitial-one {
+    position: absolute;
+
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100vw;
+
+    background-color: black; // animated to $altprimary, 500
+    // background-color: map-get($altprimary, 500);
+    color: map-get($altaccent, 200);
+
+    z-index: 2;
+}
+
+.entropy-button-wrapper {
+    position: absolute;
+    top: 100vh;
+    left: 50vw;
+    transform: translateX(-50%) translateY(-500%);
+}
+
+.entropy-button {
+    font-size: 1.2em;
+
+    animation-name: bounceIn;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-delay: 5s;
+}
+
+/////////////////////////////////////////////////////
+// 
+
+.nova {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 1vh;
+    width: 1vw;
+    border-radius: 50%;
+    z-index: 5;
+    
+    animation: explode;
+    animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+    // animation-timing-function: cubic-bezier(0.98,0,1,1);
+    // animation-timing-function: ease-in;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes explode {
+    0% {
+        opacity: 0.1;
+        transform: scale(1);
+        background-color: #fff;
+    }
+    66% {
+        opacity: 1;
+        transform: scale(200);
+        background-color: #fff;
+    }
+    100% {
+        opacity: 1;
+        transform: scale(200); // needs to stay scaled
+        background-color: map-get($altprimary, 500);
+    }
+}
+
+
+/////////////////////////////////////////////////////
+// Inspired by http://www.independent-software.com/pure-css-hyperdrive-effect/
+
+
+div#universe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.star {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 1em;
+    width: 1em;
+    margin-left: -0.5em;
+    margin-top: -0.5em;
+    background: none;
+    animation-iteration-count: infinite;
+}
+
+.star div {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 1em;
+    height: 1.4em;
+    margin-left: -0.5em;
+    margin-top: -0.7em;
+    font-size: 1em;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0.5em 0.1em #fff;
+    opacity: 0;
+    animation: movestar;
+    animation-timing-function: cubic-bezier(0.98,0,1,1);
+    animation-duration: inherit;
+    animation-delay: inherit;
+    animation-iteration-count: inherit; 
+}
+
+
+@keyframes movestar {
+    0% {
+        opacity: 0.9;
+        transform: translateX(0) translateY(1vmax) scale(0.1);
+        background-color: #fff;
+    }
+    100% {
+        transform: translateX(0) translateY(110vmax) scale(1.2);
+        // transform: translateX(0) translateY(110vmax) scale(0.5);
+        opacity: 1;
+        background-color: #00f;
+    }
+}
+

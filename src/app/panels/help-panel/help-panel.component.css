@@ -1,7 +1,12 @@
+h1 {
+    font-family: 'Raleway', sans-serif;
+}
+
 .right { float: right; }
 
 mat-dialog-content {
     height: 50vh;
+    width: 60vw;
 }
 
 .mat-tab-body-content { height: 100%; }

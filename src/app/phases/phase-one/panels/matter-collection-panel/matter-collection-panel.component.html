@@ -1,0 +1,43 @@
+<div class="stargame" class="panel delay-4">
+
+    <div class="info-right" *ngIf="universeService.universe.machines['MatterFunnel']?.quantity > 0">
+        <button 
+          mat-raised-button
+          class="deploy-button"
+          (click)="toggleStargame()">
+
+          <mat-icon>star</mat-icon>
+          <small *ngIf="!showStargame()">Show<br/>Detector</small>
+          <small *ngIf="showStargame()">Hide<br/>Detector</small>
+        </button>
+    </div>
+
+    <p class="panel-title">
+        <mat-icon>input</mat-icon>
+        Matter Collection
+    </p>
+  
+    <app-stargame [width]="300" [height]="300" *ngIf="showStargame()"></app-stargame>
+
+    <app-matter-table></app-matter-table>
+  
+    <div *ngIf="universeService.universe.machines['QuarkScoop']" class="matter-machines">
+      <p class="info info-right">
+        Efficiency: {{ universeService.universe.machines['QuarkScoop'].efficiency }}
+      </p>
+      <p class="info">
+        Quark Scoops: {{ universeService.universe.machines['QuarkScoop'].quantity }}
+        <span *ngIf="universeService.universe.machines['MatterFunnel']">
+            <br/>
+            Matter Funnels: {{ universeService.universe.machines['MatterFunnel'].quantity }}
+        </span>
+        <span *ngIf="universeService.universe.machines['ParticleAttractor']">
+          <br/>
+          Particle Attractors: {{ universeService.universe.machines['ParticleAttractor'].quantity }}
+      </span>
+    </p>
+  </div>
+  
+  
+  </div>
+  

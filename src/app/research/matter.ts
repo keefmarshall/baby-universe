@@ -30,8 +30,8 @@ export class Quarks1 extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        universe.logs.push("Matter is born in equal amounts with antimatter.");
-        universe.logs.push("If we collect some common quarks, maybe we can discover more types.");
+        this.log("Matter is born in equal amounts with antimatter.");
+        this.log("Maybe collecting common quarks will lead us to rarer types.");
     }
 
 }
@@ -50,7 +50,7 @@ export class Quarks2 extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        universe.logs.push("Quarks: strangeness and charm. Maybe there are still more to find?");
+        this.log("Quarks: strangeness and charm. Maybe there are still more to find?");
     }
 
 }
@@ -69,7 +69,7 @@ export class Quarks3 extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        universe.logs.push("Quarks: from the top to the bottom. They might come in handy later.");
+        this.log("Quarks: from the top to the bottom. They might come in handy later.");
     }
 
 }
@@ -78,12 +78,12 @@ export class Quarks3 extends ResearchProject {
 export class Leptons extends ResearchProject {
 
     constructor() {
-        super("Matter: Leptons", "Simple building blocks of Matter", 10);
+        super("Matter: Leptons", "Simple building blocks of Matter", 10, 2, 2);
     }
 
     preconditions(universe: Universe): boolean {
         return this.machineQuantity(universe, 'PhotonCollector') >= 50 &&
-            universe.phase > 1;
+            universe.phase > 1.5;
     }
 
     onCompletion(universe: Universe) {
