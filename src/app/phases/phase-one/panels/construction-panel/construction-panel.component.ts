@@ -7,8 +7,8 @@ import { MachineFactory } from 'app/machines/machine-factory';
 import { Assembler } from 'app/machines/assembler';
 import { Globals } from 'app/globals';
 import { AssemblyPlant } from 'app/machines/assembly-plant';
-import { MachineService } from '../../services/machine.service';
-import { ThermalSpanner } from '../../machines/thermal-spanner';
+import { MachineService } from 'app/services/machine.service';
+import { ThermalSpanner } from 'app/machines/thermal-spanner';
 
 
 @Component({

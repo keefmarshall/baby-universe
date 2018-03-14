@@ -1,6 +1,6 @@
 import { Component, Inject, Input } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { StargameComponent } from 'app/panels/stargame/stargame.component';
+import { StargameComponent } from './stargame.component';
 import { StargameService } from 'app/games/stargame/stargame.service';
 
 @Component({

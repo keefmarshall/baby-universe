@@ -32,6 +32,7 @@ import { InterstitialZeroComponent } from './phases/interstitial-zero/interstiti
 import { PlasmaShockService } from './services/plasma-shock.service';
 import { InterstitialOneComponent } from './phases/interstitial-one/interstitial-one.component';
 import { PhaseTwoComponent } from './phases/phase-two/phase-two.component';
+import { PhaseOneModule } from './phases/phase-one/phase-one.module';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { PhaseTwoComponent } from './phases/phase-two/phase-two.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MdesignModule,
-    PanelsModule
+    PanelsModule,
+    PhaseOneModule
   ],
   providers: [
     AnalyticsService,
