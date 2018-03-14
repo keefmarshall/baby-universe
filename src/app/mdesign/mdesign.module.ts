@@ -9,6 +9,7 @@ import {
   MatButtonToggleModule,
   // MatCardModule,
   MatDialogModule,
+  MatListModule,
   MatProgressBarModule,
   MatProgressSpinnerModule,
   MatIconModule,
@@ -21,14 +22,15 @@ import {
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule, ReactiveFormsModule,
-    
+    FormsModule,
+    ReactiveFormsModule,
     MatToolbarModule,
     // MatGridListModule,
     MatButtonModule,
     MatButtonToggleModule,
     // MatCardModule,
     MatDialogModule,
+    MatListModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
     MatIconModule,
@@ -43,6 +45,7 @@ import {
     MatButtonToggleModule,
     // MatCardModule,
     MatDialogModule,
+    MatListModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
     MatIconModule,

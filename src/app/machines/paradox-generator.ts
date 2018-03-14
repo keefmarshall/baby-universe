@@ -1,14 +1,15 @@
 import { Machine } from "app/machines/machine";
 import { UniverseService } from "app/services/universe.service";
+import { LogService } from "../services/log.service";
 
 export class ParadoxGenerator extends Machine {
     private baseCost = 2500;
 
-    constructor(universeService: UniverseService) {
+    constructor(universeService: UniverseService, logService: LogService) {
         super('ParadoxGenerator',
             "Paradox Generator",
             "Generate paradoxes to distract philosophers",
-            universeService);
+            universeService, logService);
     }
 
     onTick(tickFactor: number) {
@@ -28,7 +29,7 @@ export class ParadoxGenerator extends Machine {
     payFor(count: number = 1): boolean {
         if (this.affordable()) {
             this.universeService.universe.energy -= this.baseCost;
-            this.universeService.universe.logs.push(
+            this.logService.addLog(
                 "Create a paradox only in times of need, it will cause your philosophers to lose focus.");
             return true;
         } else {

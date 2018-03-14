@@ -6,6 +6,7 @@ import { MachineProperties } from "app/machines/machine";
 import { Globals } from "app/globals";
 import { KineticEngineering } from "app/research/kinetics2";
 import { QuantumElectrodynamics } from "app/research/collection";
+import { LogService } from "../services/log.service";
 
 export class QuarkScoop extends ConstructionProject {
     private particleFactory = new ParticleFactory();
@@ -17,12 +18,13 @@ export class QuarkScoop extends ConstructionProject {
     private readonly downQuarkBaseCost = 10;
 
     constructor(
-        universeService: UniverseService
+        universeService: UniverseService,
+        logService: LogService
     ) {
         super('QuarkScoop',
             "Quark Scoop",
             "Automatically collects quarks",
-            universeService, 15000, 1.1);
+            universeService, logService,15000, 1.1);
     }
 
     onComplete() {
@@ -55,6 +57,7 @@ export class QuarkScoop extends ConstructionProject {
     preconditions(): boolean {
         return this.isResearched(new Quarks3()) &&
             this.isResearched(new KineticEngineering()) &&
+            this.machineQuantity("MatterDetector") >= 4 &&
             this.properties().quantity < 20; // can only have 20
     }
 

@@ -6,12 +6,14 @@ import { ConstructionProject } from "app/machines/construction-project";
 import { KineticEngineering } from "app/research/kinetics2";
 import { ResearchService } from "app/services/research.service";
 import { IntelligentAssembly, MultiLevelSequencePlanning } from "app/research/photons";
+import { LogService } from "../services/log.service";
 
 export class AssemblyPlant extends ConstructionProject {
     // protected baseEnergyDraw = 100;
     private assemblerCost = 10; // 10 Assemblers make a Plant
 
     constructor(universeService: UniverseService,
+        logService: LogService,
         private constructionService: ConstructionService,
         private meteringService: MeteringService,
         private researchService: ResearchService
@@ -19,7 +21,7 @@ export class AssemblyPlant extends ConstructionProject {
         super('AssemblyPlant',
             "Assembly Plant",
             "Combines assemblers to increase energy draw",
-            universeService, 2500, 1.2);
+            universeService, logService, 2500, 1.2);
     }
 
     // cut-and-paste from Assembler, can't find easy way to share the code

@@ -9,7 +9,7 @@ import { Universe } from './services/universe';
 @Component({
   selector: 'app-ticker',
   template: `
-    <span>
+    <span *ngIf="universe().photonCount > 0">
       Energy: {{ universe().energy | mev }}
       | {{ meteringService.read('energy') | mev }}/s
     </span>`,

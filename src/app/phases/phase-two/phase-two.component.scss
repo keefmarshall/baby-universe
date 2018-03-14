@@ -1,0 +1,39 @@
+@import '../../../theme.scss';
+@import '../../../style/badge.scss';
+
+$primary: map-get($butheme, primary);
+$accent: map-get($butheme, accent);
+$altprimary: map-get($alt-theme, primary);
+$altaccent: map-get($alt-theme, accent);
+
+#phase-two {
+  background-color: map-get($primary, 500); // overridden to white by animation
+  min-height: 640px;
+  animation-name: colourFade;
+  animation-duration: 5s;
+  animation-fill-mode: both;
+}
+
+@keyframes colourFade {
+  from {
+    background-color: map-get($primary, 500);
+  }
+
+  99% {
+    background-color: white;
+    min-height: 640px;
+  }
+
+  to {
+    background-color: white;
+    min-height: 0px;
+  }
+}
+
+app-final-score {
+  position: absolute;
+  width: 60%;
+  top: 50vh;
+  left: 50vw;
+  transform: translateX(-50%) translateY(-50%);
+}

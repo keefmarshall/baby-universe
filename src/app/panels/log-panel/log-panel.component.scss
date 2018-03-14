@@ -1,0 +1,44 @@
+@import '../../../theme.scss';
+@import '../../../style/badge.scss';
+
+$primary: map-get($butheme, primary);
+$accent: map-get($butheme, accent);
+$altprimary: map-get($alt-theme, primary);
+$altaccent: map-get($alt-theme, accent);
+
+h1 {
+    font-family: 'Raleway', sans-serif!important;
+}
+
+.right { float: right; }
+
+mat-dialog-content {
+    height: 50vh;
+    width: 60vw;
+}
+
+mat-icon {
+    float: right;
+}
+
+.loglist {
+    padding: 10px;
+    margin: -10px;
+}
+
+.logitem {
+    background-color: map-get($accent, 800)!important;
+    color: map-get($altaccent, 50)!important;
+    font-family: 'Raleway', sans-serif;
+    margin: 2px;
+    padding: 5px;
+    min-height: 48px;
+    height: auto!important;
+}
+
+.logitem.highlighted {
+    background-color: map-get($accent, 500)!important;
+    animation-name: bounceIn;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}

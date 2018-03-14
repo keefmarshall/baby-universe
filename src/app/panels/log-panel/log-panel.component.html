@@ -1,7 +1,15 @@
-<div class="clearfix log-panel">
-  <div class="log log-container" #content>
-    <br/><br/>
-    <div class="log-message" #messages *ngFor="let message of logService.logs">{{ message }}</div>
-  </div>
-  <div class="fadedScroller_fade"></div>
-</div>
+<button class="right" mat-button mat-dialog-close>Close</button>
+<h1 mat-dialog-title>Messages</h1>
+<mat-dialog-content class="log" #content>
+  <mat-list class="loglist">
+    <mat-list-item 
+      *ngFor="let log of logService.logs; let i = index"
+      [class.highlighted]="i >= logService.logs.length - logService.newLogs"
+      class="logitem alt-theme"
+      #messages>
+      <mat-icon *ngIf="i >= logService.logs.length - logService.newLogs"
+        class="alt-theme" color="accent">fiber_manual_record</mat-icon>
+      {{ log }}
+      </mat-list-item>
+  </mat-list>
+</mat-dialog-content>

@@ -1,0 +1,25 @@
+p.info {
+    font-size:0.64em
+}
+
+.info-left {
+    float: left; 
+    margin: 0px;
+}
+
+.info-right {
+    float: right; 
+    text-align: right; 
+    margin: 0px;
+}
+
+.progress {
+    margin-top: 5px;
+    width: 50px;
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}

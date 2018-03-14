@@ -8,6 +8,7 @@ import { Universe } from './universe';
 
 import { MachineFactory } from '../machines/machine-factory';
 import { Machine, MachineProperties } from '../machines/machine';
+import { LogService } from './log.service';
 
 
 /**
@@ -23,7 +24,8 @@ export class MachineService {
   constructor(
     private machineFactory: MachineFactory,
     private tickerService: TickerService,
-    private universeService: UniverseService
+    private universeService: UniverseService,
+    private logService: LogService
   ) {
     console.log('Machine Service constructor, starting tick subscription now');
     this.tickerService.tick$.subscribe(n => this.onTick(n));
@@ -98,7 +100,7 @@ export class MachineService {
     // machines work.
     if (!document.hidden && !this.supervisorMessageSeen && !this.exists("Supervisor")) {
       this.supervisorMessageSeen = true;
-      this.universeService.universe.logs.push(
+      this.logService.addLog(
         "Your machines are delicate and complex. " +
         "For them to work when you're not here they'll need supervision.");
 

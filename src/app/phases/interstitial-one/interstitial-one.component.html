@@ -1,0 +1,27 @@
+<div class="interstitial-one fadeIn">
+
+  <div id="universe" *ngIf="showUniverse">
+      <div class="star" *ngFor="let star of stars"
+        [ngStyle]="{'transform': 'rotateZ(' + star.angle + 'deg)', 'animation-duration': star.duration + 's', 'animation-delay': star.delay + 's'}">
+        <div class="point"></div>
+      </div>
+  </div>
+
+  <div class="nova" *ngIf="showNova"></div>
+
+  <app-interstitial-log 
+    [@logTrigger]="logState"
+    [text]="messageText"
+    textDelay="5000"
+    (textCompleted)="textCompleted($event)"
+    ></app-interstitial-log>
+
+  <div class="entropy-button-wrapper" *ngIf="showEntropy">
+      <button mat-raised-button 
+        class="entropy-button"
+        color="primary"
+        (click)="addEntropy()">Add Entropy</button>
+  </div>
+
+</div>
+

@@ -1,0 +1,91 @@
+https://www.sciencelearn.org.nz/resources/1727-how-elements-are-formed
+
+Nucleosynthesis / Nucloegenesis
+https://en.wikipedia.org/wiki/Nucleosynthesis
+https://en.wikipedia.org/wiki/Big_Bang_nucleosynthesis
+https://en.wikipedia.org/wiki/Stellar_nucleosynthesis <- has a table with origins of each element
+
+https://www.space.com/15341-planet-formation-stars-heavy-elements.html
+https://www.space.com/17441-universe-heavy-metals-planet-formation.html
+
+
+https://en.wikipedia.org/wiki/Formation_and_evolution_of_the_Solar_System
+
+Stellar nurseries
+https://en.wikipedia.org/wiki/Molecular_cloud
+https://en.wikipedia.org/wiki/Star_formation
+
+Big bang chronology:
+https://en.wikipedia.org/wiki/Chronology_of_the_universe#Very_early_universe
+(see also links in phase 1 notes)
+
+baryogenesis occurs before Hadrons form, subtly unbalancing
+so.. in hadron epoch, matter/antimatter annihilation reduces nearly everything
+but matter remains due to the baryogenesis imbalance
+
+Edward Tryon, “The Universe is simply one of those things which happens from time to time.”
+
+https://www.astro.ufl.edu/~guzman/ast7939/lectures/basics/lect03.html
+
+Higgs and gravity not correlated:
+https://profmattstrassler.com/2012/10/15/why-the-higgs-and-gravity-are-unrelated/
+
+This one is a better summary, and goes further in subsequent pages:
+https://www.cfa.harvard.edu/~ejchaisson/cosmic_evolution/docs/fr_1/fr_1_part3.html
+
+Galaxy formation:
+https://www.cfa.harvard.edu/~ejchaisson/cosmic_evolution/docs/fr_1/fr_1_gal.html
+"collisional excitation", “monolithic collapse.”, "hierarchical clustering"
+angular momentum
+Seems like dark matter may have been required.. might ignore that.
+
+
+
+
+====================================================
+Game mechanics
+====================================================
+
+We have quarks.
+We need: 
+- hadrons (baryons and mesons)
+- baryons (protons, neutrons, made from 3 quarks)
+- mesons (pion, kaon etc, made from 1 quark + 1 antiquark)
+- leptons (electrons, muons, neutrinos etc)
+
+- elemental atoms
+- molecules? <- probably only basic stuff, H2, O2 etc? as would be found in space
+- salts? <- presumably needed for planets?
+
+stars - to generate higher elements - different types of star produces different elements
+nebulae / clouds etc to generate stars
+cosmis rays required for some elements
+galaxies?
+planets?
+Black holes
+
+baryogenesis - how do we stop all the antimatter destroying all our matter?
+(maybe we pipe it all to the antimatter dimensions game! meta!)
+
+presumably need gravity - and nuclear forces - to pull stuff together
+
+ENTROPY
+
+what on earth is the end goal?!
+- create a black hole with a new baby universe and prestige?
+- create a planet with life and go down an evolution route (Phase 3?)
+- watch your universe slowly die of heat death? <- this sounds boring!
+
+- Simply to generate all the (naturally occurring - up to 94) elements? <- might be a better option
+
+- all of the above?
+
+
+ENERGY / DRIVE
+
+What is driving the game? matter/antimatter annihilation produces a stack of energy
+- fusion in stars produces a lot of energy
+- are we going to harvest this? 
+- or just use the matter we have?
+- or go back to harvesting photons from the vacuum, which will still be there?
+

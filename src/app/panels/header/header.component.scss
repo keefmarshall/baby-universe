@@ -1,0 +1,16 @@
+@import '../../../theme.scss';
+@import '../../../style/badge.scss';
+
+@include badge-theme($butheme, -2px);
+
+$primary: map-get($alt-theme, primary);
+$accent: map-get($alt-theme, accent);
+
+mat-toolbar img {
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+mat-toolbar mat-icon {
+    color: map-get($accent, 600);
+}

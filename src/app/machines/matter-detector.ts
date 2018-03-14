@@ -3,17 +3,19 @@ import { Quarks1 } from "app/research/matter";
 import { ConstructionProject } from "app/machines/construction-project";
 import { Globals } from "app/globals";
 import { StargameService } from "app/games/stargame/stargame.service";
+import { LogService } from "../services/log.service";
 
 export class MatterDetector extends ConstructionProject {
 
     constructor(
         universeService: UniverseService,
+        logService: LogService,
         private stargameService: StargameService
     ) {
         super('MatterDetector',
             "Matter Detector",
             "Exposes more matter for collection",
-            universeService, 25, 2);
+            universeService, logService, 25, 2);
     }
 
 

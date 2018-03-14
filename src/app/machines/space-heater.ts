@@ -4,6 +4,7 @@ import { HeatingService } from "app/services/heating.service";
 import { Heat } from "app/research/kinetics2";
 import { Globals } from "app/globals";
 import { MeteringService } from "app/services/metering.service";
+import { LogService } from "../services/log.service";
 
 /**
  * This is essentially an Assembler that does no useful work.
@@ -16,13 +17,14 @@ export class SpaceHeater extends Machine {
     protected baseEnergyDraw = 1;
 
     constructor(universeService: UniverseService,
+        logService: LogService,
         private heatingService: HeatingService,
         private meteringService: MeteringService,
         _name = 'SpaceHeater',
         _displayName = 'Space Heater',
         _description = "Converts stored energy to heat"
     ) {
-        super(_name, _displayName, _description, universeService, true);
+        super(_name, _displayName, _description, universeService, logService, true);
     }
 
     onTick(tickFactor: number) {
@@ -59,7 +61,7 @@ export class SpaceHeater extends Machine {
 
             const q = this.properties().quantity || 0;
             if (q === 0) {
-                this.universeService.universe.logs.push("Toasty!");
+                this.logService.addLog("Toasty!");
             }
             return true;
         } else {

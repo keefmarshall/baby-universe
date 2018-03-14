@@ -3,10 +3,11 @@ import { Universe } from '../services/universe';
 import { UniverseService } from '../services/universe.service';
 import { ResearchProject } from 'app/research/research-project';
 import { NumberFormatter } from 'app/util/number-formatter';
+import { LogService } from '../services/log.service';
 
 
 export abstract class Machine {
-    //readonly name: string;
+    // readonly name: string;
 
     public readonly needsConstruction: boolean = false;
     public readonly numberFormatter = new NumberFormatter();
@@ -28,6 +29,7 @@ export abstract class Machine {
         public readonly displayName: string,
         public readonly displayPurpose: string,
         protected universeService: UniverseService,
+        protected logService: LogService,
         public canBuyMultiple = false
     ) { }
 
@@ -60,4 +62,3 @@ export class MachineProperties {
     efficiency = Globals.secondsPerTick;
     extras = {};
 }
- 

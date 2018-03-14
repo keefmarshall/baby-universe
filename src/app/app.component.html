@@ -1,73 +1,20 @@
-<mat-toolbar color="primary" class="mat-elevation-z5" id="main-header">
-  <span>{{title}}</span>
-  <span class="space-filler"></span>
-  <app-ticker class="desktop-only"></app-ticker>
-  <button mat-icon-button (click)="openHelp()">
-    <mat-icon>help_outline</mat-icon>
-  </button>
-</mat-toolbar> 
+<app-header></app-header>
 
-<!-- <div *ngIf="showDebug">
-  Big Bang
-  <button mat-button (click)="bigBang()">ON</button>
-  <button mat-button (click)="noBigBang()">OFF</button>
-  <button mat-button (click)="pauseUniverse()">PAUSE</button>
-  <button mat-button (click)="resumeUniverse()">RESUME</button>
-</div> -->
+<app-log-drawer></app-log-drawer>
 
-<div id="main-wrapper">
+<div id="main-wrapper" [ngSwitch]="phaseToShow">
+    <app-interstitial-zero *ngSwitchCase="0.5"></app-interstitial-zero>
+    <app-phase-one *ngSwitchCase="1"></app-phase-one>
+    <app-interstitial-one *ngSwitchCase="1.5"></app-interstitial-one>
+    <app-phase-two *ngSwitchCase="2"></app-phase-two>
+</div>
 
- <div class="mdc-layout-grid" id="main-content" #bigbang>
+<app-footer></app-footer>
+
+<div class="mdc-layout-grid" *ngIf="showDebug">
   <div class="mdc-layout-grid__inner">
-
-    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-      <app-log-panel></app-log-panel>
-    </div>
-          
-
-    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4">
-        <app-collection-panel></app-collection-panel>
-        <app-deployment-panel *ngIf="showDeploymentPanel()"></app-deployment-panel>
-    </div>
-
-    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4">
-      <app-research-panel *ngIf="showResearchPanel()"></app-research-panel>
-      <app-construction-panel *ngIf="showConstructionPanel()"></app-construction-panel>
-      <app-temperature-panel *ngIf="showTemperaturePanel()"></app-temperature-panel>
-    </div>
-
-    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 col3">
-      <app-matter-collection-panel *ngIf="showMatterCollectionPanel()"></app-matter-collection-panel>
-      <!-- <app-stargame [width]="300" [height]="300"
-        *ngIf="showMatterCollectionPanel()"></app-stargame> -->
-    </div>
-  
-    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 debug"
-      *ngIf="showDebug">
-
-      <hr/>
-        
+    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 debug">
       <app-dev-panel></app-dev-panel>
-    </div>
-  
-  </div>
- </div>
-
-  <div class="final-score-container" #finalscore>
-    <div class="final-score">
-      <app-final-score></app-final-score>
     </div>
   </div>
 </div>
-
-<footer>
-  <address>
-    <span>
-      &copy; 2018 Keith Marshall
-      | <span (click)="resetUniverse()" class="start-again">start again</span>
-      | v0.2.7-alpha
-    </span>
-    <span class="space-filler"></span>
-    Favicon courtesy NASA/JPL-Caltech.
-</address>
-</footer>

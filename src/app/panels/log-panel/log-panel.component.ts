@@ -1,29 +1,37 @@
-import { Component, ViewChildren, ViewChild, ElementRef, QueryList, AfterViewInit } from '@angular/core';
-import { LogService } from 'app/services/log.service';
-
-/**
- * See: https://stackoverflow.com/a/45655337
- * and: https://stackoverflow.com/a/17044731
- */
+import { Component, OnDestroy, ViewChild, ViewChildren,
+          QueryList, ElementRef, AfterViewInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material';
+import { LogService } from '../../services/log.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-log-panel',
   templateUrl: './log-panel.component.html',
-  styleUrls: ['./log-panel.component.css']
+  styleUrls: ['./log-panel.component.scss']
 })
-export class LogPanelComponent implements AfterViewInit {
-
+export class LogPanelComponent implements OnDestroy, AfterViewInit {
   @ViewChildren('messages') messages: QueryList<any>;
   @ViewChild('content') content: ElementRef;
 
+  private changesub: Subscription;
+
   constructor(
+    public dialogRef: MatDialogRef<LogPanelComponent>,
     public logService: LogService
   ) { }
 
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  ngOnDestroy(): void {
+    this.logService.clearNewLogs();
+    this.changesub.unsubscribe(); // should always clean up
+  }
+
   ngAfterViewInit() {
     this.scrollToBottom();
-    this.messages.changes.subscribe(this.scrollToBottom);
-    setTimeout(this.scrollToBottom, 1000);
+    this.changesub = this.messages.changes.subscribe(this.scrollToBottom);
   }
 
   scrollToBottom = () => {
@@ -31,4 +39,5 @@ export class LogPanelComponent implements AfterViewInit {
       this.content.nativeElement.scrollTop = this.content.nativeElement.scrollHeight;
     } catch (err) {}
   }
+
 }

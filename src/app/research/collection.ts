@@ -15,7 +15,7 @@ export class QuantumElectrodynamics extends ResearchProject {
     onCompletion(universe: Universe) {
         // treble efficiency of scoops:
         universe.machines['QuarkScoop'].efficiency *= 10;
-        universe.logs.push("Now we can make our scoops work more efficiently.");
+        this.log("Now we can make our scoops work more efficiently.");
     }
 
 }
@@ -32,7 +32,7 @@ export class QuantumChromodynamics extends ResearchProject {
 
     onCompletion(universe: Universe) {
         // allows stuff to be built
-        universe.logs.push("Gluons? where did they come from?!")
+        this.log("Gluons? where do they come from?")
     }
 
 }
@@ -57,7 +57,7 @@ export class ColourDeconfinement extends ResearchProject {
 
     onCompletion(universe: Universe) {
         universe.machines['QuarkSqueezer'].efficiency *= 5;
-        universe.logs.push("What we have here is a Quark-Gluon plasma. Heat it up (a lot) to see what happens next!");
+        this.log("What we have here is a Quark-Gluon plasma. Heating it up could lead to something interesting...");
     }
 
 }

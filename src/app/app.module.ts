@@ -1,8 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-// import { HttpModule } from '@angular/http';
-
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // This is a module to encapsulate the material design components
@@ -18,21 +17,31 @@ import { ResearchService } from 'app/services/research.service';
 import { TickerService } from './services/ticker.service';
 import { TimeService } from './services/time.service';
 import { UniverseService } from './services/universe.service';
-
-// Top level components
-import { AppComponent } from './app.component';
-import { TickerComponent } from './ticker.component';
 import { ConstructionService } from 'app/services/construction.service';
 import { StateManagementService } from 'app/services/state-management.service';
 import { LogService } from 'app/services/log.service';
 import { HeatingService } from 'app/services/heating.service';
 import { BigBangService } from 'app/services/big-bang.service';
 import { AnalyticsService } from 'app/services/analytics.service';
-import { HttpClientModule } from '@angular/common/http';
+
+// Top level components
+import { AppComponent } from './app.component';
+import { TickerComponent } from './ticker.component';
+import { PhaseOneComponent } from './phases/phase-one/phase-one.component';
+import { InterstitialZeroComponent } from './phases/interstitial-zero/interstitial-zero.component';
+import { PlasmaShockService } from './services/plasma-shock.service';
+import { InterstitialOneComponent } from './phases/interstitial-one/interstitial-one.component';
+import { PhaseTwoComponent } from './phases/phase-two/phase-two.component';
+import { PhaseOneModule } from './phases/phase-one/phase-one.module';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PhaseOneComponent,
+    InterstitialZeroComponent,
+    InterstitialOneComponent,
+    PhaseTwoComponent,
     // TickerComponent
   ],
   imports: [
@@ -41,7 +50,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     BrowserAnimationsModule,
     MdesignModule,
-    PanelsModule
+    PanelsModule,
+    PhaseOneModule
   ],
   providers: [
     AnalyticsService,
@@ -53,6 +63,7 @@ import { HttpClientModule } from '@angular/common/http';
     MachineFactory,
     MachineService,
     MeteringService,
+    PlasmaShockService,
     ResearchService,
     StateManagementService,
     TickerService,
