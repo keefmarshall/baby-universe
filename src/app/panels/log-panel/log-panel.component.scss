@@ -32,6 +32,8 @@ mat-icon {
     font-family: 'Raleway', sans-serif;
     margin: 2px;
     padding: 5px;
+    min-height: 48px;
+    height: auto!important;
 }
 
 .logitem.highlighted {
