@@ -33,7 +33,7 @@ export class Universe {
             "flash into existence, only to decay almost instantly. "];
     newLogs = 0;
 
-    release = 0.270;
+    release = 0.300;
 
     supervisorMessageSeen = false;
 }
