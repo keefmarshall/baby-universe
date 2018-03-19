@@ -93,7 +93,7 @@ What is driving the game? matter/antimatter annihilation produces a stack of ene
 PROCESS
 -------
 
-Alredy have Quarks and Gluons
+Already have Quarks and Gluons
 -> discover the Strong Interaction (need something to research with)
 -> discover Hadrons (things made from quarks, glued together with gluons)
 -> discover types of Hadron (Baryons / Mesons)
@@ -116,3 +116,17 @@ So how do we bootstrap the most basic constructor? Something that breaks after t
 Hadron creators can be assigned percentage wise to different 'patterns' to create different hadrons..
 .. same with Baryon Annihilators, and so on.
 
+
+Hadron patterns: can we make this a visual game of some kind, rather than just research?
+or: research gives you a recipe - e.g. uud, which you have to enter into the machine
+
+A later upgrade allows an automated recipe selector
+
+Universe is slowly cooling. After it cools below (x?) the baryons start annihilating
+so you will lose everything until you discover Baryogenesis - but annihilation will
+produce leptons? Do we have to discover these first?
+
+Top right ticker shows universe temp during phase 2
+
+NB Phase 2 ends when you have Hydrogen, 
+Phase 3 is for creating elements and stars?
