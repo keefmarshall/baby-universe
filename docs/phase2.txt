@@ -89,3 +89,30 @@ What is driving the game? matter/antimatter annihilation produces a stack of ene
 - or just use the matter we have?
 - or go back to harvesting photons from the vacuum, which will still be there?
 
+
+PROCESS
+-------
+
+Alredy have Quarks and Gluons
+-> discover the Strong Interaction (need something to research with)
+-> discover Hadrons (things made from quarks, glued together with gluons)
+-> discover types of Hadron (Baryons / Mesons)
+-> build Baryons / Mesons (need one or more machines for this)
+-> Discover Leptons
+-> types of Lepton (electrons, muons, taus, neutrinos)
+-> Baryon Annihilation - antimatter/matter collisions produce Leptons..?
+-> different patterns of annihilation for different combinations? Discover patterns? Machines?
+-> Baryogenesis, somehow end up with more matter than antimatter - need a machines
+
+.. problem: need something to research with, some way to build machines, something to build
+them from that has an increasing cost
+
+Increasing cost could simply be time - works for research.
+Takes time to build machines with a basic constructor - so everything is like Assembly.
+Improve by building more or better construction tools.
+
+So how do we bootstrap the most basic constructor? Something that breaks after the first x uses?
+
+Hadron creators can be assigned percentage wise to different 'patterns' to create different hadrons..
+.. same with Baryon Annihilators, and so on.
+

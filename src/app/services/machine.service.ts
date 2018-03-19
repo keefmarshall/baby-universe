@@ -92,7 +92,6 @@ export class MachineService {
     return matches.length > 0 ? matches[0] : null;
   }
 
-
   handleVisibilityChangeEvent(event) {
     // See the same function in TickerService for the main code, this
     // is just to notify the user the first time they put the page into

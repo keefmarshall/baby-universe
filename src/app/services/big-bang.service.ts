@@ -4,12 +4,17 @@ import { TickerService } from 'app/services/ticker.service';
 import { UniverseService } from 'app/services/universe.service';
 import { AnalyticsService } from 'app/services/analytics.service';
 import { PlasmaShockService } from './plasma-shock.service';
+import { MachineService } from './machine.service';
+import { StateManagementService } from './state-management.service';
+import { ResearchList } from '../research/research-list';
+import { ResearchProject } from '../research/research-project';
 
 @Injectable()
 export class BigBangService {
   private elementRef: ElementRef;
   private finalScoreElementRef: ElementRef;
   private renderer: Renderer2;
+  private researchList = new ResearchList();
 
   constructor(
     private plasmaShockService: PlasmaShockService,
@@ -17,7 +22,8 @@ export class BigBangService {
     private stargameService: StargameService,
     private tickerService: TickerService,
     private universeService: UniverseService,
-    private analytics: AnalyticsService
+    private analytics: AnalyticsService,
+    private stateManagementService: StateManagementService
   ) {
     this.universeService.phase$.subscribe(phase => {
       if (phase === 1.5) {
@@ -48,12 +54,38 @@ export class BigBangService {
     // Header is faded out in app.component
     this.renderer.addClass(mainWrapper, "black");
     setTimeout(() => {
-      console.log("BB animation done, showing final score");
+      console.log("BB animation done. Clearing machines and research..");
+      this.clearResearch();
+      this.clearMachines();
       // this.renderer.setStyle(this.finalScoreElementRef.nativeElement, "display", "block");
       setTimeout(() => {
         this.renderer.removeClass(mainWrapper, "black");
       }, 4000);
     }, 7500);
+  }
+
+  clearMachines() {
+    const u = this.universeService.universe;
+    Object.keys(u.machines).forEach(machine => {
+      if (machine !== "Supervisor") {
+        delete u.machines[machine];
+      }
+    });
+    u.currentConstructionProject = null;
+    u.currentConstructionWork = 0;
+    this.stateManagementService.resetConstruction();
+    this.stateManagementService.resetMachines();
+  }
+
+  clearResearch() {
+    const u = this.universeService.universe;
+    u.currentResearchProject = null;
+    Object.keys(u.research).forEach(projectName => {
+      const project = this.researchList.projects[projectName];
+      if (!project.correctPhase(u)) {
+        delete u.research[projectName];
+      }
+    });
   }
 
   noBigBang() {

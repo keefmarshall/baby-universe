@@ -7,7 +7,7 @@ import * as Collections from 'typescript-collections';
 export class Fermions extends ResearchProject {
 
     constructor() {
-        super("Matter: Fermions", "The fundamental building blocks of Matter", 2);
+        super("Matter: Fermions", "The fundamental building blocks of Matter", 2, 0, 10);
     }
 
     preconditions(universe: Universe): boolean {
@@ -22,7 +22,7 @@ export class Fermions extends ResearchProject {
 export class Quarks1 extends ResearchProject {
 
     constructor() {
-        super("Matter: Quarks I", "The most common flavours of quark", 3);
+        super("Matter: Quarks I", "The most common flavours of quark", 3, 0, 10);
     }
 
     preconditions(universe: Universe): boolean {
@@ -39,7 +39,7 @@ export class Quarks1 extends ResearchProject {
 export class Quarks2 extends ResearchProject {
 
     constructor() {
-        super("Matter: Quarks II", "Heavier quarks", 20);
+        super("Matter: Quarks II", "Heavier quarks", 20, 0, 10);
     }
 
     preconditions(universe: Universe): boolean {
@@ -58,7 +58,7 @@ export class Quarks2 extends ResearchProject {
 export class Quarks3 extends ResearchProject {
 
     constructor() {
-        super("Matter: Quarks III", "The heaviest quarks", 100);
+        super("Matter: Quarks III", "The heaviest quarks", 100, 0, 10);
     }
 
     preconditions(universe: Universe): boolean {
@@ -78,7 +78,7 @@ export class Quarks3 extends ResearchProject {
 export class Leptons extends ResearchProject {
 
     constructor() {
-        super("Matter: Leptons", "Simple building blocks of Matter", 10, 2, 2);
+        super("Matter: Leptons", "Simple building blocks of Matter", 10, 2, 10);
     }
 
     preconditions(universe: Universe): boolean {

@@ -4,7 +4,7 @@ import { KineticConstruction } from "app/research/kinetics";
 
 export class Heat extends ResearchProject {
     constructor() {
-        super("Heat", "Why are assemblers so inefficient?", 150);
+        super("Heat", "What is this form of energy? Is it useful?", 150, 0, 10);
     }
 
     preconditions(universe: Universe): boolean {
@@ -57,7 +57,9 @@ export class HeatPumps extends ResearchProject {
 
 export class AdvancedThermodynamics extends ResearchProject {
     constructor() {
-        super("Advanced Thermodynamics", "Enhanced heating techniques", 20000);
+        super("Advanced Thermodynamics",
+            "Everything left that there is to know about Heat and how it works",
+            20000, 0, 10);
     }
 
     preconditions(universe: Universe): boolean {

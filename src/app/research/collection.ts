@@ -5,7 +5,7 @@ import { Globals } from "app/globals";
 export class QuantumElectrodynamics extends ResearchProject {
 
     constructor() {
-        super("Quantum Electrodynamics", "How photons interact with matter", 5000);
+        super("Quantum Electrodynamics", "How photons interact with matter", 5000, 0, 10);
     }
 
     preconditions(universe: Universe): boolean {
@@ -23,7 +23,7 @@ export class QuantumElectrodynamics extends ResearchProject {
 export class QuantumChromodynamics extends ResearchProject {
 
     constructor() {
-        super("Quantum Chromodynamics", "Why are some quarks red, and some blue?", 10000);
+        super("Quantum Chromodynamics", "Why are some quarks red, and some blue?", 10000, 0, 10);
     }
 
     preconditions(universe: Universe): boolean {
