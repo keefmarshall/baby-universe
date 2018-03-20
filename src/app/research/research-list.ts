@@ -12,7 +12,7 @@ import { InstructionPipelining, SuperscalarPipelining } from "app/research/assem
 
 export class ResearchList {
     public projectList: Array<ResearchProject> = [];
-    public projects:{ [key: string]: ResearchProject } = {};
+    public projects: { [key: string]: ResearchProject } = {};
 
     constructor() {
         this.projectList = [

@@ -102,7 +102,7 @@ Already have Quarks and Gluons
 -> types of Lepton (electrons, muons, taus, neutrinos)
 -> Baryon Annihilation - antimatter/matter collisions produce Leptons..?
 -> different patterns of annihilation for different combinations? Discover patterns? Machines?
--> Baryogenesis, somehow end up with more matter than antimatter - need a machines
+-> Baryogenesis, somehow end up with more matter than antimatter - need a machine
 
 .. problem: need something to research with, some way to build machines, something to build
 them from that has an increasing cost
@@ -128,5 +128,26 @@ produce leptons? Do we have to discover these first?
 
 Top right ticker shows universe temp during phase 2
 
-NB Phase 2 ends when you have Hydrogen, 
-Phase 3 is for creating elements and stars?
+NB Phase 2 ends when you have Hydrogen (and Helium? Need somewhere for the neutrons!)
+(add Gravity?)
+Phase 3 is for creating elements and stars? Dunno if this warrants a major phase change
+ - only if we've converted all the quarks into Baryons, Mesons, Leptons - which we 
+ probably do need to do as free quarks are technically not allowed below a certain temperature..
+
+
+Basic / Crude / Coarse / Contrived Constructor
+Entropic Engine (er)
+Baryon Builder
+Meson Manufacturer / Maker
+
+Kaonic Composer
+
+Primitive Patterner
+Pionic Patterner / Professor - runs on Pions? Requires Pions to build?
+
+Use Mesons as building blocks for machines (otherwise do they even have a use?)
+- check what the decay patterns are
+
+(Nascent) Nucleosynthesiser
+
+At some point we need radioactive decay - W and Z bosons
