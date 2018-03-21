@@ -7,11 +7,10 @@ $altprimary: map-get($alt-theme, primary);
 $altaccent: map-get($alt-theme, accent);
 
 #phase-two {
-  background-color: map-get($primary, 500); // overridden to white by animation
   min-height: 640px;
   animation-name: colourFade;
   animation-duration: 5s;
-  animation-fill-mode: both;
+  animation-fill-mode: backwards;
 }
 
 @keyframes colourFade {
@@ -20,12 +19,12 @@ $altaccent: map-get($alt-theme, accent);
   }
 
   99% {
-    background-color: white;
+    background-color: transparent;
     min-height: 640px;
   }
 
   to {
-    background-color: white;
+    background-color: transparent; // would use 'initial' but not supported in IE11 :(
     min-height: 0px;
   }
 }

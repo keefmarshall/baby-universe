@@ -46,7 +46,8 @@ export class SpaceHeater extends Machine {
         }
     }
     preconditions(): boolean {
-        return this.machineQuantity("Thermometer") > 0;
+        return this.machineQuantity("Thermometer") > 0
+            && this.universeService.universe.phase < 2;
     }
 
     displayCost(count: number): string {

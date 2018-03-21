@@ -9,6 +9,9 @@ import { AutosaveService } from 'app/services/autosave.service';
 import { StargameService } from 'app/games/stargame/stargame.service';
 import { LogService } from 'app/services/log.service';
 import { QuarkUtils } from 'app/research/matter';
+import { MachineService } from '../../services/machine.service';
+import { MachineFactory } from '../../machines/machine-factory';
+import { ConstructionProject } from '../../machines/construction-project';
 
 @Component({
   selector: 'app-dev-panel',
@@ -24,6 +27,8 @@ export class DevPanelComponent implements OnInit {
     public universeService: UniverseService,
     private researchService: ResearchService,
     private constructionService: ConstructionService,
+    private machineFactory: MachineFactory,
+    private machineService: MachineService,
     public stargameService: StargameService,
     private autosaveService: AutosaveService,
     private logService: LogService
@@ -74,6 +79,14 @@ export class DevPanelComponent implements OnInit {
     for (let i = 0; i < n; i++) {
       const quark = qu.randomQuark(u);
       this.particleFactory.collectQuark(u, quark);
+    }
+  }
+
+  addThermometer() {
+    if (!this.machineService.exists("Thermometer")) {
+      const th = this.machineFactory.newMachine("Thermometer") as ConstructionProject;
+      th.setMachineService(this.machineService);
+      th.onComplete();
     }
   }
 
