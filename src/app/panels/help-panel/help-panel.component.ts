@@ -21,4 +21,8 @@ export class HelpPanelComponent implements OnInit {
   ngOnInit() {
   }
 
+  showResearchPanel(): boolean {
+    return this.universeService.universe.machines['PhotonicPhilosopher'] ||
+      this.universeService.universe.phase >= 2;
+  }
 }

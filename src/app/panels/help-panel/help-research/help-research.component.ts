@@ -18,7 +18,8 @@ export class HelpResearchComponent implements OnInit {
   ngOnInit() {
     const u = this.universeService.universe;
     this.research = new ResearchList().projectList.filter(project => {
-      return project.preconditions(u) && project.correctPhase(u);
+      return (project.preconditions(u) || this.universeService.isResearched(project))
+        && project.correctPhase(u);
     });
   }
 

@@ -33,8 +33,9 @@ export class MatterFunnel extends ConstructionProject {
     }
 
     preconditions(): boolean {
-        return this.isResearched(new QuantumElectrodynamics()) &&
-            this.properties().quantity < 20; // can only have 20
+        return this.isResearched(new QuantumElectrodynamics())
+            && this.properties().quantity < 20 // can only have 20
+            && this.universeService.universe.phase < 2;
     }
 
 }

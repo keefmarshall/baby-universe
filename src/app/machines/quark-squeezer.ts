@@ -36,7 +36,8 @@ export class QuarkSqueezer extends ConstructionProject {
     }
 
     preconditions(): boolean {
-        return this.isResearched(new QuantumChromodynamics()) &&
-            this.machineQuantity("QuarkSqueezer") === 0; // there can only be one
+        return this.isResearched(new QuantumChromodynamics())
+            && this.machineQuantity("QuarkSqueezer") === 0 // there can only be one
+            && this.universeService.universe.phase < 2;
     }
 }

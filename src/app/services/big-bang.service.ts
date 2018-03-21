@@ -67,7 +67,7 @@ export class BigBangService {
   clearMachines() {
     const u = this.universeService.universe;
     Object.keys(u.machines).forEach(machine => {
-      if (machine !== "Supervisor") {
+      if (machine !== "Supervisor" && machine !== "Thermometer") {
         delete u.machines[machine];
       }
     });

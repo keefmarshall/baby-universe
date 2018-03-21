@@ -41,7 +41,8 @@ export class PhotonCollector extends Machine {
     }
 
     preconditions(): boolean {
-        return this.universeService.universe.photonCount >= 10;
+        return this.universeService.universe.photonCount >= 10
+                && this.universeService.universe.phase < 2;
     }
 
     displayCost(amount: number = 1): string {
