@@ -140,7 +140,8 @@ Entropic Engine (er)
 Baryon Builder
 Meson Manufacturer / Maker
 
-Kaonic Composer
+Rudimentary Researcher
+Kaonic Composer / Computer / Contraption
 
 Primitive Patterner
 Pionic Patterner / Professor - runs on Pions? Requires Pions to build?

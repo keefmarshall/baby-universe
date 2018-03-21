@@ -54,7 +54,7 @@ export class TemperaturePanelComponent implements OnInit {
   // TODO: these two copy-pasted from construction panel - need some
   // better re-use. Too much duplicated code between Assmbler/construction
   // and Heater / temperature
-  
+
   readEnergyCostMeter(): number {
     return this.meteringService.read('heater-energy-cost');
   }
