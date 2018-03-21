@@ -1,3 +1,9 @@
 <div id="phase-two">
-  <app-final-score></app-final-score>
+  <!-- <app-final-score></app-final-score> -->
+  <app-interstitial-log *ngIf="showLogs"
+    [texts]="messageText"
+    textDelay="1000"
+    textSpeed="50"
+    (textCompleted)="textCompleted($event)"
+    ></app-interstitial-log>
 </div>

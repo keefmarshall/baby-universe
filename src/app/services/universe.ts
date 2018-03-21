@@ -36,4 +36,5 @@ export class Universe {
     release = 0.300;
 
     supervisorMessageSeen = false;
+    phase2MessageSeen = false;
 }

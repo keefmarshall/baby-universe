@@ -1,7 +1,7 @@
 <mat-toolbar color="primary" class="mat-elevation-z5" id="main-header">
   <span><img src="/assets/img/bu-title-text-32p.png" /></span>
   <span class="space-filler"></span>
-  <app-ticker class="desktop-only"></app-ticker>
+  <app-ticker class="desktop-only" *ngIf="showTicker()"></app-ticker>
   <button mat-icon-button (click)="openHelp()">
     <mat-icon>help</mat-icon> <!--help_outline -->
   </button>

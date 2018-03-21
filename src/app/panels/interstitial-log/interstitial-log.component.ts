@@ -13,7 +13,9 @@ import { trigger } from '@angular/animations';
 })
 export class InterstitialLogComponent implements OnInit {
   @Input() text: string = "";
+  @Input() texts: string[] = null;
   @Input() textDelay: number = 2000;
+  @Input() textSpeed: string = "40";
   @Output() textCompleted = new EventEmitter();
 
   logState = "faded";
@@ -33,11 +35,19 @@ export class InterstitialLogComponent implements OnInit {
     console.log(`InterstitialLog: doText(), text=${this.text}.`);
     this.logState = "present";
 
+    const strings: string[] = this.texts ? this.texts : [this.text];
+
+    console.log("Strings: " + JSON.stringify(strings));
+
     this.typed = new Typed(".interstitial-log-area", {
-      strings: [this.text],
+      strings: strings,
       showCursor: false,
-      typeSpeed: 40,
-      onComplete: (typed) => this.textCompleted.emit(typed)
+      typeSpeed: parseInt(this.textSpeed, 10),
+      onComplete: (typed) => this.textCompleted.emit(this)
     });
+  }
+
+  fade() {
+    this.logState = "faded";
   }
 }
