@@ -1,4 +1,21 @@
 <div id="phase-two">
+  <div class="mdc-layout-grid" id="main-content" *ngIf="!showLogs">
+    <div class="mdc-layout-grid__inner">
+
+      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4">
+        <app-contrivances></app-contrivances>
+      </div>
+
+      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4">
+      </div>
+
+      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 col3">
+        <app-matter-table></app-matter-table>
+      </div>
+
+    </div>
+  </div>
+
   <!-- <app-final-score></app-final-score> -->
   <app-interstitial-log *ngIf="showLogs"
     [texts]="messageText"

@@ -23,16 +23,19 @@ import { LogService } from 'app/services/log.service';
 import { HeatingService } from 'app/services/heating.service';
 import { BigBangService } from 'app/services/big-bang.service';
 import { AnalyticsService } from 'app/services/analytics.service';
+import { PlasmaShockService } from './services/plasma-shock.service';
 
 // Top level components
 import { AppComponent } from './app.component';
 import { TickerComponent } from './ticker.component';
 import { PhaseOneComponent } from './phases/phase-one/phase-one.component';
 import { InterstitialZeroComponent } from './phases/interstitial-zero/interstitial-zero.component';
-import { PlasmaShockService } from './services/plasma-shock.service';
 import { InterstitialOneComponent } from './phases/interstitial-one/interstitial-one.component';
 import { PhaseTwoComponent } from './phases/phase-two/phase-two.component';
+
+// Phase modules
 import { PhaseOneModule } from './phases/phase-one/phase-one.module';
+import { PhaseTwoModule } from './phases/phase-two/phase-two.module';
 
 
 @NgModule({
@@ -51,7 +54,8 @@ import { PhaseOneModule } from './phases/phase-one/phase-one.module';
     BrowserAnimationsModule,
     MdesignModule,
     PanelsModule,
-    PhaseOneModule
+    PhaseOneModule,
+    PhaseTwoModule
   ],
   providers: [
     AnalyticsService,
