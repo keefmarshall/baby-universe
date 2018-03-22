@@ -1,3 +1,44 @@
-<p>
-  contrivances works!
-</p>
+<button mat-raised-button 
+  class="deploy-button contrivance-button"
+  (click)="buildContrivance()">
+
+  Contrive Contraption
+
+  <mat-progress-bar
+    *ngIf="contrivanceService.state.constructionProgress > 0"
+    color="accent"
+    [value]="contrivanceService.state.constructionProgressPercent">
+  </mat-progress-bar>
+
+</button>
+
+<button mat-raised-button 
+  *ngIf="contrivanceService.state.faultyContraptions > 0"
+  class="deploy-button contrivance-button"
+  (click)="repairContrivance()">
+
+  Repair Faulty Contraption
+
+  <mat-progress-bar
+    *ngIf="contrivanceService.state.repairProgress > 0"
+    color="accent"
+    [value]="contrivanceService.state.repairProgressPercent">
+  </mat-progress-bar>
+
+</button>
+
+<button mat-raised-button 
+  *ngIf="contrivanceService.state.brokenContraptions > 0"
+  class="deploy-button contrivance-button"
+  (click)="salvageContrivance()">
+
+  Salvage Broken Contraption<br/>
+  <small>Recovers 5 build steps towards a new Contraption</small>
+</button>
+
+
+<div *ngIf="numContrivances() > 0">
+  Working: {{ contrivanceService.state.workingContraptions }}<br/>
+  Faulty: {{ contrivanceService.state.faultyContraptions }}<br/>
+  Broken: {{ contrivanceService.state.brokenContraptions }}<br/>
+</div>

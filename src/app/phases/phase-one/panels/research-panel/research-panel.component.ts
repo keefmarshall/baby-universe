@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ResearchProject } from 'app/research/research-project';
 import { PhotonicPhilosopher } from 'app/machines/photonic-philosopher';
 
@@ -7,18 +7,21 @@ import { TickerService } from 'app/services/ticker.service';
 import { UniverseService } from 'app/services/universe.service';
 import { ResearchService } from 'app/services/research.service';
 import { Globals } from 'app/globals';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-research-panel',
   templateUrl: './research-panel.component.html',
   styleUrls: ['./research-panel.component.css']
 })
-export class ResearchPanelComponent implements OnInit {
+export class ResearchPanelComponent implements OnInit, OnDestroy {
   projectList: Array<ResearchProject>;
   private canResearch: boolean = false;
   private distracted: boolean = false;
   private distractionTicks = 30 / Globals.secondsPerTick;
   private distractionTicksRemaining: number = 0;
+
+  private ticksub: Subscription;
 
   constructor(
     public universeService: UniverseService,
@@ -28,12 +31,12 @@ export class ResearchPanelComponent implements OnInit {
   }
 
   ngOnInit() {
-    // const projects = this.researchService.researchList.projects;
-    // // grr.. this is horrible. But using Map.values() doesn't appear to
-    // // agree with Angular's *ngFor
-    // this.projectList = Object.keys(projects).map(p => projects[p]);
     this.projectList = this.researchService.researchList.projectList;
-    this.tickerService.tick$.subscribe(n => this.onTick(n));
+    this.ticksub = this.tickerService.tick$.subscribe(n => this.onTick(n));
+  }
+
+  ngOnDestroy(): void {
+    this.ticksub.unsubscribe();
   }
 
   onTick(n: number) {

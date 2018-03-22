@@ -31,6 +31,7 @@ import { Supervisor } from 'app/machines/supervisor';
 import { TickerService } from 'app/services/ticker.service';
 import { LogService } from '../services/log.service';
 import { PlasmaShockService } from '../services/plasma-shock.service';
+import { Contraption } from './contraption';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -79,7 +80,10 @@ export class MachineFactory {
             'QuarkScoop': new QuarkScoop(this.universeService, this.logService),
             'QuarkSqueezer': new QuarkSqueezer(this.universeService, this.logService),
             'MatterFunnel': new MatterFunnel(this.universeService, this.logService),
-            'ParticleAttractor': new ParticleAttractor(this.universeService, this.logService)
+            'ParticleAttractor': new ParticleAttractor(this.universeService, this.logService),
+
+            // PHASE TWO
+            'Contraption': new Contraption(this.universeService, this.logService)
         };
 
         this.allMachineNames = [];

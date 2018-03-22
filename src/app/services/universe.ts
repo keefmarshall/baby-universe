@@ -33,8 +33,14 @@ export class Universe {
             "flash into existence, only to decay almost instantly. "];
     newLogs = 0;
 
-    release = 0.310;
+    release = 0.320;
 
     supervisorMessageSeen = false;
     phase2MessageSeen = false;
+
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    // PHASE TWO
+
+    contrivances: { [key: string]: any } = {};
 }

@@ -36,6 +36,7 @@ import { PhaseTwoComponent } from './phases/phase-two/phase-two.component';
 // Phase modules
 import { PhaseOneModule } from './phases/phase-one/phase-one.module';
 import { PhaseTwoModule } from './phases/phase-two/phase-two.module';
+import { ContrivanceService } from './services/contrivance.service';
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import { PhaseTwoModule } from './phases/phase-two/phase-two.module';
     AutosaveService,
     BigBangService,
     ConstructionService,
+    ContrivanceService,
     HeatingService,
     LogService,
     MachineFactory,

@@ -1,0 +1,35 @@
+.deploy-button {
+    margin-bottom: 1px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    line-height: 1.2;
+    /* width: 240px; */
+    width: 100%;
+    font-size: 0.8em;
+    font-weight: 400;
+    white-space: normal;
+
+    animation-name: bounceIn;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.deploy-button small {
+    font-style: italic;
+}
+
+.small-button small {
+    float: right;
+}
+
+.deploy-button:enabled:hover {
+    box-shadow: inset 0 0 0 99999px rgba(128,128,128,0.2);
+}
+
+.deploy-button .mat-icon {
+    float: left;
+    font-size: smaller;
+    height: auto;
+    width: auto;
+    vertical-align: center;
+}
