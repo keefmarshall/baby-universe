@@ -107,8 +107,12 @@ export class ContrivanceService {
 
   onTick(n: number) {
     // every n seconds there is a chance something can break
-    const ticksPerCheck = this.breakCheckSeconds / (Globals.secondsPerTick * Globals.tickFactor);
-    if (n % Math.ceil(ticksPerCheck) === 0) {
+    const ticksPerCheck = this.breakCheckSeconds / Globals.secondsPerTick;
+    if (Globals.tickFactor >= 100) {
+      for (let i = 0; i < Globals.tickFactor * Globals.secondsPerTick / this.breakCheckSeconds; i++) {
+        this.checkForBreakages();
+      }
+    } else if (n % Math.ceil(ticksPerCheck) === 0) {
       this.checkForBreakages();
     }
   }
