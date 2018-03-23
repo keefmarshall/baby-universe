@@ -100,6 +100,11 @@ export class ContrivanceService {
     return s.workingContraptions + s.faultyContraptions;
   }
 
+
+  ///////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////
+  // Period breakages
+
   onTick(n: number) {
     // every n seconds there is a chance something can break
     const ticksPerCheck = this.breakCheckSeconds / (Globals.secondsPerTick * Globals.tickFactor);

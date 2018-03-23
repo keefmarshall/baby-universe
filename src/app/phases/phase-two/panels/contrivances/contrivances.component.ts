@@ -1,10 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { TickerService } from '../../../../services/ticker.service';
-import { MachineService } from '../../../../services/machine.service';
-import { MachineFactory } from '../../../../machines/machine-factory';
 import { UniverseService } from '../../../../services/universe.service';
-import { Globals } from '../../../../globals';
 import { ContrivanceService, ContrivanceEvent } from '../../../../services/contrivance.service';
 import { Animations } from '../../../../util/animations';
 import { trigger } from '@angular/animations';
@@ -28,7 +24,7 @@ export class ContrivancesComponent implements OnInit, OnDestroy {
 
   constructor(
     public universeService: UniverseService,
-    public contrivanceService: ContrivanceService
+    public contrivanceService: ContrivanceService,
   ) { }
 
   ngOnInit() {
