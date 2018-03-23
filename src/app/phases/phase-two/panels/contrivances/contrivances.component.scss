@@ -2,5 +2,24 @@
 @import '../../../../../style/panel-info.scss';
 
 .deploy-button {
-    width: auto;
+    min-height: 42px;
+}
+
+@media all and (max-width: 839px) {
+    .small-contrivance-button {
+        padding-left: 8px;
+        padding-right: 8px;
+        width: 49.05%;
+        min-width: 60px!important;
+    }
+}
+
+@media all and (min-width: 840px) {
+    .contraption-count {
+        line-height: 1.5;
+    }
+}
+
+mat-progress-bar {
+    margin-top: 3px;
 }

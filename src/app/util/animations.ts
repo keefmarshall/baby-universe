@@ -16,14 +16,10 @@ export class Animations {
 
     static colorChangeTrigger(from: string, to: string, delay: number = 2000) {
         return [
-            state('start', style({ 'background-color': from })),
-            state('end', style({ 'background-color': to })),
-            transition('start => end', [
-              animate(`${delay}ms`, style({ 'background-color': to }))
-            ]),
-            transition('faded => present', [
-              animate(`${delay}ms`, style({ 'background-color': from })),
-            ])
+            state('start', style({ backgroundColor: from })),
+            state('end', style({ backgroundColor: to })),
+            transition('start => end', [animate(`${delay}ms linear`)]),
+            transition('end => start', [animate(`${delay}ms linear`)])
         ];
     }
 }

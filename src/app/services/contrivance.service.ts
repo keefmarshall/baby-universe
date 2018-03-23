@@ -6,10 +6,15 @@ import { MachineService } from './machine.service';
 import { TickerService } from './ticker.service';
 import { Globals } from '../globals';
 import { LogService } from './log.service';
+import { Subject } from 'rxjs/Subject';
+
+
+export enum ContrivanceEvent { NEW, FAULTY, BROKEN }
 
 @Injectable()
 export class ContrivanceService {
   state: ContrivanceState;
+  events$ = new Subject<ContrivanceEvent>();
 
   private breakCheckSeconds = 10;
 
@@ -46,6 +51,7 @@ export class ContrivanceService {
       this.state.workingContraptions ++;
       this.state.constructionProgress = 0;
       this.state.constructionProgressPercent = 0;
+      this.events$.next(ContrivanceEvent.NEW);
 
       if (this.state.generatedTotal < 1) {
         this.logService.addLog("The contraption doesn't look very sturdy.")
@@ -68,6 +74,7 @@ export class ContrivanceService {
         this.state.workingContraptions++;
         this.state.repairProgress = 0;
         this.state.repairProgressPercent = 0;
+        this.events$.next(ContrivanceEvent.NEW);
       } else {
         this.state.repairProgressPercent =
           this.state.repairProgress * 100 / this.state.repairStepsRequired;
@@ -123,31 +130,38 @@ export class ContrivanceService {
     // 1 machine should always break after maxLifetime
     // chance of breaking this time is this.breakCheckSeconds * num / maxLifetime
 
-    // FAULTS:
-    if (s.workingContraptions > 0) {
-      const faultChance = this.breakCheckSeconds * s.workingContraptions / s.maxLifetime;
-      const faultRandom = Math.random();
-      if ((faultChance + timeFactor) > faultRandom) {
-        console.log(`New faults! fc: ${faultChance}, tf: ${timeFactor}, fr: ${faultRandom}`);
-        s.workingContraptions --;
-        s.faultyContraptions ++;
-        s.lastBreakageAt = u.elapsedSeconds;
-      }
-    }
+    // Breakages before faults, otherwise a machine can go straight from working
+    // to broken, if you get bad luck (I have seen this happen!)
 
     // BREAKAGES:
     if (s.faultyContraptions > 0) {
       const breakChance = this.breakCheckSeconds * s.faultyContraptions / s.maxLifetime;
       const breakRandom = Math.random();
       if ((breakChance + timeFactor) > breakRandom) {
-        console.log(`New breaks! fc: ${breakChance}, tf: ${timeFactor}, fr: ${breakRandom}`);
-        s.faultyContraptions --;
-        s.brokenContraptions ++;
+        const q = Math.ceil(Math.random() * s.faultyContraptions / 20); // always at least 1
+        console.log(`New breaks! fc: ${breakChance}, tf: ${timeFactor}, fr: ${breakRandom}, q: ${q}`);
+        s.faultyContraptions -= q;
+        s.brokenContraptions += q;
+        this.events$.next(ContrivanceEvent.BROKEN);
         s.lastBreakageAt = u.elapsedSeconds;
         if (s.faultyContraptions < 1) { // nothing to repair
           s.repairProgress = 0;
           s.repairProgressPercent = 0;
         }
+      }
+    }
+
+    // FAULTS:
+    if (s.workingContraptions > 0) {
+      const faultChance = this.breakCheckSeconds * s.workingContraptions / s.maxLifetime;
+      const faultRandom = Math.random();
+      if ((faultChance + timeFactor) > faultRandom) {
+        const q = Math.ceil(Math.random() * s.workingContraptions / 20); // always at least 1
+        console.log(`New faults! fc: ${faultChance}, tf: ${timeFactor}, fr: ${faultRandom}, q: ${q}`);
+        s.workingContraptions -= q;
+        s.faultyContraptions += q;
+        this.events$.next(ContrivanceEvent.FAULTY);
+        s.lastBreakageAt = u.elapsedSeconds;
       }
     }
 

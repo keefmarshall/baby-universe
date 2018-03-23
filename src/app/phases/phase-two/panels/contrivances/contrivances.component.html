@@ -1,5 +1,5 @@
-<button mat-raised-button 
-  class="deploy-button contrivance-button"
+<button mat-raised-button
+  class="deploy-button"
   (click)="buildContrivance()">
 
   Contrive Contraption
@@ -13,11 +13,13 @@
 </button>
 
 <button mat-raised-button 
-  *ngIf="contrivanceService.state.faultyContraptions > 0"
-  class="deploy-button contrivance-button"
-  (click)="repairContrivance()">
+  *ngIf="contrivanceService.state.generatedTotal > 0"
+  class="deploy-button small-contrivance-button"
+  (click)="repairContrivance()"
+  [disabled]="contrivanceService.state.faultyContraptions === 0">
 
-  Repair Faulty Contraption
+  <span class="desktop-only">Repair Faulty Contraption</span>
+  <span class="mobile-only">Repair</span>
 
   <mat-progress-bar
     *ngIf="contrivanceService.state.repairProgress > 0"
@@ -28,17 +30,28 @@
 </button>
 
 <button mat-raised-button 
-  *ngIf="contrivanceService.state.brokenContraptions > 0"
-  class="deploy-button contrivance-button"
-  (click)="salvageContrivance()">
+  *ngIf="contrivanceService.state.generatedTotal > 0"
+  class="deploy-button small-contrivance-button"
+  (click)="salvageContrivance()"
+  [disabled]="contrivanceService.state.brokenContraptions === 0">
 
-  Salvage Broken Contraption<br/>
-  <small>Recovers 5 build steps towards a new Contraption</small>
+  <span class="desktop-only">
+    Salvage Broken Contraption<br/>
+    <small>Recycle parts to build a new Contraption</small>
+  </span>
+  <span class="mobile-only">Salvage</span>
+
 </button>
 
 
 <p *ngIf="numContrivances() > 0" class="info">
-  Working: {{ contrivanceService.state.workingContraptions }}<br/>
-  Faulty: {{ contrivanceService.state.faultyContraptions }}<br/>
-  Broken: {{ contrivanceService.state.brokenContraptions }}<br/>
+  <span [@workingTrigger]="workingState" class="contraption-count">
+    Working: {{ contrivanceService.state.workingContraptions }}
+  </span><br/>
+  <span [@faultyTrigger]="faultyState" class="contraption-count">
+    Faulty: {{ contrivanceService.state.faultyContraptions }}
+  </span><br/>
+  <span [@brokenTrigger]="brokenState" class="contraption-count">
+    Broken: {{ contrivanceService.state.brokenContraptions }}
+  </span><br/>
 </p>

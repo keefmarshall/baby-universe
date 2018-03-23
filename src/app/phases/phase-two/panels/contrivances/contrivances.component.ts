@@ -5,14 +5,26 @@ import { MachineService } from '../../../../services/machine.service';
 import { MachineFactory } from '../../../../machines/machine-factory';
 import { UniverseService } from '../../../../services/universe.service';
 import { Globals } from '../../../../globals';
-import { ContrivanceService } from '../../../../services/contrivance.service';
+import { ContrivanceService, ContrivanceEvent } from '../../../../services/contrivance.service';
+import { Animations } from '../../../../util/animations';
+import { trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-contrivances',
   templateUrl: './contrivances.component.html',
-  styleUrls: ['./contrivances.component.scss']
+  styleUrls: ['./contrivances.component.scss'],
+  animations: [
+    trigger('workingTrigger', Animations.colorChangeTrigger('transparent', '#d7e3ce', 300)),
+    trigger('faultyTrigger', Animations.colorChangeTrigger('transparent', '#f3b980', 300)),
+    trigger('brokenTrigger', Animations.colorChangeTrigger('transparent', '#e691aa', 300)),
+  ]
 })
 export class ContrivancesComponent implements OnInit, OnDestroy {
+  private contrivanceEventSub: Subscription = null;
+
+  workingState = "start";
+  faultyState = "start";
+  brokenState = "start";
 
   constructor(
     public universeService: UniverseService,
@@ -20,9 +32,15 @@ export class ContrivancesComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.contrivanceEventSub = this.contrivanceService.events$.subscribe(event => {
+      this.handleContrivanceEvent(event);
+    })
   }
 
   ngOnDestroy(): void {
+    if (this.contrivanceEventSub) {
+      this.contrivanceEventSub.unsubscribe();
+    }
   }
 
   numContrivances(): number {
@@ -39,5 +57,26 @@ export class ContrivancesComponent implements OnInit, OnDestroy {
 
   salvageContrivance() {
     this.contrivanceService.salvageContrivance();
+  }
+
+  handleContrivanceEvent(event: ContrivanceEvent) {
+    switch (event) {
+      case ContrivanceEvent.NEW:
+        this.flashColour("workingState");
+        break;
+
+      case ContrivanceEvent.FAULTY:
+        this.flashColour("faultyState");
+        break;
+
+      case ContrivanceEvent.BROKEN:
+        this.flashColour("brokenState");
+        break;
+    }
+  }
+
+  private flashColour(state: string) {
+    this[state] = "end";
+    setTimeout(() => { this[state] = "start"; }, 1000);    
   }
 }
