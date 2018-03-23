@@ -73,6 +73,7 @@ export class TickerService {
 
   run() {
     this.pauser.next(PausedState.RUNNING);
+    this.gameState = GameState.STARTED;
   }
 
   handleVisibilityChangeEvent(event: Event) {

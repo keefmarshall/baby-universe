@@ -3,6 +3,7 @@ import { NumberFormatter } from '../../util/number-formatter';
 import { Animations } from '../../util/animations';
 import { trigger } from '@angular/animations';
 import { UniverseService } from '../../services/universe.service';
+import { TickerService } from '../../services/ticker.service';
 
 @Component({
   selector: 'app-interstitial-one',
@@ -26,7 +27,10 @@ export class InterstitialOneComponent implements OnInit {
     "^2000 <br/><br/>Your seething plasma needs only one more ingredient before " +
     "it can give birth to a shiny new baby universe...";
 
-  constructor(private universeService: UniverseService) { }
+  constructor(
+    private universeService: UniverseService,
+    private tickerService: TickerService
+  ) { }
 
   ngOnInit() {
     this.stars = [];
@@ -52,8 +56,14 @@ export class InterstitialOneComponent implements OnInit {
 
   transition() {
     console.log("Transition to phase 2");
-    // TODO: turn on the services again - autosave, machines etc
     this.universeService.transitionToPhase(2);
+
+    // Turn on machines, autosave etc - just starting the ticker
+    // should be enough.
+    this.tickerService.run();
+    if (this.universeService.universe.machines['Supervisor']) {
+      this.tickerService.gameSupervised();
+    }
   }
 }
 

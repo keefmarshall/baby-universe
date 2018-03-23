@@ -27,7 +27,8 @@ export class ContrivanceService {
   initialiseFromUniverse(u: Universe) {
     if (!u.contrivances || u.contrivances === {}) {
       this.state = new ContrivanceState();
-      u.contrivances = new ContrivanceState();
+      this.state.lastBreakageAt = u.elapsedSeconds;
+      u.contrivances = this.state;
     } else {
       this.state = u.contrivances as ContrivanceState;
       if (!this.state.maxLifetime) { // TODO Remove
@@ -77,6 +78,7 @@ export class ContrivanceService {
   salvageContrivance() {
     if (this.state.brokenContraptions > 0) {
       this.state.brokenContraptions--;
+      this.universeService.universe.machines['Contraption'].quantity--;
       this.buildContrivance(this.state.salvageStepsGenerated);
     }
   }
