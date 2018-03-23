@@ -47,11 +47,11 @@
 <p *ngIf="numContrivances() > 0" class="info">
   <span [@workingTrigger]="workingState" class="contraption-count">
     Working: {{ contrivanceService.state.workingContraptions }}
-  </span><br/>
+  </span> |
   <span [@faultyTrigger]="faultyState" class="contraption-count">
     Faulty: {{ contrivanceService.state.faultyContraptions }}
-  </span><br/>
+  </span> |
   <span [@brokenTrigger]="brokenState" class="contraption-count">
     Broken: {{ contrivanceService.state.brokenContraptions }}
-  </span><br/>
+  </span>
 </p>
