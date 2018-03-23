@@ -37,8 +37,8 @@
 </button>
 
 
-<div *ngIf="numContrivances() > 0">
+<p *ngIf="numContrivances() > 0" class="info">
   Working: {{ contrivanceService.state.workingContraptions }}<br/>
   Faulty: {{ contrivanceService.state.faultyContraptions }}<br/>
   Broken: {{ contrivanceService.state.brokenContraptions }}<br/>
-</div>
+</p>

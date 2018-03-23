@@ -26,8 +26,7 @@ export class ContrivancesComponent implements OnInit, OnDestroy {
   }
 
   numContrivances(): number {
-    const s = this.contrivanceService.state;
-    return s.workingContraptions + s.faultyContraptions + s.brokenContraptions;
+    return this.contrivanceService.totalContrivances();
   }
 
   buildContrivance() {

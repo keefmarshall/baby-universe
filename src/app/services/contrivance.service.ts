@@ -3,17 +3,25 @@ import { UniverseService } from './universe.service';
 import { Universe } from './universe';
 import { MachineFactory } from '../machines/machine-factory';
 import { MachineService } from './machine.service';
+import { TickerService } from './ticker.service';
+import { Globals } from '../globals';
+import { LogService } from './log.service';
 
 @Injectable()
 export class ContrivanceService {
   state: ContrivanceState;
 
+  private breakCheckSeconds = 10;
+
   constructor(
     private universeService: UniverseService,
     private machineFactory: MachineFactory,
-    private machineService: MachineService
+    private machineService: MachineService,
+    private tickerService: TickerService,
+    private logService: LogService
   ) {
     this.initialiseFromUniverse(this.universeService.universe);
+    this.tickerService.tick$.subscribe(n => this.onTick(n))
   }
 
   initialiseFromUniverse(u: Universe) {
@@ -22,6 +30,9 @@ export class ContrivanceService {
       u.contrivances = new ContrivanceState();
     } else {
       this.state = u.contrivances as ContrivanceState;
+      if (!this.state.maxLifetime) { // TODO Remove
+        this.state.maxLifetime = 1800;
+      }
     }
   }
 
@@ -34,6 +45,13 @@ export class ContrivanceService {
       this.state.workingContraptions ++;
       this.state.constructionProgress = 0;
       this.state.constructionProgressPercent = 0;
+
+      if (this.state.generatedTotal < 1) {
+        this.logService.addLog("The contraption doesn't look very sturdy.")
+        this.state.lastBreakageAt = this.universeService.universe.elapsedSeconds;
+      }
+
+      this.state.generatedTotal++;
     } else {
       this.state.constructionProgressPercent =
         this.state.constructionProgress * 100 / this.state.constructionStepsRequired;
@@ -62,11 +80,86 @@ export class ContrivanceService {
       this.buildContrivance(this.state.salvageStepsGenerated);
     }
   }
+
+  totalContrivances(): number {
+    const s = this.state
+    return s.workingContraptions + s.brokenContraptions + s.faultyContraptions;
+  }
+
+  totalUnbrokenContrivances(): number {
+    const s = this.state
+    return s.workingContraptions + s.faultyContraptions;
+  }
+
+  onTick(n: number) {
+    // every n seconds there is a chance something can break
+    const ticksPerCheck = this.breakCheckSeconds / (Globals.secondsPerTick * Globals.tickFactor);
+    if (n % Math.ceil(ticksPerCheck) === 0) {
+      this.checkForBreakages();
+    }
+  }
+
+
+  private checkForBreakages() {
+    console.log("contrivance: checking for breakages");
+
+    // I'm lazy
+    const u = this.universeService.universe;
+    const s = this.state;
+
+    if (this.totalUnbrokenContrivances() === 0) {
+      s.lastBreakageAt = u.elapsedSeconds; // don't penalise time with nothing
+      return; // nothing to break!
+    }
+
+    // Chance increases with number of contraptions, time since last breakage
+    // also tickFactor. But timeSinceLast will also increase rapidly if
+    // we're in catchup, so we can maybe ignore tickFactor?
+    const timeSinceLast = u.elapsedSeconds - s.lastBreakageAt;
+    const timeFactor = timeSinceLast / s.maxLifetime;
+
+    // 1 machine should always break after maxLifetime
+    // chance of breaking this time is this.breakCheckSeconds * num / maxLifetime
+
+    // FAULTS:
+    if (s.workingContraptions > 0) {
+      const faultChance = this.breakCheckSeconds * s.workingContraptions / s.maxLifetime;
+      const faultRandom = Math.random();
+      if ((faultChance + timeFactor) > faultRandom) {
+        console.log(`New faults! fc: ${faultChance}, tf: ${timeFactor}, fr: ${faultRandom}`);
+        s.workingContraptions --;
+        s.faultyContraptions ++;
+        s.lastBreakageAt = u.elapsedSeconds;
+      }
+    }
+
+    // BREAKAGES:
+    if (s.faultyContraptions > 0) {
+      const breakChance = this.breakCheckSeconds * s.faultyContraptions / s.maxLifetime;
+      const breakRandom = Math.random();
+      if ((breakChance + timeFactor) > breakRandom) {
+        console.log(`New breaks! fc: ${breakChance}, tf: ${timeFactor}, fr: ${breakRandom}`);
+        s.faultyContraptions --;
+        s.brokenContraptions ++;
+        s.lastBreakageAt = u.elapsedSeconds;
+        if (s.faultyContraptions < 1) { // nothing to repair
+          s.repairProgress = 0;
+          s.repairProgressPercent = 0;
+        }
+      }
+    }
+
+  }
+
 }
 
 // This has to be kept simple as it will be serialised/deserialised
 // to and from JSON as part of the Universe object
 class ContrivanceState {
+  generatedTotal: number = 0;
+  lastBreakageAt: number = 0; // elapsed seconds
+  maxLifetime: number = 1800; // 30 minutes
+
   workingContraptions: number = 0;
   faultyContraptions: number = 0; // faulty are repairable
   brokenContraptions: number = 0; // broken can be salvaged for steps towards a new machine
