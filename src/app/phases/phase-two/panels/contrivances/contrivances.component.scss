@@ -1,6 +1,11 @@
 @import '../../../../../style/deploy-button.scss';
 @import '../../../../../style/panel-info.scss';
 
+.panel {
+    border-top: none;
+    margin-bottom: 0px;
+}
+
 .deploy-button {
     min-height: 42px;
 }

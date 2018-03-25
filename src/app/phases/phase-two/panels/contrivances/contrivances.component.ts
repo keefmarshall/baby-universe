@@ -4,6 +4,7 @@ import { UniverseService } from '../../../../services/universe.service';
 import { ContrivanceService, ContrivanceEvent } from '../../../../services/contrivance.service';
 import { Animations } from '../../../../util/animations';
 import { trigger } from '@angular/animations';
+import { ConstructionService } from '../../../../services/construction.service';
 
 @Component({
   selector: 'app-contrivances',
@@ -25,6 +26,7 @@ export class ContrivancesComponent implements OnInit, OnDestroy {
   constructor(
     public universeService: UniverseService,
     public contrivanceService: ContrivanceService,
+    public constructionService: ConstructionService
   ) { }
 
   ngOnInit() {

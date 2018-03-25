@@ -37,4 +37,8 @@ export class PhaseTwoComponent implements OnInit {
       setTimeout(() => this.showLogs = false, 2000);
     }, 2000);
   }
+
+  showDeploymentPanel(): boolean {
+    return this.universeService.universe.machines['Contraption']
+  }
 }

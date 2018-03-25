@@ -1,57 +1,68 @@
-<button mat-raised-button
-  class="deploy-button"
-  (click)="buildContrivance()">
+<div class="panel">
+  <button mat-raised-button
+    class="deploy-button"
+    (click)="buildContrivance()">
 
-  Contrive Contraption
+    Contrive Contraption
 
-  <mat-progress-bar
-    *ngIf="contrivanceService.state.constructionProgress > 0"
-    color="accent"
-    [value]="contrivanceService.state.constructionProgressPercent">
-  </mat-progress-bar>
+    <mat-progress-bar
+      *ngIf="contrivanceService.state.constructionProgress > 0"
+      color="accent"
+      [value]="contrivanceService.state.constructionProgressPercent">
+    </mat-progress-bar>
 
-</button>
+  </button>
 
-<button mat-raised-button 
-  *ngIf="contrivanceService.state.generatedTotal > 0"
-  class="deploy-button small-contrivance-button"
-  (click)="repairContrivance()"
-  [disabled]="contrivanceService.contraptionProperties().faultyContraptions === 0">
+  <button mat-raised-button 
+    *ngIf="contrivanceService.state.generatedTotal > 0"
+    class="deploy-button small-contrivance-button"
+    (click)="repairContrivance()"
+    [disabled]="contrivanceService.contraptionProperties().faultyContraptions === 0">
 
-  <span class="desktop-only">Repair Faulty Contraption</span>
-  <span class="mobile-only">Repair</span>
+    <span class="desktop-only">Repair Faulty Contraption</span>
+    <span class="mobile-only">Repair</span>
 
-  <mat-progress-bar
-    *ngIf="contrivanceService.state.repairProgress > 0"
-    color="accent"
-    [value]="contrivanceService.state.repairProgressPercent">
-  </mat-progress-bar>
+    <mat-progress-bar
+      *ngIf="contrivanceService.state.repairProgress > 0"
+      color="accent"
+      [value]="contrivanceService.state.repairProgressPercent">
+    </mat-progress-bar>
 
-</button>
+  </button>
 
-<button mat-raised-button 
-  *ngIf="contrivanceService.state.generatedTotal > 0"
-  class="deploy-button small-contrivance-button"
-  (click)="salvageContrivance()"
-  [disabled]="contrivanceService.contraptionProperties().brokenContraptions === 0">
+  <button mat-raised-button 
+    *ngIf="contrivanceService.state.generatedTotal > 0"
+    class="deploy-button small-contrivance-button"
+    (click)="salvageContrivance()"
+    [disabled]="contrivanceService.contraptionProperties().brokenContraptions === 0">
 
-  <span class="desktop-only">
-    Salvage Broken Contraption<br/>
-    <small>Recycle parts to build a new Contraption</small>
-  </span>
-  <span class="mobile-only">Salvage</span>
+    <span class="desktop-only">
+      Salvage Broken Contraption<br/>
+      <small>Recycle parts to build a new Contraption</small>
+    </span>
+    <span class="mobile-only">Salvage</span>
 
-</button>
+  </button>
+
+  <p *ngIf="constructionService.isConstructing()">
+    <small>Building: {{ constructionService.currentProject.displayName }}</small><br/>
+
+    <mat-progress-bar color="accent"
+      [value]="constructionService.currentProject.progress()"
+    ></mat-progress-bar>
+  </p>
 
 
-<p *ngIf="numContrivances() > 0" class="info">
-  <span [@workingTrigger]="workingState" class="contraption-count">
-    Working: {{ contrivanceService.contraptionProperties().workingContraptions }}
-  </span> |
-  <span [@faultyTrigger]="faultyState" class="contraption-count">
-    Faulty: {{ contrivanceService.contraptionProperties().faultyContraptions }}
-  </span> |
-  <span [@brokenTrigger]="brokenState" class="contraption-count">
-    Broken: {{ contrivanceService.contraptionProperties().brokenContraptions }}
-  </span>
-</p>
+  <p *ngIf="numContrivances() > 0" class="info">
+    <span [@workingTrigger]="workingState" class="contraption-count">
+      Working: {{ contrivanceService.contraptionProperties().workingContraptions }}
+    </span> |
+    <span [@faultyTrigger]="faultyState" class="contraption-count">
+      Faulty: {{ contrivanceService.contraptionProperties().faultyContraptions }}
+    </span> |
+    <span [@brokenTrigger]="brokenState" class="contraption-count">
+      Broken: {{ contrivanceService.contraptionProperties().brokenContraptions }}
+    </span>
+  </p>
+
+</div>

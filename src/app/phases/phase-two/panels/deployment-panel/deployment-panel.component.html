@@ -1,0 +1,14 @@
+<div id="deployment-panel" class="panel delay-1">
+  <p class="panel-title">
+      <mat-icon color="primary">settings_ethernet</mat-icon>
+      Deployment
+  </p>
+  
+  <div *ngFor="let machine of machineFactory.allMachineNames">
+    <app-deploy-button 
+      [machineName]="machine"
+      [multiplier]="this.multiplier">
+    </app-deploy-button>
+  </div>
+
+</div>

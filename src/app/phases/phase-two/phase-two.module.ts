@@ -4,16 +4,20 @@ import { ContrivancesComponent } from './panels/contrivances/contrivances.compon
 import { MdesignModule } from '../../mdesign/mdesign.module';
 import { PhaseTwoComponent } from './phase-two.component';
 import { PanelsModule } from '../../panels/panels.module';
+import { DeploymentPanelComponent } from './panels/deployment-panel/deployment-panel.component';
+import { ButtonsModule } from '../../buttons/buttons.module';
 
 @NgModule({
   imports: [
     CommonModule,
     MdesignModule,
+    ButtonsModule,
     PanelsModule
   ],
   declarations: [
     PhaseTwoComponent,
-    ContrivancesComponent
+    ContrivancesComponent,
+    DeploymentPanelComponent
   ],
   exports: [
     PhaseTwoComponent

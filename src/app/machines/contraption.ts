@@ -24,7 +24,7 @@ export class Contraption extends Machine {
             const q = this.properties().extras['workingContraptions']
                 + (this.properties().extras['faultyContraptions'] / 2);
             const eff = this.properties().efficiency;
-            const work = eff * q;
+            const work = eff * q * 0.01;
             this.constructionService.addWork(work);
             this.universeService.universe.heat -= work; // will have no effect but this is science!
         }
