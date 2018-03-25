@@ -30,7 +30,7 @@ export class ContrivancesComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.contrivanceEventSub = this.contrivanceService.events$.subscribe(event => {
       this.handleContrivanceEvent(event);
-    })
+    });
   }
 
   ngOnDestroy(): void {

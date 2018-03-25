@@ -12,6 +12,7 @@ import { QuarkUtils } from 'app/research/matter';
 import { MachineService } from '../../services/machine.service';
 import { MachineFactory } from '../../machines/machine-factory';
 import { ConstructionProject } from '../../machines/construction-project';
+import { ContrivanceService } from '../../services/contrivance.service';
 
 @Component({
   selector: 'app-dev-panel',
@@ -27,6 +28,7 @@ export class DevPanelComponent implements OnInit {
     public universeService: UniverseService,
     private researchService: ResearchService,
     private constructionService: ConstructionService,
+    private contrivanceService: ContrivanceService,
     private machineFactory: MachineFactory,
     private machineService: MachineService,
     public stargameService: StargameService,
@@ -88,6 +90,12 @@ export class DevPanelComponent implements OnInit {
       th.setMachineService(this.machineService);
       th.onComplete();
     }
+  }
+
+  resetContrivanceState() {
+    this.universeService.universe.contrivances = null;
+    this.contrivanceService.initialiseFromUniverse(this.universeService.universe);
+    delete this.universeService.universe.machines['Contraption'];
   }
 
   switchPhase(p: number) {

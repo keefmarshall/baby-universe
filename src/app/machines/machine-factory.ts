@@ -32,6 +32,7 @@ import { TickerService } from 'app/services/ticker.service';
 import { LogService } from '../services/log.service';
 import { PlasmaShockService } from '../services/plasma-shock.service';
 import { Contraption } from './contraption';
+import { RudimentaryResearcher } from './rudimentary-researcher';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -83,7 +84,8 @@ export class MachineFactory {
             'ParticleAttractor': new ParticleAttractor(this.universeService, this.logService),
 
             // PHASE TWO
-            'Contraption': new Contraption(this.universeService, this.logService)
+            'Contraption': new Contraption(this.universeService, this.logService, this.constructionService),
+            'RudimentaryResearcher': new RudimentaryResearcher(this.universeService, this.logService, this.researchService)
         };
 
         this.allMachineNames = [];

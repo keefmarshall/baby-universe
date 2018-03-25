@@ -16,7 +16,7 @@
   *ngIf="contrivanceService.state.generatedTotal > 0"
   class="deploy-button small-contrivance-button"
   (click)="repairContrivance()"
-  [disabled]="contrivanceService.state.faultyContraptions === 0">
+  [disabled]="contrivanceService.contraptionProperties().faultyContraptions === 0">
 
   <span class="desktop-only">Repair Faulty Contraption</span>
   <span class="mobile-only">Repair</span>
@@ -33,7 +33,7 @@
   *ngIf="contrivanceService.state.generatedTotal > 0"
   class="deploy-button small-contrivance-button"
   (click)="salvageContrivance()"
-  [disabled]="contrivanceService.state.brokenContraptions === 0">
+  [disabled]="contrivanceService.contraptionProperties().brokenContraptions === 0">
 
   <span class="desktop-only">
     Salvage Broken Contraption<br/>
@@ -46,12 +46,12 @@
 
 <p *ngIf="numContrivances() > 0" class="info">
   <span [@workingTrigger]="workingState" class="contraption-count">
-    Working: {{ contrivanceService.state.workingContraptions }}
+    Working: {{ contrivanceService.contraptionProperties().workingContraptions }}
   </span> |
   <span [@faultyTrigger]="faultyState" class="contraption-count">
-    Faulty: {{ contrivanceService.state.faultyContraptions }}
+    Faulty: {{ contrivanceService.contraptionProperties().faultyContraptions }}
   </span> |
   <span [@brokenTrigger]="brokenState" class="contraption-count">
-    Broken: {{ contrivanceService.state.brokenContraptions }}
+    Broken: {{ contrivanceService.contraptionProperties().brokenContraptions }}
   </span>
 </p>

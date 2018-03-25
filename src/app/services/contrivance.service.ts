@@ -36,9 +36,6 @@ export class ContrivanceService {
       u.contrivances = this.state;
     } else {
       this.state = u.contrivances as ContrivanceState;
-      if (!this.state.maxLifetime) { // TODO Remove
-        this.state.maxLifetime = 1800;
-      }
     }
   }
 
@@ -48,7 +45,7 @@ export class ContrivanceService {
       console.log("Contraption constructed.");
       const machine = this.machineFactory.newMachine("Contraption");
       this.machineService.addMachine(machine);
-      this.state.workingContraptions ++;
+      this.contraptionProperties().workingContraptions ++;
       this.state.constructionProgress = 0;
       this.state.constructionProgressPercent = 0;
       this.events$.next(ContrivanceEvent.NEW);
@@ -66,12 +63,12 @@ export class ContrivanceService {
   }
 
   repairContrivance(steps: number = 1) {
-    if (this.state.faultyContraptions > 0) {
+    if (this.contraptionProperties().faultyContraptions > 0) {
       this.state.repairProgress += steps;
       if (this.state.repairProgress >= this.state.repairStepsRequired) {
         console.log("Contraption repaired.");
-        this.state.faultyContraptions--;
-        this.state.workingContraptions++;
+        this.contraptionProperties().faultyContraptions--;
+        this.contraptionProperties().workingContraptions++;
         this.state.repairProgress = 0;
         this.state.repairProgressPercent = 0;
         this.events$.next(ContrivanceEvent.NEW);
@@ -83,23 +80,31 @@ export class ContrivanceService {
   }
 
   salvageContrivance() {
-    if (this.state.brokenContraptions > 0) {
-      this.state.brokenContraptions--;
+    if (this.contraptionProperties().brokenContraptions > 0) {
+      this.contraptionProperties().brokenContraptions--;
       this.universeService.universe.machines['Contraption'].quantity--;
       this.buildContrivance(this.state.salvageStepsGenerated);
     }
   }
 
   totalContrivances(): number {
-    const s = this.state
-    return s.workingContraptions + s.brokenContraptions + s.faultyContraptions;
+    const cp = this.contraptionProperties()
+    return cp == null ? 0 : cp.workingContraptions + cp.brokenContraptions + cp.faultyContraptions;
   }
 
   totalUnbrokenContrivances(): number {
-    const s = this.state
-    return s.workingContraptions + s.faultyContraptions;
+    const cp = this.contraptionProperties()
+    return cp == null ? 0 : cp.workingContraptions + cp.faultyContraptions;
   }
 
+  contraptionProperties() {
+    let cp = null;
+    if (this.universeService.universe.machines['Contraption']) {
+      cp = this.universeService.universe.machines['Contraption'].extras;
+    }
+
+    return cp;
+  }
 
   ///////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////
@@ -124,6 +129,7 @@ export class ContrivanceService {
     // I'm lazy
     const u = this.universeService.universe;
     const s = this.state;
+    const cp = this.contraptionProperties();
 
     if (this.totalUnbrokenContrivances() === 0) {
       s.lastBreakageAt = u.elapsedSeconds; // don't penalise time with nothing
@@ -143,17 +149,17 @@ export class ContrivanceService {
     // to broken, if you get bad luck (I have seen this happen!)
 
     // BREAKAGES:
-    if (s.faultyContraptions > 0) {
-      const breakChance = this.breakCheckSeconds * s.faultyContraptions / s.maxLifetime;
+    if (cp.faultyContraptions > 0) {
+      const breakChance = this.breakCheckSeconds * cp.faultyContraptions / s.maxLifetime;
       const breakRandom = Math.random();
       if ((breakChance + timeFactor) > breakRandom) {
-        const q = Math.ceil(Math.random() * s.faultyContraptions / 20); // always at least 1
+        const q = Math.ceil(Math.random() * cp.faultyContraptions / 20); // always at least 1
         console.log(`New breaks! fc: ${breakChance}, tf: ${timeFactor}, fr: ${breakRandom}, q: ${q}`);
-        s.faultyContraptions -= q;
-        s.brokenContraptions += q;
+        cp.faultyContraptions -= q;
+        cp.brokenContraptions += q;
         this.events$.next(ContrivanceEvent.BROKEN);
         s.lastBreakageAt = u.elapsedSeconds;
-        if (s.faultyContraptions < 1) { // nothing to repair
+        if (cp.faultyContraptions < 1) { // nothing to repair
           s.repairProgress = 0;
           s.repairProgressPercent = 0;
         }
@@ -161,14 +167,14 @@ export class ContrivanceService {
     }
 
     // FAULTS:
-    if (s.workingContraptions > 0) {
-      const faultChance = this.breakCheckSeconds * s.workingContraptions / s.maxLifetime;
+    if (cp.workingContraptions > 0) {
+      const faultChance = this.breakCheckSeconds * cp.workingContraptions / s.maxLifetime;
       const faultRandom = Math.random();
       if ((faultChance + timeFactor) > faultRandom) {
-        const q = Math.ceil(Math.random() * s.workingContraptions / 20); // always at least 1
+        const q = Math.ceil(Math.random() * cp.workingContraptions / 20); // always at least 1
         console.log(`New faults! fc: ${faultChance}, tf: ${timeFactor}, fr: ${faultRandom}, q: ${q}`);
-        s.workingContraptions -= q;
-        s.faultyContraptions += q;
+        cp.workingContraptions -= q;
+        cp.faultyContraptions += q;
         this.events$.next(ContrivanceEvent.FAULTY);
         s.lastBreakageAt = u.elapsedSeconds;
       }
@@ -185,9 +191,9 @@ class ContrivanceState {
   lastBreakageAt: number = 0; // elapsed seconds
   maxLifetime: number = 1800; // 30 minutes
 
-  workingContraptions: number = 0;
-  faultyContraptions: number = 0; // faulty are repairable
-  brokenContraptions: number = 0; // broken can be salvaged for steps towards a new machine
+  // workingContraptions: number = 0;
+  // faultyContraptions: number = 0; // faulty are repairable
+  // brokenContraptions: number = 0; // broken can be salvaged for steps towards a new machine
 
   salvageStepsGenerated: number = 5;
 
