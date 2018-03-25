@@ -46,6 +46,11 @@ blockquote, .log {
   .desktop-only { display: none; }
 }
 
+/* When matter collection drops below, it takes up full width */
+@media all and (min-width: 480px) and (max-width: 839px) {
+  .col3 { grid-column-start: 1; grid-column-end: span 8; }    
+}
+
 .space-filler {
   /* This fills the remaining space, by using flexbox. */
   flex: 1 1 auto;

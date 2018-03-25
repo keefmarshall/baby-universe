@@ -1,4 +1,23 @@
 <div class="panel">
+
+  <p *ngIf="numContrivances() > 0" class="info info-right">
+    <span [@workingTrigger]="workingState" class="contraption-count">
+      Working: {{ contrivanceService.contraptionProperties().workingContraptions }}
+    </span>
+    <br/>
+    <span [@faultyTrigger]="faultyState" class="contraption-count">
+      Faulty: {{ contrivanceService.contraptionProperties().faultyContraptions }}
+    </span>
+    <br/>
+    <span [@brokenTrigger]="brokenState" class="contraption-count">
+      Broken: {{ contrivanceService.contraptionProperties().brokenContraptions }}
+    </span>
+    <br/><br/>
+    Efficiency: {{ readContraptionEfficiency() }}<br/>
+    Work: {{ readWorkMeter() | number:'1.1-3'  }}/s
+  </p>
+
+
   <button mat-raised-button
     class="deploy-button"
     (click)="buildContrivance()">
@@ -51,20 +70,6 @@
     ></mat-progress-bar>
   </p>
 
-
-  <p *ngIf="numContrivances() > 0" class="info">
-    <span [@workingTrigger]="workingState" class="contraption-count">
-      Working: {{ contrivanceService.contraptionProperties().workingContraptions }}
-    </span> |
-    <span [@faultyTrigger]="faultyState" class="contraption-count">
-      Faulty: {{ contrivanceService.contraptionProperties().faultyContraptions }}
-    </span> |
-    <span [@brokenTrigger]="brokenState" class="contraption-count">
-      Broken: {{ contrivanceService.contraptionProperties().brokenContraptions }}
-    </span><br/>
-    Efficiency: {{ readContraptionEfficiency() }} |
-    Work: {{ readWorkMeter() | number:'1.1-3'  }}/s
-  </p>
 
 
 </div>

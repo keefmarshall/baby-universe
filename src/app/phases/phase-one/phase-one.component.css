@@ -9,11 +9,6 @@
     z-index: 2;
 }
 
-/* When matter collection drops below, it takes up full width */
-@media all and (min-width: 480px) and (max-width: 839px) {
-    .col3 { grid-column-start: 1; grid-column-end: span 8; }    
-}
-
 /* *************************************************************** */
 /* *************************************************************** */
 

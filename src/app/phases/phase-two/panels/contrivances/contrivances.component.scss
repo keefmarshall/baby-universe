@@ -7,17 +7,18 @@
 }
 
 .deploy-button {
+    width: 65%;
     min-height: 42px;
 }
 
-@media all and (max-width: 839px) {
-    .small-contrivance-button {
-        padding-left: 8px;
-        padding-right: 8px;
-        width: 49.05%;
-        min-width: 60px!important;
-    }
-}
+// @media all and (max-width: 839px) {
+//     .small-contrivance-button {
+//         padding-left: 8px;
+//         padding-right: 8px;
+//         width: 49.05%;
+//         min-width: 60px!important;
+//     }
+// }
 
 @media all and (min-width: 840px) {
     .contraption-count {
