@@ -5,6 +5,8 @@ import { ContrivanceService, ContrivanceEvent } from '../../../../services/contr
 import { Animations } from '../../../../util/animations';
 import { trigger } from '@angular/animations';
 import { ConstructionService } from '../../../../services/construction.service';
+import { Globals } from '../../../../globals';
+import { MeteringService } from '../../../../services/metering.service';
 
 @Component({
   selector: 'app-contrivances',
@@ -26,7 +28,8 @@ export class ContrivancesComponent implements OnInit, OnDestroy {
   constructor(
     public universeService: UniverseService,
     public contrivanceService: ContrivanceService,
-    public constructionService: ConstructionService
+    public constructionService: ConstructionService,
+    public meteringService: MeteringService
   ) { }
 
   ngOnInit() {
@@ -71,6 +74,14 @@ export class ContrivancesComponent implements OnInit, OnDestroy {
         this.flashColour("brokenState");
         break;
     }
+  }
+
+  readContraptionEfficiency(): number {
+    return Globals.round(this.universeService.universe.machines['Contraption'].efficiency, 1);
+  }
+
+  readWorkMeter(): number {
+      return this.meteringService.read('work');
   }
 
   private flashColour(state: string) {

@@ -2,12 +2,14 @@ import { Machine, MachineProperties } from "./machine";
 import { LogService } from "../services/log.service";
 import { UniverseService } from "../services/universe.service";
 import { ConstructionService } from "../services/construction.service";
+import { MeteringService } from "../services/metering.service";
 
 export class Contraption extends Machine {
 
     constructor(universeService: UniverseService,
         logService: LogService,
-        private constructionService: ConstructionService
+        private constructionService: ConstructionService,
+        private meteringService: MeteringService
     ) {
         super('Contraption',
             "Contraption",
@@ -27,6 +29,7 @@ export class Contraption extends Machine {
             const work = eff * q * 0.01;
             this.constructionService.addWork(work);
             this.universeService.universe.heat -= work; // will have no effect but this is science!
+            this.meteringService.addQuantity('work', work);
         }
     }
 

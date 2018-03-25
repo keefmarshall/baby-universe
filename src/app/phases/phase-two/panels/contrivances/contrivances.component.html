@@ -62,7 +62,10 @@
     </span> |
     <span [@brokenTrigger]="brokenState" class="contraption-count">
       Broken: {{ contrivanceService.contraptionProperties().brokenContraptions }}
-    </span>
+    </span><br/>
+    Efficiency: {{ readContraptionEfficiency() }} |
+    Work: {{ readWorkMeter() | number:'1.1-1'  }}/s
   </p>
+
 
 </div>

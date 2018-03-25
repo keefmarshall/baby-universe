@@ -7,6 +7,7 @@ import { TickerService } from './ticker.service';
 import { Globals } from '../globals';
 import { LogService } from './log.service';
 import { Subject } from 'rxjs/Subject';
+import { ConstructionService } from './construction.service';
 
 
 export enum ContrivanceEvent { NEW, FAULTY, BROKEN }
@@ -22,6 +23,7 @@ export class ContrivanceService {
     private universeService: UniverseService,
     private machineFactory: MachineFactory,
     private machineService: MachineService,
+    private constructionService: ConstructionService,
     private tickerService: TickerService,
     private logService: LogService
   ) {
@@ -112,13 +114,15 @@ export class ContrivanceService {
 
   onTick(n: number) {
     // every n seconds there is a chance something can break
-    const ticksPerCheck = this.breakCheckSeconds / Globals.secondsPerTick;
-    if (Globals.tickFactor >= 100) {
-      for (let i = 0; i < Globals.tickFactor * Globals.secondsPerTick / this.breakCheckSeconds; i++) {
+    if (this.constructionService.isConstructing()) {
+      const ticksPerCheck = this.breakCheckSeconds / Globals.secondsPerTick;
+      if (Globals.tickFactor >= 100) {
+        for (let i = 0; i < Globals.tickFactor * Globals.secondsPerTick / this.breakCheckSeconds; i++) {
+          this.checkForBreakages();
+        }
+      } else if (n % Math.ceil(ticksPerCheck) === 0) {
         this.checkForBreakages();
       }
-    } else if (n % Math.ceil(ticksPerCheck) === 0) {
-      this.checkForBreakages();
     }
   }
 
