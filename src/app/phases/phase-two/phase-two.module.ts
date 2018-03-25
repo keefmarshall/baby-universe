@@ -6,6 +6,7 @@ import { PhaseTwoComponent } from './phase-two.component';
 import { PanelsModule } from '../../panels/panels.module';
 import { DeploymentPanelComponent } from './panels/deployment-panel/deployment-panel.component';
 import { ButtonsModule } from '../../buttons/buttons.module';
+import { ResearchPanelComponent } from './panels/research-panel/research-panel.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { ButtonsModule } from '../../buttons/buttons.module';
   declarations: [
     PhaseTwoComponent,
     ContrivancesComponent,
-    DeploymentPanelComponent
+    DeploymentPanelComponent,
+    ResearchPanelComponent
   ],
   exports: [
     PhaseTwoComponent

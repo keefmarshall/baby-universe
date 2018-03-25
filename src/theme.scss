@@ -1,32 +1,37 @@
 @import '~@angular/material/theming';
 
 @import 'style/babyblue-palette';
-@import 'style/babypurp-palette';
+// @import 'style/babypurp-palette';
 @import 'style/babydark-palette';
 @import 'style/babypink-palette';
-@import 'style/babyorange-palette';
+// @import 'style/babyorange-palette';
 @import 'style/babygreen-palette';
+@import 'style/babylightorange-palette';
+@import 'style/babyteal-palette';
 
 @include mat-core();
-$primary: mat-palette($mat-blue-grey, 800);
-$accent:  mat-palette($mat-teal, 600, 100, 800);
-$warn:    mat-palette($mat-red, 600);
-// $theme: mat-light-theme($primary, $accent, $warn);
-// @include angular-material-theme($theme);
 
+// CORE THEME - DEEP BLUE / MID BLUE
 $buprimary: mat-palette($md-babydark, 500);
 $buaccent: mat-palette($md-babyblue, 600, 100, 800);
+$warn:    mat-palette($mat-red, 600);
 $butheme: mat-light-theme($buprimary, $buaccent, $warn);
 @include angular-material-theme($butheme);
 
-$alt-primary: mat-palette($mat-indigo, 800);
-$alt-accent:  mat-palette($mat-deep-orange, 600, 100, 800);
-
-$alt-buprimary: mat-palette($md-babydark, 500);
+// ALT THEME - GREEN / PINK
+$alt-buprimary: mat-palette($md-babygreen, 500);
 $alt-buaccent:  mat-palette($md-babypink, 600, 100, 800);
 $alt-warn:    mat-palette($mat-red, 600);
-// $alt-theme:   mat-light-theme($alt-primary, $alt-accent, $alt-warn);
 $alt-theme:   mat-light-theme($alt-buprimary, $alt-buaccent, $alt-warn);
 .alt-theme {
     @include angular-material-theme($alt-theme);
+}
+
+// ALT2 THEME - TEAL / ORANGE
+$alt2-buprimary: mat-palette($md-babyteal, 500);
+$alt2-buaccent:  mat-palette($md-babylightorange, 600, 100, 800);
+$alt2-warn:    mat-palette($mat-red, 600);
+$alt2-theme:   mat-light-theme($alt2-buprimary, $alt2-buaccent, $alt2-warn);
+.alt2-theme {
+    @include angular-material-theme($alt2-theme);
 }

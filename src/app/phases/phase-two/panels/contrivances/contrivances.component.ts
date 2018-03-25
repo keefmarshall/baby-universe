@@ -9,7 +9,7 @@ import { Globals } from '../../../../globals';
 import { MeteringService } from '../../../../services/metering.service';
 
 @Component({
-  selector: 'app-contrivances',
+  selector: 'phase-two-contrivances',
   templateUrl: './contrivances.component.html',
   styleUrls: ['./contrivances.component.scss'],
   animations: [

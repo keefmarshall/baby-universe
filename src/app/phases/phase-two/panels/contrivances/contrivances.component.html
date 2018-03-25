@@ -1,4 +1,4 @@
-<div class="panel">
+<div class="panel alt2-theme">
 
   <p *ngIf="numContrivances() > 0" class="info info-right">
     <span [@workingTrigger]="workingState" class="contraption-count">
@@ -26,7 +26,7 @@
 
     <mat-progress-bar
       *ngIf="contrivanceService.state.constructionProgress > 0"
-      color="accent"
+      color="primary"
       [value]="contrivanceService.state.constructionProgressPercent">
     </mat-progress-bar>
 
@@ -43,7 +43,7 @@
 
     <mat-progress-bar
       *ngIf="contrivanceService.state.repairProgress > 0"
-      color="accent"
+      color="primary"
       [value]="contrivanceService.state.repairProgressPercent">
     </mat-progress-bar>
 
@@ -65,7 +65,7 @@
   <p *ngIf="constructionService.isConstructing()">
     <small>Building: {{ constructionService.currentProject.displayName }}</small><br/>
 
-    <mat-progress-bar color="accent"
+    <mat-progress-bar color="primary"
       [value]="constructionService.currentProject.progress()"
     ></mat-progress-bar>
   </p>

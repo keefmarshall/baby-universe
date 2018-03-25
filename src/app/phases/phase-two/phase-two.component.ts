@@ -41,4 +41,9 @@ export class PhaseTwoComponent implements OnInit {
   showDeploymentPanel(): boolean {
     return this.universeService.universe.machines['Contraption']
   }
+
+  showResearchPanel(): boolean {
+    return this.universeService.universe.machines["RudimentaryResearcher"];
+  }
+
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MachineFactory } from '../../../../machines/machine-factory';
 
 @Component({
-  selector: 'app-deployment-panel',
+  selector: 'phase-two-deployment-panel',
   templateUrl: './deployment-panel.component.html',
   styleUrls: ['./deployment-panel.component.scss']
 })

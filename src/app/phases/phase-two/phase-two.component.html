@@ -3,11 +3,12 @@
     <div class="mdc-layout-grid__inner">
 
       <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4">
-        <app-contrivances></app-contrivances>
-        <app-deployment-panel *ngIf="showDeploymentPanel()"></app-deployment-panel>
+        <phase-two-contrivances></phase-two-contrivances>
+        <phase-two-deployment-panel *ngIf="showDeploymentPanel()"></phase-two-deployment-panel>
       </div>
 
       <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4">
+        <phase-two-research-panel *ngIf="showResearchPanel()"></phase-two-research-panel>
       </div>
 
       <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 col3">
