@@ -85,7 +85,11 @@ export class ContrivanceService {
     if (this.contraptionProperties().brokenContraptions > 0) {
       this.contraptionProperties().brokenContraptions--;
       this.universeService.universe.machines['Contraption'].quantity--;
-      this.buildContrivance(this.state.salvageStepsGenerated);
+      if (this.contraptionProperties().faultyContraptions > 0) {
+        this.repairContrivance(this.state.salvageStepsGenerated);
+      } else {
+        this.buildContrivance(this.state.salvageStepsGenerated);
+      }
     }
   }
 
