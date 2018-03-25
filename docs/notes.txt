@@ -142,3 +142,6 @@ http://mcg.mbitson.com
 http://paletton.com
 
 http://www.palettefx.com/
+
+http://mcg.mbitson.com/#!?mcgpalette0=%23018cad&mcgpalette1=%23c5718a&mcgpalette2=%23223344&mcgpalette3=%237ba35b&mcgpalette4=%235faabc&mcgpalette5=%23faad8c
+http://paletton.com/#uid=75q0u0ke5vn4TR89mG8iRqvn7lR
