@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UniverseService } from '../../../../services/universe.service';
 
 @Component({
   selector: 'phase-two-research-panel',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResearchPanelComponent implements OnInit {
 
-  constructor() { }
+  constructor(public universeService: UniverseService) { }
 
   ngOnInit() {
   }
