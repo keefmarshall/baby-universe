@@ -15,6 +15,7 @@ import { MdesignModule } from '../../mdesign/mdesign.module';
 import { GameModule } from '../../games/game.module';
 import { PipesModule } from '../../pipes/pipes.module';
 import { PanelsModule } from '../../panels/panels.module';
+import { PhaseOneComponent } from './phase-one.component';
 
 @NgModule({
   imports: [
@@ -35,19 +36,21 @@ import { PanelsModule } from '../../panels/panels.module';
     StargameDialogComponent,
     TemperaturePanelComponent,
     MatterCollectionPanelComponent,
+    PhaseOneComponent
   ],
   entryComponents: [
     StargameDialogComponent
   ],
   exports: [
-    DeploymentPanelComponent,
-    ResearchPanelComponent,
-    CollectionPanelComponent,
-    ConstructionPanelComponent,
-    StargameComponent,
-    StargameDialogComponent,
-    TemperaturePanelComponent,
-    MatterCollectionPanelComponent,
+    PhaseOneComponent,
+  //   DeploymentPanelComponent,
+  //   ResearchPanelComponent,
+  //   CollectionPanelComponent,
+  //   ConstructionPanelComponent,
+  //   StargameComponent,
+  //   StargameDialogComponent,
+  //   TemperaturePanelComponent,
+  //   MatterCollectionPanelComponent,
   ]
 
 })

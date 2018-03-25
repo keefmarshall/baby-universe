@@ -24,29 +24,23 @@ import { HeatingService } from 'app/services/heating.service';
 import { BigBangService } from 'app/services/big-bang.service';
 import { AnalyticsService } from 'app/services/analytics.service';
 import { PlasmaShockService } from './services/plasma-shock.service';
+import { ContrivanceService } from './services/contrivance.service';
 
 // Top level components
 import { AppComponent } from './app.component';
-import { TickerComponent } from './ticker.component';
-import { PhaseOneComponent } from './phases/phase-one/phase-one.component';
 import { InterstitialZeroComponent } from './phases/interstitial-zero/interstitial-zero.component';
 import { InterstitialOneComponent } from './phases/interstitial-one/interstitial-one.component';
-import { PhaseTwoComponent } from './phases/phase-two/phase-two.component';
 
 // Phase modules
 import { PhaseOneModule } from './phases/phase-one/phase-one.module';
 import { PhaseTwoModule } from './phases/phase-two/phase-two.module';
-import { ContrivanceService } from './services/contrivance.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PhaseOneComponent,
     InterstitialZeroComponent,
-    InterstitialOneComponent,
-    PhaseTwoComponent,
-    // TickerComponent
+    InterstitialOneComponent
   ],
   imports: [
     BrowserModule,
