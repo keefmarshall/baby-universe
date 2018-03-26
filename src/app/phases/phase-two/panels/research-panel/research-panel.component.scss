@@ -2,6 +2,24 @@
 @import '../../../../../style/panel-info.scss';
 
 .assignment-header {
-    font-size: 0.8em;
-    line-height: 1;
+    font-weight: bold;
+}
+
+th, td {
+    text-align: left;
+    padding-right: 10px;
+}
+
+.right-align {
+    text-align: right;
+}
+
+table {
+    font-size: 0.75em;
+    padding: 5px;
+    min-width: 240px;
+}
+
+input[type=number] {
+    width: 5em;
 }

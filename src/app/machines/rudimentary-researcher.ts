@@ -4,13 +4,15 @@ import { ResearchService } from "../services/research.service";
 import { Globals } from "../globals";
 import { ConstructionProject } from "./construction-project";
 import { MachineProperties } from "./machine";
+import { ResearchTrackService } from "../services/research-track.service";
 
 export class RudimentaryResearcher extends ConstructionProject {
 
     constructor(
         universeService: UniverseService,
         logService: LogService,
-        private researchService: ResearchService
+        private researchService: ResearchService,
+        private researchTrackService: ResearchTrackService
      ) {
         super('RudimentaryResearcher',
             "Rudimentary Researcher",
@@ -21,8 +23,21 @@ export class RudimentaryResearcher extends ConstructionProject {
     }
 
     onTick(tickFactor: number) {
-        const science = this.properties().quantity * this.properties().efficiency * tickFactor;
+        const eff = this.properties().efficiency;
+        const numImprove = this.properties().extras['researchImprovement'];
+        const numContrap = this.properties().extras['contraptionImprovement'];
+        const numAssigned = numImprove + numContrap;
+
+        const numOnProjects = this.properties().quantity - numAssigned;
+        const science = numOnProjects * eff * tickFactor * 0.1;
         this.researchService.addScience(science);
+
+        // Assignments
+        const improveScience = numImprove * eff * tickFactor * 0.1;
+        this.researchTrackService.improveResearchers(improveScience);
+
+        const contrapScience = numContrap * eff * tickFactor * 0.1;
+        this.researchTrackService.improveContraptions(contrapScience);
     }
 
     preconditions(): boolean {
@@ -35,6 +50,7 @@ export class RudimentaryResearcher extends ConstructionProject {
 
     defaultProperties(): MachineProperties {
         const props = super.defaultProperties();
+        props.efficiency = 0.01;
         props.extras = {
             researchImprovement: 0,
             contraptionImprovement: 0

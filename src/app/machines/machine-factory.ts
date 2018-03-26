@@ -33,6 +33,7 @@ import { LogService } from '../services/log.service';
 import { PlasmaShockService } from '../services/plasma-shock.service';
 import { Contraption } from './contraption';
 import { RudimentaryResearcher } from './rudimentary-researcher';
+import { ResearchTrackService } from '../services/research-track.service';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -57,7 +58,8 @@ export class MachineFactory {
         private stargameService: StargameService,
         private heatingService: HeatingService,
         private tickerService: TickerService,
-        private plasmaShockService: PlasmaShockService
+        private plasmaShockService: PlasmaShockService,
+        private researchTrackService: ResearchTrackService
     ) {
         this.resetMachines();
     }
@@ -71,7 +73,8 @@ export class MachineFactory {
             'Supervisor': new Supervisor(this.universeService, this.logService, this.tickerService),
             'FieldMirror': new FieldMirror(this.universeService, this.logService),
             'Assembler': new Assembler(this.universeService, this.logService, this.constructionService, this.meteringService),
-            'AssemblyPlant': new AssemblyPlant(this.universeService, this.logService, this.constructionService, this.meteringService, this.researchService),
+            'AssemblyPlant': new AssemblyPlant(
+                this.universeService, this.logService, this.constructionService, this.meteringService, this.researchService),
             'ThermalSpanner': new ThermalSpanner(this.universeService, this.logService, this.constructionService),
             'Thermometer': new Thermometer(this.universeService, this.logService, this.meteringService, this.plasmaShockService),
             'SpaceHeater': new SpaceHeater(this.universeService, this.logService, this.heatingService, this.meteringService),
@@ -85,7 +88,8 @@ export class MachineFactory {
 
             // PHASE TWO
             'Contraption': new Contraption(this.universeService, this.logService, this.constructionService, this.meteringService),
-            'RudimentaryResearcher': new RudimentaryResearcher(this.universeService, this.logService, this.researchService)
+            'RudimentaryResearcher': new RudimentaryResearcher(
+                this.universeService, this.logService, this.researchService, this.researchTrackService)
         };
 
         this.allMachineNames = [];

@@ -3,6 +3,7 @@ import { UniverseService } from '../../../../services/universe.service';
 import { ResearchService } from '../../../../services/research.service';
 import { ResearchList } from '../../../../research/research-list';
 import { ResearchProject } from '../../../../research/research-project';
+import { MachineProperties } from '../../../../machines/machine';
 
 @Component({
   selector: 'phase-two-research-panel',
@@ -32,13 +33,34 @@ export class ResearchPanelComponent implements OnInit {
           project.correctPhase(this.universeService.universe);
   }
 
+  canResearch() {
+    return !this.researchService.isResearching();
+  }
+
   researchMax() {
-    const rr = this.universeService.universe.machines['RudimentaryResearcher'];
-    return rr.quantity - rr.extras.contraptionImprovement;
+    const rr = this.getRudimentaryResearcher();
+    return rr.quantity - rr.extras['contraptionImprovement'];
   }
 
   constructionMax() {
-    const rr = this.universeService.universe.machines['RudimentaryResearcher'];
-    return rr.quantity - rr.extras.researchImprovement;
+    const rr = this.getRudimentaryResearcher();
+    return rr.quantity - rr.extras['researchImprovement'];
+  }
+
+  projectResearchers(): number {
+    return this.getRudimentaryResearcher().quantity -
+        (this.researchImprovers() + this.contraptionImprovers());
+  }
+
+  researchImprovers(): number {
+    return this.getRudimentaryResearcher().extras['researchImprovement'];
+  }
+
+  contraptionImprovers(): number {
+    return this.getRudimentaryResearcher().extras['contraptionImprovement'];
+  }
+
+  getRudimentaryResearcher(): MachineProperties {
+    return this.universeService.universe.machines['RudimentaryResearcher'];
   }
 }

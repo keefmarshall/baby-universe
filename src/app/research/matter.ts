@@ -82,7 +82,7 @@ export class Leptons extends ResearchProject {
     }
 
     preconditions(universe: Universe): boolean {
-        return this.machineQuantity(universe, 'PhotonCollector') >= 50 &&
+        return this.machineQuantity(universe, 'RudimentaryResearcher') > 0 &&
             universe.phase > 1.5;
     }
 

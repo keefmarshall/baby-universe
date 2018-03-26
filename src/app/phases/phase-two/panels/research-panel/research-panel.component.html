@@ -4,6 +4,9 @@
      Research
   </p>
 
+  <p class="info info-right">
+    Efficiency: {{ universeService.universe.machines["RudimentaryResearcher"].efficiency | number:'1.1-3' }}
+  </p>
   <p class="info">
     Researchers: {{ universeService.universe.machines["RudimentaryResearcher"].quantity }}
   </p>
@@ -13,7 +16,8 @@
       *ngIf="shouldShow(project)"
       mat-raised-button color="accent" 
       class="deploy-button"
-      (click)="researchService.startProject(project)">
+      (click)="researchService.startProject(project)"
+      [disabled]="!canResearch()">
 
       {{ project.name }} ({{ project.displayCost() }})
       <br/>
@@ -29,29 +33,48 @@
 
 
   <form #assignmentForm="ngForm">
-    <p class="assignment-header">Researcher assignment</p>
+    <p class="assignment-header info">Researcher assignment:</p>
 
-    <p class="info">
-      Improve research:
-      <input
-        type="number"
-        name="researchImprovement"
-        [(ngModel)]="universeService.universe.machines['RudimentaryResearcher'].extras.researchImprovement"
-        min="0"
-        [max]="researchMax()"
-      />
+    <table>
+      <tr>
+        <td>Project research</td>
+        <td class="right-align">
+          <input
+            type="number"
+            name="projectResearchers"
+            [value]="projectResearchers()"
+            disabled=true
+          />
+        </td>
+      </tr>
 
-      <br/>
+      <tr>
+        <td>Researcher improvement</td>
+        <td class="right-align">
+          <input
+            type="number"
+            name="researchImprovement"
+            [(ngModel)]="universeService.universe.machines['RudimentaryResearcher'].extras.researchImprovement"
+            min="0"
+            [max]="researchMax()"
+          />
+        </td>
+      </tr>
 
-      Improve contraptions:
-      <input 
-        type="number"
-        name="contraptionImprovement"
-        [(ngModel)]="universeService.universe.machines['RudimentaryResearcher'].extras.contraptionImprovement"
-        min="0"
-        [max]="constructionMax()"
-      />
-    </p>
+      <tr>
+        <td>Contraption improvement</td>
+        <td class="right-align">
+          <input 
+            type="number"
+            name="contraptionImprovement"
+            [(ngModel)]="universeService.universe.machines['RudimentaryResearcher'].extras.contraptionImprovement"
+            min="0"
+            [max]="constructionMax()"
+          />
+        </td>
+      </tr>
+    </table>
+
   </form>
 
 </div>

@@ -34,6 +34,7 @@ import { InterstitialOneComponent } from './phases/interstitial-one/interstitial
 // Phase modules
 import { PhaseOneModule } from './phases/phase-one/phase-one.module';
 import { PhaseTwoModule } from './phases/phase-two/phase-two.module';
+import { ResearchTrackService } from './services/research-track.service';
 
 
 @NgModule({
@@ -65,6 +66,7 @@ import { PhaseTwoModule } from './phases/phase-two/phase-two.module';
     MeteringService,
     PlasmaShockService,
     ResearchService,
+    ResearchTrackService,
     StateManagementService,
     TickerService,
     TimeService,
