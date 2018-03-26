@@ -96,6 +96,7 @@ export class DevPanelComponent implements OnInit {
     this.universeService.universe.contrivances = null;
     this.contrivanceService.initialiseFromUniverse(this.universeService.universe);
     delete this.universeService.universe.machines['Contraption'];
+    delete this.universeService.universe.machines['RudimentaryResearcher'];
   }
 
   switchPhase(p: number) {

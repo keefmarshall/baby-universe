@@ -3,6 +3,7 @@ import { LogService } from "../services/log.service";
 import { ResearchService } from "../services/research.service";
 import { Globals } from "../globals";
 import { ConstructionProject } from "./construction-project";
+import { MachineProperties } from "./machine";
 
 export class RudimentaryResearcher extends ConstructionProject {
 
@@ -30,6 +31,15 @@ export class RudimentaryResearcher extends ConstructionProject {
 
     onComplete() {
         this.machineService.addMachine(this);
+    }
+
+    defaultProperties(): MachineProperties {
+        const props = super.defaultProperties();
+        props.extras = {
+            researchImprovement: 0,
+            contraptionImprovement: 0
+        };
+        return props;
     }
 
 }

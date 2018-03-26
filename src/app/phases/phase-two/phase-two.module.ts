@@ -7,10 +7,12 @@ import { PanelsModule } from '../../panels/panels.module';
 import { DeploymentPanelComponent } from './panels/deployment-panel/deployment-panel.component';
 import { ButtonsModule } from '../../buttons/buttons.module';
 import { ResearchPanelComponent } from './panels/research-panel/research-panel.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     MdesignModule,
     ButtonsModule,
     PanelsModule

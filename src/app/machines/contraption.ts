@@ -26,7 +26,7 @@ export class Contraption extends Machine {
             const q = this.properties().extras['workingContraptions']
                 + (this.properties().extras['faultyContraptions'] / 2);
             const eff = this.properties().efficiency;
-            const work = eff * q * 0.01;
+            const work = eff * q * 0.1;
             this.constructionService.addWork(work);
             this.universeService.universe.heat -= work; // will have no effect but this is science!
             this.meteringService.addQuantity('work', work);
@@ -52,10 +52,11 @@ export class Contraption extends Machine {
 
     defaultProperties(): MachineProperties {
         const props = super.defaultProperties();
+        props.efficiency = 0.01;
         props.extras = {
             workingContraptions: 0,
             faultyContraptions: 0, // faulty are repairable
-            brokenContraptions: 0 // broken can be salvaged for steps towards a new machine          
+            brokenContraptions: 0 // broken can be salvaged for steps towards a new machine
         };
         return props;
     }

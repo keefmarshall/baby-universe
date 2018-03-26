@@ -77,7 +77,7 @@ export class ContrivancesComponent implements OnInit, OnDestroy {
   }
 
   readContraptionEfficiency(): number {
-    return Globals.round(this.universeService.universe.machines['Contraption'].efficiency, 1);
+    return this.universeService.universe.machines['Contraption'].efficiency;
   }
 
   readWorkMeter(): number {
@@ -86,6 +86,6 @@ export class ContrivancesComponent implements OnInit, OnDestroy {
 
   private flashColour(state: string) {
     this[state] = "end";
-    setTimeout(() => { this[state] = "start"; }, 1000);    
+    setTimeout(() => { this[state] = "start"; }, 1000);
   }
 }

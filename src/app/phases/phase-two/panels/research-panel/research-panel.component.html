@@ -7,4 +7,51 @@
   <p class="info">
     Researchers: {{ universeService.universe.machines["RudimentaryResearcher"].quantity }}
   </p>
+
+  <div *ngFor="let project of projectList">
+    <button 
+      *ngIf="shouldShow(project)"
+      mat-raised-button color="accent" 
+      class="deploy-button"
+      (click)="researchService.startProject(project)">
+
+      {{ project.name }} ({{ project.displayCost() }})
+      <br/>
+      <small>{{ project.description }}</small>
+      
+      <mat-progress-bar color="accent"
+        *ngIf="project.progress() > 0"
+        [value]="project.progress()"
+      ></mat-progress-bar>
+    
+    </button>
+  </div>
+
+
+  <form #assignmentForm="ngForm">
+    <p class="assignment-header">Researcher assignment</p>
+
+    <p class="info">
+      Improve research:
+      <input
+        type="number"
+        name="researchImprovement"
+        [(ngModel)]="universeService.universe.machines['RudimentaryResearcher'].extras.researchImprovement"
+        min="0"
+        [max]="researchMax()"
+      />
+
+      <br/>
+
+      Improve contraptions:
+      <input 
+        type="number"
+        name="contraptionImprovement"
+        [(ngModel)]="universeService.universe.machines['RudimentaryResearcher'].extras.contraptionImprovement"
+        min="0"
+        [max]="constructionMax()"
+      />
+    </p>
+  </form>
+
 </div>

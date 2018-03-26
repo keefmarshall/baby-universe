@@ -199,10 +199,6 @@ class ContrivanceState {
   lastBreakageAt: number = 0; // elapsed seconds
   maxLifetime: number = 1800; // 30 minutes
 
-  // workingContraptions: number = 0;
-  // faultyContraptions: number = 0; // faulty are repairable
-  // brokenContraptions: number = 0; // broken can be salvaged for steps towards a new machine
-
   salvageStepsGenerated: number = 5;
 
   constructionProgress: number = 0;
