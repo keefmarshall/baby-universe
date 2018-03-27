@@ -75,21 +75,6 @@ export class Quarks3 extends ResearchProject {
 }
 
 
-export class Leptons extends ResearchProject {
-
-    constructor() {
-        super("Matter: Leptons", "Simple building blocks of Matter", 10, 2, 10);
-    }
-
-    preconditions(universe: Universe): boolean {
-        return this.machineQuantity(universe, 'RudimentaryResearcher') > 0 &&
-            universe.phase > 1.5;
-    }
-
-    onCompletion(universe: Universe) {
-    }
-}
-
 
 export class QuarkUtils {
 
