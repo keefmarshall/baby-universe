@@ -8,6 +8,7 @@ import { DeploymentPanelComponent } from './panels/deployment-panel/deployment-p
 import { ButtonsModule } from '../../buttons/buttons.module';
 import { ResearchPanelComponent } from './panels/research-panel/research-panel.component';
 import { FormsModule } from '@angular/forms';
+import { PipesModule } from '../../pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     MdesignModule,
     ButtonsModule,
-    PanelsModule
+    PanelsModule,
+    PipesModule
   ],
   declarations: [
     PhaseTwoComponent,
