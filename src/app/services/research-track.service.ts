@@ -18,7 +18,7 @@ export class ResearchTrackService {
   improveResearchers(science: number) {
     // every 1 science improves researcher efficiency by 0.0001
     const rr = this.universeService.universe.machines['RudimentaryResearcher'];
-    rr.efficiency += (science * 0.0001);
+    rr.efficiency += (science * 0.00005);
   }
 
   improveContraptions(science: number) {

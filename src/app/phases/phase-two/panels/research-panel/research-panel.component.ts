@@ -63,4 +63,19 @@ export class ResearchPanelComponent implements OnInit {
   getRudimentaryResearcher(): MachineProperties {
     return this.universeService.universe.machines['RudimentaryResearcher'];
   }
+
+  onResImpChange(value) {
+    const rr = this.getRudimentaryResearcher();
+    if (value < 0) {
+      rr.extras['researchImprovement'] = 0
+    } else if (value > this.researchMax()) {
+      rr.extras['researchImprovement'] = this.researchMax()
+    } else {
+      rr.extras['researchImprovement'] = value;
+    }
+  }
+
+  onConImpChange(e) {
+
+  }
 }

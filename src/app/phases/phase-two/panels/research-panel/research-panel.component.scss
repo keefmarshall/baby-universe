@@ -29,3 +29,7 @@ input[type="number"]:disabled {
     border: none;
     margin: 2px;
 }
+
+input:invalid {
+    border-color: red;
+}

@@ -43,7 +43,7 @@
             type="number"
             name="projectResearchers"
             [value]="projectResearchers()"
-            disabled=true
+            readonly
           />
         </td>
       </tr>
@@ -54,9 +54,11 @@
           <input
             type="number"
             name="researchImprovement"
-            [(ngModel)]="universeService.universe.machines['RudimentaryResearcher'].extras.researchImprovement"
+            [ngModel]="universeService.universe.machines['RudimentaryResearcher'].extras.researchImprovement"
+            (ngModelChange)="onResImpChange($event)"
             min="0"
             [max]="researchMax()"
+            (focus)="$event.target.select()"
           />
         </td>
         <td>
@@ -78,6 +80,7 @@
             [(ngModel)]="universeService.universe.machines['RudimentaryResearcher'].extras.contraptionImprovement"
             min="0"
             [max]="constructionMax()"
+            (focus)="$event.target.select()"
           />
         </td>
         <td>

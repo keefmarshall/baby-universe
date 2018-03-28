@@ -98,6 +98,8 @@ export class DevPanelComponent implements OnInit {
     delete this.universeService.universe.machines['Contraption'];
     delete this.universeService.universe.machines['RudimentaryResearcher'];
     delete this.universeService.universe.research['Matter: Leptons'];
+    delete this.universeService.universe.research['Matter: Mesons'];
+    delete this.universeService.universe.research['Matter: Hadrons'];
     this.stateManagementService.resetMachines();
   }
 
