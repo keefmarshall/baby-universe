@@ -93,13 +93,19 @@ export class DevPanelComponent implements OnInit {
   }
 
   resetContrivanceState() {
-    this.universeService.universe.contrivances = null;
-    this.contrivanceService.initialiseFromUniverse(this.universeService.universe);
-    delete this.universeService.universe.machines['Contraption'];
-    delete this.universeService.universe.machines['RudimentaryResearcher'];
-    delete this.universeService.universe.research['Matter: Leptons'];
-    delete this.universeService.universe.research['Matter: Mesons'];
-    delete this.universeService.universe.research['Matter: Hadrons'];
+    const u = this.universeService.universe;
+    u.contrivances = null;
+    u.currentConstructionWork = 0;
+    u.currentConstructionProject = null;
+    u.currentResearchProject = null;
+    this.contrivanceService.initialiseFromUniverse(u);
+    delete u.machines['Contraption'];
+    delete u.machines['RudimentaryResearcher'];
+    delete u.research['Matter: Leptons'];
+    delete u.research['Matter: Mesons'];
+    delete u.research['Matter: Hadrons'];
+    delete u.research["Matter: Pions π+/π-"];
+    delete u.research["Matter: Kaons K+/K-"];
     this.stateManagementService.resetMachines();
   }
 
