@@ -21,10 +21,11 @@ table {
 }
 
 input[type="number"] {
-    width: 5em;
+    width: 4em;
+    text-align: right;
 }
 
 input[type="number"]:disabled {
     border: none;
-    margin: 1px;
+    margin: 2px;
 }

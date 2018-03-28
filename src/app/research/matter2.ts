@@ -4,21 +4,6 @@ import { Universe } from "../services/universe";
 /**
  * Phase TWO Matter research
  */
-export class Leptons extends ResearchProject {
-
-    constructor() {
-        super("Matter: Leptons", "Simple building blocks of Matter", 20, 2, 10);
-    }
-
-    preconditions(universe: Universe): boolean {
-        return this.machineQuantity(universe, 'RudimentaryResearcher') > 0 &&
-            this.isResearched(universe, new Hadrons());
-    }
-
-    onCompletion(universe: Universe) {
-    }
-}
-
 export class Hadrons extends ResearchProject {
 
     constructor() {
@@ -30,6 +15,68 @@ export class Hadrons extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
+        this.log("Hadrons! Now all those quarks can be used for something.")
     }
 }
 
+export class Mesons extends ResearchProject {
+
+    constructor() {
+        super("Matter: Mesons", "Hadrons made from a quark and an anti-quark", 15, 2, 10);
+    }
+
+    preconditions(universe: Universe): boolean {
+        return this.isResearched(universe, new Hadrons());
+    }
+
+    onCompletion(universe: Universe) {
+        this.log("There are many types of Meson, more research is required.")
+    }
+}
+
+export class Pions extends ResearchProject {
+
+    constructor() {
+        super("Matter: Pions π+/π-", "Pions are a type of Meson", 30, 2, 10);
+    }
+
+    preconditions(universe: Universe): boolean {
+        return this.isResearched(universe, new Mesons());
+    }
+
+    onCompletion(universe: Universe) {
+        this.log("Pions: π+ contains an up quark and an anti-down quark;\n" +
+                "π- contains an anti-up quark and a down quark.")
+    }
+}
+
+export class Kaons extends ResearchProject {
+
+    constructor() {
+        super("Matter: Kaons K+/K-", "Kaons are a type of Meson", 75, 2, 10);
+    }
+
+    preconditions(universe: Universe): boolean {
+        return this.isResearched(universe, new Pions());
+    }
+
+    onCompletion(universe: Universe) {
+        this.log("Kaons: K+ contains an up quark and an anti-strange quark;\n" +
+                "K- contains an anti-up quark and a strange quark.")
+    }
+}
+
+export class Leptons extends ResearchProject {
+
+    constructor() {
+        super("Matter: Leptons", "A new type of Fermion, fundamental particles.", 20, 2, 10);
+    }
+
+    preconditions(universe: Universe): boolean {
+        return this.isResearched(universe, new Hadrons());
+    }
+
+    onCompletion(universe: Universe) {
+        this.log("Leptons: a new type of particle. More research required.")
+    }
+}

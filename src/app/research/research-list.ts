@@ -9,7 +9,7 @@ import { PhotonAmplification, QSwitching, ModeLocking } from "app/research/ampli
 import { QuantumElectrodynamics, QuantumChromodynamics, ColourDeconfinement } from "app/research/collection";
 import { BulkDeployment, AdvancedBulkDeployment } from "app/research/bulk-deployment";
 import { InstructionPipelining, SuperscalarPipelining } from "app/research/assembly";
-import { Leptons, Hadrons } from "./matter2";
+import { Leptons, Hadrons, Mesons, Pions, Kaons } from "./matter2";
 
 export class ResearchList {
     public projectList: Array<ResearchProject> = [];
@@ -51,7 +51,10 @@ export class ResearchList {
             new Quarks2(),
             new Quarks3(),
             new Leptons(),
-            new Hadrons()
+            new Hadrons(),
+            new Mesons(),
+            new Pions(),
+            new Kaons()
         ];
 
         this.projectList.forEach(p => this.projects[p.name] = p);

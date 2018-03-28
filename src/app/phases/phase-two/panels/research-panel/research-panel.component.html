@@ -59,6 +59,14 @@
             [max]="researchMax()"
           />
         </td>
+        <td>
+          <mat-progress-spinner color="accent"
+            *ngIf="researchImprovers() > 0"
+            mode="indeterminate"
+            diameter="12"
+            strokeWidth="1"
+          ></mat-progress-spinner>
+        </td>
       </tr>
 
       <tr>
@@ -72,7 +80,15 @@
             [max]="constructionMax()"
           />
         </td>
-      </tr>
+        <td>
+            <mat-progress-spinner color="accent"
+              *ngIf="contraptionImprovers() > 0"
+              mode="indeterminate"
+              diameter="12"
+              strokeWidth="1"
+            ></mat-progress-spinner>
+          </td>
+        </tr>
     </table>
 
   </form>
