@@ -36,30 +36,35 @@
     <p class="assignment-header info">Researcher assignment:</p>
 
     <table>
-      <tr>
+      <tr class="project-researchers">
         <td>Project research</td>
+        <td class="right-align project-researchers-count">
+          {{ projectResearchers() }}
+        </td>
+      </tr>
+
+      <tr>
+        <td>Contraption improvement</td>
         <td class="right-align">
-          <input
-            type="number"
-            name="projectResearchers"
-            [value]="projectResearchers()"
-            readonly
-          />
+          <app-number-picker
+            [max]="constructionMax()"
+            [(value)]="universeService.universe.machines['RudimentaryResearcher'].extras.contraptionImprovement"
+          ></app-number-picker>
+        </td>
+        <td>
+          <i fa class="fa fa-cog fa-spin improver-cog"
+            *ngIf="contraptionImprovers() > 0"
+            aria-hidden="true"></i>
         </td>
       </tr>
 
       <tr>
         <td>Researcher improvement</td>
         <td class="right-align">
-          <input
-            type="number"
-            name="researchImprovement"
-            [ngModel]="universeService.universe.machines['RudimentaryResearcher'].extras.researchImprovement"
-            (ngModelChange)="onResImpChange($event)"
-            min="0"
+          <app-number-picker
             [max]="researchMax()"
-            (focus)="$event.target.select()"
-          />
+            [(value)]="universeService.universe.machines['RudimentaryResearcher'].extras.researchImprovement"
+          ></app-number-picker>
         </td>
         <td>
           <i fa class="fa fa-cog fa-spin improver-cog"
@@ -68,24 +73,6 @@
         </td>
       </tr>
 
-      <tr>
-        <td>Contraption improvement</td>
-        <td class="right-align">
-          <input 
-            type="number"
-            name="contraptionImprovement"
-            [(ngModel)]="universeService.universe.machines['RudimentaryResearcher'].extras.contraptionImprovement"
-            min="0"
-            [max]="constructionMax()"
-            (focus)="$event.target.select()"
-          />
-        </td>
-        <td>
-          <i fa class="fa fa-cog fa-spin improver-cog"
-            *ngIf="contraptionImprovers() > 0"
-            aria-hidden="true"></i>
-        </td>
-      </tr>
     </table>
 
   </form>

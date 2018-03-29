@@ -16,6 +16,10 @@ th, td {
     text-align: right;
 }
 
+.centre-align {
+    text-align: center;
+}
+
 table {
     font-size: 0.75em;
     padding: 5px;
@@ -38,4 +42,9 @@ input:invalid {
 
 .improver-cog {
     color: mat-color($buaccent)
+}
+
+.project-researchers-count {
+    padding-right: 3em;
+    height: 20px;
 }
