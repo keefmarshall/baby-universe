@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome'
 
 // This is a module to encapsulate the material design components
 import { MdesignModule } from './mdesign/mdesign.module';
@@ -49,6 +50,7 @@ import { ResearchTrackService } from './services/research-track.service';
     HttpClientModule,
     BrowserAnimationsModule,
     MdesignModule,
+    Angular2FontawesomeModule,
     PanelsModule,
     PhaseOneModule,
     PhaseTwoModule

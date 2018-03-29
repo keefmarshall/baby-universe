@@ -13,9 +13,9 @@
       Broken: {{ contrivanceService.contraptionProperties().brokenContraptions }}
     </span>
     <br/><br/>
-    Efficiency: {{ readContraptionEfficiency().toPrecision(4) | number:'1.1-3' }}<br/>
+    Efficiency: {{ readContraptionEfficiency()?.toPrecision(4) | number:'1.0-4' }}<br/>
     <!-- Work: {{ readWorkMeter() | illion:'1.1-3'  }}/s -->
-    Work: {{ readWorkMeter().toPrecision(4)  | number:'1.1-3'  }}/s
+    Work: {{ readWorkMeter()?.toPrecision(4)  | number:'1.0-3'  }}/s
   </p>
 
 

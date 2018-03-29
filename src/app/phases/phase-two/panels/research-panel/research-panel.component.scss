@@ -1,5 +1,7 @@
-@import '../../../../../style/deploy-button.scss';
-@import '../../../../../style/panel-info.scss';
+@import '~@angular/material/theming';
+@import 'src/theme.scss';
+@import 'src/style/deploy-button.scss';
+@import 'src/style/panel-info.scss';
 
 .assignment-header {
     font-weight: bold;
@@ -32,4 +34,8 @@ input[type="number"]:disabled {
 
 input:invalid {
     border-color: red;
+}
+
+.improver-cog {
+    color: mat-color($buaccent)
 }

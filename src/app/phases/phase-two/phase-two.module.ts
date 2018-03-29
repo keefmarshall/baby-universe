@@ -9,12 +9,14 @@ import { ButtonsModule } from '../../buttons/buttons.module';
 import { ResearchPanelComponent } from './panels/research-panel/research-panel.component';
 import { FormsModule } from '@angular/forms';
 import { PipesModule } from '../../pipes/pipes.module';
+import { Angular2FontawesomeModule } from 'angular2-fontawesome';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     MdesignModule,
+    Angular2FontawesomeModule,
     ButtonsModule,
     PanelsModule,
     PipesModule
