@@ -33,10 +33,11 @@ export class RudimentaryResearcher extends ConstructionProject {
         this.researchService.addScience(science);
 
         // Assignments
-        const improveScience = numImprove * eff * tickFactor * 0.1;
+        const assignmentEff = 2 * Math.log10(eff + 1);
+        const improveScience = numImprove * assignmentEff * tickFactor * 0.1;
         this.researchTrackService.improveResearchers(improveScience);
 
-        const contrapScience = numContrap * eff * tickFactor * 0.1;
+        const contrapScience = numContrap * assignmentEff * tickFactor * 0.1;
         this.researchTrackService.improveContraptions(contrapScience);
     }
 
