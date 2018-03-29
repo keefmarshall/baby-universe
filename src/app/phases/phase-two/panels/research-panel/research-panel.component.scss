@@ -3,6 +3,11 @@
 @import 'src/style/deploy-button.scss';
 @import 'src/style/panel-info.scss';
 
+.info {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
 .assignment-header {
     font-weight: bold;
 }
@@ -22,22 +27,8 @@ th, td {
 
 table {
     font-size: 0.75em;
-    padding: 5px;
+    padding: 0px;
     min-width: 240px;
-}
-
-input[type="number"] {
-    width: 4em;
-    text-align: right;
-}
-
-input[type="number"]:disabled {
-    border: none;
-    margin: 2px;
-}
-
-input:invalid {
-    border-color: red;
 }
 
 .improver-cog {

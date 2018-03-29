@@ -12,56 +12,58 @@
     <span [@brokenTrigger]="brokenState" class="contraption-count">
       Broken: {{ contrivanceService.contraptionProperties().brokenContraptions }}
     </span>
-    <br/><br/>
+    <!-- <br/><br/>
     Efficiency: {{ readContraptionEfficiency()?.toPrecision(4) | number:'1.0-4' }}<br/>
-    <!-- Work: {{ readWorkMeter() | illion:'1.1-3'  }}/s -->
-    Work: {{ readWorkMeter()?.toPrecision(4)  | number:'1.0-3'  }}/s
+    Work: {{ readWorkMeter()?.toPrecision(4)  | number:'1.0-3'  }}/s -->
   </p>
 
+  <div>
+    <button mat-raised-button
+      class="deploy-button"
+      (click)="buildContrivance()">
 
-  <button mat-raised-button
-    class="deploy-button"
-    (click)="buildContrivance()">
+      Contrive Contraption
 
-    Contrive Contraption
+      <mat-progress-bar
+        *ngIf="contrivanceService.state.constructionProgress > 0"
+        color="primary"
+        [value]="contrivanceService.state.constructionProgressPercent">
+      </mat-progress-bar>
 
-    <mat-progress-bar
-      *ngIf="contrivanceService.state.constructionProgress > 0"
-      color="primary"
-      [value]="contrivanceService.state.constructionProgressPercent">
-    </mat-progress-bar>
+    </button>
 
-  </button>
+    <button mat-raised-button 
+      *ngIf="contrivanceService.state.generatedTotal > 0"
+      class="deploy-button small-contrivance-button"
+      (click)="repairContrivance()"
+      [disabled]="contrivanceService.contraptionProperties().faultyContraptions === 0">
 
-  <button mat-raised-button 
-    *ngIf="contrivanceService.state.generatedTotal > 0"
-    class="deploy-button small-contrivance-button"
-    (click)="repairContrivance()"
-    [disabled]="contrivanceService.contraptionProperties().faultyContraptions === 0">
+      <span class="desktop-only">Repair Faulty Contraption</span>
+      <span class="mobile-only">Repair</span>
 
-    <span class="desktop-only">Repair Faulty Contraption</span>
-    <span class="mobile-only">Repair</span>
+      <mat-progress-bar
+        *ngIf="contrivanceService.state.repairProgress > 0"
+        color="primary"
+        [value]="contrivanceService.state.repairProgressPercent">
+      </mat-progress-bar>
 
-    <mat-progress-bar
-      *ngIf="contrivanceService.state.repairProgress > 0"
-      color="primary"
-      [value]="contrivanceService.state.repairProgressPercent">
-    </mat-progress-bar>
+    </button>
 
-  </button>
+    <!-- <button mat-raised-button 
+      *ngIf="contrivanceService.state.generatedTotal > 0"
+      class="deploy-button small-contrivance-button"
+      (click)="salvageContrivance()"
+      [disabled]="contrivanceService.contraptionProperties().brokenContraptions === 0">
 
-  <button mat-raised-button 
-    *ngIf="contrivanceService.state.generatedTotal > 0"
-    class="deploy-button small-contrivance-button"
-    (click)="salvageContrivance()"
-    [disabled]="contrivanceService.contraptionProperties().brokenContraptions === 0">
+      <span class="desktop-only">
+        Salvage Broken Contraption<br/>
+      </span>
+      <span class="mobile-only">Salvage</span>
 
-    <span class="desktop-only">
-      Salvage Broken Contraption<br/>
-    </span>
-    <span class="mobile-only">Salvage</span>
+    </button> -->
+  </div>
 
-  </button>
+  <div class="clearfix"></div>
 
   <p *ngIf="constructionService.isConstructing()">
     <small>Building: {{ constructionService.currentProject.displayName }}</small><br/>
@@ -71,6 +73,14 @@
     ></mat-progress-bar>
   </p>
 
+  <p class="info info-right">
+      <!-- Work: {{ readWorkMeter() | illion:'1.1-3'  }}/s -->
+      Work: {{ readWorkMeter()?.toPrecision(4)  | number:'1.0-3'  }}/s
+  </p>
 
+  <p class="info info-left">
+      Efficiency: {{ readContraptionEfficiency()?.toPrecision(4) | number:'1.0-4' }}
+  </p>
 
+  <div class="clearfix"></div>
 </div>

@@ -7,9 +7,11 @@
   <p class="info info-right">
     Efficiency: {{ universeService.universe.machines["RudimentaryResearcher"]?.efficiency?.toPrecision(4) | number:'1.0-4' }}
   </p>
-  <p class="info">
+  <p class="info info-left">
     Researchers: {{ universeService.universe.machines["RudimentaryResearcher"]?.quantity }}
   </p>
+
+  <div class="clearfix"></div>
 
   <div *ngFor="let project of projectList">
     <button 
