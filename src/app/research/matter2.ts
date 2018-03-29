@@ -37,7 +37,7 @@ export class Mesons extends ResearchProject {
 export class Pions extends ResearchProject {
 
     constructor() {
-        super("Matter: Pions π+/π-", "Pions are a type of Meson", 30, 2, 10);
+        super("Matter: Pions π+/π-", "A small Meson", 30, 2, 10);
     }
 
     preconditions(universe: Universe): boolean {
@@ -45,15 +45,15 @@ export class Pions extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        this.log("Pions: π+ contains an up quark and an anti-down quark;\n" +
-                "π- contains an anti-up quark and a down quark.")
+        this.log("Pions: π+ made from an up quark and an anti-down quark;\n" +
+                "π- made from an anti-up quark and a down quark.")
     }
 }
 
 export class Kaons extends ResearchProject {
 
     constructor() {
-        super("Matter: Kaons K+/K-", "Kaons are a type of Meson", 75, 2, 10);
+        super("Matter: Kaons K+/K-", "A larger Meson", 75, 2, 10);
     }
 
     preconditions(universe: Universe): boolean {
@@ -61,15 +61,15 @@ export class Kaons extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        this.log("Kaons: K+ contains an up quark and an anti-strange quark;\n" +
-                "K- contains an anti-up quark and a strange quark.")
+        this.log("Kaons: K+ made from an up quark and an anti-strange quark;\n" +
+                "K- made from an anti-up quark and a strange quark.")
     }
 }
 
 export class Leptons extends ResearchProject {
 
     constructor() {
-        super("Matter: Leptons", "A new type of Fermion, fundamental particles.", 20, 2, 10);
+        super("Matter: Leptons", "A new class of Fermion, fundamental particles.", 20, 2, 10);
     }
 
     preconditions(universe: Universe): boolean {
@@ -77,6 +77,6 @@ export class Leptons extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        this.log("Leptons: a new type of particle. More research required.")
+        this.log("Leptons: a new class of particle. More research required.")
     }
 }
