@@ -81,14 +81,17 @@ export class ContrivanceService {
     }
   }
 
-  salvageContrivance() {
-    if (this.contraptionProperties().brokenContraptions > 0) {
-      this.contraptionProperties().brokenContraptions--;
-      this.universeService.universe.machines['Contraption'].quantity--;
-      if (this.contraptionProperties().faultyContraptions > 0) {
-        this.repairContrivance(this.state.salvageStepsGenerated);
-      } else {
-        this.buildContrivance(this.state.salvageStepsGenerated);
+  salvageContrivance(count: number = 1) {
+    const salvages = Math.min(count, this.contraptionProperties().brokenContraptions);
+    if (salvages > 0) {
+      this.contraptionProperties().brokenContraptions -= salvages;
+      this.universeService.universe.machines['Contraption'].quantity -= salvages;
+      for (let i = 0; i < salvages; i++) {
+        if (this.contraptionProperties().faultyContraptions > 0) {
+          this.repairContrivance(this.state.salvageStepsGenerated);
+        } else {
+          this.buildContrivance(this.state.salvageStepsGenerated);
+        }
       }
     }
   }
