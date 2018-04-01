@@ -35,7 +35,8 @@ export class Contrecycler extends ConstructionProject {
     }
 
     preconditions(): boolean {
-        return this.machineQuantity("Contraption") === 0 &&
+        return this.machineQuantity("Contrecycler") === 0 && // only one, for now
+            this.machineQuantity("Contraption") > 0 &&
             this.universeService.universe.machines['Contraption'].efficiency > 0.02;
     }
 
