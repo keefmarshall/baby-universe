@@ -90,6 +90,7 @@ export class MachineFactory {
             'ParticleAttractor': new ParticleAttractor(this.universeService, this.logService),
 
             // PHASE TWO
+            'Contraption': new Contraption(this.universeService, this.logService, this.constructionService, this.meteringService),
             'RudimentaryResearcher': new RudimentaryResearcher(
                 this.universeService, this.logService, this.researchService, this.researchTrackService),
             'Contrecycler': new Contrecycler(this.universeService, this.logService, this.contrivanceService)
