@@ -73,14 +73,16 @@
     ></mat-progress-bar>
   </p>
 
-  <p class="info info-right">
-      <!-- Work: {{ readWorkMeter() | illion:'1.1-3'  }}/s -->
-      Work: {{ readWorkMeter()?.toPrecision(4)  | number:'1.0-3'  }}/s
-  </p>
+  <div *ngIf="universeService.universe.machines['Contraption']">
+    <p class="info info-right">
+        <!-- Work: {{ readWorkMeter() | illion:'1.1-3'  }}/s -->
+        Work: {{ readWorkMeter()?.toPrecision(4)  | number:'1.0-3'  }}/s
+    </p>
 
-  <p class="info info-left">
-      Efficiency: {{ readContraptionEfficiency()?.toPrecision(4) | number:'1.0-4' }}
-  </p>
-
+    <p class="info info-left">
+        Efficiency: {{ readContraptionEfficiency()?.toPrecision(4) | number:'1.0-4' }}
+    </p>
+  </div>
+  
   <div class="clearfix"></div>
 </div>
