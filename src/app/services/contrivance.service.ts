@@ -139,11 +139,11 @@ export class ContrivanceService {
     }
 
     if (this.isContriving) {
-      this.buildContrivance();
+      this.buildContrivance(0.5);
     }
 
     if (this.isReparing) {
-      this.repairContrivance();
+      this.repairContrivance(0.5);
     }
   }
 
