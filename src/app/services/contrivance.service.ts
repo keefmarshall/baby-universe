@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { UniverseService } from './universe.service';
 import { Universe } from './universe';
-import { MachineFactory } from '../machines/machine-factory';
 import { MachineService } from './machine.service';
 import { TickerService } from './ticker.service';
 import { Globals } from '../globals';
 import { LogService } from './log.service';
 import { Subject } from 'rxjs/Subject';
 import { ConstructionService } from './construction.service';
+import { Contraption } from '../machines/contraption';
+import { MeteringService } from './metering.service';
 
 
 export enum ContrivanceEvent { NEW, FAULTY, BROKEN }
@@ -21,8 +22,8 @@ export class ContrivanceService {
 
   constructor(
     private universeService: UniverseService,
-    private machineFactory: MachineFactory,
     private machineService: MachineService,
+    private meteringService: MeteringService,
     private constructionService: ConstructionService,
     private tickerService: TickerService,
     private logService: LogService
@@ -45,7 +46,9 @@ export class ContrivanceService {
     this.state.constructionProgress += steps;
     if (this.state.constructionProgress >= this.state.constructionStepsRequired) {
       console.log("Contraption constructed.");
-      const machine = this.machineFactory.newMachine("Contraption");
+      // DO NOT use MachineFactory, due to cyclical dependency issues.
+      const machine = new Contraption(this.universeService, this.logService,
+                             this.constructionService, this.meteringService);
       this.machineService.addMachine(machine);
       this.contraptionProperties().workingContraptions ++;
       this.state.constructionProgress = 0;
