@@ -34,6 +34,8 @@ import { PlasmaShockService } from '../services/plasma-shock.service';
 import { Contraption } from './contraption';
 import { RudimentaryResearcher } from './rudimentary-researcher';
 import { ResearchTrackService } from '../services/research-track.service';
+import { Contrecycler } from './contrecycler';
+import { ContrivanceService } from '../services/contrivance.service';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -54,6 +56,7 @@ export class MachineFactory {
         private logService: LogService,
         private researchService: ResearchService,
         private constructionService: ConstructionService,
+        private contrivanceService: ContrivanceService,
         private meteringService: MeteringService,
         private stargameService: StargameService,
         private heatingService: HeatingService,
@@ -89,7 +92,8 @@ export class MachineFactory {
             // PHASE TWO
             'Contraption': new Contraption(this.universeService, this.logService, this.constructionService, this.meteringService),
             'RudimentaryResearcher': new RudimentaryResearcher(
-                this.universeService, this.logService, this.researchService, this.researchTrackService)
+                this.universeService, this.logService, this.researchService, this.researchTrackService),
+            'Contrecycler': new Contrecycler(this.universeService, this.logService, this.contrivanceService)
         };
 
         this.allMachineNames = [];

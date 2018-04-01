@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { UniverseService } from './universe.service';
 import { Universe } from './universe';
-import { MachineFactory } from '../machines/machine-factory';
 import { MachineService } from './machine.service';
 import { TickerService } from './ticker.service';
 import { Globals } from '../globals';
 import { LogService } from './log.service';
 import { Subject } from 'rxjs/Subject';
 import { ConstructionService } from './construction.service';
+import { Contraption } from '../machines/contraption';
+import { MeteringService } from './metering.service';
 
 
 export enum ContrivanceEvent { NEW, FAULTY, BROKEN }
@@ -17,12 +18,15 @@ export class ContrivanceService {
   state: ContrivanceState;
   events$ = new Subject<ContrivanceEvent>();
 
+  isContriving = false;
+  isReparing = false;
+
   private breakCheckSeconds = 10;
 
   constructor(
     private universeService: UniverseService,
-    private machineFactory: MachineFactory,
     private machineService: MachineService,
+    private meteringService: MeteringService,
     private constructionService: ConstructionService,
     private tickerService: TickerService,
     private logService: LogService
@@ -45,7 +49,9 @@ export class ContrivanceService {
     this.state.constructionProgress += steps;
     if (this.state.constructionProgress >= this.state.constructionStepsRequired) {
       console.log("Contraption constructed.");
-      const machine = this.machineFactory.newMachine("Contraption");
+      // DO NOT use MachineFactory, due to cyclical dependency issues.
+      const machine = new Contraption(this.universeService, this.logService,
+                             this.constructionService, this.meteringService);
       this.machineService.addMachine(machine);
       this.contraptionProperties().workingContraptions ++;
       this.state.constructionProgress = 0;
@@ -81,14 +87,17 @@ export class ContrivanceService {
     }
   }
 
-  salvageContrivance() {
-    if (this.contraptionProperties().brokenContraptions > 0) {
-      this.contraptionProperties().brokenContraptions--;
-      this.universeService.universe.machines['Contraption'].quantity--;
-      if (this.contraptionProperties().faultyContraptions > 0) {
-        this.repairContrivance(this.state.salvageStepsGenerated);
-      } else {
-        this.buildContrivance(this.state.salvageStepsGenerated);
+  salvageContrivance(count: number = 1) {
+    const salvages = Math.min(count, this.contraptionProperties().brokenContraptions);
+    if (salvages > 0) {
+      this.contraptionProperties().brokenContraptions -= salvages;
+      this.universeService.universe.machines['Contraption'].quantity -= salvages;
+      for (let i = 0; i < salvages; i++) {
+        if (this.contraptionProperties().faultyContraptions > 0) {
+          this.repairContrivance(this.state.salvageStepsGenerated);
+        } else {
+          this.buildContrivance(this.state.salvageStepsGenerated);
+        }
       }
     }
   }
@@ -114,7 +123,7 @@ export class ContrivanceService {
 
   ///////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////
-  // Period breakages
+  // Periodic breakages
 
   onTick(n: number) {
     // every n seconds there is a chance something can break
@@ -127,6 +136,14 @@ export class ContrivanceService {
       } else if (n % Math.ceil(ticksPerCheck) === 0) {
         this.checkForBreakages();
       }
+    }
+
+    if (this.isContriving) {
+      this.buildContrivance(0.5);
+    }
+
+    if (this.isReparing) {
+      this.repairContrivance(0.5);
     }
   }
 

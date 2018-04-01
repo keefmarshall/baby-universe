@@ -6,13 +6,14 @@ import { UniverseService } from './universe.service';
 import { Globals } from '../globals';
 import { Universe } from './universe';
 
-import { MachineFactory } from '../machines/machine-factory';
 import { Machine, MachineProperties } from '../machines/machine';
 import { LogService } from './log.service';
 
 
 /**
  * Lifecycle management for machines
+ * 
+ * DO NOT import MachineFactory due to cyclical dependency issues!
  */
 @Injectable()
 export class MachineService {
@@ -22,7 +23,6 @@ export class MachineService {
   public supervisorMessageSeen = false;
 
   constructor(
-    private machineFactory: MachineFactory,
     private tickerService: TickerService,
     private universeService: UniverseService,
     private logService: LogService

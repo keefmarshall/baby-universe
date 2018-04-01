@@ -12,6 +12,11 @@
     <span [@brokenTrigger]="brokenState" class="contraption-count">
       Broken: {{ contrivanceService.contraptionProperties().brokenContraptions }}
     </span>
+    <br/><br/>
+    <span class="contraption-count"
+      *ngIf="universeService.universe.machines['Contrecycler']?.quantity > 0">
+      Recyclers: {{ universeService.universe.machines['Contrecycler']?.quantity }}
+    </span>
     <!-- <br/><br/>
     Efficiency: {{ readContraptionEfficiency()?.toPrecision(4) | number:'1.0-4' }}<br/>
     Work: {{ readWorkMeter()?.toPrecision(4)  | number:'1.0-3'  }}/s -->
@@ -20,9 +25,16 @@
   <div>
     <button mat-raised-button
       class="deploy-button"
-      (click)="buildContrivance()">
+      (click)="buildContrivance()"
+      (mousedown)="buildMouseDown()"
+      (mouseup)="buildMouseUp()"
+      (mouseout)="buildMouseOut()">
 
-      Contrive Contraption
+      <i fa class="fa fa-cog fa-spin build-cog"
+        *ngIf="contrivanceService.isContriving"
+        aria-hidden="true"></i>
+
+      <span class="button-text">Contrive Contraption</span>
 
       <mat-progress-bar
         *ngIf="contrivanceService.state.constructionProgress > 0"

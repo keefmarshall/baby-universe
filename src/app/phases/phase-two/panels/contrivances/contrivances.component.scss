@@ -1,5 +1,7 @@
-@import '../../../../../style/deploy-button.scss';
-@import '../../../../../style/panel-info.scss';
+@import '~@angular/material/theming';
+@import 'src/theme.scss';
+@import 'src/style/deploy-button.scss';
+@import 'src/style/panel-info.scss';
 
 .panel {
     border-top: none;
@@ -9,6 +11,12 @@
 .deploy-button {
     width: 60%;
     min-height: 42px;
+}
+
+// May stop mouseout events firing incorrectly?
+// Nope, doesn't get picked up, sadly.
+.deploy-button .button-text {
+    pointer-events: none!important;
 }
 
 // @media all and (max-width: 839px) {
@@ -28,4 +36,10 @@
 
 mat-progress-bar {
     margin-top: 3px;
+}
+
+.build-cog {
+    color: mat-color($alt2-buprimary);
+    float: right;
+    vertical-align: center;
 }
