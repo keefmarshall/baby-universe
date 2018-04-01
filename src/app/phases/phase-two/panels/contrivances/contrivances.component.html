@@ -20,9 +20,16 @@
   <div>
     <button mat-raised-button
       class="deploy-button"
-      (click)="buildContrivance()">
+      (click)="buildContrivance()"
+      (mousedown)="buildMouseDown()"
+      (mouseup)="buildMouseUp()"
+      (mouseout)="buildMouseOut()">
 
-      Contrive Contraption
+      <i fa class="fa fa-cog fa-spin build-cog"
+        *ngIf="buildMouseIsDown"
+        aria-hidden="true"></i>
+        
+      <span class="button-text">Contrive Contraption</span>
 
       <mat-progress-bar
         *ngIf="contrivanceService.state.constructionProgress > 0"

@@ -20,6 +20,7 @@ import { MeteringService } from '../../../../services/metering.service';
 })
 export class ContrivancesComponent implements OnInit, OnDestroy {
   private contrivanceEventSub: Subscription = null;
+  buildMouseIsDown: boolean = false;
 
   workingState = "start";
   faultyState = "start";
@@ -44,6 +45,24 @@ export class ContrivancesComponent implements OnInit, OnDestroy {
     }
   }
 
+  buildMouseDown() {
+    console.log("Build mousedown");
+    this.buildMouseIsDown = true;
+    this.contrivanceService.isContriving = true;
+  }
+
+  buildMouseUp() {
+    console.log("Build mouseup");
+    this.buildMouseIsDown = false;
+    this.contrivanceService.isContriving = false;
+  }
+
+  buildMouseOut() {
+    console.log("Build mouseout");
+    this.buildMouseIsDown = false;
+    this.contrivanceService.isContriving = false;
+  }
+  
   numContrivances(): number {
     return this.contrivanceService.totalContrivances();
   }

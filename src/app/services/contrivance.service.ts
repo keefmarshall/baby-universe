@@ -18,6 +18,9 @@ export class ContrivanceService {
   state: ContrivanceState;
   events$ = new Subject<ContrivanceEvent>();
 
+  isContriving = false;
+  isReparing = false;
+
   private breakCheckSeconds = 10;
 
   constructor(
@@ -120,7 +123,7 @@ export class ContrivanceService {
 
   ///////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////
-  // Period breakages
+  // Periodic breakages
 
   onTick(n: number) {
     // every n seconds there is a chance something can break
@@ -133,6 +136,14 @@ export class ContrivanceService {
       } else if (n % Math.ceil(ticksPerCheck) === 0) {
         this.checkForBreakages();
       }
+    }
+
+    if (this.isContriving) {
+      this.buildContrivance();
+    }
+
+    if (this.isReparing) {
+      this.repairContrivance();
     }
   }
 
