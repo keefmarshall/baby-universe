@@ -19,7 +19,7 @@ export class ContrivanceService {
   events$ = new Subject<ContrivanceEvent>();
 
   isContriving = false;
-  isReparing = false;
+  isRepairing = false;
 
   private breakCheckSeconds = 10;
 
@@ -80,6 +80,9 @@ export class ContrivanceService {
         this.state.repairProgress = 0;
         this.state.repairProgressPercent = 0;
         this.events$.next(ContrivanceEvent.NEW);
+        if (this.contraptionProperties().faultyContraptions === 0) {
+          this.isRepairing = false;
+        }
       } else {
         this.state.repairProgressPercent =
           this.state.repairProgress * 100 / this.state.repairStepsRequired;
@@ -142,7 +145,7 @@ export class ContrivanceService {
       this.buildContrivance(0.5);
     }
 
-    if (this.isReparing) {
+    if (this.isRepairing) {
       this.repairContrivance(0.5);
     }
   }

@@ -63,6 +63,19 @@ export class ContrivancesComponent implements OnInit, OnDestroy {
     this.contrivanceService.isContriving = false;
   }
   
+  repairMouse(action: string) {
+    switch(action) {
+      case 'up':
+      case 'out':
+        this.contrivanceService.isRepairing = false;
+        break;
+        
+      case 'down':
+        this.contrivanceService.isRepairing = true;
+        break;
+    }
+  }
+
   numContrivances(): number {
     return this.contrivanceService.totalContrivances();
   }
