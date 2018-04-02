@@ -21,6 +21,8 @@ import { MeteringService } from '../../../../services/metering.service';
 export class ContrivancesComponent implements OnInit, OnDestroy {
   private contrivanceEventSub: Subscription = null;
   buildMouseIsDown: boolean = false;
+  buildTimeout = null;
+  repairTimeout = null;
 
   workingState = "start";
   faultyState = "start";
@@ -48,19 +50,25 @@ export class ContrivancesComponent implements OnInit, OnDestroy {
   buildMouseDown() {
     console.log("Build mousedown");
     this.buildMouseIsDown = true;
-    this.contrivanceService.isContriving = true;
+    this.buildTimeout = setTimeout(() => this.contrivanceService.isContriving = true, 300);
   }
 
   buildMouseUp() {
     console.log("Build mouseup");
     this.buildMouseIsDown = false;
     this.contrivanceService.isContriving = false;
+    if (this.buildTimeout) {
+      clearTimeout(this.buildTimeout);
+    }
   }
 
   buildMouseOut() {
     console.log("Build mouseout");
     this.buildMouseIsDown = false;
     this.contrivanceService.isContriving = false;
+    if (this.buildTimeout) {
+      clearTimeout(this.buildTimeout);
+    }
   }
   
   repairMouse(action: string) {
@@ -68,10 +76,13 @@ export class ContrivancesComponent implements OnInit, OnDestroy {
       case 'up':
       case 'out':
         this.contrivanceService.isRepairing = false;
+        if (this.repairTimeout) {
+          clearTimeout(this.repairTimeout);
+        }
         break;
         
       case 'down':
-        this.contrivanceService.isRepairing = true;
+        this.repairTimeout = setTimeout(() => this.contrivanceService.isRepairing = true, 300);
         break;
     }
   }
