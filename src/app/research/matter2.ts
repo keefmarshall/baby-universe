@@ -77,6 +77,6 @@ export class Leptons extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        this.log("Leptons: a new class of particle. More research required.")
+        this.log("You have identified a completely new type of fundamental particle. More research required.")
     }
 }
