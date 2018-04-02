@@ -30,7 +30,7 @@
       (mouseup)="buildMouseUp()"
       (mouseout)="buildMouseOut()">
 
-      <i fa class="fa fa-cog fa-spin build-cog"
+      <i fa class="fa fa-circle-o-notch fa-spin build-cog"
         *ngIf="contrivanceService.isContriving"
         aria-hidden="true"></i>
 
@@ -53,7 +53,7 @@
       (mouseup)="repairMouse('up')"
       (mouseout)="repairMouse('out')">
 
-      <i fa class="fa fa-cog fa-spin build-cog"
+      <i fa class="fa fa-circle-o-notch fa-spin build-cog"
         *ngIf="contrivanceService.isRepairing"
         aria-hidden="true"></i>
 
