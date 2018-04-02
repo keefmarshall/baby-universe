@@ -25,12 +25,15 @@ export class Contrecycler extends ConstructionProject {
     }
 
     onTick(factor: number) {
-        this.salvageProgress += factor;
-        const salvageTicks = this.properties().extras['salvageTicks'];
-        const salvages = Math.floor(this.salvageProgress / salvageTicks);
-        if (salvages > 0) {
-            this.salvageProgress -= (salvages * salvageTicks);
-            this.contrivanceService.salvageContrivance(salvages);
+        if (this.machineQuantity('Contraption') > 0 &&
+             this.universeService.universe.machines['Contraption'].extras.brokenContraptions > 0) {
+            this.salvageProgress += factor;
+            const salvageTicks = this.properties().extras['salvageTicks'];
+            const salvages = Math.floor(this.salvageProgress / salvageTicks);
+            if (salvages > 0) {
+                this.salvageProgress -= (salvages * salvageTicks);
+                this.contrivanceService.salvageContrivance(salvages);
+            }
         }
     }
 

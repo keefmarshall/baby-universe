@@ -36,6 +36,7 @@ import { RudimentaryResearcher } from './rudimentary-researcher';
 import { ResearchTrackService } from '../services/research-track.service';
 import { Contrecycler } from './contrecycler';
 import { ContrivanceService } from '../services/contrivance.service';
+import { Bodger } from './bodger';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -93,7 +94,8 @@ export class MachineFactory {
             'Contraption': new Contraption(this.universeService, this.logService, this.constructionService, this.meteringService),
             'RudimentaryResearcher': new RudimentaryResearcher(
                 this.universeService, this.logService, this.researchService, this.researchTrackService),
-            'Contrecycler': new Contrecycler(this.universeService, this.logService, this.contrivanceService)
+            'Contrecycler': new Contrecycler(this.universeService, this.logService, this.contrivanceService),
+            'Bodger': new Bodger(this.universeService, this.logService, this.contrivanceService)
         };
 
         this.allMachineNames = [];
