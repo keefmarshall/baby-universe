@@ -64,7 +64,7 @@ export class Kaons extends ResearchProject {
     onCompletion(universe: Universe) {
         ParticleUtils.initialiseParticles('kaon', universe);
         this.log("Kaons: K+ made from an up quark and an anti-strange quark;\n" +
-                "K- made from an anti-up quark and a strange quark.")
+                "K- made from an anti-up quark and a strange quark.");
     }
 }
 
@@ -79,7 +79,7 @@ export class Leptons extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        this.log("You have identified a completely new type of fundamental particle. More research required.")
+        this.log("You have identified a completely new type of fundamental particle. More research required.");
     }
 }
 
