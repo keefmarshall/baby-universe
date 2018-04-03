@@ -17,7 +17,7 @@ export class Bodger extends ConstructionProject {
             "Repairs faulty contraptions.",
             universeService,
             logService,
-            200, Math.SQRT2);
+            200, 2);
     }
 
     onComplete() {
