@@ -10,6 +10,7 @@ import { ResearchPanelComponent } from './panels/research-panel/research-panel.c
 import { FormsModule } from '@angular/forms';
 import { PipesModule } from '../../pipes/pipes.module';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome';
+import { HadronPanelComponent } from './panels/hadron-panel/hadron-panel.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { Angular2FontawesomeModule } from 'angular2-fontawesome';
     PhaseTwoComponent,
     ContrivancesComponent,
     DeploymentPanelComponent,
-    ResearchPanelComponent
+    ResearchPanelComponent,
+    HadronPanelComponent
   ],
   exports: [
     PhaseTwoComponent
