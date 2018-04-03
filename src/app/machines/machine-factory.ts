@@ -37,6 +37,7 @@ import { ResearchTrackService } from '../services/research-track.service';
 import { Contrecycler } from './contrecycler';
 import { ContrivanceService } from '../services/contrivance.service';
 import { Bodger } from './bodger';
+import { MesonManufacturer } from './meson-manufacturer';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -95,7 +96,8 @@ export class MachineFactory {
             'RudimentaryResearcher': new RudimentaryResearcher(
                 this.universeService, this.logService, this.researchService, this.researchTrackService),
             'Contrecycler': new Contrecycler(this.universeService, this.logService, this.contrivanceService),
-            'Bodger': new Bodger(this.universeService, this.logService, this.contrivanceService)
+            'Bodger': new Bodger(this.universeService, this.logService, this.contrivanceService),
+            'MesonManufacturer': new MesonManufacturer(this.universeService, this.logService)
         };
 
         this.allMachineNames = [];
