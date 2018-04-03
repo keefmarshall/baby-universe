@@ -141,6 +141,7 @@ export class ContrivanceService {
       }
     }
 
+    // These are for the press-and-hold feature:
     if (this.isContriving) {
       this.buildContrivance(0.5);
     }
