@@ -12,7 +12,7 @@ import { LogService } from './log.service';
 
 /**
  * Lifecycle management for machines
- * 
+ *
  * DO NOT import MachineFactory due to cyclical dependency issues!
  */
 @Injectable()
