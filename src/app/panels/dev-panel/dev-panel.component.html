@@ -75,11 +75,13 @@
   <button mat-raised-button (click)="stargameService.initStage();">Init stage</button>
   
   <br/>
-  <button mat-raised-button (click)="switchPhase(1);">Phase 1</button>  
-  <button mat-raised-button (click)="switchPhase(1.5);">Phase 1.5</button>  
-  <button mat-raised-button (click)="switchPhase(2);">Phase 2</button>  
+  <button mat-raised-button (click)="switchPhase(1);">Phase 1</button>
+  <button mat-raised-button (click)="switchPhase(1.5);">Phase 1.5</button>
+  <button mat-raised-button (click)="switchPhase(2);">Phase 2</button>
 
-  <div id="universe-debug" class="desktop-only">
+  <br/>
+  <button mat-raised-button (click)="showUniverse = !showUniverse">Toggle universe</button>
+  <div id="universe-debug" class="desktop-only" *ngIf="showUniverse">
     <pre>{{ universeService.universe | json }}</pre>
   </div>
   <!-- <div><pre>{{ projects | json }}</pre></div> -->

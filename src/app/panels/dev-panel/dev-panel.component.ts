@@ -20,6 +20,8 @@ import { ContrivanceService } from '../../services/contrivance.service';
   styleUrls: ['./dev-panel.component.css']
 })
 export class DevPanelComponent implements OnInit {
+  showUniverse = false;
+
   private particleFactory = new ParticleFactory();
   private projects = null;
 
