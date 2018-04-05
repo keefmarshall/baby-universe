@@ -8,6 +8,7 @@ import { MachineService } from './machine.service';
 import { StateManagementService } from './state-management.service';
 import { ResearchList } from '../research/research-list';
 import { ResearchProject } from '../research/research-project';
+import { BackupService } from './backup.service';
 
 @Injectable()
 export class BigBangService {
@@ -23,7 +24,8 @@ export class BigBangService {
     private tickerService: TickerService,
     private universeService: UniverseService,
     private analytics: AnalyticsService,
-    private stateManagementService: StateManagementService
+    private stateManagementService: StateManagementService,
+    private backupService: BackupService
   ) {
     this.universeService.phase$.subscribe(phase => {
       if (phase === 1.5) {
@@ -49,6 +51,7 @@ export class BigBangService {
   bigBang() {
     console.log("Big bang, pausing universe, starting animation");
     this.pauseUniverse();
+    this.backupService.backupUniverse("endphase1");
     this.renderer.addClass(this.elementRef.nativeElement, "bigbang");
     const mainWrapper = this.parentOf(this.parentOf(this.elementRef.nativeElement));
     // Header is faded out in app.component

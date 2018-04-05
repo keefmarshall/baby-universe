@@ -80,6 +80,11 @@
   <button mat-raised-button (click)="switchPhase(2);">Phase 2</button>
 
   <br/>
+  <button mat-raised-button (click)="restoreBackup('devpanel');">Restore</button>
+  <button mat-raised-button (click)="devBackup('devpanel');">Backup</button>
+  <button mat-raised-button (click)="restoreBackup('endphase1');">Restore endphase1</button>
+
+  <br/>
   <button mat-raised-button (click)="showUniverse = !showUniverse">Toggle universe</button>
   <div id="universe-debug" class="desktop-only" *ngIf="showUniverse">
     <pre>{{ universeService.universe | json }}</pre>

@@ -23,6 +23,8 @@ export class BackupService {
       this.universeService.updateCode();
       this.universeService.saveUniverse();
       window.location.reload();
+    } else {
+      console.log(`No backup ${key} to restore!`);
     }
   }
 

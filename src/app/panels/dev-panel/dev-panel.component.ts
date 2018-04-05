@@ -13,6 +13,7 @@ import { MachineService } from '../../services/machine.service';
 import { MachineFactory } from '../../machines/machine-factory';
 import { ConstructionProject } from '../../machines/construction-project';
 import { ContrivanceService } from '../../services/contrivance.service';
+import { BackupService } from '../../services/backup.service';
 
 @Component({
   selector: 'app-dev-panel',
@@ -35,7 +36,8 @@ export class DevPanelComponent implements OnInit {
     private machineService: MachineService,
     public stargameService: StargameService,
     private autosaveService: AutosaveService,
-    private logService: LogService
+    private logService: LogService,
+    private backupService: BackupService
   ) { }
 
   ngOnInit() {
@@ -113,6 +115,14 @@ export class DevPanelComponent implements OnInit {
 
   switchPhase(p: number) {
     this.universeService.transitionToPhase(p);
+  }
+
+  restoreBackup(filename: string) {
+    this.backupService.restoreUniverse(filename);
+  }
+
+  devBackup() {
+    this.backupService.backupUniverse("devpanel");
   }
 
   windowHeight(): number { return window.innerHeight; }
