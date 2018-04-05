@@ -36,11 +36,14 @@ export class ContrivanceService {
   }
 
   initialiseFromUniverse(u: Universe) {
-    if (!u.contrivances || u.contrivances === {}) {
+    console.log("ContrivanceService initialising..");
+    if (!u.contrivances || !u.contrivances['salvageStepsGenerated']) {
+      console.log("ContrivanceService: empty, populating with defaults..")
       this.state = new ContrivanceState();
       this.state.lastBreakageAt = u.elapsedSeconds;
       u.contrivances = this.state;
     } else {
+      console.log("ContrivanceService: setting from the universe")
       this.state = u.contrivances as ContrivanceState;
     }
   }
@@ -129,26 +132,28 @@ export class ContrivanceService {
   // Periodic breakages
 
   onTick(n: number) {
-    // every n seconds there is a chance something can break
-    if (this.constructionService.isConstructing()) {
-      const ticksPerCheck = this.breakCheckSeconds / Globals.secondsPerTick;
-      if (Globals.tickFactor >= 100) {
-        for (let i = 0; i < Globals.tickFactor * Globals.secondsPerTick / this.breakCheckSeconds; i++) {
+    if (this.universeService.universe.phase >= 2) {
+      // every n seconds there is a chance something can break
+      if (this.constructionService.isConstructing()) {
+        const ticksPerCheck = this.breakCheckSeconds / Globals.secondsPerTick;
+        if (Globals.tickFactor >= 100) {
+          for (let i = 0; i < Globals.tickFactor * Globals.secondsPerTick / this.breakCheckSeconds; i++) {
+            this.checkForBreakages();
+          }
+        } else if (n % Math.ceil(ticksPerCheck) === 0) {
           this.checkForBreakages();
         }
-      } else if (n % Math.ceil(ticksPerCheck) === 0) {
-        this.checkForBreakages();
       }
-    }
 
-    // These are for the press-and-hold feature:
-    if (this.isContriving) {
-      this.buildContrivance(0.5);
-    }
+      // These are for the press-and-hold feature:
+      if (this.isContriving) {
+        this.buildContrivance(0.5);
+      }
 
-    if (this.isRepairing) {
-      this.repairContrivance(0.5);
-    }
+      if (this.isRepairing) {
+        this.repairContrivance(0.5);
+      }
+    } 
   }
 
 
