@@ -36,6 +36,8 @@ import { InterstitialOneComponent } from './phases/interstitial-one/interstitial
 import { PhaseOneModule } from './phases/phase-one/phase-one.module';
 import { PhaseTwoModule } from './phases/phase-two/phase-two.module';
 import { ResearchTrackService } from './services/research-track.service';
+import { HadronService } from './services/hadron.service';
+import { BackupService } from './services/backup.service';
 
 
 @NgModule({
@@ -58,9 +60,11 @@ import { ResearchTrackService } from './services/research-track.service';
   providers: [
     AnalyticsService,
     AutosaveService,
+    BackupService,
     BigBangService,
     ConstructionService,
     ContrivanceService,
+    HadronService,
     HeatingService,
     LogService,
     MachineFactory,
