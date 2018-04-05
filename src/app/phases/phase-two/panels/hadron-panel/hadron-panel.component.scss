@@ -1,1 +1,17 @@
 @import 'src/style/panel-info.scss';
+
+.info {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+mat-slider {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: -5px;
+    margin-bottom: -5px;
+}
+
+// ::ng-deep .alt-theme .mat-slider-track-fill {
+//     background-color: rgba(0, 0, 0, 0.26)!important;
+// }

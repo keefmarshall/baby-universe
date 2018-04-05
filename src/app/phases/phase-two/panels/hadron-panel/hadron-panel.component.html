@@ -5,7 +5,25 @@
     Hadrons
   </p>
 
-  <p class="info">
+  <p class="info info-right">
+    Efficiency: {{ universeService.universe.machines["MesonManufacturer"]?.efficiency?.toPrecision(4) | number:'1.0-4' }}
+  </p>
+
+  <p class="info info-left">
     Meson Manufacturers: {{ universeService.universe.machines['MesonManufacturer']?.quantity }}
   </p>
+
+  <div class="clearfix"></div>
+
+  <div *ngIf="universeService.isResearchedByName('Matter: Kaons K+/K-')">
+    <p class="info">
+      π
+      <mat-slider 
+        min="0" step="1"
+        [max]="this.universeService.universe.machines['MesonManufacturer']?.quantity"
+        [(ngModel)]="universeService.universe.machines['MesonManufacturer']?.extras.kaonAssigned">
+      </mat-slider>
+      K
+    </p>
+  </div>
 </div>

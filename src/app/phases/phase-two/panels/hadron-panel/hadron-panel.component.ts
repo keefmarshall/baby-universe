@@ -13,4 +13,9 @@ export class HadronPanelComponent implements OnInit {
   ngOnInit() {
   }
 
+  mesonSteps() {
+    const q = this.universeService.universe.machines['MesonManufacturer'].quantity;
+
+    return Math.max(100 / q, 1);
+  }
 }

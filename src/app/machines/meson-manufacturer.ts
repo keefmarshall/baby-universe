@@ -45,11 +45,14 @@ export class MesonManufacturer extends ConstructionProject {
     onTick(factor: number) {
         const eff = this.properties().efficiency;
         const q = this.properties().quantity;
-        const pp = this.properties().extras['pionPercentage'] as number;
+        const kaonAssigned = this.properties().extras['kaonAssigned'];
+        const pionAssigned = q - kaonAssigned;
 
-        const prog = eff * q / 100;
-        this.pionProgress += prog * pp;
-        this.kaonProgress += prog * (100 - pp);
+        // const prog = eff * q / 100;
+        // this.pionProgress += prog * (100 - kp);
+        // this.kaonProgress += prog * kp;
+        this.pionProgress += eff * pionAssigned;
+        this.kaonProgress += eff * kaonAssigned;
 
         if (this.pionProgress > 1) {
             const pions = Math.floor(this.pionProgress);
@@ -91,7 +94,8 @@ export class MesonManufacturer extends ConstructionProject {
         const props = super.defaultProperties();
         props.efficiency = 0.01; // need room to improve
         props.extras = {
-            pionPercentage: 100 // proportion of effort spent making Pions over Kaons
+            kaonAssigned: 0
+            // pionPercentage: 100 // proportion of effort spent making Pions over Kaons
         };
         return props;
     }
