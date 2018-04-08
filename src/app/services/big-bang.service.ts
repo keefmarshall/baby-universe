@@ -51,7 +51,7 @@ export class BigBangService {
   bigBang() {
     console.log("Big bang, pausing universe, starting animation");
     this.pauseUniverse();
-    this.backupService.backupUniverse("endphase1");
+    this.backupUniverse();
     this.renderer.addClass(this.elementRef.nativeElement, "bigbang");
     const mainWrapper = this.parentOf(this.parentOf(this.elementRef.nativeElement));
     // Header is faded out in app.component
@@ -65,6 +65,14 @@ export class BigBangService {
         this.renderer.removeClass(mainWrapper, "black");
       }, 4000);
     }, 7500);
+  }
+
+  backupUniverse() {
+    // Slight hack here, we need to set phase back to 1
+    const p = this.universeService.universe.phase;
+    this.universeService.universe.phase = 1;
+    this.backupService.backupUniverse("endphase1");
+    this.universeService.universe.phase = p;
   }
 
   clearMachines() {
