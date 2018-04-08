@@ -7,7 +7,7 @@ import { Universe } from "../services/universe";
 export class Hadrons extends ResearchProject {
 
     constructor() {
-        super("Matter: Hadrons", "Particles made from combining quarks and gluons", 10, 2, 10);
+        super("Matter: Hadrons", "Particles made from combining quarks and gluons", 5, 2, 10);
     }
 
     preconditions(universe: Universe): boolean {
@@ -22,7 +22,7 @@ export class Hadrons extends ResearchProject {
 export class Mesons extends ResearchProject {
 
     constructor() {
-        super("Matter: Mesons", "Hadrons made from a quark and an anti-quark", 15, 2, 10);
+        super("Matter: Mesons", "Hadrons made from a quark and an anti-quark", 10, 2, 10);
     }
 
     preconditions(universe: Universe): boolean {
@@ -37,7 +37,7 @@ export class Mesons extends ResearchProject {
 export class Pions extends ResearchProject {
 
     constructor() {
-        super("Matter: Pions π+/π-", "A small Meson", 30, 2, 10);
+        super("Matter: Pions π+/π-", "A small Meson", 20, 2, 10);
     }
 
     preconditions(universe: Universe): boolean {
@@ -54,7 +54,7 @@ export class Pions extends ResearchProject {
 export class Kaons extends ResearchProject {
 
     constructor() {
-        super("Matter: Kaons K+/K-", "A larger Meson", 75, 2, 10);
+        super("Matter: Kaons K+/K-", "A larger Meson", 50, 2, 10);
     }
 
     preconditions(universe: Universe): boolean {
@@ -75,11 +75,26 @@ export class Leptons extends ResearchProject {
     }
 
     preconditions(universe: Universe): boolean {
-        return this.isResearched(universe, new Hadrons());
+        return this.isResearched(universe, new Baryons());
     }
 
     onCompletion(universe: Universe) {
         this.log("You have identified a completely new type of fundamental particle. More research required.");
+    }
+}
+
+export class Baryons extends ResearchProject {
+
+    constructor() {
+        super("Matter: Baryons", "Hadrons made by combining quarks or antiquarks", 100, 2, 10);
+    }
+
+    preconditions(universe: Universe): boolean {
+        return universe.particles['kaon'] && universe.particles['kaon'] >= 50;
+    }
+
+    onCompletion(universe: Universe) {
+        this.log("Baryons are made from three quarks or antiquarks. You need to find the right combinations.");
     }
 }
 
