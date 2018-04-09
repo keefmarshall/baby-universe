@@ -2,7 +2,8 @@ export class NumberFormatter {
 
     // https://www.unc.edu/~rowlett/units/prefixes.html
     private readonly SI_PREFIXES = ["", "k", "M", "G", "T", "P", "E", "Z", "Y",
-        "kY", "MY", "GY", "TY", "PY"]; // artifically extended!
+        "kY", "MY", "GY", "TY", "PY", "EY", "ZY", "YY",
+        "kYY", "MYY", "GYY", "TYY", "PYY", "EYY", "ZYY", "YYY"]; // artifically extended!
 
     // https://simple.wikipedia.org/wiki/Names_for_large_numbers
     private readonly NUMERICAL = ["", "thousand", "million", "billion", "trillion", "quadrillion", 

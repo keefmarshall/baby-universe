@@ -24,7 +24,7 @@ export class QuarkScoop extends ConstructionProject {
         super('QuarkScoop',
             "Quark Scoop",
             "Automatically collects quarks",
-            universeService, logService,15000, 1.1);
+            universeService, logService, 15000, 1.1);
     }
 
     onComplete() {

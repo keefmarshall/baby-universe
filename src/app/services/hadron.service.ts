@@ -41,6 +41,37 @@ export class HadronService {
     }
   }
 
+  addProtonWork(count: number) {
+    this.protonProgress += count;
+    if (this.protonProgress > 1) {
+      const protons = Math.floor(this.protonProgress);
+      if (this.canAfford('up', protons * 2) && this.canAfford('down', protons)) {
+          this.protonProgress = this.protonProgress % 1;
+          this.addParticle('proton', protons);
+          this.removeQuarks('up', protons * 2);
+          this.removeQuarks('down', protons);
+      } else {
+        // TODO: something!
+      }
+    }
+  }
+
+  addNeutronWork(count: number) {
+    this.neutronProgress += count;
+    if (this.neutronProgress > 1) {
+      const neutrons = Math.floor(this.neutronProgress);
+      if (this.canAfford('up', neutrons) && this.canAfford('down', neutrons * 2)) {
+          this.neutronProgress = this.neutronProgress % 1;
+          this.addParticle('proton', neutrons);
+          this.removeQuarks('up', neutrons);
+          this.removeQuarks('down', neutrons * 2);
+      } else {
+        // TODO: something!
+      }
+    }
+  }
+
+
   private addParticle(type: string, count: number = 1) {
     const u = this.universeService.universe;
     u.particles[type] += count;

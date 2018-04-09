@@ -11,8 +11,6 @@ import { HadronService } from "../services/hadron.service";
  * a half life.
  */
 export class MesonManufacturer extends ConstructionProject {
-    private pionProgress = 0;
-    private kaonProgress = 0;
 
     constructor(
         universeService: UniverseService,
