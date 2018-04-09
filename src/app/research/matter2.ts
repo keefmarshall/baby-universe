@@ -46,8 +46,8 @@ export class Pions extends ResearchProject {
 
     onCompletion(universe: Universe) {
         ParticleUtils.initialiseParticles('pion', universe);
-        this.log("Pions: π+ made from an up quark and an anti-down quark;\n" +
-                "π- made from an anti-up quark and a down quark.")
+        this.log("Pions: π+ made from an up quark and an anti-down quark (ud̅);\n" +
+                "π- made from an anti-up quark and a down quark (u̅d).")
     }
 }
 
@@ -63,15 +63,15 @@ export class Kaons extends ResearchProject {
 
     onCompletion(universe: Universe) {
         ParticleUtils.initialiseParticles('kaon', universe);
-        this.log("Kaons: K+ made from an up quark and an anti-strange quark;\n" +
-                "K- made from an anti-up quark and a strange quark.");
+        this.log("Kaons: K+ made from an up quark and an anti-strange quark (us̅);\n" +
+                "K- made from an anti-up quark and a strange quark (u̅s).");
     }
 }
 
 export class Leptons extends ResearchProject {
 
     constructor() {
-        super("Matter: Leptons", "A new class of Fermion, fundamental particles.", 20, 2, 10);
+        super("Matter: Leptons", "A new class of Fermion, fundamental particles.", 200, 2, 10);
     }
 
     preconditions(universe: Universe): boolean {
@@ -97,6 +97,39 @@ export class Baryons extends ResearchProject {
         this.log("Baryons are made from three quarks or antiquarks. You need to find the right combinations.");
     }
 }
+
+export class Protons extends ResearchProject {
+
+    constructor() {
+        super("Matter: Protons", "A common baryon", 350, 2, 10);
+    }
+
+    preconditions(universe: Universe): boolean {
+        return this.isResearched(universe, new Baryons());
+    }
+
+    onCompletion(universe: Universe) {
+        ParticleUtils.initialiseParticles('proton', universe);
+        this.log("Protons: two up quarks and one down quark (uud) or antiquarks (u̅u̅d̅).");
+    }
+}
+
+export class Neutrons extends ResearchProject {
+
+    constructor() {
+        super("Matter: Neutrons", "A common baryon", 500, 2, 10);
+    }
+
+    preconditions(universe: Universe): boolean {
+        return this.isResearched(universe, new Baryons());
+    }
+
+    onCompletion(universe: Universe) {
+        ParticleUtils.initialiseParticles('neutron', universe);
+        this.log("Neutrons: one up quark and two down quarks (udd) or antiquarks (u̅d̅d̅).");
+    }
+}
+
 
 class ParticleUtils {
     static initialiseParticles(type: string, u: Universe) {
