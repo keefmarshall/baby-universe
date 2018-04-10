@@ -15,10 +15,10 @@ export class PlasmaShockService {
   constructor(
     private rendererFactory2: RendererFactory2,
   ) {
-    this.renderer = rendererFactory2.createRenderer(null, null);
-    document.addEventListener("visibilitychange", (event) => {
-      this.handleVisibilityChangeEvent(event);
-    });
+    // this.renderer = rendererFactory2.createRenderer(null, null);
+    // document.addEventListener("visibilitychange", (event) => {
+    //   this.handleVisibilityChangeEvent(event);
+    // });
   }
 
   setElementRef(er: ElementRef) {
@@ -26,13 +26,15 @@ export class PlasmaShockService {
   }
 
   start() {
-    if (!this.isStarted) {
-      console.log("Plasma shock starting..");
-      this.isStarted = true;
-      if (!this.paused) {
-        this.queueShock();
-      }
-    }
+    // No-one likes the plasma shock, let's disable it for now
+
+    // if (!this.isStarted) {
+    //   console.log("Plasma shock starting..");
+    //   this.isStarted = true;
+    //   if (!this.paused) {
+    //     this.queueShock();
+    //   }
+    // }
   }
 
   stop() {
