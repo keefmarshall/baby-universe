@@ -87,7 +87,7 @@ export class HadronService {
   /**
    * To be honest, at time of writing it's highly unlikely that we'll run out of
    * quarks, but at some point during phase 2 they all need to be used up, so..
-   * 
+   *
    * This needs to be more sophisticated, so that when we do run out, we can
    * build the max possible, even if less than requested.
    */
