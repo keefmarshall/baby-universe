@@ -6,11 +6,11 @@
   </p>
 
   <p class="info info-right">
-    Efficiency: {{ universeService.universe.machines["MesonManufacturer"]?.efficiency?.toPrecision(4) | number:'1.0-4' }}
+    Efficiency: {{ universeService.universe.machines["MesonManufacturer"]?.efficiency?.toPrecision(4) | number:'1.0-4' }}<br/>
   </p>
 
   <p class="info info-left">
-    Meson Manufacturers: {{ universeService.universe.machines['MesonManufacturer']?.quantity }}
+    Meson Manufacturers: {{ universeService.universe.machines['MesonManufacturer']?.quantity }}<br/>
   </p>
 
   <div class="clearfix"></div>
@@ -24,6 +24,30 @@
         [(ngModel)]="universeService.universe.machines['MesonManufacturer']?.extras.kaonAssigned">
       </mat-slider>
       K
+    </p>
+  </div>
+
+  <p class="info info-right" 
+    *ngIf="universeService.universe.machines['BaryonBuilder']?.quantity > 0">
+      Efficiency: {{ universeService.universe.machines["BaryonBuilder"]?.efficiency?.toPrecision(4) | number:'1.0-4' }}
+  </p>
+
+  <p class="info info-left"
+    *ngIf="universeService.universe.machines['BaryonBuilder']?.quantity > 0">
+      Baryon Builders: {{ universeService.universe.machines['BaryonBuilder']?.quantity }}
+  </p>
+
+  <div class="clearfix"></div>
+
+  <div *ngIf="universeService.isResearchedByName('Matter: Protons') && universeService.isResearchedByName('Matter: Neutrons')">
+    <p class="info">
+      p
+      <mat-slider 
+        min="0" step="1"
+        [max]="this.universeService.universe.machines['BaryonBuilder']?.quantity"
+        [(ngModel)]="universeService.universe.machines['BaryonBuilder']?.extras.neutronAssigned">
+      </mat-slider>
+      n
     </p>
   </div>
 </div>

@@ -62,7 +62,7 @@ export class HadronService {
       const neutrons = Math.floor(this.neutronProgress);
       if (this.canAfford('up', neutrons) && this.canAfford('down', neutrons * 2)) {
           this.neutronProgress = this.neutronProgress % 1;
-          this.addParticle('proton', neutrons);
+          this.addParticle('neutron', neutrons);
           this.removeQuarks('up', neutrons);
           this.removeQuarks('down', neutrons * 2);
       } else {
