@@ -30,7 +30,7 @@ export class MesonManufacturer extends ConstructionProject {
     }
 
     onTick(factor: number) {
-        const eff = this.properties().efficiency;
+        const eff = this.properties().efficiency * factor;
         const q = this.properties().quantity;
         const kaonAssigned = this.properties().extras['kaonAssigned'];
         const pionAssigned = q - kaonAssigned;

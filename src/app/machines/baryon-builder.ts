@@ -27,7 +27,7 @@ export class BaryonBuilder  extends ConstructionProject {
     }
 
     onTick(factor: number) {
-        const eff = this.properties().efficiency;
+        const eff = this.properties().efficiency * factor;
         const q = this.properties().quantity;
         const neutronAssigned = this.properties().extras['neutronAssigned'];
         const protonAssigned = q - neutronAssigned;

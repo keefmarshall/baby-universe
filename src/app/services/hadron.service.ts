@@ -10,6 +10,8 @@ export class HadronService {
 
   constructor(private universeService: UniverseService) { }
 
+  // TODO: too much copy/paste here, must be a way to rationalise this
+
   addPionWork(count: number) {
     this.pionProgress += count;
     if (this.pionProgress > 1) {
