@@ -9,6 +9,7 @@ import { HelpPanelComponent } from 'app/panels/help-panel/help-panel.component';
 import { Globals } from 'app/globals';
 import { trigger } from '@angular/animations';
 import { Animations } from './util/animations';
+import { EntropyService } from './services/entropy.service';
 
 @Component({
   selector: 'app-root',
@@ -29,6 +30,7 @@ export class AppComponent implements OnInit {
   // load time, otherwise things may not get kicked off correctly.
   constructor(
     private autosaveService: AutosaveService,
+    private entropyService: EntropyService,
     private rendererFactory2: RendererFactory2,
     private stateManagementService: StateManagementService,
     private tickerService: TickerService,

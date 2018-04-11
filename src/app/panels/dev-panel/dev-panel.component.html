@@ -80,6 +80,11 @@
   <button mat-raised-button (click)="switchPhase(2);">Phase 2</button>
 
   <br/>
+  <button mat-raised-button (click)="setTemperature(5e31);">Set temp to 5e31</button>
+  <button mat-raised-button (click)="setTemperature(20000);">Set temp to 20000</button>
+  <button mat-raised-button (click)="setTemperature(2e-3);">Set temp to 2e-3</button>
+
+  <br/>
   <button mat-raised-button (click)="restoreBackup('devpanel');">Restore</button>
   <button mat-raised-button (click)="devBackup();">Backup</button>
   <button mat-raised-button (click)="restoreBackup('endphase1');">Restore endphase1</button>

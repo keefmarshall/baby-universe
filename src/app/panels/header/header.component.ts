@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private logService: LogService,
-    private universeService: UniverseService,
+    public universeService: UniverseService,
     private dialog: MatDialog
   ) { }
 

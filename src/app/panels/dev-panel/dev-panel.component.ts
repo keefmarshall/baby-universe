@@ -14,6 +14,7 @@ import { MachineFactory } from '../../machines/machine-factory';
 import { ConstructionProject } from '../../machines/construction-project';
 import { ContrivanceService } from '../../services/contrivance.service';
 import { BackupService } from '../../services/backup.service';
+import { Globals } from '../../globals';
 
 @Component({
   selector: 'app-dev-panel',
@@ -111,6 +112,10 @@ export class DevPanelComponent implements OnInit {
     delete u.research["Matter: Pions π+/π-"];
     delete u.research["Matter: Kaons K+/K-"];
     this.stateManagementService.resetMachines();
+  }
+
+  setTemperature(temp: number) {
+    this.universeService.universe.heat = temp * Globals.boltzmann;
   }
 
   switchPhase(p: number) {

@@ -21,6 +21,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogPanelComponent } from './log-panel/log-panel.component';
 import { InterstitialLogComponent } from './interstitial-log/interstitial-log.component';
+import { TemperatureComponent } from './temperature/temperature.component';
 
 @NgModule({
   imports: [
@@ -43,7 +44,8 @@ import { InterstitialLogComponent } from './interstitial-log/interstitial-log.co
     HeaderComponent,
     FooterComponent,
     LogPanelComponent,
-    InterstitialLogComponent
+    InterstitialLogComponent,
+    TemperatureComponent
   ],
   entryComponents: [
     HelpPanelComponent,
@@ -58,7 +60,8 @@ import { InterstitialLogComponent } from './interstitial-log/interstitial-log.co
     LogDrawerComponent,
     HeaderComponent,
     FooterComponent,
-    InterstitialLogComponent
+    InterstitialLogComponent,
+    TemperatureComponent
   ]
 })
 export class PanelsModule { }
