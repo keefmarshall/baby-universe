@@ -73,7 +73,10 @@ ENTROPY
 
 what on earth is the end goal?!
 - create a black hole with a new baby universe and prestige?
-- create a planet with life and go down an evolution route (Phase 3?)
+- create a planet with life and go down an evolution route (Phase 4/5?)
+   - suspect phase 3 is stars, might need basic molecules (H2, H2O)
+     phase 4 maybe planets / salts
+     which makes phase 5 complex molecules and maybe life is even phase 6
 - watch your universe slowly die of heat death? <- this sounds boring!
 
 - Simply to generate all the (naturally occurring - up to 94) elements? <- might be a better option

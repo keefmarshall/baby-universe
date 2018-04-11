@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs/Subscription';
   selector: 'app-temperature',
   template: `
     <span *ngIf="temperature >= 1e6 || temperature < 1e-3">
-      {{ mantissa }}&nbsp;x&nbsp;10<sup>{{ exponent }}</sup>K
+      {{ mantissa }}&nbsp;×&nbsp;10<sup>{{ exponent }}</sup>K
     </span>
     <span *ngIf="temperature < 1e5 && temperature >= 1e-3">
       {{ temperature.toPrecision(5) | number:"1.0-5" }}K
