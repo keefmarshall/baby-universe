@@ -10,7 +10,12 @@ import { Globals } from '../globals';
 @Injectable()
 export class EntropyService implements OnDestroy {
 
-  private readonly decayConstant: number = 0.00038; // half life around 30 minutes
+  // Formula is roughly decayConstant (λ) = 0.7 / T
+  // where T is the half life in seconds
+  // (it's actually ln(2) not 0.7 but close enough for this.)
+  // 0.00038 unmodified half life around 30 minutes but we multiply
+  // by log10(temp) which starts ~30 and decreases to ~1
+  private readonly decayConstant: number = 0.00002;
 
   private phaseSub: Subscription;
   private tickerSub: Subscription;
@@ -59,7 +64,8 @@ export class EntropyService implements OnDestroy {
     if (this.started) {
       const u = this.universeService.universe;
       const factor = Globals.tickFactor;
-      u.heat = u.heat * Math.exp(-this.decayConstant * factor * Globals.secondsPerTick);
+      const slowingDecayConstant = this.decayConstant * Math.pow(Math.log10(u.heat + 1), 1.2);
+      u.heat = u.heat * Math.exp(-slowingDecayConstant * factor * Globals.secondsPerTick);
     }
   }
 
