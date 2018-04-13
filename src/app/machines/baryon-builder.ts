@@ -19,7 +19,7 @@ export class BaryonBuilder  extends ConstructionProject {
             "Builds Baryons",
             universeService,
             logService,
-            1000, 1.05);
+            500, 1.05);
     }
 
     onComplete() {

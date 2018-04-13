@@ -19,7 +19,7 @@ export class RudimentaryResearcher extends ConstructionProject {
             "Conducts scientific research. Slowly.",
             universeService,
             logService,
-            5, 1.1);
+            2, 1.1);
     }
 
     onTick(tickFactor: number) {

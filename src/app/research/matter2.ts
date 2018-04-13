@@ -37,7 +37,7 @@ export class Mesons extends ResearchProject {
 export class Pions extends ResearchProject {
 
     constructor() {
-        super("Matter: Pions π+/π-", "A small Meson", 20, 2, 10);
+        super("Matter: Pions π⁺/π⁻", "A small Meson", 20, 2, 10);
     }
 
     preconditions(universe: Universe): boolean {
@@ -46,15 +46,15 @@ export class Pions extends ResearchProject {
 
     onCompletion(universe: Universe) {
         ParticleUtils.initialiseParticles('pion', universe);
-        this.log("Pions: π+ made from an up quark and an anti-down quark (ud̅);\n" +
-                "π- made from an anti-up quark and a down quark (u̅d).")
+        this.log("Pions: π⁺ made from an up quark and an anti-down quark (ud̅);\n" +
+                "π⁻ made from an anti-up quark and a down quark (u̅d).")
     }
 }
 
 export class Kaons extends ResearchProject {
 
     constructor() {
-        super("Matter: Kaons K+/K-", "A larger Meson", 50, 2, 10);
+        super("Matter: Kaons K⁺/K⁻", "A larger Meson", 50, 2, 10);
     }
 
     preconditions(universe: Universe): boolean {
@@ -63,8 +63,8 @@ export class Kaons extends ResearchProject {
 
     onCompletion(universe: Universe) {
         ParticleUtils.initialiseParticles('kaon', universe);
-        this.log("Kaons: K+ made from an up quark and an anti-strange quark (us̅);\n" +
-                "K- made from an anti-up quark and a strange quark (u̅s).");
+        this.log("Kaons: K⁺ made from an up quark and an anti-strange quark (us̅);\n" +
+                "K⁻ made from an anti-up quark and a strange quark (u̅s).");
     }
 }
 

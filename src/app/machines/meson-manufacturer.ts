@@ -22,7 +22,7 @@ export class MesonManufacturer extends ConstructionProject {
             "Manufactures Mesons",
             universeService,
             logService,
-            100, 1.05);
+            50, 1.05);
     }
 
     onComplete() {
