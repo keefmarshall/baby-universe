@@ -21,6 +21,7 @@ export class HadronService {
           this.addParticle('pion', pions);
           this.removeQuarks('up', pions);
           this.removeQuarks('down', pions);
+          this.removeGluons(2 * pions);
       } else {
         // TODO: something!
       }
@@ -37,6 +38,7 @@ export class HadronService {
           this.addParticle('kaon', kaons);
           this.removeQuarks('up', kaons);
           this.removeQuarks('strange', kaons);
+          this.removeGluons(2 * kaons);
       } else {
         // TODO: something!
       }
@@ -52,6 +54,7 @@ export class HadronService {
           this.addParticle('proton', protons);
           this.removeQuarks('up', protons * 2);
           this.removeQuarks('down', protons);
+          this.removeGluons(3 * protons);
       } else {
         // TODO: something!
       }
@@ -67,6 +70,7 @@ export class HadronService {
           this.addParticle('neutron', neutrons);
           this.removeQuarks('up', neutrons);
           this.removeQuarks('down', neutrons * 2);
+          this.removeGluons(3 * neutrons);
       } else {
         // TODO: something!
       }
@@ -84,6 +88,11 @@ export class HadronService {
       const u = this.universeService.universe;
       u.particles[type + ' quark'] -= count;
       u.antiparticles[type + ' quark'] -= count;
+  }
+
+  private removeGluons(count: number = 1) {
+    const u = this.universeService.universe;
+    u.particles['gluon'] -= count;
   }
 
   /**
