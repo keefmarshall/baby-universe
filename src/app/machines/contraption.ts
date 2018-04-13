@@ -28,7 +28,6 @@ export class Contraption extends Machine {
             const eff = this.properties().efficiency;
             const work = eff * q * 0.1;
             this.constructionService.addWork(work);
-            this.universeService.universe.heat -= work; // will have no effect but this is science!
             this.meteringService.addQuantity('work', work);
         }
     }
