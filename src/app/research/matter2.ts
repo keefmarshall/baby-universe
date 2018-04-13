@@ -71,7 +71,7 @@ export class Kaons extends ResearchProject {
 export class Leptons extends ResearchProject {
 
     constructor() {
-        super("Matter: Leptons", "A new class of Fermion, fundamental particles.", 200, 2, 10);
+        super("Matter: Leptons", "A new class of Fermion, fundamental particles.", 1000, 2, 10);
     }
 
     preconditions(universe: Universe): boolean {
@@ -130,6 +130,70 @@ export class Neutrons extends ResearchProject {
     }
 }
 
+export class Electrons extends ResearchProject {
+
+    constructor() {
+        super("Matter: Electrons", "A common lepton", 1500, 2, 10);
+    }
+
+    preconditions(universe: Universe): boolean {
+        return this.isResearched(universe, new Leptons());
+    }
+
+    onCompletion(universe: Universe) {
+        ParticleUtils.initialiseParticles('electron', universe);
+        this.log("Electrons (e⁻): tiny, negatively charged leptons. Their anti-matter equivalents are called Positrons (e⁺), and have a positive charge.");
+    }
+}
+
+export class Muons extends ResearchProject {
+
+    constructor() {
+        super("Matter: Muons", "A slightly larger lepton", 3500, 2, 10);
+    }
+
+    preconditions(universe: Universe): boolean {
+        return this.isResearched(universe, new Electrons());
+    }
+
+    onCompletion(universe: Universe) {
+        ParticleUtils.initialiseParticles('muon', universe);
+        this.log("Muons (μ⁻): small, negatively charged leptons. A little bigger than an electron.");
+    }
+}
+
+export class Tauons extends ResearchProject {
+
+    constructor() {
+        super("Matter: Tau Leptons", "The largest lepton", 5000, 2, 10);
+    }
+
+    preconditions(universe: Universe): boolean {
+        return this.isResearched(universe, new Electrons());
+    }
+
+    onCompletion(universe: Universe) {
+        ParticleUtils.initialiseParticles('tau', universe);
+        this.log("Tau Leptons (τ⁻): negatively charged leptons. A little bigger than a muon.");
+    }
+}
+
+export class Neutrinos extends ResearchProject {
+
+    constructor() {
+        super("Matter: Neutrinos", "A type of lepton", 2500, 2, 10);
+    }
+
+    preconditions(universe: Universe): boolean {
+        return this.isResearched(universe, new Leptons());
+    }
+
+    onCompletion(universe: Universe) {
+        ParticleUtils.initialiseParticles('neutrino', universe);
+        this.log("Neutrinos (ν): tiny, neutral leptons, with almost no mass. They come in different flavours but are hard to distinguish, " +
+            " and barely interact with anything else.");
+    }
+}
 
 class ParticleUtils {
     static initialiseParticles(type: string, u: Universe) {
