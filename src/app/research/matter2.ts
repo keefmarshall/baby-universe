@@ -37,7 +37,7 @@ export class Mesons extends ResearchProject {
 export class Pions extends ResearchProject {
 
     constructor() {
-        super("Matter: Pions π⁺/π⁻", "A small Meson", 20, 2, 10);
+        super("Matter: Pions", "A small Meson", 20, 2, 10);
     }
 
     preconditions(universe: Universe): boolean {
@@ -54,7 +54,7 @@ export class Pions extends ResearchProject {
 export class Kaons extends ResearchProject {
 
     constructor() {
-        super("Matter: Kaons K⁺/K⁻", "A larger Meson", 50, 2, 10);
+        super("Matter: Kaons", "A larger Meson", 50, 2, 10);
     }
 
     preconditions(universe: Universe): boolean {
@@ -101,7 +101,7 @@ export class Baryons extends ResearchProject {
 export class Protons extends ResearchProject {
 
     constructor() {
-        super("Matter: Protons", "A common baryon", 350, 2, 10);
+        super("Matter: Protons", "A common baryon", 200, 2, 10);
     }
 
     preconditions(universe: Universe): boolean {
@@ -117,7 +117,7 @@ export class Protons extends ResearchProject {
 export class Neutrons extends ResearchProject {
 
     constructor() {
-        super("Matter: Neutrons", "A common baryon", 500, 2, 10);
+        super("Matter: Neutrons", "A common baryon", 350, 2, 10);
     }
 
     preconditions(universe: Universe): boolean {

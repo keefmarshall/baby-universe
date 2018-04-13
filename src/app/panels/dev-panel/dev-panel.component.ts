@@ -109,8 +109,8 @@ export class DevPanelComponent implements OnInit {
     delete u.research['Matter: Leptons'];
     delete u.research['Matter: Mesons'];
     delete u.research['Matter: Hadrons'];
-    delete u.research["Matter: Pions π+/π-"];
-    delete u.research["Matter: Kaons K+/K-"];
+    delete u.research["Matter: Pions"];
+    delete u.research["Matter: Kaons"];
     this.stateManagementService.resetMachines();
   }
 

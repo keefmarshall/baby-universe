@@ -7,7 +7,7 @@ import { MachineProperties } from "./machine";
 import { NumberFormatter } from "../util/number-formatter";
 
 export class BaryonBuilder  extends ConstructionProject {
-    private readonly pionBaseCost: number = 20;
+    private readonly pionBaseCost: number = 50;
 
     constructor(
         universeService: UniverseService,
@@ -19,7 +19,7 @@ export class BaryonBuilder  extends ConstructionProject {
             "Builds Baryons",
             universeService,
             logService,
-            500, 1.05);
+            350, 1.05);
     }
 
     onComplete() {
