@@ -155,3 +155,17 @@ Use Mesons as building blocks for machines (otherwise do they even have a use?)
 (Nascent) Nucleosynthesiser
 
 At some point we need radioactive decay - W and Z bosons
+
+
+DECAY PATHS
+===========
+
+http://hyperphysics.phy-astr.gsu.edu/hbase/Particles/qrkdec.html
+
+.. turns out it's quite hard to get definitive answers to particle decay paths
+Every particle has a branching model, with different percentage chances of decaying
+down certain paths over others.
+
+But, these branching models don't appear to be well documented, perhaps not well understood?
+Especially for the top quark - I can't find a simple branching model for this anywhere.
+
