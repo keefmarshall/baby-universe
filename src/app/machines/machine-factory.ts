@@ -37,7 +37,7 @@ import { ResearchTrackService } from '../services/research-track.service';
 import { Contrecycler } from './contrecycler';
 import { ContrivanceService } from '../services/contrivance.service';
 import { Bodger } from './bodger';
-import { MesonManufacturer } from './meson-manufacturer';
+import { MesonMaker } from './meson-manufacturer';
 import { HadronService } from '../services/hadron.service';
 import { BaryonBuilder } from './baryon-builder';
 
@@ -100,7 +100,7 @@ export class MachineFactory {
                 this.universeService, this.logService, this.researchService, this.researchTrackService),
             'Contrecycler': new Contrecycler(this.universeService, this.logService, this.contrivanceService),
             'Bodger': new Bodger(this.universeService, this.logService, this.contrivanceService),
-            'MesonManufacturer': new MesonManufacturer(this.universeService, this.logService, this.hadronService),
+            'MesonMaker': new MesonMaker(this.universeService, this.logService, this.hadronService),
             'BaryonBuilder': new BaryonBuilder(this.universeService, this.logService, this.hadronService)
         };
 

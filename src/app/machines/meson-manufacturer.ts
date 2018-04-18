@@ -10,15 +10,15 @@ import { HadronService } from "../services/hadron.service";
  * to bother with all the other random types, they have too short
  * a half life.
  */
-export class MesonManufacturer extends ConstructionProject {
+export class MesonMaker extends ConstructionProject {
 
     constructor(
         universeService: UniverseService,
         logService: LogService,
         private hadronService: HadronService
      ) {
-        super('MesonManufacturer',
-            "Meson Manufacturer",
+        super('MesonMaker',
+            "Meson Maker",
             "Manufactures Mesons",
             universeService,
             logService,

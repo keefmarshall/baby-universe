@@ -7,11 +7,11 @@
   </p>
 
   <p class="info info-right">
-    Efficiency: {{ universeService.universe.machines["MesonManufacturer"]?.efficiency?.toPrecision(4) | number:'1.0-4' }}
+    Efficiency: {{ universeService.universe.machines["MesonMaker"]?.efficiency?.toPrecision(4) | number:'1.0-4' }}
   </p>
 
   <p class="info info-left">
-    Meson Manufacturers: {{ universeService.universe.machines['MesonManufacturer']?.quantity }}
+    Meson Makers: {{ universeService.universe.machines['MesonMaker']?.quantity }}
   </p>
 
   <div class="clearfix"></div>
@@ -21,8 +21,8 @@
       π
       <mat-slider 
         min="0" step="1"
-        [max]="this.universeService.universe.machines['MesonManufacturer']?.quantity"
-        [(ngModel)]="universeService.universe.machines['MesonManufacturer']?.extras.kaonAssigned">
+        [max]="this.universeService.universe.machines['MesonMaker']?.quantity"
+        [(ngModel)]="universeService.universe.machines['MesonMaker']?.extras.kaonAssigned">
       </mat-slider>
       K
     </p>

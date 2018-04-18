@@ -47,6 +47,6 @@ export class PhaseTwoComponent implements OnInit {
   }
 
   showHadronPanel(): boolean {
-    return this.universeService.universe.machines["MesonManufacturer"];
+    return this.universeService.universe.machines["MesonMaker"];
   }
 }
