@@ -29,7 +29,8 @@ mat-icon {
 .logitem {
     background-color: map-get($accent, 800)!important;
     color: map-get($altaccent, 50)!important;
-    font-family: 'Raleway', sans-serif;
+    // font-family: 'Raleway', sans-serif;
+    font-family: 'Noto Serif', serif;
     margin: 2px;
     padding: 5px;
     min-height: 48px;
