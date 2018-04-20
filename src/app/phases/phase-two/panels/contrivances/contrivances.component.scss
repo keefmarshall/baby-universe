@@ -13,6 +13,12 @@
     min-height: 42px;
 }
 
+.disrupt-button {
+    min-height: 16px;
+    max-height: 32px;
+    margin-bottom: 2px;
+}
+
 // May stop mouseout events firing incorrectly?
 // Nope, doesn't get picked up, sadly.
 .deploy-button .button-text {

@@ -86,12 +86,29 @@
 
   <div class="clearfix"></div>
 
-  <p *ngIf="constructionService.isConstructing()">
+  <div *ngIf="constructionService.isConstructing()">
+    <div class="info-right">
+        <button 
+          mat-raised-button
+          class="deploy-button disrupt-button"
+          (click)="contrivanceService.disrupt()">
+
+          <!-- <mat-icon>build</mat-icon> -->
+          <i fa class="fa fa-wrench"></i>
+          <small>Disrupt</small>
+        </button>
+    </div>
+  
     <small>Building: {{ constructionService.currentProject.displayName }}</small><br/>
 
     <mat-progress-bar color="primary"
-      [value]="constructionService.currentProject.progress()"
-    ></mat-progress-bar>
+      [value]="constructionService.currentProject.progress()">
+    </mat-progress-bar>
+  </div>
+
+  <p *ngIf="constructionService.sabotaged">
+      DISRUPTED...
+      <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
   </p>
 
   <div *ngIf="universeService.universe.machines['Contraption']">
