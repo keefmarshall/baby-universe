@@ -6,7 +6,7 @@ export class BulkDeployment extends ResearchProject {
     constructor() {
         super("Bulk Deployment",
             "Deploy several machines at once",
-            50, 0, 10);
+            50);
     }
 
     preconditions(universe: Universe): boolean {
@@ -23,7 +23,7 @@ export class AdvancedBulkDeployment extends ResearchProject {
     constructor() {
         super("Advanced Bulk Deployment",
             "Deploy many machines at once",
-            1250, 0, 10);
+            1250);
     }
 
     preconditions(universe: Universe): boolean {
