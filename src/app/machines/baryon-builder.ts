@@ -7,7 +7,7 @@ import { MachineProperties } from "./machine";
 import { NumberFormatter } from "../util/number-formatter";
 
 export class BaryonBuilder  extends ConstructionProject {
-    private readonly pionBaseCost: number = 50;
+    private readonly pionBaseCost: number = 200;
 
     constructor(
         universeService: UniverseService,
@@ -52,7 +52,7 @@ export class BaryonBuilder  extends ConstructionProject {
     displayCost(count: number = 1): string {
         const pionCost = this.numberFormatter.abbreviateNumber(
             this.pionCost(), 4, false, "SI", true, true);
-        const pionCostString = `${pionCost} π+, ${pionCost} π-`;
+        const pionCostString = `${pionCost} π⁺, ${pionCost} π⁻`;
         return super.displayCost(count) + ", " + pionCostString;
     }
 
