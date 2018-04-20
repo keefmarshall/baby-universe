@@ -75,7 +75,7 @@
         </td>
       </tr>
 
-      <tr>
+      <tr *ngIf="universeService.universe.machines['MesonMaker']">
         <td>Meson Maker improvement</td>
         <td class="right-align">
           <app-number-picker
@@ -90,7 +90,7 @@
         </td>
       </tr>
 
-      <tr>
+      <tr *ngIf="universeService.universe.machines['BaryonBuilder']">
         <td>Baryon Builder improvement</td>
         <td class="right-align">
           <app-number-picker
