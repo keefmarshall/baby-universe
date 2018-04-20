@@ -25,12 +25,24 @@ export class ResearchTrackService {
     this.improveMachine(science, 0.0001, 'Contraption');
   }
 
+  improveMakers(science: number) {
+    this.improveMachine(science, 0.0001, 'MesonMaker');
+  }
+
+  improveBuilders(science: number) {
+    this.improveMachine(science, 0.0001, 'BaryonBuilder');
+  }
+
   private improveMachine(science: number, factor: number, machineName: string) {
     const machine = this.universeService.universe.machines[machineName];
-    let increment = (science * factor);
-    if (machine.efficiency > 1) { // above 1, it gets much harder to improve
-      increment /= machine.efficiency;
+    if (machine) {
+      let increment = (science * factor);
+      if (machine.efficiency > 1) { // above 1, it gets much harder to improve
+        increment /= machine.efficiency;
+      }
+      machine.efficiency += increment;
+    } else {
+      // shouldn't happen! catch all, just in case.
     }
-    machine.efficiency += increment;
   }
 }

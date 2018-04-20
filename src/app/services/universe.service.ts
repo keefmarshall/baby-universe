@@ -110,6 +110,16 @@ export class UniverseService {
     if (u.machines['SpaceHeater'] && !u.machines['SpaceHeater'].extras['energyDraw']) {
       u.machines['SpaceHeater'].extras['energyDraw'] = 1;
     }
+
+    if (u.machines['RudimentaryResearcher']) {
+      const rrx = u.machines['RudimentaryResearcher'].extras;
+      if (!rrx['makerImprovement']) {
+        rrx['makerImprovement'] = 0;
+      }
+      if (!rrx['builderImprovement']) {
+        rrx['builderImprovement'] = 0;
+      }
+    }
   }
 
 }

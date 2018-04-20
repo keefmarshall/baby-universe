@@ -75,6 +75,36 @@
         </td>
       </tr>
 
+      <tr>
+        <td>Meson Maker improvement</td>
+        <td class="right-align">
+          <app-number-picker
+            [max]="makerMax()"
+            [(value)]="universeService.universe.machines['RudimentaryResearcher'].extras.makerImprovement"
+          ></app-number-picker>
+        </td>
+        <td>
+          <i fa class="fa fa-circle-o-notch fa-spin improver-cog"
+            *ngIf="makerImprovers() > 0"
+            aria-hidden="true"></i>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Baryon Builder improvement</td>
+        <td class="right-align">
+          <app-number-picker
+            [max]="builderMax()"
+            [(value)]="universeService.universe.machines['RudimentaryResearcher'].extras.builderImprovement"
+          ></app-number-picker>
+        </td>
+        <td>
+          <i fa class="fa fa-circle-o-notch fa-spin improver-cog"
+            *ngIf="builderImprovers() > 0"
+            aria-hidden="true"></i>
+        </td>
+      </tr>
+      
     </table>
 
   </form>

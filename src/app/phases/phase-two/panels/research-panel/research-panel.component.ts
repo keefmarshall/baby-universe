@@ -39,17 +39,28 @@ export class ResearchPanelComponent implements OnInit {
 
   researchMax() {
     const rr = this.getRudimentaryResearcher();
-    return rr.quantity - rr.extras['contraptionImprovement'];
+    return rr.quantity - (this.contraptionImprovers() + this.makerImprovers() + this.builderImprovers());
   }
 
   constructionMax() {
     const rr = this.getRudimentaryResearcher();
-    return rr.quantity - rr.extras['researchImprovement'];
+    return rr.quantity - (this.researchImprovers() +  + this.makerImprovers() + this.builderImprovers());
+  }
+
+  makerMax() {
+    const rr = this.getRudimentaryResearcher();
+    return rr.quantity - (this.researchImprovers() +  + this.contraptionImprovers() + this.builderImprovers());
+  }
+
+  builderMax() {
+    const rr = this.getRudimentaryResearcher();
+    return rr.quantity - (this.researchImprovers() +  + this.contraptionImprovers() + this.makerImprovers());
   }
 
   projectResearchers(): number {
     return this.getRudimentaryResearcher().quantity -
-        (this.researchImprovers() + this.contraptionImprovers());
+        (this.researchImprovers() + this.contraptionImprovers() +
+         this.makerImprovers() + this.builderImprovers());
   }
 
   researchImprovers(): number {
@@ -58,6 +69,14 @@ export class ResearchPanelComponent implements OnInit {
 
   contraptionImprovers(): number {
     return this.getRudimentaryResearcher().extras['contraptionImprovement'];
+  }
+
+  makerImprovers(): number {
+    return this.getRudimentaryResearcher().extras['makerImprovement'];
+  }
+
+  builderImprovers(): number {
+    return this.getRudimentaryResearcher().extras['builderImprovement'];
   }
 
   getRudimentaryResearcher(): MachineProperties {
