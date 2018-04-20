@@ -40,6 +40,7 @@ import { Bodger } from './bodger';
 import { MesonMaker } from './meson-manufacturer';
 import { HadronService } from '../services/hadron.service';
 import { BaryonBuilder } from './baryon-builder';
+import { Contriver } from './contriver';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -100,6 +101,7 @@ export class MachineFactory {
                 this.universeService, this.logService, this.researchService, this.researchTrackService),
             'Contrecycler': new Contrecycler(this.universeService, this.logService, this.contrivanceService),
             'Bodger': new Bodger(this.universeService, this.logService, this.contrivanceService),
+            'Contriver': new Contriver(this.universeService, this.logService, this.contrivanceService),
             'MesonMaker': new MesonMaker(this.universeService, this.logService, this.hadronService),
             'BaryonBuilder': new BaryonBuilder(this.universeService, this.logService, this.hadronService)
         };

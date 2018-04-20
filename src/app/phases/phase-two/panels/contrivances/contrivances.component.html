@@ -2,7 +2,7 @@
 
   <p *ngIf="numContrivances() > 0" class="info info-right">
     <span [@workingTrigger]="workingState" class="contraption-count">
-      Working: {{ contrivanceService.contraptionProperties().workingContraptions }}
+      Working: {{ contrivanceService.contraptionProperties().workingContraptions | illion }}
     </span>
     <br/>
     <span [@faultyTrigger]="faultyState" class="contraption-count">

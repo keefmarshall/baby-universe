@@ -3,6 +3,7 @@ import { UniverseService } from 'app/services/universe.service';
 import { ConstructionProject } from 'app/machines/construction-project';
 import { TickerService } from 'app/services/ticker.service';
 import { Globals } from 'app/globals';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class ConstructionService {
@@ -13,6 +14,8 @@ export class ConstructionService {
   private currentWork: number = 0;
   public energyDrawPerSecond: number = 0;
   public sabotaged = false;
+
+  public events$ = new Subject<ConstructionEvent>();
 
   constructor(
     private universeService: UniverseService,
@@ -40,6 +43,7 @@ export class ConstructionService {
       console.log("Constructing " + project.name);
       this.universeService.universe.currentConstructionProject = project.name;
       this.currentProject = project;
+      this.events$.next(new ConstructionEvent("started", project));
     } else {
       console.log("Can't afford " + project.name);
     }
@@ -51,6 +55,7 @@ export class ConstructionService {
       if (this.currentProject.addWork(work)) {
         // project complete:
         console.log("Built " + this.currentProject.name);
+        this.events$.next(new ConstructionEvent("completed", this.currentProject));
         this.currentProject = null;
         this.universeService.universe.currentConstructionProject = null;
         this.universeService.universe.currentConstructionWork = 0;
@@ -67,6 +72,7 @@ export class ConstructionService {
 
   sabotage() {
     this.sabotaged = true;
+    this.events$.next(new ConstructionEvent("sabotaged", this.currentProject));
     setTimeout(() => this.repaired(), 30000);
     if (this.isConstructing()) {
       this.currentProject.reset();
@@ -78,5 +84,10 @@ export class ConstructionService {
 
   repaired() {
     this.sabotaged = false;
+  }
+}
+
+export class ConstructionEvent {
+  constructor(public type: string, public project?: ConstructionProject) {
   }
 }
