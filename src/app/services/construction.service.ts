@@ -44,9 +44,12 @@ export class ConstructionService {
       this.universeService.universe.currentConstructionProject = project.name;
       this.currentProject = project;
       this.events$.next(new ConstructionEvent("started", project));
+      return true;
     } else {
       console.log("Can't afford " + project.name);
+      return false;
     }
+
   }
 
   addWork(work: number) {
@@ -55,10 +58,11 @@ export class ConstructionService {
       if (this.currentProject.addWork(work)) {
         // project complete:
         console.log("Built " + this.currentProject.name);
-        this.events$.next(new ConstructionEvent("completed", this.currentProject));
+        const lastProject = this.currentProject;
         this.currentProject = null;
         this.universeService.universe.currentConstructionProject = null;
         this.universeService.universe.currentConstructionWork = 0;
+        this.events$.next(new ConstructionEvent("completed", lastProject));
       } else {
         this.universeService.universe.currentConstructionWork =
           this.currentProject.currentWorkTotal();
