@@ -26,18 +26,18 @@ export class ResearchTrackService {
   }
 
   improveMakers(science: number) {
-    this.improveMachine(science, 0.0001, 'MesonMaker');
+    this.improveMachine(science, 0.0001, 'MesonMaker', false);
   }
 
   improveBuilders(science: number) {
-    this.improveMachine(science, 0.0001, 'BaryonBuilder');
+    this.improveMachine(science, 0.0001, 'BaryonBuilder', false);
   }
 
-  private improveMachine(science: number, factor: number, machineName: string) {
+  private improveMachine(science: number, factor: number, machineName: string, limited: boolean = true) {
     const machine = this.universeService.universe.machines[machineName];
     if (machine) {
       let increment = (science * factor);
-      if (machine.efficiency > 1) { // above 1, it gets much harder to improve
+      if (machine.efficiency > 1 && limited) { // above 1, it gets much harder to improve
         increment /= machine.efficiency;
       }
       machine.efficiency += increment;
