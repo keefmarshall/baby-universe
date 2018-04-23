@@ -26,9 +26,10 @@ export class RudimentaryResearcher extends ConstructionProject {
         const eff = this.properties().efficiency;
         const numImprove = this.properties().extras['researchImprovement'];
         const numContrap = this.properties().extras['contraptionImprovement'];
+        const numContrapStr = this.properties().extras['contraptionStrengthImprovement'];
         const numMaker = this.properties().extras['makerImprovement'];
         const numBuilder = this.properties().extras['builderImprovement'];
-        const numAssigned = numImprove + numContrap + numMaker + numBuilder;
+        const numAssigned = numImprove + numContrap + numMaker + numBuilder + numContrapStr;
 
         const numOnProjects = this.properties().quantity - numAssigned;
         const science = numOnProjects * eff * tickFactor * 0.1;
@@ -47,6 +48,9 @@ export class RudimentaryResearcher extends ConstructionProject {
 
         const builderScience = numBuilder * assignmentEff * tickFactor * 0.1;
         this.researchTrackService.improveBuilders(builderScience);
+
+        const contrapStrengthScience = numContrapStr * assignmentEff * tickFactor * 0.1;
+        this.researchTrackService.improveContraptionStrength(contrapStrengthScience);
     }
 
     preconditions(): boolean {
@@ -63,6 +67,7 @@ export class RudimentaryResearcher extends ConstructionProject {
         props.extras = {
             researchImprovement: 0,
             contraptionImprovement: 0,
+            contraptionStrengthImprovement: 0,
             makerImprovement: 0,
             builderImprovement: 0
         };

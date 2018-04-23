@@ -119,7 +119,11 @@ export class UniverseService {
       if (!rrx['builderImprovement']) {
         rrx['builderImprovement'] = 0;
       }
+      if (!rrx['contraptionStrengthImprovement']) {
+        rrx['contraptionStrengthImprovement'] = 0;
+      }
     }
+
   }
 
 }

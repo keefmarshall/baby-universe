@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UniverseService } from './universe.service';
 import { LogService } from './log.service';
+import { ContrivanceService } from './contrivance.service';
 
 /**
  * This service handles research other than direct projects.
@@ -12,7 +13,8 @@ export class ResearchTrackService {
 
   constructor(
     private universeService: UniverseService,
-    private logService: LogService
+    private logService: LogService,
+    private contrivanceService: ContrivanceService
   ) { }
 
   improveResearchers(science: number) {
@@ -31,6 +33,11 @@ export class ResearchTrackService {
 
   improveBuilders(science: number) {
     this.improveMachine(science, 0.0001, 'BaryonBuilder', false);
+  }
+
+  improveContraptionStrength(science: number) {
+    const strengthFactor = 0.1;
+    this.contrivanceService.state.maxLifetime += (science * strengthFactor);
   }
 
   private improveMachine(science: number, factor: number, machineName: string, limited: boolean = true) {

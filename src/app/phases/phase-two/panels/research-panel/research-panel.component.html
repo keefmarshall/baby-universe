@@ -46,7 +46,7 @@
       </tr>
 
       <tr>
-        <td>Contraption improvement</td>
+        <td>Contraption efficiency</td>
         <td class="right-align">
           <app-number-picker
             [max]="constructionMax()"
@@ -60,8 +60,23 @@
         </td>
       </tr>
 
+      <tr *ngIf="universeService.universe.machines['Contraption'].efficiency >= 0.5">
+        <td>Contraption strength</td>
+        <td class="right-align">
+          <app-number-picker
+            [max]="constructionStrengthMax()"
+            [(value)]="universeService.universe.machines['RudimentaryResearcher'].extras.contraptionStrengthImprovement"
+          ></app-number-picker>
+        </td>
+        <td>
+          <i fa class="fa fa-circle-o-notch fa-spin improver-cog"
+            *ngIf="contraptionStrengthImprovers() > 0"
+            aria-hidden="true"></i>
+        </td>
+      </tr>
+  
       <tr>
-        <td>Researcher improvement</td>
+        <td>Researcher efficiency</td>
         <td class="right-align">
           <app-number-picker
             [max]="researchMax()"
@@ -76,7 +91,7 @@
       </tr>
 
       <tr *ngIf="universeService.universe.machines['MesonMaker']">
-        <td>Meson Maker improvement</td>
+        <td>Meson Maker efficiency</td>
         <td class="right-align">
           <app-number-picker
             [max]="makerMax()"
@@ -91,7 +106,7 @@
       </tr>
 
       <tr *ngIf="universeService.universe.machines['BaryonBuilder']">
-        <td>Baryon Builder improvement</td>
+        <td>Baryon Builder efficiency</td>
         <td class="right-align">
           <app-number-picker
             [max]="builderMax()"

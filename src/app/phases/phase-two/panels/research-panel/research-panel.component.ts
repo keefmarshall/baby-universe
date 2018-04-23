@@ -39,28 +39,38 @@ export class ResearchPanelComponent implements OnInit {
 
   researchMax() {
     const rr = this.getRudimentaryResearcher();
-    return rr.quantity - (this.contraptionImprovers() + this.makerImprovers() + this.builderImprovers());
+    // return rr.quantity - (this.contraptionImprovers() + this.makerImprovers() + this.builderImprovers());
+    return rr.quantity + this.researchImprovers() - this.numAssigned();
   }
 
   constructionMax() {
     const rr = this.getRudimentaryResearcher();
-    return rr.quantity - (this.researchImprovers() +  + this.makerImprovers() + this.builderImprovers());
+    // return rr.quantity - (this.researchImprovers() + this.makerImprovers() + this.builderImprovers());
+    return rr.quantity + this.contraptionImprovers() - this.numAssigned();
   }
 
   makerMax() {
     const rr = this.getRudimentaryResearcher();
-    return rr.quantity - (this.researchImprovers() +  + this.contraptionImprovers() + this.builderImprovers());
+    return rr.quantity + this.makerImprovers() - this.numAssigned();
   }
 
   builderMax() {
     const rr = this.getRudimentaryResearcher();
-    return rr.quantity - (this.researchImprovers() +  + this.contraptionImprovers() + this.makerImprovers());
+    return rr.quantity + this.builderImprovers() - this.numAssigned();
+  }
+
+  constructionStrengthMax() {
+    const rr = this.getRudimentaryResearcher();
+    return rr.quantity + this.contraptionStrengthImprovers() - this.numAssigned();
+  }
+
+  private numAssigned(): number {
+    return this.researchImprovers() +  this.contraptionImprovers() + this.makerImprovers()
+      + this.builderImprovers() + this.contraptionStrengthImprovers();
   }
 
   projectResearchers(): number {
-    return this.getRudimentaryResearcher().quantity -
-        (this.researchImprovers() + this.contraptionImprovers() +
-         this.makerImprovers() + this.builderImprovers());
+    return this.getRudimentaryResearcher().quantity - this.numAssigned();
   }
 
   researchImprovers(): number {
@@ -69,6 +79,10 @@ export class ResearchPanelComponent implements OnInit {
 
   contraptionImprovers(): number {
     return this.getRudimentaryResearcher().extras['contraptionImprovement'];
+  }
+
+  contraptionStrengthImprovers(): number {
+    return this.getRudimentaryResearcher().extras['contraptionStrengthImprovement'];
   }
 
   makerImprovers(): number {
@@ -83,18 +97,4 @@ export class ResearchPanelComponent implements OnInit {
     return this.universeService.universe.machines['RudimentaryResearcher'];
   }
 
-  onResImpChange(value) {
-    const rr = this.getRudimentaryResearcher();
-    if (value < 0) {
-      rr.extras['researchImprovement'] = 0
-    } else if (value > this.researchMax()) {
-      rr.extras['researchImprovement'] = this.researchMax()
-    } else {
-      rr.extras['researchImprovement'] = value;
-    }
-  }
-
-  onConImpChange(e) {
-
-  }
 }
