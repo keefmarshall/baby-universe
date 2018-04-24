@@ -1,3 +1,12 @@
 .number-picker {
     white-space: nowrap;
 }
+
+.number-picker button {
+    font-size: 0.6em;
+}
+
+.picker-value {
+    display: inline-block;
+    min-width: 2em;
+}

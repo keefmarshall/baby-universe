@@ -1,5 +1,7 @@
 <div class="number-picker">
-  <button (click)="subtractOne()">-</button>
-  {{ value }}
-  <button (click)="addOne()">+</button>
+  <button (click)="subtract(10)">10</button>
+  <button (click)="subtract(1)">-</button>
+  <span class="picker-value">{{ value }}</span>
+  <button (click)="add(1)">+</button>
+  <button (click)="add(10)">10</button>
 </div>

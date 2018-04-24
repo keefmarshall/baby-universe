@@ -13,18 +13,17 @@ export class NumberPickerComponent {
 
   constructor() { }
 
-  addOne() {
-    if (this.value < this.max) {
-      this.value ++;
+  subtract(n: number = 1) {
+    if (this.value >= (this.min + n)) {
+      this.value -= n;
       this.valueChange.emit(this.value);
     }
   }
 
-  subtractOne() {
-    if (this.value > this.min) {
-      this.value --;
+  add(n: number = 1) {
+    if (this.value <= (this.max - n)) {
+      this.value += n;
       this.valueChange.emit(this.value);
     }
   }
-
 }

@@ -53,11 +53,11 @@
             [(value)]="universeService.universe.machines['RudimentaryResearcher'].extras.contraptionImprovement"
           ></app-number-picker>
         </td>
-        <td>
+        <!-- <td>
           <i fa class="fa fa-circle-o-notch fa-spin improver-cog"
             *ngIf="contraptionImprovers() > 0"
             aria-hidden="true"></i>
-        </td>
+        </td> -->
       </tr>
 
       <tr *ngIf="universeService.universe.machines['Contraption'].efficiency >= 0.5">
@@ -68,11 +68,11 @@
             [(value)]="universeService.universe.machines['RudimentaryResearcher'].extras.contraptionStrengthImprovement"
           ></app-number-picker>
         </td>
-        <td>
+        <!-- <td>
           <i fa class="fa fa-circle-o-notch fa-spin improver-cog"
             *ngIf="contraptionStrengthImprovers() > 0"
             aria-hidden="true"></i>
-        </td>
+        </td> -->
       </tr>
   
       <tr>
@@ -83,41 +83,41 @@
             [(value)]="universeService.universe.machines['RudimentaryResearcher'].extras.researchImprovement"
           ></app-number-picker>
         </td>
-        <td>
+        <!-- <td>
           <i fa class="fa fa-circle-o-notch fa-spin improver-cog"
             *ngIf="researchImprovers() > 0"
             aria-hidden="true"></i>
-        </td>
+        </td> -->
       </tr>
 
       <tr *ngIf="universeService.universe.machines['MesonMaker']">
-        <td>Meson Maker efficiency</td>
+        <td>M. Maker efficiency</td>
         <td class="right-align">
           <app-number-picker
             [max]="makerMax()"
             [(value)]="universeService.universe.machines['RudimentaryResearcher'].extras.makerImprovement"
           ></app-number-picker>
         </td>
-        <td>
+        <!-- <td>
           <i fa class="fa fa-circle-o-notch fa-spin improver-cog"
             *ngIf="makerImprovers() > 0"
             aria-hidden="true"></i>
-        </td>
+        </td> -->
       </tr>
 
       <tr *ngIf="universeService.universe.machines['BaryonBuilder']">
-        <td>Baryon Builder efficiency</td>
+        <td>B. Builder efficiency</td>
         <td class="right-align">
           <app-number-picker
             [max]="builderMax()"
             [(value)]="universeService.universe.machines['RudimentaryResearcher'].extras.builderImprovement"
           ></app-number-picker>
         </td>
-        <td>
+        <!-- <td>
           <i fa class="fa fa-circle-o-notch fa-spin improver-cog"
             *ngIf="builderImprovers() > 0"
             aria-hidden="true"></i>
-        </td>
+        </td> -->
       </tr>
       
     </table>
