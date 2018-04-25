@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { PipesModule } from '../../pipes/pipes.module';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome';
 import { HadronPanelComponent } from './panels/hadron-panel/hadron-panel.component';
+import { RadioactivityPanelComponent } from './panels/radioactivity-panel/radioactivity-panel.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { HadronPanelComponent } from './panels/hadron-panel/hadron-panel.compone
     ContrivancesComponent,
     DeploymentPanelComponent,
     ResearchPanelComponent,
-    HadronPanelComponent
+    HadronPanelComponent,
+    RadioactivityPanelComponent
   ],
   exports: [
     PhaseTwoComponent

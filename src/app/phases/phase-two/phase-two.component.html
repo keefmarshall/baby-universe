@@ -9,11 +9,14 @@
 
       <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4">
         <phase-two-research-panel *ngIf="showResearchPanel()"></phase-two-research-panel>
+        <phase-two-radioactivity-panel *ngIf="showRadioactivityPanel()"></phase-two-radioactivity-panel>
       </div>
 
       <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 col3">
         <phase-two-hadron-panel *ngIf="showHadronPanel()"></phase-two-hadron-panel>
-        <app-matter-table></app-matter-table>
+        <div class="panel delay-5">
+          <app-matter-table></app-matter-table>
+        </div>
       </div>
 
     </div>

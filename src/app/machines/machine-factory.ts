@@ -43,6 +43,7 @@ import { BaryonBuilder } from './baryon-builder';
 import { Contriver } from './contriver';
 import { Repeater } from './repeater';
 import { RepeaterService } from '../services/repeater.service';
+import { RadioactivityCentre } from './radioactivity-centre';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -107,7 +108,8 @@ export class MachineFactory {
             'Repeater': new Repeater(this.universeService, this.logService, this.repeaterService),
             'Contriver': new Contriver(this.universeService, this.logService, this.contrivanceService),
             'MesonMaker': new MesonMaker(this.universeService, this.logService, this.hadronService),
-            'BaryonBuilder': new BaryonBuilder(this.universeService, this.logService, this.hadronService)
+            'BaryonBuilder': new BaryonBuilder(this.universeService, this.logService, this.hadronService),
+            'RadioactivityCentre': new RadioactivityCentre(this.universeService, this.logService)
         };
 
         this.allMachineNames = [];
