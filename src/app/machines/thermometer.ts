@@ -80,6 +80,14 @@ export class Thermometer extends ConstructionProject implements Meter {
                 this.logService.addLog("Ripples of pure energy course through your proto-universe as it gets closer to... what?");
                 this.plasmaShockService.shockLevel++;
             }
+        } else if (universe.phase === 2) {
+            if (universe.heat < 8e15 && !this.properties().extras['p2encmsg1']) {
+                // radioactivity / weak interaction
+                this.properties().extras['p2encmsg1'] = true;
+                this.logService.addLog(
+                    "As the universe cools, your matter particles develop new behaviour " +
+                    "and new ways to interact.");
+            }
         }
     }
 

@@ -10,6 +10,7 @@ import { QuantumElectrodynamics, QuantumChromodynamics, ColourDeconfinement } fr
 import { BulkDeployment, AdvancedBulkDeployment } from "app/research/bulk-deployment";
 import { InstructionPipelining, SuperscalarPipelining } from "app/research/assembly";
 import { Leptons, Hadrons, Mesons, Pions, Kaons, Baryons, Protons, Neutrons, Electrons, Muons, Tauons, Neutrinos } from "./matter2";
+import { WeakInteraction, WZBosons, RadioactiveDecay } from "./radioactivity";
 
 export class ResearchList {
     public projectList: Array<ResearchProject> = [];
@@ -46,6 +47,8 @@ export class ResearchList {
             new QuantumElectrodynamics(),
             new QuantumChromodynamics(),
             new ColourDeconfinement(),
+            new WeakInteraction(),
+            new RadioactiveDecay(),
             new Fermions(),
             new Quarks1(),
             new Quarks2(),
@@ -61,7 +64,8 @@ export class ResearchList {
             new Electrons(),
             new Muons(),
             new Tauons(),
-            new Neutrinos()
+            new Neutrinos(),
+            new WZBosons()
         ];
 
         this.projectList.forEach(p => this.projects[p.name] = p);
