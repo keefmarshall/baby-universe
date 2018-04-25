@@ -38,6 +38,7 @@ export class LogDrawerComponent implements OnInit, OnDestroy, AfterViewInit {
   ngAfterViewInit() {
     this.typed = new Typed(".log-line", {
       strings: [""],
+      contentType: 'html',
       showCursor: false,
       typeSpeed: 40,
       onComplete: (typed) => { this.typingComplete(typed) }

@@ -3,6 +3,7 @@ import { Component, OnDestroy, ViewChild, ViewChildren,
 import { MatDialogRef } from '@angular/material';
 import { LogService } from '../../services/log.service';
 import { Subscription } from 'rxjs/Subscription';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-log-panel',
@@ -17,7 +18,8 @@ export class LogPanelComponent implements OnDestroy, AfterViewInit {
 
   constructor(
     public dialogRef: MatDialogRef<LogPanelComponent>,
-    public logService: LogService
+    public logService: LogService,
+    public sanitizer: DomSanitizer
   ) { }
 
   onNoClick(): void {

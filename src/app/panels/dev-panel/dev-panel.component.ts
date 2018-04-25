@@ -114,6 +114,16 @@ export class DevPanelComponent implements OnInit {
     this.stateManagementService.resetMachines();
   }
 
+  resetLeptons() {
+    const u = this.universeService.universe;
+    // delete u.research['Matter: Leptons'];
+    // delete u.research['Matter: Electrons'];
+    // delete u.research['Matter: Muons'];
+    // delete u.research['Matter: Tau Leptons'];
+    delete u.research['Matter: Neutrinos'];
+    
+  }
+
   setTemperature(temp: number) {
     this.universeService.universe.heat = temp * Globals.boltzmann;
   }

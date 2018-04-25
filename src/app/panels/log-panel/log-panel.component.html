@@ -9,7 +9,7 @@
       #messages>
       <mat-icon *ngIf="i >= logService.logs.length - logService.newLogs"
         class="alt-theme" color="accent">fiber_manual_record</mat-icon>
-      {{ log }}
-      </mat-list-item>
+      <span [innerHtml]="sanitizer.bypassSecurityTrustHtml(log)"></span>
+    </mat-list-item>
   </mat-list>
 </mat-dialog-content>

@@ -142,7 +142,8 @@ export class Electrons extends ResearchProject {
 
     onCompletion(universe: Universe) {
         ParticleUtils.initialiseParticles('electron', universe);
-        this.log("Electrons (e⁻): tiny, negatively charged leptons. Their anti-matter equivalents are called Positrons (e⁺), and have a positive charge.");
+        this.log("Electrons (e⁻): tiny, negatively charged leptons. " +
+            "Their anti-matter equivalents are called Positrons (e⁺), and have a positive charge.");
     }
 }
 
@@ -190,7 +191,8 @@ export class Neutrinos extends ResearchProject {
 
     onCompletion(universe: Universe) {
         ParticleUtils.initialiseParticles('neutrino', universe);
-        this.log("Neutrinos (ν): tiny, neutral leptons, with almost no mass. They come in different flavours but are hard to distinguish, " +
+        this.log("Neutrinos (ν<sub>e</sub>, ν<sub>μ</sub>, ν<sub>τ</sub>): tiny, neutral leptons, with almost no mass. " +
+            "They come in different flavours but are hard to distinguish, " +
             " and barely interact with anything else.");
     }
 }
