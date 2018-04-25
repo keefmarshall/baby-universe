@@ -31,7 +31,7 @@ export class WZBosons extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        this.log("W⁺, W⁻ and Z Bosons. Your researchers have no idea what they do...");
+        this.log("W⁺, W⁻ and Z bosons. Your researchers have no idea what they do...");
     }
 }
 
@@ -48,6 +48,6 @@ export class RadioactiveDecay extends ResearchProject {
     onCompletion(universe: Universe) {
         this.log(
             "Particles and Hadrons can decay into other forms, over time. " +
-            "Maybe those weird Boson things have something to do with this.");
+            "Maybe those weird W & Z boson things have something to do with this.");
     }
 }
