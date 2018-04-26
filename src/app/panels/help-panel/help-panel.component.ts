@@ -25,4 +25,8 @@ export class HelpPanelComponent implements OnInit {
     return this.universeService.universe.machines['PhotonicPhilosopher'] ||
       this.universeService.universe.phase >= 2;
   }
+
+  showParticlePanel(): boolean {
+    return this.universeService.universe.research['Matter: Quarks I'];
+  }
 }

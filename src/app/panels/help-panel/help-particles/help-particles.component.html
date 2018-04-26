@@ -1,0 +1,93 @@
+<h2>Fermions</h2>
+
+<p>
+  Fermions are fundamental particles. They are not made up from anything else.
+  However they can transform into smaller fermions via various decay processes.
+</p>
+
+<p>
+  There are several classes of Fermion. 
+  Those you have discovered so far are shown below:
+</p>
+
+<div id="help-quarks">
+  <h3>Quarks</h3>
+  <table>
+      <tr>
+        <td>u, u̅</td>
+        <td>Up quark and up antiquark, the smallest of the quarks</td>
+      </tr>
+      <tr>
+        <td>d, d̅</td>
+        <td>Down quark and down antiquark, another small quark</td>
+      </tr>
+      <tr *ngIf="showQuarks2()">
+        <td>s, s̅</td>
+        <td>Strange quark and antiquark</td>
+      </tr>
+      <tr *ngIf="showQuarks2()">
+        <td>c, c̅</td>
+        <td>Charm quark and antiquark</td>
+      </tr>
+      <tr *ngIf="showQuarks3()">
+        <td>b, b̅</td>
+        <td>Bottom quark and antiquark</td>
+      </tr>
+      <tr *ngIf="showQuarks3()">
+        <td>t, t̅</td>
+        <td>Top quark and antiquark - by far the largest quark, also the least stable</td>
+      </tr>
+  </table>
+</div>
+
+<div id="help-leptons" *ngIf="showElectrons() || showNeutrinos()">
+  <h3>Leptons</h3>
+  <table>
+    <tr *ngIf="showElectrons()">
+      <td>e⁻, e⁺</td>
+      <td>Electrons and their positively charged antiparticles Positrons</td>
+    </tr>
+    <tr *ngIf="showMuons()">
+      <td>μ⁻, μ⁺</td>
+      <td>Muons and antimuons, slightly larger than electrons</td>
+    </tr>
+    <tr *ngIf="showTauons()">
+      <td>τ⁻, τ⁺</td>
+      <td>Tau leptons, or tauons, and antitau leptons, slightly larger than muons</td>
+    </tr>
+    <tr *ngIf="showNeutrinos()">
+      <td>ν<sub>e</sub>, ν̅<sub>e</sub></td>
+      <td>Electron neutrinos and antineutrinos</td>        
+    </tr>
+    <tr *ngIf="showNeutrinos()">
+      <td>ν<sub>μ</sub>, ν̅<sub>μ</sub></td>
+      <td>Muon neutrinos and antineutrinos</td>        
+    </tr>
+    <tr *ngIf="showNeutrinos()">
+      <td>ν<sub>τ</sub>, ν̅<sub>τ</sub></td>
+      <td>Tau neutrinos and antineutrinos</td>        
+    </tr>
+  </table>
+</div>
+
+<div id="help-bosons">
+  <h3>Gauge Bosons</h3>
+  <table>
+    <tr>
+      <td>γ</td>
+      <td>Photons, the vector of electromagnetic energy</td>
+    </tr>
+    <tr *ngIf="showGluons()">
+      <td>g</td>
+      <td>Gluons, the vector of the Strong Interaction force</td>
+    </tr>
+    <tr *ngIf="showWZBosons()">
+      <td>W⁺, W⁻</td>
+      <td>W bosons, a vector of the Weak Interaction force</td>
+    </tr>
+    <tr *ngIf="showWZBosons()">
+      <td>Z</td>
+      <td>The Z boson, a vector of the Weak Interaction force</td>
+    </tr>
+  </table>
+</div>
