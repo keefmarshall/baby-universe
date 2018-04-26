@@ -40,6 +40,7 @@ import { HadronService } from './services/hadron.service';
 import { BackupService } from './services/backup.service';
 import { EntropyService } from './services/entropy.service';
 import { RepeaterService } from './services/repeater.service';
+import { RadioactivityService } from './services/radioactivity.service';
 
 
 @NgModule({
@@ -74,6 +75,7 @@ import { RepeaterService } from './services/repeater.service';
     MachineService,
     MeteringService,
     PlasmaShockService,
+    RadioactivityService,
     RepeaterService,
     ResearchService,
     ResearchTrackService,

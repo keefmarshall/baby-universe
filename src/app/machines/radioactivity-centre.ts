@@ -2,11 +2,14 @@ import { ConstructionProject } from "./construction-project";
 import { LogService } from "../services/log.service";
 import { UniverseService } from "../services/universe.service";
 import { RadioactiveDecay } from "../research/radioactivity";
+import { RadioactivityService } from "../services/radioactivity.service";
 
 export class RadioactivityCentre extends ConstructionProject {
 
-    constructor(universeService: UniverseService,
-        logService: LogService
+    constructor(
+        universeService: UniverseService,
+        logService: LogService,
+        private radioactivityService: RadioactivityService
     ) {
         super(
             "RadioactivityCentre",
@@ -18,6 +21,7 @@ export class RadioactivityCentre extends ConstructionProject {
 
     onComplete() {
         this.machineService.addMachine(this);
+        this.radioactivityService.start();
     }
 
     onTick(tickFactor: number) {

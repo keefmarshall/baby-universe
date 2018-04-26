@@ -44,6 +44,7 @@ import { Contriver } from './contriver';
 import { Repeater } from './repeater';
 import { RepeaterService } from '../services/repeater.service';
 import { RadioactivityCentre } from './radioactivity-centre';
+import { RadioactivityService } from '../services/radioactivity.service';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -72,7 +73,8 @@ export class MachineFactory {
         private plasmaShockService: PlasmaShockService,
         private researchTrackService: ResearchTrackService,
         private hadronService: HadronService,
-        private repeaterService: RepeaterService
+        private repeaterService: RepeaterService,
+        private radioactivityService: RadioactivityService
     ) {
         this.resetMachines();
     }
@@ -109,7 +111,7 @@ export class MachineFactory {
             'Contriver': new Contriver(this.universeService, this.logService, this.contrivanceService),
             'MesonMaker': new MesonMaker(this.universeService, this.logService, this.hadronService),
             'BaryonBuilder': new BaryonBuilder(this.universeService, this.logService, this.hadronService),
-            'RadioactivityCentre': new RadioactivityCentre(this.universeService, this.logService)
+            'RadioactivityCentre': new RadioactivityCentre(this.universeService, this.logService, this.radioactivityService)
         };
 
         this.allMachineNames = [];
