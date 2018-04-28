@@ -5,7 +5,7 @@ import { Universe } from "../services/universe";
 export class WeakInteraction extends ResearchProject {
 
     constructor() {
-        super("Weak Interaction", "A new way for particles to interact", 1250, 2, 10);
+        super("Weak Interaction", "A new way for particles to interact", 650, 2, 10);
     }
 
     preconditions(universe: Universe): boolean {
@@ -23,7 +23,7 @@ export class WeakInteraction extends ResearchProject {
 export class WZBosons extends ResearchProject {
 
     constructor() {
-        super("Matter: W & Z Bosons", "Mysterious new fundamental particles", 2000, 2, 10);
+        super("Matter: W & Z Bosons", "Mysterious new fundamental particles", 1000, 2, 10);
     }
 
     preconditions(universe: Universe): boolean {
@@ -38,7 +38,7 @@ export class WZBosons extends ResearchProject {
 export class RadioactiveDecay extends ResearchProject {
 
     constructor() {
-        super("Radioactive Decay", "Perhaps your particles are not as stable as you thought?", 3000, 2, 10);
+        super("Radioactive Decay", "Perhaps your particles are not as stable as you thought?", 2000, 2, 10);
     }
 
     preconditions(universe: Universe): boolean {

@@ -17,7 +17,7 @@ export class Contriver extends ConstructionProject {
             "Contrives contraptions. Slowly.",
             universeService,
             logService,
-            2500, 2);
+            2500, 1.75);
     }
 
     onComplete() {
