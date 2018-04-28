@@ -175,7 +175,7 @@ export class Tauons extends ResearchProject {
 
     onCompletion(universe: Universe) {
         ParticleUtils.initialiseParticles('tau', universe);
-        this.log("Tau Leptons (τ⁻): negatively charged leptons. A little bigger than a muon.");
+        this.log("Tau Leptons (τ⁻): negatively charged leptons. The heaviest of all the leptons.");
     }
 }
 
