@@ -47,7 +47,7 @@ export class RadioactiveDecay extends ResearchProject {
 
     onCompletion(universe: Universe) {
         this.log(
-            "Particles and Hadrons can decay into other forms, over time. " +
-            "Maybe those weird W & Z boson things have something to do with this.");
+            "Fermions (and Hadrons) can decay into other forms, over time. " +
+            "Maybe those weird W &amp; Z boson things have something to do with this.");
     }
 }
