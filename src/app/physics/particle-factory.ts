@@ -1,6 +1,6 @@
-import { Globals } from '../globals';
 import { Universe } from '../services/universe';
 import { LogService } from '../services/log.service';
+import { Particle, ALL_PARTICLES } from './particle';
 
 export class ParticleFactory {
 
@@ -37,5 +37,24 @@ export class ParticleFactory {
         }
 
         universe.particles['gluon'] += count;
+    }
+
+    collectParticleAndAnti(universe: Universe, type: string, count: number = 1) {
+        // Every quark has to be created with an anti-quark, that's just the way it is
+        // [actually not quite - the balance has to be correct, but we're simplifying here]
+        // [[ and at some point we have to worry about Baryogenesis.. oh dear..]]
+        const p: Particle = ALL_PARTICLES[type];
+        const ap: Particle = ALL_PARTICLES[p.antiparticleCode];
+
+        [p.code, ap.code].forEach((code) => {
+            this.collectParticle(universe, code, count);
+        });
+    }
+
+    collectParticle(universe: Universe, code: string, count: number = 1) {
+        if (universe.matter[code] == null) {
+            universe.matter[code] = 0;
+        }
+        universe.matter[code] += count;
     }
 }

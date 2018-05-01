@@ -8,13 +8,13 @@ import { StateManagementService } from 'app/services/state-management.service';
 import { AutosaveService } from 'app/services/autosave.service';
 import { StargameService } from 'app/games/stargame/stargame.service';
 import { LogService } from 'app/services/log.service';
-import { QuarkUtils } from 'app/research/matter';
 import { MachineService } from '../../services/machine.service';
 import { MachineFactory } from '../../machines/machine-factory';
 import { ConstructionProject } from '../../machines/construction-project';
 import { ContrivanceService } from '../../services/contrivance.service';
 import { BackupService } from '../../services/backup.service';
 import { Globals } from '../../globals';
+import { QuarkUtils } from '../../physics/quark-utils';
 
 @Component({
   selector: 'app-dev-panel',
