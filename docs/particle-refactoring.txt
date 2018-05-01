@@ -1,0 +1,7 @@
+TO TEST AFTER REFACTORING:
+
+Quark Scoop
+Quark Squeezer - Gluons - changed number generation 
+Star game - changed a few pieces
+Photon collection
+dev panel add quarks button

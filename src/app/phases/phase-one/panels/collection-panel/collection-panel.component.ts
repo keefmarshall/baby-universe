@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ParticleFactory } from 'app/machines/particle-factory';
 import { UniverseService } from 'app/services/universe.service';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { StargameComponent } from '../stargame/stargame.component';
@@ -7,6 +6,7 @@ import { Quarks1 } from 'app/research/matter';
 import { StargameDialogComponent } from '../stargame/stargame-dialog.component';
 import { MeteringService } from 'app/services/metering.service';
 import { LogService } from 'app/services/log.service';
+import { ParticleFactory } from 'app/physics/particle-factory';
 
 @Component({
   selector: 'app-collection-panel',

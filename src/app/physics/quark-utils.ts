@@ -10,17 +10,17 @@ export class QuarkUtils {
         // console.log("Random star: ran = " + ran);
         if (this.isResearched(universe, new Quarks3())) {
             // include tiny chance of top and bottom quarks
-            return ran < 60.5 ? "up quark" : // 60.5
-                    ran < 91 ? "down quark" : // 30.5
-                    ran < 95 ? "strange quark" : // 4
-                        ran < 98.7 ? "charm quark" : // 3.7
-                        ran < 99.4 ? "top quark" : "bottom quark"; // 0.7 : 0.6
+            return ran < 60.5 ? "u" : // 60.5
+                    ran < 91 ? "d" : // 30.5
+                    ran < 95 ? "s" : // 4
+                        ran < 98.7 ? "c" : // 3.7
+                        ran < 99.4 ? "t" : "b"; // 0.7 : 0.6
         } else if (this.isResearched(universe, new Quarks2())) {
-            return ran < 61 ? "up quark" : // 61
-                    ran < 92 ? "down quark" : // 31
-                    ran < 96 ? "strange quark" : "charm quark"; // 4 : 4
+            return ran < 61 ? "u" : // 61
+                    ran < 92 ? "d" : // 31
+                    ran < 96 ? "s" : "c"; // 4 : 4
         } else { // assume Quarks1 has to be researched before we get here
-            return ran < 65 ? "up quark" : "down quark";
+            return ran < 65 ? "u" : "d";
         }
     }
 
@@ -41,20 +41,20 @@ export class QuarkUtils {
             // it depends on what has been researched
             if (this.isResearched(universe, new Quarks3())) {
                 // include tiny chance of top and bottom quarks
-                qbag.add("up quark", Math.round(count * 0.605));
-                qbag.add("down quark", Math.round(count * 0.305));
-                qbag.add("strange quark", Math.round(count * 0.04));
-                qbag.add("charm quark", Math.round(count * 0.037));
-                qbag.add("top quark", Math.round(count * 0.007));
-                qbag.add("bottom quark", Math.round(count * 0.006));
+                qbag.add("u", Math.round(count * 0.605));
+                qbag.add("d", Math.round(count * 0.305));
+                qbag.add("s", Math.round(count * 0.04));
+                qbag.add("c", Math.round(count * 0.037));
+                qbag.add("t", Math.round(count * 0.007));
+                qbag.add("b", Math.round(count * 0.006));
             } else if (this.isResearched(universe, new Quarks2())) {
-                qbag.add("up quark", Math.round(count * 0.61));
-                qbag.add("down quark", Math.round(count * 0.31));
-                qbag.add("strange quark", Math.round(count * 0.04));
-                qbag.add("charm quark", Math.round(count * 0.04));
+                qbag.add("u", Math.round(count * 0.61));
+                qbag.add("d", Math.round(count * 0.31));
+                qbag.add("s", Math.round(count * 0.04));
+                qbag.add("c", Math.round(count * 0.04));
             } else { // assume Quarks1 has to be researched before we get here
-                qbag.add("up quark", Math.round(count * 0.65));
-                qbag.add("down quark", Math.round(count * 0.35));
+                qbag.add("u", Math.round(count * 0.65));
+                qbag.add("d", Math.round(count * 0.35));
             }
         }
 

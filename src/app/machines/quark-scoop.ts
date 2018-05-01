@@ -1,12 +1,13 @@
 import { ConstructionProject } from "app/machines/construction-project";
 import { UniverseService } from "app/services/universe.service";
-import { Quarks3, QuarkUtils } from "app/research/matter";
-import { ParticleFactory } from "app/machines/particle-factory";
+import { Quarks3 } from "app/research/matter";
 import { MachineProperties } from "app/machines/machine";
 import { Globals } from "app/globals";
 import { KineticEngineering } from "app/research/kinetics2";
 import { QuantumElectrodynamics } from "app/research/collection";
 import { LogService } from "../services/log.service";
+import { ParticleFactory } from "../physics/particle-factory";
+import { QuarkUtils } from "../physics/quark-utils";
 
 export class QuarkScoop extends ConstructionProject {
     private particleFactory = new ParticleFactory();
@@ -49,7 +50,7 @@ export class QuarkScoop extends ConstructionProject {
             const quarks = this.quarkUtils.randomQuarks(u, numQuarks);
             quarks.toSet().forEach(quark => {
                 const q = quarks.count(quark);
-                this.particleFactory.collectQuark(u, quark, q);
+                this.particleFactory.collectParticleAndAnti(u, quark, q);
             });
         }
     }
@@ -76,11 +77,11 @@ export class QuarkScoop extends ConstructionProject {
     displayCost(count: number = 1): string {
         let quarkCostString: string;
         if (this.antiCycle()) {
-            quarkCostString = this.upQuarkCost() + " anti up quarks, " +
+            quarkCostString = this.upQuarkCost() + " up antiquarks, " +
                 this.downQuarkCost() + " down quarks";
         } else {
             quarkCostString = this.upQuarkCost() + " up quarks, " +
-                this.downQuarkCost() + " anti down quarks";
+                this.downQuarkCost() + " down antiquarks";
         }
         return super.displayCost(count) + ", " + quarkCostString;
     }
@@ -89,11 +90,11 @@ export class QuarkScoop extends ConstructionProject {
         const u = this.universeService.universe;
         let uqs: boolean, adqs: boolean;
         if (this.antiCycle()) {
-            uqs = u.antiparticles['up quark'] >= this.upQuarkCost();
-            adqs = u.particles['down quark'] >= this.downQuarkCost();
+            uqs = u.matter['u̅'] >= this.upQuarkCost();
+            adqs = u.matter['d'] >= this.downQuarkCost();
         } else {
-            uqs = u.particles['up quark'] >= this.upQuarkCost();
-            adqs = u.antiparticles['down quark'] >= this.downQuarkCost();
+            uqs = u.matter['u'] >= this.upQuarkCost();
+            adqs = u.matter['d̅'] >= this.downQuarkCost();
         }
         return super.affordable() && uqs && adqs;
     }
@@ -104,11 +105,11 @@ export class QuarkScoop extends ConstructionProject {
             // nested ifs and we'll need to rollback on error
             const u = this.universeService.universe;
             if (this.antiCycle()) {
-                u.antiparticles['up quark'] -= this.upQuarkCost() * count;
-                u.particles['down quark'] -= this.downQuarkCost() * count;
+                u.matter['u̅'] -= this.upQuarkCost() * count;
+                u.matter['d'] -= this.downQuarkCost() * count;
             } else {
-                u.particles['up quark'] -= this.upQuarkCost() * count;
-                u.antiparticles['down quark'] -= this.downQuarkCost() * count;
+                u.matter['u'] -= this.upQuarkCost() * count;
+                u.matter['d̅'] -= this.downQuarkCost() * count;
             }
             super.payFor(count);
             return true;

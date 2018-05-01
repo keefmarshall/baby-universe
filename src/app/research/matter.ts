@@ -44,8 +44,8 @@ export class Quarks2 extends ResearchProject {
 
     preconditions(universe: Universe): boolean {
         const q1Researched = this.isResearched(universe, new Quarks1());
-        const quarksCaught = (universe.particles["up quark"] || 0) +
-                             (universe.particles["down quark"] || 0);
+        const quarksCaught = (universe.matter["u"] || 0) +
+                             (universe.matter["d"] || 0);
         return q1Researched && quarksCaught >= 10;
     }
 
@@ -63,8 +63,8 @@ export class Quarks3 extends ResearchProject {
 
     preconditions(universe: Universe): boolean {
         const q2Researched = this.isResearched(universe, new Quarks2());
-        const quarksCaught = (universe.particles["strange quark"] || 0) +
-                             (universe.particles["charm quark"] || 0);
+        const quarksCaught = (universe.matter["s"] || 0) +
+                             (universe.matter["c"] || 0);
         return q2Researched && quarksCaught >= 10;
     }
 

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UniverseService } from '../../services/universe.service';
 
-import { ParticleFactory } from '../../machines/particle-factory';
 import { ResearchService } from 'app/services/research.service';
 import { ConstructionService } from 'app/services/construction.service';
 import { StateManagementService } from 'app/services/state-management.service';
@@ -15,6 +14,7 @@ import { ContrivanceService } from '../../services/contrivance.service';
 import { BackupService } from '../../services/backup.service';
 import { Globals } from '../../globals';
 import { QuarkUtils } from '../../physics/quark-utils';
+import { ParticleFactory } from '../../physics/particle-factory';
 
 @Component({
   selector: 'app-dev-panel',
@@ -83,10 +83,17 @@ export class DevPanelComponent implements OnInit {
   addQuarks(n: number) {
     const qu = new QuarkUtils();
     const u = this.universeService.universe;
-    for (let i = 0; i < n; i++) {
-      const quark = qu.randomQuark(u);
-      this.particleFactory.collectQuark(u, quark);
-    }
+
+    // for (let i = 0; i < n; i++) {
+    //   const quark = qu.randomQuark(u);
+    //   this.particleFactory.collectParticleAndAnti(u, quark);
+    // }
+
+    const quarks = qu.randomQuarks(u, n);
+    quarks.toSet().forEach(quark => {
+      const q = quarks.count(quark);
+      this.particleFactory.collectParticleAndAnti(u, quark, q);
+    });
   }
 
   addThermometer() {

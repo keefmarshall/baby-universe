@@ -18,37 +18,35 @@ export class ParticleFactory {
         }
     }
 
-    collectQuark(universe: Universe, type: string, count: number = 1) {
+    // collectQuark(universe: Universe, type: string, count: number = 1) {
+    //     // Every quark has to be created with an anti-quark, that's just the way it is
+    //     // [actually not quite - the balance has to be correct, but we're simplifying here]
+    //     // [[ and at some point we have to worry about Baryogenesis.. oh dear..]]
+    //     if (universe.particles[type] == null) {
+    //         universe.particles[type] = 0;
+    //         universe.antiparticles[type] = 0;
+    //     }
+
+    //     universe.particles[type] += count;
+    //     universe.antiparticles[type] += count;
+    // }
+
+    // collectGluons(universe: Universe, count: number = 1) {
+    //     if (universe.particles['gluon'] == null) {
+    //         universe.particles['gluon'] = 0;
+    //     }
+
+    //     universe.particles['gluon'] += count;
+    // }
+
+    collectParticleAndAnti(universe: Universe, code: string, count: number = 1) {
         // Every quark has to be created with an anti-quark, that's just the way it is
         // [actually not quite - the balance has to be correct, but we're simplifying here]
         // [[ and at some point we have to worry about Baryogenesis.. oh dear..]]
-        if (universe.particles[type] == null) {
-            universe.particles[type] = 0;
-            universe.antiparticles[type] = 0;
-        }
-
-        universe.particles[type] += count;
-        universe.antiparticles[type] += count;
-    }
-
-    collectGluons(universe: Universe, count: number = 1) {
-        if (universe.particles['gluon'] == null) {
-            universe.particles['gluon'] = 0;
-        }
-
-        universe.particles['gluon'] += count;
-    }
-
-    collectParticleAndAnti(universe: Universe, type: string, count: number = 1) {
-        // Every quark has to be created with an anti-quark, that's just the way it is
-        // [actually not quite - the balance has to be correct, but we're simplifying here]
-        // [[ and at some point we have to worry about Baryogenesis.. oh dear..]]
-        const p: Particle = ALL_PARTICLES[type];
+        const p: Particle = ALL_PARTICLES[code];
         const ap: Particle = ALL_PARTICLES[p.antiparticleCode];
 
-        [p.code, ap.code].forEach((code) => {
-            this.collectParticle(universe, code, count);
-        });
+        [p.code, ap.code].forEach((c) => this.collectParticle(universe, c, count));
     }
 
     collectParticle(universe: Universe, code: string, count: number = 1) {

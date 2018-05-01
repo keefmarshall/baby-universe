@@ -59,8 +59,8 @@ export class BaryonBuilder  extends ConstructionProject {
     affordable(): boolean {
         const u = this.universeService.universe;
         const pionCost = this.pionCost();
-        const plusPions = u.particles['pion'] >= pionCost;
-        const negPions = u.antiparticles['pion'] >= pionCost;
+        const plusPions = u.matter["π⁺"] >= pionCost;
+        const negPions = u.matter["π⁻"] >= pionCost;
         return super.affordable() && plusPions && negPions;
     }
 
@@ -70,8 +70,8 @@ export class BaryonBuilder  extends ConstructionProject {
             // nested ifs and we'll need to rollback on error
             const u = this.universeService.universe;
             const pionCost = this.pionCost();
-            u.particles['pion'] -= pionCost * count;
-            u.antiparticles['pion'] -= pionCost * count;
+            u.matter["π⁺"] -= pionCost * count;
+            u.matter["π⁻"] -= pionCost * count;
             super.payFor(count);
             return true;
         } else {
