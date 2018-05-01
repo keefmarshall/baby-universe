@@ -55,4 +55,15 @@ export class ParticleFactory {
         }
         universe.matter[code] += count;
     }
+
+    removeParticleAndAnti(universe: Universe, code: string, count: number = 1) {
+        const p: Particle = ALL_PARTICLES[code];
+        [p.code, p.antiparticleCode].forEach((c) => this.removeParticle(universe, c, count));
+    }
+
+    removeParticle(universe: Universe, code: string, count: number = 1) {
+        if (universe.matter[code] >= count) {
+            universe.matter[code] -= count;
+        }
+    }
 }

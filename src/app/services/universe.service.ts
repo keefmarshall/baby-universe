@@ -95,9 +95,6 @@ export class UniverseService {
     if (!u.currentConstructionProject) u.currentConstructionProject = null;
     if (!u.currentConstructionWork) u.currentConstructionWork = 0;
 
-    if (!u.particles) u.particles = {};
-    if (!u.antiparticles) u.antiparticles = {};
-
     if (!u.logs) {
       u.logs = ["Within the empty void, matter and energy spontaneously " +
                 "flash into existence, only to decay almost instantly. "];
