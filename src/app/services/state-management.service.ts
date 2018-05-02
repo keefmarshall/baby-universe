@@ -8,6 +8,7 @@ import { ConstructionProject } from 'app/machines/construction-project';
 import { StargameService } from 'app/games/stargame/stargame.service';
 import { LogService } from './log.service';
 import { PlasmaShockService } from './plasma-shock.service';
+import { AutosaveService } from './autosave.service';
 
 /**
  * This service exists to break circular dependencies between
@@ -24,6 +25,7 @@ import { PlasmaShockService } from './plasma-shock.service';
 export class StateManagementService {
 
   constructor(
+    private autosaveService: AutosaveService,
     private constructionService: ConstructionService,
     private logService: LogService,
     private machineFactory: MachineFactory,
@@ -144,6 +146,15 @@ export class StateManagementService {
    */
   updateUniverse() {
     const u = this.universeService.universe;
+
+    if (!u.release || u.release < 0.340) {
+      alert("Many thanks for being an early adopter!\n\n" +
+        "We're very sorry, but from v0.3.4 the game code has changed.\n" +
+        "You will have to restart from the beginning, losing any progress.");
+        this.universeService.resetUniverse();
+        this.autosaveService.autosave();
+        window.location.reload();
+    }
 
     /////////////////////////////////////////////////////////////////
     // PASER REBALANCING

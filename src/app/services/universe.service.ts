@@ -121,6 +121,10 @@ export class UniverseService {
       }
     }
 
+    if (!u.matter) {
+      u.matter = {};
+      // this is going to hurt, you need to reset.
+    }
   }
 
 }
