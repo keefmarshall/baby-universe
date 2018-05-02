@@ -9,38 +9,26 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./matter-table.component.css']
 })
 export class MatterTableComponent implements OnInit, OnDestroy {
-  private matter: Particle[][] = [];
-  private interval;
+  public matter: Particle[][];
 
   constructor(
-    private universeService: UniverseService,
+    public universeService: UniverseService,
     public sanitizer: DomSanitizer
-  ) { }
+  ) {
+    this.matter = Object.keys(ALL_PARTICLES)
+        .map((c) => ALL_PARTICLES[c])
+        .filter((p) => p.matter)
+        .map((p) => [p, ALL_PARTICLES[p.antiparticleCode]]);
+  }
 
   ngOnInit() {
-    this.interval = setInterval(() => this.calculateMatterTable(), 250);
   }
 
   ngOnDestroy() {
-    if (this.interval) {
-      clearInterval(this.interval);
-    }
   }
 
-  getMatter(): Particle[][] {
-    return this.matter;
+  getParticles() {
+    return Object.keys(this.universeService.universe.matter);
   }
 
-  /**
-   * Try to do this less frequently than an Angular refresh as it's quite
-   * intensive
-   */
-  private calculateMatterTable() {
-    this.matter = Object.keys(this.universeService.universe.matter)
-      .map((c) => ALL_PARTICLES[c])
-      .filter((p) => p.matter)
-      .map((p) => {
-        return [p, ALL_PARTICLES[p.antiparticleCode]];
-      });
-  }
 }

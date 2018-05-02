@@ -1,19 +1,24 @@
-<table *ngIf="getMatter().length > 0">
+<table *ngIf="getParticles().length > 0">
   <tr>
-    <th class="right-align">Matter</th>
     <th>&nbsp;</th>
-    <th class="right-align">Antimatter</th>
+    <th>Matter</th>
     <th>&nbsp;</th>
+    <th>Antimatter</th>
   </tr>
 
-  <tr *ngFor="let parts of getMatter()">
-    <td [innerHtml]="sanitizer.bypassSecurityTrustHtml(parts[0].displayCode)"></td>
-    <td class="right-align">{{ universeService.universe.matter[parts[0].code] | illion }}</td>
-    <ng-container *ngIf="parts[0].code != parts[0].antiParticleCode && universeService.universe.matter[parts[1].code]">
-      <td [innerHtml]="sanitizer.bypassSecurityTrustHtml(parts[1].displayCode)"></td>
-      <td class="right-align">
-        {{ universeService.universe.matter[parts[1].code] | illion }}
-      </td>
+  <tr *ngFor="let parts of matter">
+    <ng-container *ngIf="universeService.universe.matter[parts[0].code]">
+
+      <td [innerHtml]="sanitizer.bypassSecurityTrustHtml(parts[0].displayCode)"></td>
+      <td class="right-align">{{ universeService.universe.matter[parts[0].code] | illion }}</td>
+
+      <ng-container *ngIf="parts[0].code != parts[0].antiParticleCode && universeService.universe.matter[parts[1].code]">
+        <td [innerHtml]="sanitizer.bypassSecurityTrustHtml(parts[1].displayCode)"></td>
+        <td class="right-align">
+          {{ universeService.universe.matter[parts[1].code] | illion }}
+        </td>
+      </ng-container>
+
     </ng-container>
   </tr>
 

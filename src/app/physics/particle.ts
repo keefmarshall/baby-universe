@@ -18,7 +18,7 @@ export const ALL_PARTICLES: { [key: string]: Particle } = {
   's̅': new Particle("s̅", "s̅", "strange antiquark", false, "s"),
   'c': new Particle("c", "c", "charm quark", true, "c̅"),
   'c̅': new Particle("c̅", "c̅", "charm antiquark", false, "c"),
-  'b': new Particle("b", "b", "bottom quark", false, "b̅"),
+  'b': new Particle("b", "b", "bottom quark", true, "b̅"),
   'b̅': new Particle("b̅", "b̅", "bottom antiquark", false, "b"),
   't': new Particle("t", "t", "top quark", true, "t̅"),
   't̅': new Particle("t̅", "t̅", "top antiquark", false, "t"),

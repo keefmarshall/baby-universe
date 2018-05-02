@@ -44,9 +44,9 @@ export class ParticleFactory {
         // [actually not quite - the balance has to be correct, but we're simplifying here]
         // [[ and at some point we have to worry about Baryogenesis.. oh dear..]]
         const p: Particle = ALL_PARTICLES[code];
-        const ap: Particle = ALL_PARTICLES[p.antiparticleCode];
 
-        [p.code, ap.code].forEach((c) => this.collectParticle(universe, c, count));
+        this.collectParticle(universe, p.code, count);
+        this.collectParticle(universe, p.antiparticleCode, count);
     }
 
     collectParticle(universe: Universe, code: string, count: number = 1) {
@@ -58,7 +58,8 @@ export class ParticleFactory {
 
     removeParticleAndAnti(universe: Universe, code: string, count: number = 1) {
         const p: Particle = ALL_PARTICLES[code];
-        [p.code, p.antiparticleCode].forEach((c) => this.removeParticle(universe, c, count));
+        this.removeParticle(universe, p.code, count);
+        this.removeParticle(universe, p.antiparticleCode, count);
     }
 
     removeParticle(universe: Universe, code: string, count: number = 1) {
