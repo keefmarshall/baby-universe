@@ -41,17 +41,17 @@ export const ALL_PARTICLES: { [key: string]: Particle } = {
 
   // BOSONS
   // These never actually stay around long enough so not going to count them
-  'g': new Particle("g", "g", "gluon", false, "g"),
+  'g': new Particle("g", "g", "gluon", true, "g"),
 
   // MESONS
   // NB I know they're not strictly matter/antimatter, developer's licence..
-  'π⁺': new Particle("π⁺", "π⁺", "pion", false, "π⁻"),
-  'π⁻': new Particle("π⁻", "π⁻", "antipion", true, "π⁺"),
-  'K⁺': new Particle("K⁺", "K⁺", "kaon", false, "K⁻"),
-  'K⁻': new Particle("K⁻", "K⁻", "antikaon", true, "K⁺"),
+  'π⁺': new Particle("π⁺", "π⁺", "pion", true, "π⁻"),
+  'π⁻': new Particle("π⁻", "π⁻", "antipion", false, "π⁺"),
+  'K⁺': new Particle("K⁺", "K⁺", "kaon", true, "K⁻"),
+  'K⁻': new Particle("K⁻", "K⁻", "antikaon", false, "K⁺"),
 
   // BARYONS
-  'p': new Particle("p", "p", "proton", false, "p̅"),
+  'p': new Particle("p", "p", "proton", true, "p̅"),
   'p̅': new Particle("p̅", "p̅", "antiproton", false, "p"),
   'n': new Particle("n", "n", "neutron", true, "n̅"),
   'n̅': new Particle("n̅", "n̅", "antineutron", false, "n"),
