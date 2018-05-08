@@ -58,7 +58,7 @@ export class UniverseService {
     // can't be bothered to add up all the particles for now, let's just
     // use gluons as a decent measure:
     const u = this.universe;
-    const particleScore = Math.pow(Math.log10(u.particles["gluon"]), 2) * 1000;
+    const particleScore = Math.pow(Math.log10(u.matter["g"]), 2) * 1000;
     const timeScore = u.elapsedSeconds / 60;
 
     return Math.round(particleScore / timeScore);

@@ -40,8 +40,8 @@ export class ThermalResistor extends ConstructionProject {
     }
 
     private enoughMatter(): boolean {
-        return this.universeService.universe.particles["gluon"] &&
-            this.universeService.universe.particles["gluon"] >
+        return this.universeService.universe.matter["g"] &&
+            this.universeService.universe.matter["g"] >
                 Math.pow(10, this.properties().quantity * 2);
     }
 }

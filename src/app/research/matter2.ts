@@ -92,7 +92,7 @@ export class Baryons extends ResearchProject {
     }
 
     preconditions(universe: Universe): boolean {
-        return universe.particles['kaon'] && universe.particles['kaon'] >= 50;
+        return universe.matter['K⁺'] && universe.matter['K⁺'] >= 50;
     }
 
     onCompletion(universe: Universe) {
