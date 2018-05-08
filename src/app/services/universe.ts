@@ -11,8 +11,8 @@ export class Universe {
     heat = 0;
 
     // Deprecating particles/antiparticles in favour of matter
-    particles = {};
-    antiparticles = {};
+    // particles = {};
+    // antiparticles = {};
     matter = {};
 
     phase = 0.5; // pre/post big bang is 1/2, interstitials on .5
