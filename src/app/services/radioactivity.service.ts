@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { UniverseService } from './universe.service';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { TickerService } from './ticker.service';
 
 @Injectable()

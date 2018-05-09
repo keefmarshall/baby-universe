@@ -2,7 +2,7 @@ import { Component, OnDestroy, ViewChild, ViewChildren,
           QueryList, ElementRef, AfterViewInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { LogService } from '../../services/log.service';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({

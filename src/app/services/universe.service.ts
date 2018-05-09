@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Universe } from './universe';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { UUID } from 'angular2-uuid';
 import { AnalyticsService } from 'app/services/analytics.service';
 import { ResearchProject } from 'app/research/research-project';

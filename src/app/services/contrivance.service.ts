@@ -5,7 +5,7 @@ import { MachineService } from './machine.service';
 import { TickerService } from './ticker.service';
 import { Globals } from '../globals';
 import { LogService } from './log.service';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { ConstructionService } from './construction.service';
 import { Contraption } from '../machines/contraption';
 import { MeteringService } from './metering.service';

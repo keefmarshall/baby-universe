@@ -7,7 +7,7 @@ import { TickerService } from 'app/services/ticker.service';
 import { UniverseService } from 'app/services/universe.service';
 import { ResearchService } from 'app/services/research.service';
 import { Globals } from 'app/globals';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-research-panel',

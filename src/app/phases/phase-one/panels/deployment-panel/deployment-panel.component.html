@@ -1,7 +1,11 @@
 <div id="deployment-panel" class="panel delay-1">
 
   <div class="info-right" *ngIf="bulk1()">
-    <mat-button-toggle-group [(value)]="multiplier" color="primary">
+    <mat-button-toggle-group
+      #group="matButtonToggleGroup"
+      [value]="multiplier"
+      (change)="onMultiplierChange(group.value)"
+      color="primary">
       <mat-button-toggle class="multiplier-button" value="1">1x</mat-button-toggle>
       <mat-button-toggle class="multiplier-button" value="10">10x</mat-button-toggle>
       <mat-button-toggle class="multiplier-button" value="20" *ngIf="bulk2()">20x</mat-button-toggle>

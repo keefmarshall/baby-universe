@@ -3,7 +3,7 @@ import { UniverseService } from 'app/services/universe.service';
 import { ConstructionProject } from 'app/machines/construction-project';
 import { TickerService } from 'app/services/ticker.service';
 import { Globals } from 'app/globals';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class ConstructionService {

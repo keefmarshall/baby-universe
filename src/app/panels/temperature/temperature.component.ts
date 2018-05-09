@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MachineService } from '../../services/machine.service';
 import { Thermometer } from '../../machines/thermometer';
 import { TickerService } from '../../services/ticker.service';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-temperature',
