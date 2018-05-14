@@ -47,7 +47,7 @@ export class Pions extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        ParticleUtils.initialiseParticles('pion', universe);
+        ParticleUtils.initialiseParticles('π⁺', universe);
         this.log("Pions: π⁺ made from an up quark and an anti-down quark (ud̅);\n" +
                 "π⁻ made from an anti-up quark and a down quark (u̅d).")
     }
@@ -64,7 +64,7 @@ export class Kaons extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        ParticleUtils.initialiseParticles('kaon', universe);
+        ParticleUtils.initialiseParticles('K⁺', universe);
         this.log("Kaons: K⁺ made from an up quark and an anti-strange quark (us̅);\n" +
                 "K⁻ made from an anti-up quark and a strange quark (u̅s).");
     }
@@ -111,7 +111,7 @@ export class Protons extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        ParticleUtils.initialiseParticles('proton', universe);
+        ParticleUtils.initialiseParticles('p', universe);
         this.log("Protons: two up quarks and one down quark (uud) or antiquarks (u̅u̅d̅).");
     }
 }
@@ -127,7 +127,7 @@ export class Neutrons extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        ParticleUtils.initialiseParticles('neutron', universe);
+        ParticleUtils.initialiseParticles('n', universe);
         this.log("Neutrons: one up quark and two down quarks (udd) or antiquarks (u̅d̅d̅).");
     }
 }
@@ -143,7 +143,7 @@ export class Electrons extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        ParticleUtils.initialiseParticles('electron', universe);
+        ParticleUtils.initialiseParticles('e⁻', universe);
         this.log("Electrons (e⁻): tiny, negatively charged leptons. " +
             "Their anti-matter equivalents are called Positrons (e⁺), and have a positive charge.");
     }
@@ -160,7 +160,7 @@ export class Muons extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        ParticleUtils.initialiseParticles('muon', universe);
+        ParticleUtils.initialiseParticles('μ⁻', universe);
         this.log("Muons (μ⁻): small, negatively charged leptons. A little bigger than an electron.");
     }
 }
@@ -176,7 +176,7 @@ export class Tauons extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        ParticleUtils.initialiseParticles('tau', universe);
+        ParticleUtils.initialiseParticles('τ⁻', universe);
         this.log("Tau Leptons (τ⁻): negatively charged leptons. The heaviest of all the leptons.");
     }
 }
@@ -192,7 +192,9 @@ export class Neutrinos extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        ParticleUtils.initialiseParticles('neutrino', universe);
+        ParticleUtils.initialiseParticles('νe', universe);
+        ParticleUtils.initialiseParticles('νμ', universe);
+        ParticleUtils.initialiseParticles('ντ', universe);
         this.log("Neutrinos (ν<sub>e</sub>, ν<sub>μ</sub>, ν<sub>τ</sub>): tiny, neutral leptons, with almost no mass. " +
             "They come in different flavours but are hard to distinguish, " +
             " and barely interact with anything else.");
