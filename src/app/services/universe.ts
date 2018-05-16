@@ -45,4 +45,6 @@ export class Universe {
     // PHASE TWO
 
     contrivances: { [key: string]: any } = {};
+    decayPatterns: string[] = [];
+    currentPatternDesignProgress: number = 0;
 }

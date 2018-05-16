@@ -3,6 +3,10 @@
     <!-- <mat-icon color="primary">link</mat-icon> -->
     <!-- <i fa class="fa fa-link"></i> -->
     <object data="/assets/img/Radiation_warning_symbol2.svg" type="image/svg+xml" class="svg"></object>
-    Radioactivity
+    Radioactivity Centre
+  </p>
+
+  <p class="info" *ngIf="universeService.universe.decayPatterns?.length === 0">
+    You have not yet discovered any radioactive decay patterns.
   </p>
 </div>

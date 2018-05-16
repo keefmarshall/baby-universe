@@ -128,7 +128,10 @@ export class DevPanelComponent implements OnInit {
     // delete u.research['Matter: Muons'];
     // delete u.research['Matter: Tau Leptons'];
     delete u.research['Matter: Neutrinos'];
-    
+  }
+
+  resetDecayPatterns() {
+    this.universeService.universe.decayPatterns = [];
   }
 
   setTemperature(temp: number) {

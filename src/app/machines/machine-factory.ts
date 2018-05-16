@@ -45,6 +45,8 @@ import { Repeater } from './repeater';
 import { RepeaterService } from '../services/repeater.service';
 import { RadioactivityCentre } from './radioactivity-centre';
 import { RadioactivityService } from '../services/radioactivity.service';
+import { DecayDesigner } from './decay-designer';
+import { DecayDesignService } from '../services/decay-design.service';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -74,7 +76,8 @@ export class MachineFactory {
         private researchTrackService: ResearchTrackService,
         private hadronService: HadronService,
         private repeaterService: RepeaterService,
-        private radioactivityService: RadioactivityService
+        private radioactivityService: RadioactivityService,
+        private decayDesignService: DecayDesignService
     ) {
         this.resetMachines();
     }
@@ -111,7 +114,8 @@ export class MachineFactory {
             'Contriver': new Contriver(this.universeService, this.logService, this.contrivanceService),
             'MesonMaker': new MesonMaker(this.universeService, this.logService, this.hadronService),
             'BaryonBuilder': new BaryonBuilder(this.universeService, this.logService, this.hadronService),
-            'RadioactivityCentre': new RadioactivityCentre(this.universeService, this.logService, this.radioactivityService)
+            'RadioactivityCentre': new RadioactivityCentre(this.universeService, this.logService, this.radioactivityService),
+            'DecayDesigner': new DecayDesigner(this.universeService, this.logService, this.decayDesignService)
         };
 
         this.allMachineNames = [];

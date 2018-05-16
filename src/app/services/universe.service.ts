@@ -125,6 +125,14 @@ export class UniverseService {
       u.matter = {};
       // this is going to hurt, you need to reset.
     }
+
+    if (!u.decayPatterns) {
+      u.decayPatterns = [];
+    }
+
+    if (!u.currentPatternDesignProgress) {
+      u.currentPatternDesignProgress = 0;
+    }
   }
 
 }
