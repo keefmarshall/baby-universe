@@ -8,7 +8,7 @@
 
   
   <tr *ngFor="let parts of matter">
-    <ng-container *ngIf="universeService.universe.matter[parts[0].code]">
+    <ng-container *ngIf="universeService.universe.matter[parts[0].code] || universeService.universe.matter[parts[1].code]">
 
       <td [innerHtml]="sanitizer.bypassSecurityTrustHtml(parts[0].displayCode)"></td>
       <td class="right-align">{{ universeService.universe.matter[parts[0].code] | illion }}</td>

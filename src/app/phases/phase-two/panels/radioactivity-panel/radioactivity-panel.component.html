@@ -1,4 +1,5 @@
-<div id="radioactivity-panel" class="panel delay-4">
+<div id="radioactivity-panel" class="panel delay-4 alt2-theme">
+
   <p class="panel-title">
     <!-- <mat-icon color="primary">link</mat-icon> -->
     <!-- <i fa class="fa fa-link"></i> -->
@@ -6,7 +7,27 @@
     Radioactivity Centre
   </p>
 
+  <div class="info-right progress">
+    <!-- <small>Goal:</small> -->
+    <mat-progress-spinner
+      color="accent"
+      mode="determinate"
+      [value]="patternDesignProgress()"
+      diameter="40"
+      strokeWidth="22"
+      ></mat-progress-spinner>
+  </div>
+
   <p class="info" *ngIf="universeService.universe.decayPatterns?.length === 0">
     You have not yet discovered any radioactive decay patterns.
   </p>
+
+  <p class="info">
+    Decay Designers: {{ universeService.universe.machines["DecayDesigner"]?.quantity || 0 }}
+  </p>
+
+  <p class="info" *ngIf="universeService.universe.decayPatterns?.length > 0">
+    Decay patterns: {{ universeService.universe.decayPatterns.length }}
+  </p>
+
 </div>

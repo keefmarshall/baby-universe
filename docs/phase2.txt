@@ -169,3 +169,50 @@ down certain paths over others.
 But, these branching models don't appear to be well documented, perhaps not well understood?
 Especially for the top quark - I can't find a simple branching model for this anywhere.
 
+half lives
+----------
+
+We have to play fast and loose here as otherwise everything will decay instantly
+(t has half life of 5e-25!)
+
+let's say we want everything to decay over 2 hours
+
+t's will decay quicker than that - so say 30 minutes (need to allow time to 
+discover different decay patterns, otherwise the game is no fun)
+
+(maths note: technically the figures are often given as average life not half life
+which is 1.44 * half life - the difference is negligible from our point of view)
+
+b = 1e-12
+c = 1e-13
+s = 1e-8
+
+The orders-of-magnitude differences mean we have to fudge this, big time.
+
+so: use logs.
+
+log10 for topq =~ -25
+
+we have e.g. 1 octillion = 1e27
+
+N(t) = number after t
+N = original number
+l = decay constant* ~ 0.7/half life
+
+N(t) = N * e^(-lt)
+
+N(t) / N = e^(-lt)
+ln(Nt / N) = -lt
+
+t = ln(Nt / N) / -l
+t =~ -ln(Nt/N) * halflife (approx)
+
+ln(1e-27) = -62.1
+
+so if t ~ 1800, we need halflife to be ~30
+If t ~ 7200, halflife is 120
+
+so what formula makes 1e-25 into 30 and 1e-8 into 120ish
+
+750 / -log10(n) = 30 & 93 - pretty close.
+
