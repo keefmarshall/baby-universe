@@ -18,6 +18,18 @@ export class DecayPattern {
 
 export const DECAY_PATTERNS: { [key: string]: DecayPattern } = {
 
+  // ***** BOTTOM QUARK *****
+
+  // Half life is 1e-12
+  // roughly 12% for (each?) leptonic decay = 1.2e-13
+  // leaving 32% for each baryonic: = 3.2e-13
+  "bot-lep-e": new DecayPattern(["b"], "b ⟶ W⁻c ⟶ ce⁻ν̅<sub>e</sub>", ["c", "e⁻", "ν̅e"], 1.2e-13),
+  "bot-lep-μ": new DecayPattern(["b"], "b ⟶ W⁻c ⟶ cμ⁻ν̅<sub>μ</sub>", ["c", "μ⁻", "ν̅μ"], 1.2e-13),
+  "bot-lep-τ": new DecayPattern(["b"], "b ⟶ W⁻c ⟶ cτ⁻ν̅<sub>τ</sub>", ["c", "τ⁻", "ν̅τ"], 1.2e-13),
+  "abot-lep-e": new DecayPattern(["b̅"], "b̅ ⟶ W⁺c̅ ⟶ c̅e⁺ν<sub>e</sub>", ["c̅", "e⁺", "νe"], 1.2e-13),
+  "abot-lep-μ": new DecayPattern(["b̅"], "b̅ ⟶ W⁺c̅ ⟶ c̅μ⁺ν<sub>μ</sub>", ["c̅", "μ⁺", "νμ"], 1.2e-13),
+  "abot-lep-τ": new DecayPattern(["b̅"], "b̅ ⟶ W⁺c̅ ⟶ c̅τ⁺ν<sub>τ</sub>", ["c̅", "τ⁺", "ντ"], 1.2e-13),
+
   // ***** TOP QUARK *****
 
   // t half life is 5e-25. leptonic decay 0.3 of that in total
