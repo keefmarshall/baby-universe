@@ -75,6 +75,11 @@ export const DECAY_PATTERNS: { [key: string]: DecayPattern } = {
   // ** LEPTONS **
   /////////////////////////////////////////////////////////////////////////////
 
+  // ***** MUON *****
+
+  "mu-lep-e": new DecayPattern(["μ⁻"], "μ⁻ ⟶ W⁻ν<sub>μ</sub> ⟶ ν<sub>μ</sub>e⁻ν̅<sub>e</sub>", ["νμ", "e⁻", "ν̅e"], 2e-6),
+  "amu-lep-e": new DecayPattern(["μ⁺"], "μ⁺ ⟶ W⁺ν̅<sub>μ</sub> ⟶ ν̅<sub>μ</sub>e⁺ν<sub>e</sub>", ["ν̅μ", "e⁺", "νe"], 2e-6),
+
   // ***** TAU *****
 
   // https://en.wikipedia.org/wiki/Tau_(particle)#Tau_decay
