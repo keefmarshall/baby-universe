@@ -30,6 +30,11 @@ export const DECAY_PATTERNS: { [key: string]: DecayPattern } = {
   "abot-lep-μ": new DecayPattern(["b̅"], "b̅ ⟶ W⁺c̅ ⟶ c̅μ⁺ν<sub>μ</sub>", ["c̅", "μ⁺", "νμ"], 1.2e-13),
   "abot-lep-τ": new DecayPattern(["b̅"], "b̅ ⟶ W⁺c̅ ⟶ c̅τ⁺ν<sub>τ</sub>", ["c̅", "τ⁺", "ντ"], 1.2e-13),
 
+  "bot-bar-ud": new DecayPattern(["b"], "b ⟶ W⁻c ⟶ cu̅d", ["c", "u̅", "d"], 3.2e-13),
+  "bot-bar-cs": new DecayPattern(["b"], "b ⟶ W⁻c ⟶ cc̅s", ["c", "c̅", "s"], 3.2e-13),
+  "abot-bar-ud": new DecayPattern(["b̅"], "b̅ ⟶ W⁺c̅ ⟶ c̅ud̅", ["c̅", "u", "d̅"], 3.2e-13),
+  "abot-bar-cs": new DecayPattern(["b̅"], "b̅ ⟶ W⁺c̅ ⟶ c̅cs̅", ["c̅", "c", "s̅"], 3.2e-13),
+
   // ***** TOP QUARK *****
 
   // t half life is 5e-25. leptonic decay 0.3 of that in total
@@ -44,7 +49,7 @@ export const DECAY_PATTERNS: { [key: string]: DecayPattern } = {
 
   "top-bar-ud": new DecayPattern(["t"], "t ⟶ W⁺b ⟶ bud̅", ["b", "u", "d̅"], 1.75e-25),
   "top-bar-cs": new DecayPattern(["t"], "t ⟶ W⁺b ⟶ bcs̅", ["b", "c", "s̅"], 1.75e-25),
-  "atop-bar-ud": new DecayPattern(["t"], "t ⟶ W⁻b̅ ⟶ b̅u̅d", ["b", "u̅", "d"], 1.75e-25),
-  "atop-bar-cs": new DecayPattern(["t"], "t ⟶ W⁻b̅ ⟶ b̅c̅s", ["b", "c̅", "s"], 1.75e-25),
+  "atop-bar-ud": new DecayPattern(["t̅"], "t̅ ⟶ W⁻b̅ ⟶ b̅u̅d", ["b̅", "u̅", "d"], 1.75e-25),
+  "atop-bar-cs": new DecayPattern(["t̅"], "t̅ ⟶ W⁻b̅ ⟶ b̅c̅s", ["b̅", "c̅", "s"], 1.75e-25),
 
 };
