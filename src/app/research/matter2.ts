@@ -2,6 +2,7 @@ import { ResearchProject } from "./research-project";
 import { Universe } from "../services/universe";
 import { ALL_PARTICLES } from "../physics/particle";
 import { ParticleUtils } from "../physics/particle-utils";
+import { WZBosons } from "./radioactivity";
 
 /**
  * Phase TWO Matter research
@@ -67,6 +68,24 @@ export class Kaons extends ResearchProject {
         ParticleUtils.initialiseParticles('K⁺', universe);
         this.log("Kaons: K⁺ made from an up quark and an anti-strange quark (us̅);\n" +
                 "K⁻ made from an anti-up quark and a strange quark (u̅s).");
+    }
+}
+
+export class NeutralMesons extends ResearchProject {
+
+    constructor() {
+        super("Matter: Neutral Mesons", "Additional quark/antiquark pairs", 7500, 2, 10);
+    }
+
+    preconditions(universe: Universe): boolean {
+        return this.isResearched(universe, new WZBosons());
+    }
+
+    onCompletion(universe: Universe) {
+        ParticleUtils.initialiseParticles('π⁰', universe);
+        ParticleUtils.initialiseParticles('K⁰', universe);
+        this.log("Neutral Mesons: mysterious neutrally charged particles made from quark/antiquark pairs. " +
+            "π⁰ is either uu̅ or dd̅; K⁰ is either ds̅ or d̅s. You can never know which.");
     }
 }
 

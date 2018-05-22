@@ -52,4 +52,9 @@ export const DECAY_PATTERNS: { [key: string]: DecayPattern } = {
   "atop-bar-ud": new DecayPattern(["t̅"], "t̅ ⟶ W⁻b̅ ⟶ b̅u̅d", ["b̅", "u̅", "d"], 1.75e-25),
   "atop-bar-cs": new DecayPattern(["t̅"], "t̅ ⟶ W⁻b̅ ⟶ b̅c̅s", ["b̅", "c̅", "s"], 1.75e-25),
 
+  // ***** TAU *****
+
+  // https://en.wikipedia.org/wiki/Tau_(particle)#Tau_decay
+  // We aren't supporting neutral pions, so ignoring that decay mode
+  
 };

@@ -47,8 +47,10 @@ export const ALL_PARTICLES: { [key: string]: Particle } = {
   // NB I know they're not strictly matter/antimatter, developer's licence..
   'π⁺': new Particle("π⁺", "π⁺", "pion", true, "π⁻"),
   'π⁻': new Particle("π⁻", "π⁻", "antipion", false, "π⁺"),
+  'π⁰': new Particle("π⁰", "π⁰", "neutral pion", true, "π⁰"),
   'K⁺': new Particle("K⁺", "K⁺", "kaon", true, "K⁻"),
   'K⁻': new Particle("K⁻", "K⁻", "antikaon", false, "K⁺"),
+  'K⁰': new Particle("K⁰", "K⁰", "neutral kaon", true, "K⁰"),
 
   // BARYONS
   'p': new Particle("p", "p", "proton", true, "p̅"),
