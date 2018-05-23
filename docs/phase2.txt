@@ -42,6 +42,8 @@ Seems like dark matter may have been required.. might ignore that.
 
 https://physics.info/standard/
 
+http://www.jb.man.ac.uk/distance/frontiers/cmb/node9.htm
+
 ====================================================
 Game mechanics
 ====================================================
@@ -215,4 +217,50 @@ If t ~ 7200, halflife is 120
 so what formula makes 1e-25 into 30 and 1e-8 into 120ish
 
 750 / -log10(n) = 30 & 93 - pretty close.
+
+
+
+NEW IDEAS (2018-05-23)
+=========
+
+Watching stuff decay is boring, let's give the player some control
+
+So: Decay Engine/Oven/Generator/something(s) - hard to build,
+each one can decay only one particle at a time. You only get 
+the patterns you've discovered so far. 
+
+Does mean we need to go back to branching ratios...
+
+Annihilation and Baryogenesis:
+-----------------------------
+Seems that baryon annihilation is messy, no-one has clearly defined 
+a set of obvious branching ratios taht I can find, maybe in the deep
+literature there might be some. So, different tack:
+
+1. Annihilation just leads to lots of energy. We can harness thiss
+to do other stuff, it becomes a currency.
+
+Obviously we need an Annihilator, which we feed baryons/antibaryons
+
+
+2. Some people link Baryogenesis to Dark Matter - we can't annihilate
+everything or there'll be nothing left, so maybe have a Dark Matter
+generator that works on antimatter alone. This is wild speculation
+outside Physics but there are some theories which loosely point towards
+the connection between the two.
+
+Leptogenesis:
+-------------
+We also need to annihilate Leptons, favouring matter over antimatter.
+We need ideally an identical number of electrons as protons leftover
+to balance universal charge - no idea how to do this.
+
+Maybe antileptons can be used to generate Dark Energy. Pure fiction now.
+
+Dark Matter / Dark Energy
+-------------------------
+Basically macguffins to explain stuff. No-one knows what they are so we
+could go wild or simply ignore them. - we may need them later on during
+universe expansion though. 
+
 
