@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { UniverseService } from '../../../../services/universe.service';
 import { ContrivanceService, ContrivanceEvent } from '../../../../services/contrivance.service';
 import { Animations } from '../../../../util/animations';

@@ -1,3 +1,5 @@
+
+import {interval as observableInterval} from 'rxjs';
 import { Injectable } from '@angular/core';
 
 import { Globals } from '../globals';
@@ -32,7 +34,7 @@ export class MeteringService {
     // moves meters to zero when the universe is paused - otherwise it just stays
     // stuck on the last known value.
     // tickerService.tick$.subscribe(n => this.onTick(n));
-    Observable.interval(1000 * Globals.secondsPerTick).subscribe(n => this.onTick(n));
+    observableInterval(1000 * Globals.secondsPerTick).subscribe(n => this.onTick(n));
   }
 
   onTick(n: number) {

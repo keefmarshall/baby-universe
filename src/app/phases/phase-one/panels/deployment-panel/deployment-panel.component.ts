@@ -9,12 +9,19 @@ import { BulkDeployment, AdvancedBulkDeployment } from 'app/research/bulk-deploy
   styleUrls: ['./deployment-panel.component.css']
 })
 export class DeploymentPanelComponent implements OnInit {
-  multiplier: number = 1;
+  multiplier: string; // converted to number in deploy-button
 
   constructor(public machineFactory: MachineFactory,
-    public universeService: UniverseService) { }
+    public universeService: UniverseService
+  ) {
+  }
 
   ngOnInit() {
+    this.multiplier = "1";
+  }
+
+  onMultiplierChange(value: string) {
+    this.multiplier = value;
   }
 
   bulk1(): boolean {

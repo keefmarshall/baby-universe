@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Universe } from './universe';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { UUID } from 'angular2-uuid';
 import { AnalyticsService } from 'app/services/analytics.service';
 import { ResearchProject } from 'app/research/research-project';
@@ -58,7 +58,7 @@ export class UniverseService {
     // can't be bothered to add up all the particles for now, let's just
     // use gluons as a decent measure:
     const u = this.universe;
-    const particleScore = Math.pow(Math.log10(u.particles["gluon"]), 2) * 1000;
+    const particleScore = Math.pow(Math.log10(u.matter["g"]), 2) * 1000;
     const timeScore = u.elapsedSeconds / 60;
 
     return Math.round(particleScore / timeScore);
@@ -95,9 +95,6 @@ export class UniverseService {
     if (!u.currentConstructionProject) u.currentConstructionProject = null;
     if (!u.currentConstructionWork) u.currentConstructionWork = 0;
 
-    if (!u.particles) u.particles = {};
-    if (!u.antiparticles) u.antiparticles = {};
-
     if (!u.logs) {
       u.logs = ["Within the empty void, matter and energy spontaneously " +
                 "flash into existence, only to decay almost instantly. "];
@@ -124,6 +121,18 @@ export class UniverseService {
       }
     }
 
+    if (!u.matter) {
+      u.matter = {};
+      // this is going to hurt, you need to reset.
+    }
+
+    if (!u.decayPatterns) {
+      u.decayPatterns = [];
+    }
+
+    if (!u.currentPatternDesignProgress) {
+      u.currentPatternDesignProgress = 0;
+    }
   }
 
 }

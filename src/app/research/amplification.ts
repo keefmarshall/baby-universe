@@ -14,8 +14,7 @@ export class PhotonAmplification extends ResearchProject {
     preconditions(universe: Universe): boolean {
         const peResearched = this.isResearched(universe, new Photoelectrics()) &&
                             this.isResearched(universe, new KineticEngineering());
-        const quarksCaught = (universe.particles["top quark"] || 0) +
-                                (universe.particles["bottom quark"] || 0);
+        const quarksCaught = (universe.matter["t"] || 0) + (universe.matter["b"] || 0);
 
         return peResearched && quarksCaught > 0;
     }

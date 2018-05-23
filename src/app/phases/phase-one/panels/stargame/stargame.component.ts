@@ -1,8 +1,8 @@
 import { Component, OnInit, AfterViewInit, Input, OnDestroy } from '@angular/core';
 import { StargameService } from 'app/games/stargame/stargame.service';
 import { UniverseService } from 'app/services/universe.service';
-import { ParticleFactory } from 'app/machines/particle-factory';
-import { QuarkUtils } from 'app/research/matter';
+import { ParticleFactory } from '../../../../physics/particle-factory';
+import { QuarkUtils } from '../../../../physics/quark-utils';
 
 @Component({
   selector: 'app-stargame',
@@ -44,7 +44,7 @@ export class StargameComponent implements AfterViewInit, OnDestroy {
     const n = 1 + numDetectors;
     for (let i = 0; i < n; i++) {
       const quark = qu.randomQuark(u);
-      this.particleFactory.collectQuark(u, quark);
+      this.particleFactory.collectParticleAndAnti(u, quark);
     }
   }
 

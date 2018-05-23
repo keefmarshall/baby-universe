@@ -2,7 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { UniverseService } from './universe.service';
 import { ConstructionService, ConstructionEvent } from './construction.service';
 import { ConstructionProject } from '../machines/construction-project';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 @Injectable()
 export class RepeaterService implements OnDestroy {

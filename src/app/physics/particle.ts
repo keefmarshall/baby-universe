@@ -18,7 +18,7 @@ export const ALL_PARTICLES: { [key: string]: Particle } = {
   's̅': new Particle("s̅", "s̅", "strange antiquark", false, "s"),
   'c': new Particle("c", "c", "charm quark", true, "c̅"),
   'c̅': new Particle("c̅", "c̅", "charm antiquark", false, "c"),
-  'b': new Particle("b", "b", "bottom quark", false, "b̅"),
+  'b': new Particle("b", "b", "bottom quark", true, "b̅"),
   'b̅': new Particle("b̅", "b̅", "bottom antiquark", false, "b"),
   't': new Particle("t", "t", "top quark", true, "t̅"),
   't̅': new Particle("t̅", "t̅", "top antiquark", false, "t"),
@@ -41,17 +41,19 @@ export const ALL_PARTICLES: { [key: string]: Particle } = {
 
   // BOSONS
   // These never actually stay around long enough so not going to count them
-  'g': new Particle("g", "g", "gluon", false, "g"),
+  'g': new Particle("g", "g", "gluon", true, "g"),
 
   // MESONS
   // NB I know they're not strictly matter/antimatter, developer's licence..
-  'π⁺': new Particle("π⁺", "π⁺", "pion", false, "π⁻"),
-  'π⁻': new Particle("π⁻", "π⁻", "antipion", true, "π⁺"),
-  'K⁺': new Particle("K⁺", "K⁺", "kaon", false, "K⁻"),
-  'K⁻': new Particle("K⁻", "K⁻", "antikaon", true, "K⁺"),
+  'π⁺': new Particle("π⁺", "π⁺", "pion", true, "π⁻"),
+  'π⁻': new Particle("π⁻", "π⁻", "antipion", false, "π⁺"),
+  'π⁰': new Particle("π⁰", "π⁰", "neutral pion", true, "π⁰"),
+  'K⁺': new Particle("K⁺", "K⁺", "kaon", true, "K⁻"),
+  'K⁻': new Particle("K⁻", "K⁻", "antikaon", false, "K⁺"),
+  'K⁰': new Particle("K⁰", "K⁰", "neutral kaon", true, "K⁰"),
 
   // BARYONS
-  'p': new Particle("p", "p", "proton", false, "p̅"),
+  'p': new Particle("p", "p", "proton", true, "p̅"),
   'p̅': new Particle("p̅", "p̅", "antiproton", false, "p"),
   'n': new Particle("n", "n", "neutron", true, "n̅"),
   'n̅': new Particle("n̅", "n̅", "antineutron", false, "n"),

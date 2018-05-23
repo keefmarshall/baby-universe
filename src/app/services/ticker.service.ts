@@ -1,8 +1,11 @@
+
+import {concat as observableConcat, never as observableNever, interval as observableInterval,  Subscriber } from 'rxjs';
+
+import {share, switchMap, startWith} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 
-import { Observable, Subject } from 'rxjs/Rx';
+import { Observable, Subject } from 'rxjs';
 import { Globals } from '../globals';
-import { Subscriber } from 'rxjs/Subscriber';
 import { GameModule } from 'app/games/game.module';
 
 enum PausedState {
@@ -33,25 +36,25 @@ export class TickerService {
     console.log("Constructing universal ticker...");
     this.pauser.next(PausedState.RUNNING);
 
-    this.internalTicker$ = Observable.interval(1000 * Globals.secondsPerTick);
+    this.internalTicker$ = observableInterval(1000 * Globals.secondsPerTick);
 
-    this.tick$ = this.pauser
-      .startWith(PausedState.RUNNING)
-      .switchMap(paused => {
+    this.tick$ = this.pauser.pipe(
+      startWith(PausedState.RUNNING),
+      switchMap(paused => {
         // paused ? Observable.never() : internalTicker$
         switch (paused) {
           case PausedState.PAUSED:
             console.log("Pauser: paused, using never()");
-            return Observable.never();
+            return observableNever();
           case PausedState.RESUMING:
             console.log("Pauser: resuming from background");
-            return Observable.concat(this.catcherUpper(), this.internalTicker$);
+            return observableConcat(this.catcherUpper(), this.internalTicker$);
           case PausedState.RUNNING:
             console.log("Pauser: not paused, returning internal ticker");
             return this.internalTicker$;
         }
-      })
-      .share() as Observable<number>;
+      }),
+      share()) as Observable<number>;
 
     // this.pauser.next(false);
 

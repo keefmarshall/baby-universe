@@ -9,7 +9,7 @@ import { PhotonAmplification, QSwitching, ModeLocking } from "app/research/ampli
 import { QuantumElectrodynamics, QuantumChromodynamics, ColourDeconfinement } from "app/research/collection";
 import { BulkDeployment, AdvancedBulkDeployment } from "app/research/bulk-deployment";
 import { InstructionPipelining, SuperscalarPipelining } from "app/research/assembly";
-import { Leptons, Hadrons, Mesons, Pions, Kaons, Baryons, Protons, Neutrons, Electrons, Muons, Tauons, Neutrinos } from "./matter2";
+import { Leptons, Hadrons, Mesons, Pions, Kaons, Baryons, Protons, Neutrons, Electrons, Muons, Tauons, Neutrinos, NeutralMesons } from "./matter2";
 import { WeakInteraction, WZBosons, RadioactiveDecay } from "./radioactivity";
 
 export class ResearchList {
@@ -58,6 +58,7 @@ export class ResearchList {
             new Baryons(),
             new Pions(),
             new Kaons(),
+            new NeutralMesons(),
             new Protons(),
             new Neutrons(),
             new Leptons(),

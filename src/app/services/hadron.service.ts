@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UniverseService } from './universe.service';
+import { ParticleFactory } from '../physics/particle-factory';
+import { ALL_PARTICLES } from '../physics/particle';
 
 @Injectable()
 export class HadronService {
@@ -8,7 +10,11 @@ export class HadronService {
   private protonProgress = 0;
   private neutronProgress = 0;
 
-  constructor(private universeService: UniverseService) { }
+  private particleFactory: ParticleFactory;
+
+  constructor(private universeService: UniverseService) { 
+    this.particleFactory = new ParticleFactory();
+  }
 
   // TODO: too much copy/paste here, must be a way to rationalise this
 
@@ -16,11 +22,11 @@ export class HadronService {
     this.pionProgress += count;
     if (this.pionProgress > 1) {
       const pions = Math.floor(this.pionProgress);
-      if (this.canAfford('up', pions) && this.canAfford('down', pions)) {
+      if (this.canAfford('u', pions) && this.canAfford('d', pions)) {
           this.pionProgress = this.pionProgress % 1;
-          this.addParticle('pion', pions);
-          this.removeQuarks('up', pions);
-          this.removeQuarks('down', pions);
+          this.addParticle("π⁺", pions);
+          this.removeQuarks('u', pions);
+          this.removeQuarks('d', pions);
           this.removeGluons(2 * pions);
       } else {
         // TODO: something!
@@ -33,11 +39,11 @@ export class HadronService {
     this.kaonProgress += count;
     if (this.kaonProgress > 1) {
       const kaons = Math.floor(this.kaonProgress);
-      if (this.canAfford('up', kaons) && this.canAfford('strange', kaons)) {
+      if (this.canAfford('u', kaons) && this.canAfford('s', kaons)) {
           this.kaonProgress = this.kaonProgress % 1;
-          this.addParticle('kaon', kaons);
-          this.removeQuarks('up', kaons);
-          this.removeQuarks('strange', kaons);
+          this.addParticle("K⁺", kaons);
+          this.removeQuarks('u', kaons);
+          this.removeQuarks('s', kaons);
           this.removeGluons(2 * kaons);
       } else {
         // TODO: something!
@@ -49,11 +55,11 @@ export class HadronService {
     this.protonProgress += count;
     if (this.protonProgress > 1) {
       const protons = Math.floor(this.protonProgress);
-      if (this.canAfford('up', protons * 2) && this.canAfford('down', protons)) {
+      if (this.canAfford('u', protons * 2) && this.canAfford('d', protons)) {
           this.protonProgress = this.protonProgress % 1;
-          this.addParticle('proton', protons);
-          this.removeQuarks('up', protons * 2);
-          this.removeQuarks('down', protons);
+          this.addParticle('p', protons);
+          this.removeQuarks('u', protons * 2);
+          this.removeQuarks('d', protons);
           this.removeGluons(3 * protons);
       } else {
         // TODO: something!
@@ -65,11 +71,11 @@ export class HadronService {
     this.neutronProgress += count;
     if (this.neutronProgress > 1) {
       const neutrons = Math.floor(this.neutronProgress);
-      if (this.canAfford('up', neutrons) && this.canAfford('down', neutrons * 2)) {
+      if (this.canAfford('u', neutrons) && this.canAfford('d', neutrons * 2)) {
           this.neutronProgress = this.neutronProgress % 1;
-          this.addParticle('neutron', neutrons);
-          this.removeQuarks('up', neutrons);
-          this.removeQuarks('down', neutrons * 2);
+          this.addParticle('n', neutrons);
+          this.removeQuarks('u', neutrons);
+          this.removeQuarks('d', neutrons * 2);
           this.removeGluons(3 * neutrons);
       } else {
         // TODO: something!
@@ -79,20 +85,15 @@ export class HadronService {
 
 
   private addParticle(type: string, count: number = 1) {
-    const u = this.universeService.universe;
-    u.particles[type] += count;
-    u.antiparticles[type] += count;
+    this.particleFactory.collectParticleAndAnti(this.universeService.universe, type, count);
   }
 
   private removeQuarks(type: string, count: number = 1) {
-      const u = this.universeService.universe;
-      u.particles[type + ' quark'] -= count;
-      u.antiparticles[type + ' quark'] -= count;
+    this.particleFactory.removeParticleAndAnti(this.universeService.universe, type, count);
   }
 
   private removeGluons(count: number = 1) {
-    const u = this.universeService.universe;
-    u.particles['gluon'] -= count;
+    this.particleFactory.removeParticle(this.universeService.universe, "g", count);
   }
 
   /**
@@ -104,10 +105,9 @@ export class HadronService {
    */
   private canAfford(type, count): boolean {
       const u = this.universeService.universe;
-      const t = `${type} quark`;
-      return u.particles[t] && u.particles[t] >= count &&
-          u.antiparticles[t] && u.antiparticles[t] >= count;
+      const p = ALL_PARTICLES[type];
+      return u.matter[p.code] && u.matter[p.code] >= count &&
+          u.matter[p.antiparticleCode] && u.matter[p.antiparticleCode] >= count;
   }
-
 
 }

@@ -1,0 +1,17 @@
+TO TEST AFTER REFACTORING:
+
+phase 1
+-------
+Quark Scoop
+Quark Squeezer - Gluons - changed number generation 
+Star game - changed a few pieces
+Photon collection
+dev panel add quarks button
+paser - purchase
+MATTER TABLE
+
+phase 2
+-------
+baryon builder - affordability, also construction (in hadron service)
+hadron service - building pions, kaons, protons, neutrons
+

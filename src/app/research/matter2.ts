@@ -1,5 +1,8 @@
 import { ResearchProject } from "./research-project";
 import { Universe } from "../services/universe";
+import { ALL_PARTICLES } from "../physics/particle";
+import { ParticleUtils } from "../physics/particle-utils";
+import { WZBosons } from "./radioactivity";
 
 /**
  * Phase TWO Matter research
@@ -45,7 +48,7 @@ export class Pions extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        ParticleUtils.initialiseParticles('pion', universe);
+        ParticleUtils.initialiseParticles('π⁺', universe);
         this.log("Pions: π⁺ made from an up quark and an anti-down quark (ud̅);\n" +
                 "π⁻ made from an anti-up quark and a down quark (u̅d).")
     }
@@ -54,7 +57,7 @@ export class Pions extends ResearchProject {
 export class Kaons extends ResearchProject {
 
     constructor() {
-        super("Matter: Kaons", "A larger Meson", 50, 2, 10);
+        super("Matter: Kaons", "A larger Meson", 30, 2, 10);
     }
 
     preconditions(universe: Universe): boolean {
@@ -62,9 +65,27 @@ export class Kaons extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        ParticleUtils.initialiseParticles('kaon', universe);
+        ParticleUtils.initialiseParticles('K⁺', universe);
         this.log("Kaons: K⁺ made from an up quark and an anti-strange quark (us̅);\n" +
                 "K⁻ made from an anti-up quark and a strange quark (u̅s).");
+    }
+}
+
+export class NeutralMesons extends ResearchProject {
+
+    constructor() {
+        super("Matter: Neutral Mesons", "Additional quark/antiquark pairs", 7500, 2, 10);
+    }
+
+    preconditions(universe: Universe): boolean {
+        return this.isResearched(universe, new WZBosons());
+    }
+
+    onCompletion(universe: Universe) {
+        ParticleUtils.initialiseParticles('π⁰', universe);
+        ParticleUtils.initialiseParticles('K⁰', universe);
+        this.log("Neutral Mesons: mysterious neutrally charged particles made from quark/antiquark pairs. " +
+            "π⁰ is either uu̅ or dd̅; K⁰ is either ds̅ or d̅s. You can never know which.");
     }
 }
 
@@ -86,11 +107,11 @@ export class Leptons extends ResearchProject {
 export class Baryons extends ResearchProject {
 
     constructor() {
-        super("Matter: Baryons", "Hadrons made by combining quarks or antiquarks", 100, 2, 10);
+        super("Matter: Baryons", "Hadrons made by combining quarks or antiquarks", 50, 2, 10);
     }
 
     preconditions(universe: Universe): boolean {
-        return universe.particles['kaon'] && universe.particles['kaon'] >= 50;
+        return universe.matter['K⁺'] && universe.matter['K⁺'] >= 50;
     }
 
     onCompletion(universe: Universe) {
@@ -101,7 +122,7 @@ export class Baryons extends ResearchProject {
 export class Protons extends ResearchProject {
 
     constructor() {
-        super("Matter: Protons", "A common baryon", 200, 2, 10);
+        super("Matter: Protons", "A common baryon", 100, 2, 10);
     }
 
     preconditions(universe: Universe): boolean {
@@ -109,7 +130,7 @@ export class Protons extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        ParticleUtils.initialiseParticles('proton', universe);
+        ParticleUtils.initialiseParticles('p', universe);
         this.log("Protons: two up quarks and one down quark (uud) or antiquarks (u̅u̅d̅).");
     }
 }
@@ -117,7 +138,7 @@ export class Protons extends ResearchProject {
 export class Neutrons extends ResearchProject {
 
     constructor() {
-        super("Matter: Neutrons", "A common baryon", 350, 2, 10);
+        super("Matter: Neutrons", "A common baryon", 175, 2, 10);
     }
 
     preconditions(universe: Universe): boolean {
@@ -125,7 +146,7 @@ export class Neutrons extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        ParticleUtils.initialiseParticles('neutron', universe);
+        ParticleUtils.initialiseParticles('n', universe);
         this.log("Neutrons: one up quark and two down quarks (udd) or antiquarks (u̅d̅d̅).");
     }
 }
@@ -141,7 +162,7 @@ export class Electrons extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        ParticleUtils.initialiseParticles('electron', universe);
+        ParticleUtils.initialiseParticles('e⁻', universe);
         this.log("Electrons (e⁻): tiny, negatively charged leptons. " +
             "Their anti-matter equivalents are called Positrons (e⁺), and have a positive charge.");
     }
@@ -158,7 +179,7 @@ export class Muons extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        ParticleUtils.initialiseParticles('muon', universe);
+        ParticleUtils.initialiseParticles('μ⁻', universe);
         this.log("Muons (μ⁻): small, negatively charged leptons. A little bigger than an electron.");
     }
 }
@@ -174,7 +195,7 @@ export class Tauons extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        ParticleUtils.initialiseParticles('tau', universe);
+        ParticleUtils.initialiseParticles('τ⁻', universe);
         this.log("Tau Leptons (τ⁻): negatively charged leptons. The heaviest of all the leptons.");
     }
 }
@@ -190,18 +211,12 @@ export class Neutrinos extends ResearchProject {
     }
 
     onCompletion(universe: Universe) {
-        ParticleUtils.initialiseParticles('neutrino', universe);
+        ParticleUtils.initialiseParticles('νe', universe);
+        ParticleUtils.initialiseParticles('νμ', universe);
+        ParticleUtils.initialiseParticles('ντ', universe);
         this.log("Neutrinos (ν<sub>e</sub>, ν<sub>μ</sub>, ν<sub>τ</sub>): tiny, neutral leptons, with almost no mass. " +
             "They come in different flavours but are hard to distinguish, " +
             " and barely interact with anything else.");
     }
 }
 
-class ParticleUtils {
-    static initialiseParticles(type: string, u: Universe) {
-        if (!u.particles[type]) {
-            u.particles[type] = 0;
-            u.antiparticles[type] = 0;
-        }
-    }
-}

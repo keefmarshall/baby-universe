@@ -1,15 +1,26 @@
 <table *ngIf="getParticles().length > 0">
   <tr>
-    <th>Particle</th>
-    <th class="right-align">Matter</th>
-    <th class="right-align">Antimatter</th>
+    <th>&nbsp;</th>
+    <th>Matter</th>
+    <th>&nbsp;</th>
+    <th>Antimatter</th>
   </tr>
 
-  <tr *ngFor="let p of getParticles()">
-    <td>{{ p }}</td>
-    <td class="right-align">{{ universeService.universe.particles[p] | illion }}</td>
-    <td class="right-align" *ngIf="universeService.universe.antiparticles[p]">
-      {{ universeService.universe.antiparticles[p] | illion }}
-    </td>
+  
+  <tr *ngFor="let parts of matter">
+    <ng-container *ngIf="universeService.universe.matter[parts[0].code] || universeService.universe.matter[parts[1].code]">
+
+      <td [innerHtml]="sanitizer.bypassSecurityTrustHtml(parts[0].displayCode)"></td>
+      <td class="right-align">{{ universeService.universe.matter[parts[0].code] | illion }}</td>
+
+      <ng-container *ngIf="(parts[0].code !== parts[0].antiparticleCode)">
+        <td [innerHtml]="sanitizer.bypassSecurityTrustHtml(parts[1].displayCode)"></td>
+        <td class="right-align">
+          {{ universeService.universe.matter[parts[1].code] | illion }}
+        </td>
+      </ng-container>
+
+    </ng-container>
   </tr>
+
 </table>

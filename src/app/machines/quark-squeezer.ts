@@ -1,8 +1,8 @@
 import { ConstructionProject } from "app/machines/construction-project";
 import { UniverseService } from "app/services/universe.service";
-import { ParticleFactory } from "app/machines/particle-factory";
 import { QuantumChromodynamics } from "app/research/collection";
 import { LogService } from "../services/log.service";
+import { ParticleFactory } from "../physics/particle-factory";
 
 export class QuarkSqueezer extends ConstructionProject {
     private particleFactory = new ParticleFactory();
@@ -24,15 +24,15 @@ export class QuarkSqueezer extends ConstructionProject {
     onTick(tickFactor: number) {
         const u = this.universeService.universe;
         let totalQuarks = 0;
-        Object.keys(u.particles).forEach(particle => {
-            if (particle.endsWith('quark')) {
-                totalQuarks += u.particles[particle];
-            }
-        });
+        Object.keys(u.matter)
+            .filter((k) => ["u", "d", "s", "c", "b", "t"].includes(k))
+            .forEach(particle => {
+                totalQuarks += u.matter[particle];
+            });
 
         const q = Math.ceil(totalQuarks * this.properties().efficiency * 0.0005 * tickFactor);
 
-        this.particleFactory.collectGluons(u, q);
+        this.particleFactory.collectParticle(u, "g", q);
     }
 
     preconditions(): boolean {

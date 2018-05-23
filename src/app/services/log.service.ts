@@ -1,6 +1,8 @@
+
+import {share} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { UniverseService } from 'app/services/universe.service';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class LogService {
@@ -9,7 +11,7 @@ export class LogService {
   public logs: Array<String>;
 
   private _log$ = new Subject<string>();
-  public log$ = this._log$.share();
+  public log$ = this._log$.pipe(share());
 
   constructor(private universeService: UniverseService) {
     this.resetLogs();

@@ -52,9 +52,9 @@ export class Paser extends ConstructionProject {
         const strangeCost = this.numberFormatter.numberWithCommas(this.strangeQuarkCost(count));
         const topCost = this.numberFormatter.numberWithCommas(this.topQuarkCost()) ;
         if (this.antiCycle()) {
-            quarkCostString = strangeCost + " anti strange quarks, " + topCost + " top quark";
+            quarkCostString = strangeCost + " strange antiquarks, " + topCost + " top quark";
         } else {
-            quarkCostString = strangeCost + " strange quarks, " + topCost+ " anti top quark";
+            quarkCostString = strangeCost + " strange quarks, " + topCost + " top antiquark";
         }
 
         return super.displayCost(count) + ", " + quarkCostString +
@@ -65,11 +65,11 @@ export class Paser extends ConstructionProject {
         const u = this.universeService.universe;
         let dqs: boolean, atqs: boolean;
         if (this.antiCycle()) {
-            dqs = u.antiparticles['strange quark'] >= this.strangeQuarkCost();
-            atqs = u.particles['top quark'] >= this.topQuarkCost();
+            dqs = u.matter["s̅"] >= this.strangeQuarkCost();
+            atqs = u.matter['t'] >= this.topQuarkCost();
         } else {
-            dqs = u.particles['strange quark'] >= this.strangeQuarkCost();
-            atqs = u.antiparticles['top quark'] >= this.topQuarkCost();
+            dqs = u.matter['s'] >= this.strangeQuarkCost();
+            atqs = u.matter["t̅"] >= this.topQuarkCost();
         }
 
         return super.affordable() && dqs && atqs;
@@ -81,11 +81,11 @@ export class Paser extends ConstructionProject {
             // nested ifs and we'll need to rollback on error
             const u = this.universeService.universe;
             if (this.antiCycle()) {
-                u.antiparticles['strange quark'] -= this.strangeQuarkCost(count);
-                u.particles['top quark'] -= this.topQuarkCost();
+                u.matter["s̅"] -= this.strangeQuarkCost(count);
+                u.matter['t'] -= this.topQuarkCost();
             } else {
-                u.particles['strange quark'] -= this.strangeQuarkCost(count);
-                u.antiparticles['top quark'] -= this.topQuarkCost();
+                u.matter['s'] -= this.strangeQuarkCost(count);
+                u.matter["t̅"] -= this.topQuarkCost();
             }
             super.payFor(count);
             return true;

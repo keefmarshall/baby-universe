@@ -10,8 +10,10 @@ export class Universe {
     energy = 0;
     heat = 0;
 
-    particles = {};
-    antiparticles = {};
+    // Deprecating particles/antiparticles in favour of matter
+    // particles = {};
+    // antiparticles = {};
+    matter = {};
 
     phase = 0.5; // pre/post big bang is 1/2, interstitials on .5
 
@@ -33,7 +35,7 @@ export class Universe {
             "flash into existence, only to decay almost instantly. "];
     newLogs = 0;
 
-    release = 0.330;
+    release = 0.340;
 
     supervisorMessageSeen = false;
     phase2MessageSeen = false;
@@ -43,4 +45,6 @@ export class Universe {
     // PHASE TWO
 
     contrivances: { [key: string]: any } = {};
+    decayPatterns: string[] = [];
+    currentPatternDesignProgress: number = 0;
 }

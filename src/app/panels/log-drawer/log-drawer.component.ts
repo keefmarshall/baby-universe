@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy, state, transition, animate, style, trigger } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { state, transition, animate, style, trigger } from '@angular/animations';
 import { LogService } from 'app/services/log.service';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import * as Typed from 'typed.js';
 import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
@@ -29,10 +30,6 @@ export class LogDrawerComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit() {
-    this.logsub = this.logService.log$.subscribe(text => {
-      console.log("logsub fired");
-      this.transition(text);
-    });
   }
 
   ngAfterViewInit() {
@@ -42,6 +39,11 @@ export class LogDrawerComponent implements OnInit, OnDestroy, AfterViewInit {
       showCursor: false,
       typeSpeed: 40,
       onComplete: (typed) => { this.typingComplete(typed) }
+    });
+
+    this.logsub = this.logService.log$.subscribe(text => {
+      console.log("logsub fired");
+      this.transition(text);
     });
   }
 

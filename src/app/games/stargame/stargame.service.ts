@@ -3,8 +3,9 @@ import { UniverseService } from 'app/services/universe.service';
 import * as createjs from 'createjs-module';
 import { Star, UpQuarkStar, DownQuarkStar, StrangeQuarkStar, CharmQuarkStar, TopQuarkStar, BottomQuarkStar } from 'app/games/stargame/star';
 import { ResearchProject } from 'app/research/research-project';
-import { Quarks2, Quarks3, QuarkUtils } from 'app/research/matter';
-import { ParticleFactory } from 'app/machines/particle-factory';
+import { Quarks2, Quarks3 } from 'app/research/matter';
+import { ParticleFactory } from '../../physics/particle-factory';
+import { QuarkUtils } from '../../physics/quark-utils';
 
 @Injectable()
 export class StargameService {
@@ -169,12 +170,12 @@ export class StargameService {
   randomStar(): Star {
     const quarkType = new QuarkUtils().randomQuark(this.universeService.universe);
     switch (quarkType) {
-      case 'up quark': return new UpQuarkStar();
-      case 'down quark': return new DownQuarkStar();
-      case 'strange quark': return new StrangeQuarkStar();
-      case 'charm quark': return new CharmQuarkStar();
-      case 'top quark': return new TopQuarkStar();
-      case 'bottom quark': return new BottomQuarkStar();
+      case 'u': return new UpQuarkStar();
+      case 'd': return new DownQuarkStar();
+      case 's': return new StrangeQuarkStar();
+      case 'c': return new CharmQuarkStar();
+      case 't': return new TopQuarkStar();
+      case 'b': return new BottomQuarkStar();
       default: return new UpQuarkStar(); // shouldn't happen
     }
   }
@@ -215,7 +216,8 @@ export class StargameService {
     // console.log("Captured star x=" + event.target.parent.x + ", y=" + event.target.parent.y);
 
     const type = event.target.star.type;
-    this.particleFactory.collectQuark(this.universeService.universe, type);
+    const qcode = event.target.star.code;
+    this.particleFactory.collectParticleAndAnti(this.universeService.universe, qcode);
 
     const text = new createjs.Text(type, this.startr + "px Arial", event.target.star.colour);
     text.x = event.target.parent.x - 20;

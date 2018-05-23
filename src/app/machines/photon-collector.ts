@@ -4,8 +4,8 @@ import {Machine, MachineProperties} from './machine';
 import { Universe } from '../services/universe';
 import { UniverseService } from '../services/universe.service';
 
-import { ParticleFactory } from './particle-factory';
 import { LogService } from '../services/log.service';
+import { ParticleFactory } from '../physics/particle-factory';
 
 export class PhotonCollector extends Machine {
     private photonCount = 0;
