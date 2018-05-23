@@ -225,8 +225,8 @@ NEW IDEAS (2018-05-23)
 
 Watching stuff decay is boring, let's give the player some control
 
-So: Decay Engine/Oven/Generator/something(s) - hard to build,
-each one can decay only one particle at a time. You only get 
+So: Decay Engine/Oven/Generator/something(s) (Bosonator?) - hard to build,
+each one can decay only one (type of) particle at a time. You only get 
 the patterns you've discovered so far. 
 
 Does mean we need to go back to branching ratios...
@@ -238,7 +238,7 @@ a set of obvious branching ratios taht I can find, maybe in the deep
 literature there might be some. So, different tack:
 
 1. Annihilation just leads to lots of energy. We can harness thiss
-to do other stuff, it becomes a currency.
+to do other stuff, it becomes a currency. <- to do what?
 
 Obviously we need an Annihilator, which we feed baryons/antibaryons
 

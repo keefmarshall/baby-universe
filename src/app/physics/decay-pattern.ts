@@ -100,3 +100,23 @@ export const DECAY_PATTERNS: { [key: string]: DecayPattern } = {
   "atau-lep-μ": new DecayPattern(["τ⁺"], "τ⁺ ⟶ W⁺ν̅<sub>τ</sub> ⟶ ν̅<sub>τ</sub>μ⁺ν<sub>μ</sub>", ["ν̅τ", "μ⁺", "νμ"], 2e-13),
 
 };
+
+const generateParticleDecayPatterns = () => {
+  const pdp = {} as { [key: string]: string[] };
+  Object.keys(DECAY_PATTERNS)
+      .filter(pattID => DECAY_PATTERNS[pattID].inputs.length === 1)
+      .forEach(pattID => {
+        const pattern = DECAY_PATTERNS[pattID];
+        const particle = pattern.inputs[0];
+        if (!pdp[particle]) {
+          pdp[particle] = [pattID];
+        } else {
+          pdp[particle].push(pattID);
+        }
+      })
+
+  return pdp;
+};
+
+export const PARTICLE_DECAY_PATTERNS: { [key: string]: string[] } = generateParticleDecayPatterns();
+

@@ -2,7 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { UniverseService } from './universe.service';
 import { Subscription } from 'rxjs';
 import { TickerService } from './ticker.service';
-import { DecayPattern, DECAY_PATTERNS } from '../physics/decay-pattern';
+import { DecayPattern, DECAY_PATTERNS, PARTICLE_DECAY_PATTERNS } from '../physics/decay-pattern';
 import { Globals } from '../globals';
 
 @Injectable()
@@ -11,38 +11,20 @@ export class RadioactivityService implements OnDestroy {
   private running: boolean = false;
 
   constructor(
-    private universeService: UniverseService,
-    private tickerService: TickerService
+    private universeService: UniverseService
   ) {
-    if (this.universeService.universe.machines['RadioactivityCentre']) {
-      this.start();
-    }
   }
 
-  start() {
-    console.log("Starting Radioactivity Service");
-    if (!this.tickersub) {
-      this.tickersub = this.tickerService.tick$.subscribe((n) => this.onTick(n));
-    }
-    this.running = true;
-  }
-
-  stop() {
-    console.log("Stopping Radioactivity Service");
-    if (this.tickersub) {
-      this.tickersub.unsubscribe();
-    }
-    this.running = false;
-  }
-
-  private onTick(n: number) {
+  public addProgress(particle: string, n: number) {
     // introduce temperature factor - faster decay at lower temps
     const tempFactor = Math.max(1, Math.log10(this.universeService.universe.heat) + 10);
-    const adjustedSeconds = Globals.tickFactor * Globals.secondsPerTick / tempFactor;
+    const adjustedSeconds = n / tempFactor;
 
-    this.universeService.universe.decayPatterns.forEach((p) => {
-      this.doDecay(DECAY_PATTERNS[p], adjustedSeconds);
-    })
+    this.universeService.universe.decayPatterns
+      .filter(pattID => PARTICLE_DECAY_PATTERNS[particle].includes[pattID])
+      .forEach((pattID) => {
+        this.doDecay(DECAY_PATTERNS[pattID], adjustedSeconds); // TODO * pattern.branchingRatio
+      })
   }
 
   private doDecay(pattern: DecayPattern, adjustedSeconds: number = 0.1) {
