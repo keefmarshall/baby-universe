@@ -21,7 +21,6 @@ export class RadioactivityCentre extends ConstructionProject {
 
     onComplete() {
         this.machineService.addMachine(this);
-        this.radioactivityService.start();
     }
 
     onTick(tickFactor: number) {

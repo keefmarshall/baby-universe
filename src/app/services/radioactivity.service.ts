@@ -1,18 +1,32 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { UniverseService } from './universe.service';
 import { Subscription } from 'rxjs';
-import { TickerService } from './ticker.service';
-import { DecayPattern, DECAY_PATTERNS, PARTICLE_DECAY_PATTERNS } from '../physics/decay-pattern';
+import { DecayPattern, DECAY_PATTERNS } from '../physics/decay-pattern';
 import { Globals } from '../globals';
+import { DecayDesignService } from './decay-design.service';
+import { ALL_PARTICLES } from '../physics/particle';
 
 @Injectable()
 export class RadioactivityService implements OnDestroy {
-  private tickersub: Subscription;
+  private ddsub: Subscription;
   private running: boolean = false;
+  private availablePatternsByParticle: { [key: string]: Set<DecayPattern> } = {};
+  private availableParticlesInOrder: string[] = [];
 
   constructor(
-    private universeService: UniverseService
+    private universeService: UniverseService,
+    private decayDesignService: DecayDesignService
   ) {
+    this.universeService.universe.decayPatterns.forEach(pattID => {
+      this.updatePatternLists(pattID);
+    });
+    this.updateAvailableParticles();
+
+    // Make sure we pick up any newly discovered decay patterns
+    this.ddsub = this.decayDesignService.events$.subscribe(pattID => {
+      this.updatePatternLists(pattID);
+      this.updateAvailableParticles();
+    });
   }
 
   public addProgress(particle: string, n: number) {
@@ -20,11 +34,16 @@ export class RadioactivityService implements OnDestroy {
     const tempFactor = Math.max(1, Math.log10(this.universeService.universe.heat) + 10);
     const adjustedSeconds = n / tempFactor;
 
-    this.universeService.universe.decayPatterns
-      .filter(pattID => PARTICLE_DECAY_PATTERNS[particle].includes[pattID])
-      .forEach((pattID) => {
-        this.doDecay(DECAY_PATTERNS[pattID], adjustedSeconds); // TODO * pattern.branchingRatio
-      })
+    if (this.availablePatternsByParticle[particle]) {
+      this.availablePatternsByParticle[particle].forEach(pattern => {
+        this.doDecay(pattern, adjustedSeconds); // TODO: * branching ratio
+      });
+    };
+    // this.universeService.universe.decayPatterns
+    //   .filter(pattID => PARTICLE_DECAY_PATTERNS[particle].includes[pattID])
+    //   .forEach((pattID) => {
+    //     this.doDecay(DECAY_PATTERNS[pattID], adjustedSeconds); // TODO * pattern.branchingRatio
+    //   })
   }
 
   private doDecay(pattern: DecayPattern, adjustedSeconds: number = 0.1) {
@@ -47,9 +66,29 @@ export class RadioactivityService implements OnDestroy {
     }
   }
 
+  private updatePatternLists(pattID: string) {
+    const pattern = DECAY_PATTERNS[pattID];
+    if (pattern.inputs.length === 1) { // ignore multi-input patterns
+      const particle = pattern.inputs[0];
+      if (!this.availablePatternsByParticle[particle]) {
+        this.availablePatternsByParticle[particle] = new Set<DecayPattern>();
+      }
+
+      this.availablePatternsByParticle[particle].add(pattern);
+    }
+  }
+
+  // This is an ordered list of particles that have available decay patterns
+  // i.e. particles that can be assigned to Bosonators. The order is important
+  // for display purposes, to keep things consistent.
+  private updateAvailableParticles() {
+    this.availableParticlesInOrder = Object.keys(ALL_PARTICLES)
+      .filter(particle => this.availablePatternsByParticle[particle] != null);
+  }
+
   ngOnDestroy(): void {
-    if (this.tickersub) {
-      this.tickersub.unsubscribe();
+    if (this.ddsub) {
+      this.ddsub.unsubscribe();
     }
   }
 }

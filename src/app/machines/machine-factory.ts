@@ -47,6 +47,7 @@ import { RadioactivityCentre } from './radioactivity-centre';
 import { RadioactivityService } from '../services/radioactivity.service';
 import { DecayDesigner } from './decay-designer';
 import { DecayDesignService } from '../services/decay-design.service';
+import { Bosonator } from './bosonator';
 
 /**
  * This class exists solely so we can reconstruct a machine based on
@@ -115,7 +116,8 @@ export class MachineFactory {
             'MesonMaker': new MesonMaker(this.universeService, this.logService, this.hadronService),
             'BaryonBuilder': new BaryonBuilder(this.universeService, this.logService, this.hadronService),
             'RadioactivityCentre': new RadioactivityCentre(this.universeService, this.logService, this.radioactivityService),
-            'DecayDesigner': new DecayDesigner(this.universeService, this.logService, this.decayDesignService)
+            'DecayDesigner': new DecayDesigner(this.universeService, this.logService, this.decayDesignService),
+            'Bosonator': new Bosonator(this.universeService, this.logService, this.decayDesignService, this.radioactivityService)
         };
 
         this.allMachineNames = [];
