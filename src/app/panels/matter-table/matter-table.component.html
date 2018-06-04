@@ -10,11 +10,11 @@
   <tr *ngFor="let parts of matter">
     <ng-container *ngIf="universeService.universe.matter[parts[0].code] || universeService.universe.matter[parts[1].code]">
 
-      <td [innerHtml]="sanitizer.bypassSecurityTrustHtml(parts[0].displayCode)"></td>
+      <td [innerHtml]="parts[0].displayCode | safe: 'html'"></td>
       <td class="right-align">{{ universeService.universe.matter[parts[0].code] | illion }}</td>
 
       <ng-container *ngIf="(parts[0].code !== parts[0].antiparticleCode)">
-        <td [innerHtml]="sanitizer.bypassSecurityTrustHtml(parts[1].displayCode)"></td>
+        <td [innerHtml]="parts[1].displayCode | safe: 'html'"></td>
         <td class="right-align">
           {{ universeService.universe.matter[parts[1].code] | illion }}
         </td>

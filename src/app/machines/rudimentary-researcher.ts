@@ -37,20 +37,13 @@ export class RudimentaryResearcher extends ConstructionProject {
 
         // Assignments
         const assignmentEff = 2 * Math.log10(eff + 1);
-        const improveScience = numImprove * assignmentEff * tickFactor * 0.1;
-        this.researchTrackService.improveResearchers(improveScience);
+        const multiplier = assignmentEff * tickFactor * 0.1;
 
-        const contrapScience = numContrap * assignmentEff * tickFactor * 0.1;
-        this.researchTrackService.improveContraptions(contrapScience);
-
-        const makerScience = numMaker * assignmentEff * tickFactor * 0.1;
-        this.researchTrackService.improveMakers(makerScience);
-
-        const builderScience = numBuilder * assignmentEff * tickFactor * 0.1;
-        this.researchTrackService.improveBuilders(builderScience);
-
-        const contrapStrengthScience = numContrapStr * assignmentEff * tickFactor * 0.1;
-        this.researchTrackService.improveContraptionStrength(contrapStrengthScience);
+        this.researchTrackService.improveResearchers(numImprove * multiplier);
+        this.researchTrackService.improveContraptions(numContrap * multiplier);
+        this.researchTrackService.improveMakers(numMaker * multiplier);
+        this.researchTrackService.improveBuilders(numBuilder * multiplier);
+        this.researchTrackService.improveContraptionStrength(numContrapStr * multiplier);
     }
 
     preconditions(): boolean {

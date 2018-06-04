@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UniverseService } from 'app/services/universe.service';
 import { ALL_PARTICLES, Particle } from '../../physics/particle';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-matter-table',
@@ -12,8 +11,7 @@ export class MatterTableComponent implements OnInit, OnDestroy {
   public matter: Particle[][];
 
   constructor(
-    public universeService: UniverseService,
-    public sanitizer: DomSanitizer
+    public universeService: UniverseService
   ) {
     this.matter = Object.keys(ALL_PARTICLES)
         .map((c) => ALL_PARTICLES[c])

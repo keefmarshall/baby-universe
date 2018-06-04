@@ -57,13 +57,16 @@ export class DecayDesignService {
 
   // returns pattern keys, not patterns
   private availablePatterns(): string[] {
+//    console.log("Calculating available patterns..");
     const u = this.universeService.universe;
     return Object.keys(DECAY_PATTERNS)
       .filter((k) => !u.decayPatterns.includes(k))
       .filter((k) => {
         const pattern = DECAY_PATTERNS[k];
         const allReqs = pattern.results.concat(...pattern.inputs);
-        const allDiscovered = allReqs.every((particle) => u.matter[particle] !== null);
+//        console.log(`${k}: AllReqs = ${JSON.stringify(allReqs)}`);
+        const allDiscovered = allReqs.every((particle) => u.matter.hasOwnProperty(particle));
+//        console.log(`${k}: allDiscovered = ${allDiscovered}`);
         return allDiscovered;
       });
   }
