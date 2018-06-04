@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
     <span *ngIf="temperature >= 1e6 || temperature < 1e-3">
       {{ mantissa }}&nbsp;×&nbsp;10<sup>{{ exponent }}</sup>K
     </span>
-    <span *ngIf="temperature < 1e5 && temperature >= 1e-3">
+    <span *ngIf="temperature < 1e6 && temperature >= 1e-3">
       {{ temperature.toPrecision(5) | number:"1.0-5" }}K
     </span>
   `

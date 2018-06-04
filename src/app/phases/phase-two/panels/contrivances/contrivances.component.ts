@@ -48,13 +48,13 @@ export class ContrivancesComponent implements OnInit, OnDestroy {
   }
 
   buildMouseDown() {
-    console.log("Build mousedown");
+    // console.log("Build mousedown");
     this.buildMouseIsDown = true;
     this.buildTimeout = setTimeout(() => this.contrivanceService.isContriving = true, 300);
   }
 
   buildMouseUp() {
-    console.log("Build mouseup");
+    // console.log("Build mouseup");
     this.buildMouseIsDown = false;
     this.contrivanceService.isContriving = false;
     if (this.buildTimeout) {
@@ -63,7 +63,7 @@ export class ContrivancesComponent implements OnInit, OnDestroy {
   }
 
   buildMouseOut() {
-    console.log("Build mouseout");
+    // console.log("Build mouseout");
     this.buildMouseIsDown = false;
     this.contrivanceService.isContriving = false;
     if (this.buildTimeout) {
@@ -80,7 +80,7 @@ export class ContrivancesComponent implements OnInit, OnDestroy {
           clearTimeout(this.repairTimeout);
         }
         break;
-        
+
       case 'down':
         this.repairTimeout = setTimeout(() => this.contrivanceService.isRepairing = true, 300);
         break;

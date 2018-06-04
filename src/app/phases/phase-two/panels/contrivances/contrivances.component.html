@@ -6,15 +6,15 @@
 
   <p *ngIf="numContrivances() > 0" class="info info-right">
     <span [@workingTrigger]="workingState" class="contraption-count">
-      Working: {{ contrivanceService.contraptionProperties().workingContraptions | illion }}
+      Working: {{ universeService.universe.machines['Contraption']?.extras.workingContraptions | illion }}
     </span>
     <br/>
     <span [@faultyTrigger]="faultyState" class="contraption-count">
-      Faulty: {{ contrivanceService.contraptionProperties().faultyContraptions }}
+      Faulty: {{ universeService.universe.machines['Contraption']?.extras.faultyContraptions }}
     </span>
     <br/>
     <span [@brokenTrigger]="brokenState" class="contraption-count">
-      Broken: {{ contrivanceService.contraptionProperties().brokenContraptions }}
+      Broken: {{ universeService.universe.machines['Contraption']?.extras.brokenContraptions }}
     </span>
     <br/>
     <span class="contraption-count">
