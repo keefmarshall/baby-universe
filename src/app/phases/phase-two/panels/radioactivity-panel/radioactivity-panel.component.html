@@ -28,8 +28,29 @@
       <br/>Decay patterns: {{ universeService.universe.decayPatterns.length }}
     </span>
     <span *ngIf="universeService.universe.machines['Bosonator']?.quantity > 0">
-      <br/>Bosonators: {{ universeService.universe.machines['Bosonator'].quantity }}
+      <br/>Bosonators: &nbsp;{{ universeService.universe.machines['Bosonator'].quantity }}
+      <br/>- Unassigned: {{ universeService.universe.machines['Bosonator'].extras.available }}
     </span>
   </p>
+
+  <div class="mdc-layout-grid"
+      id="bosonator-assignment"
+      *ngIf="universeService.universe.machines['Bosonator']?.quantity > 0">
+    <div class="mdc-layout-grid__inner" >
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 bosonator-assigner"
+        *ngFor="let particle of radioactivityService.availableParticlesInOrder">
+        
+        <span class="assigned-particle">{{ particle }}</span>&nbsp;
+
+        <app-number-picker class="right-align"
+          [max]="universeService.universe.machines['Bosonator'].extras.available + universeService.universe.machines['Bosonator'].extras.assignments[particle]"
+          [value]="universeService.universe.machines['Bosonator'].extras.assignments[particle]"
+          (valueChange)="assignChange($event, particle)">
+        </app-number-picker>
+
+      </div>
+    </div>
+  </div>
 
 </div>

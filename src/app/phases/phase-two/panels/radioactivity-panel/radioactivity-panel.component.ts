@@ -23,4 +23,11 @@ export class RadioactivityPanelComponent implements OnInit {
     return this.universeService.universe.currentPatternDesignProgress * 100 /
           this.decayDesignService.requiredForNext;
   }
+
+  assignChange(amount: number, particle: string) {
+    const props = this.universeService.universe.machines['Bosonator'];
+    const diff = amount - props.extras.assignments[particle];
+    props.extras.available -= diff;
+    props.extras.assignments[particle] = amount;
+  }
 }

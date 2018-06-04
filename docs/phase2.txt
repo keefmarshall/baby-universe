@@ -264,3 +264,14 @@ could go wild or simply ignore them. - we may need them later on during
 universe expansion though. 
 
 
+TODO 2018-05-24
+----------------
+Available patterns in decay design service not working - can discover patterns that
+should not be available based on discovered particles - leading to nulls in the
+universe which is thus broken.
+
+Investigate whether research tracks are causing performance issues
+
+Investigate whether number-pickers are causing performance issues.
+
+Logger font doesn't display combined diacritics correctly in Firefox.

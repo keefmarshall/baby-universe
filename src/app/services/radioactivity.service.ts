@@ -11,7 +11,8 @@ export class RadioactivityService implements OnDestroy {
   private ddsub: Subscription;
   private running: boolean = false;
   private availablePatternsByParticle: { [key: string]: Set<DecayPattern> } = {};
-  private availableParticlesInOrder: string[] = [];
+
+  public availableParticlesInOrder: string[] = [];
 
   constructor(
     private universeService: UniverseService,
