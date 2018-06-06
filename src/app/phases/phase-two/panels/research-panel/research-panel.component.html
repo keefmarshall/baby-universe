@@ -41,7 +41,7 @@
       <tr class="project-researchers">
         <td>Project research</td>
         <td class="right-align project-researchers-count">
-          {{ projectResearchers() }}
+          {{ projectResearchers }}
         </td>
       </tr>
 
@@ -49,8 +49,9 @@
         <td>Contraption efficiency</td>
         <td class="right-align">
           <app-number-picker
-            [max]="constructionMax()"
-            [(value)]="universeService.universe.machines['RudimentaryResearcher'].extras.contraptionImprovement"
+            [max]="maxes.contraptionImprovement"
+            [value]="universeService.universe.machines['RudimentaryResearcher'].extras.contraptionImprovement"
+            (valueChange)="changeAssignment('contraptionImprovement', $event)"
           ></app-number-picker>
         </td>
         <!-- <td>
@@ -64,8 +65,9 @@
         <td>Contraption strength</td>
         <td class="right-align">
           <app-number-picker
-            [max]="constructionStrengthMax()"
-            [(value)]="universeService.universe.machines['RudimentaryResearcher'].extras.contraptionStrengthImprovement"
+            [max]="maxes.contraptionStrengthImprovement"
+            [value]="universeService.universe.machines['RudimentaryResearcher'].extras.contraptionStrengthImprovement"
+            (valueChange)="changeAssignment('contraptionStrengthImprovement', $event)"
           ></app-number-picker>
         </td>
         <!-- <td>
@@ -79,8 +81,9 @@
         <td>Researcher efficiency</td>
         <td class="right-align">
           <app-number-picker
-            [max]="researchMax()"
-            [(value)]="universeService.universe.machines['RudimentaryResearcher'].extras.researchImprovement"
+            [max]="maxes.researchImprovement"
+            [value]="universeService.universe.machines['RudimentaryResearcher'].extras.researchImprovement"
+            (valueChange)="changeAssignment('researchImprovement', $event)"
           ></app-number-picker>
         </td>
         <!-- <td>
@@ -94,8 +97,9 @@
         <td>M. Maker efficiency</td>
         <td class="right-align">
           <app-number-picker
-            [max]="makerMax()"
-            [(value)]="universeService.universe.machines['RudimentaryResearcher'].extras.makerImprovement"
+            [max]="maxes.makerImprovement"
+            [value]="universeService.universe.machines['RudimentaryResearcher'].extras.makerImprovement"
+            (valueChange)="changeAssignment('makerImprovement', $event)"
           ></app-number-picker>
         </td>
         <!-- <td>
@@ -109,8 +113,9 @@
         <td>B. Builder efficiency</td>
         <td class="right-align">
           <app-number-picker
-            [max]="builderMax()"
-            [(value)]="universeService.universe.machines['RudimentaryResearcher'].extras.builderImprovement"
+            [max]="maxes.builderImprovement"
+            [value]="universeService.universe.machines['RudimentaryResearcher'].extras.builderImprovement"
+            (valueChange)="changeAssignment('builderImprovement', $event)"
           ></app-number-picker>
         </td>
         <!-- <td>

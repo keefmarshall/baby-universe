@@ -12,6 +12,16 @@ import { MachineProperties } from '../../../../machines/machine';
 })
 export class ResearchPanelComponent implements OnInit {
   projectList: Array<ResearchProject>;
+  projectResearchers: number = 0;
+  maxes: { [key: string]: number } = {};
+
+  private readonly ALL_LABELS = [
+    "researchImprovement",
+    "contraptionImprovement",
+    "contraptionStrengthImprovement",
+    "makerImprovement",
+    "builderImprovement"
+  ];
 
   constructor(
     public universeService: UniverseService,
@@ -19,6 +29,7 @@ export class ResearchPanelComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.calculateMaxValues();
     this.projectList = this.researchService.researchList.projectList
       .filter(project => project.correctPhase(this.universeService.universe));
   }
@@ -38,70 +49,24 @@ export class ResearchPanelComponent implements OnInit {
     return !this.researchService.isResearching();
   }
 
-  changeAssignment(label: string, byAmount: number) {
-
+  changeAssignment(label: string, toAmount: number) {
+    this.getRudimentaryResearcher().extras[label] = toAmount;
+    this.calculateMaxValues();
   }
 
   private calculateMaxValues() {
-
-  }
-
-  ///////////////////////////////////////////////////////////////////////////////
-
-  researchMax() {
     const rr = this.getRudimentaryResearcher();
-    // return rr.quantity - (this.contraptionImprovers() + this.makerImprovers() + this.builderImprovers());
-    return rr.quantity + this.researchImprovers() - this.numAssigned();
-  }
+    let numAssigned = 0;
+    // NB could use .reduce() here but for is massively quicker
+    for (let i = 0; i < this.ALL_LABELS.length; i++) {
+      numAssigned += rr.extras[this.ALL_LABELS[i]];
+    }
 
-  constructionMax() {
-    const rr = this.getRudimentaryResearcher();
-    // return rr.quantity - (this.researchImprovers() + this.makerImprovers() + this.builderImprovers());
-    return rr.quantity + this.contraptionImprovers() - this.numAssigned();
-  }
+    this.projectResearchers = rr.quantity - numAssigned;
 
-  makerMax() {
-    const rr = this.getRudimentaryResearcher();
-    return rr.quantity + this.makerImprovers() - this.numAssigned();
-  }
-
-  builderMax() {
-    const rr = this.getRudimentaryResearcher();
-    return rr.quantity + this.builderImprovers() - this.numAssigned();
-  }
-
-  constructionStrengthMax() {
-    const rr = this.getRudimentaryResearcher();
-    return rr.quantity + this.contraptionStrengthImprovers() - this.numAssigned();
-  }
-
-  private numAssigned(): number {
-    return this.researchImprovers() +  this.contraptionImprovers() + this.makerImprovers()
-      + this.builderImprovers() + this.contraptionStrengthImprovers();
-  }
-
-  projectResearchers(): number {
-    return this.getRudimentaryResearcher().quantity - this.numAssigned();
-  }
-
-  researchImprovers(): number {
-    return this.getRudimentaryResearcher().extras['researchImprovement'];
-  }
-
-  contraptionImprovers(): number {
-    return this.getRudimentaryResearcher().extras['contraptionImprovement'];
-  }
-
-  contraptionStrengthImprovers(): number {
-    return this.getRudimentaryResearcher().extras['contraptionStrengthImprovement'];
-  }
-
-  makerImprovers(): number {
-    return this.getRudimentaryResearcher().extras['makerImprovement'];
-  }
-
-  builderImprovers(): number {
-    return this.getRudimentaryResearcher().extras['builderImprovement'];
+    this.ALL_LABELS.forEach(label => {
+      this.maxes[label] = rr.quantity + rr.extras[label] - numAssigned;
+    });
   }
 
   getRudimentaryResearcher(): MachineProperties {

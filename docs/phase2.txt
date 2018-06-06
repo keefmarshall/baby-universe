@@ -269,6 +269,7 @@ TODO 2018-05-24
 Available patterns in decay design service not working - can discover patterns that
 should not be available based on discovered particles - leading to nulls in the
 universe which is thus broken.
+^^ FIXED
 
 Investigate whether research tracks are causing performance issues
 
@@ -282,3 +283,4 @@ Research panel: number-pickers: do calculations only when assignments change
  - should reduce a lot of funcion calls. 
  - Will have to use a separate valueChange handler.
  - can also tidy this code up, reduce all the duplication.
+ ^^ DONE
