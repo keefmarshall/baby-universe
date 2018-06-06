@@ -31,7 +31,8 @@ export class ResearchPanelComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.projectList = this.researchService.researchList.projectList;
+    this.projectList = this.researchService.researchList.projectList
+      .filter(project => project.correctPhase(this.universeService.universe));
     this.ticksub = this.tickerService.tick$.subscribe(n => this.onTick(n));
   }
 

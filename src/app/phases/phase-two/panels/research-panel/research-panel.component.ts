@@ -19,7 +19,8 @@ export class ResearchPanelComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.projectList = this.researchService.researchList.projectList;
+    this.projectList = this.researchService.researchList.projectList
+      .filter(project => project.correctPhase(this.universeService.universe));
   }
 
   isComplete(project: ResearchProject) {
@@ -29,13 +30,23 @@ export class ResearchPanelComponent implements OnInit {
 
   shouldShow(project: ResearchProject): boolean {
     return project.preconditions(this.universeService.universe) &&
-          !this.isComplete(project) &&
-          project.correctPhase(this.universeService.universe);
+          !this.isComplete(project);
+          // && project.correctPhase(this.universeService.universe);
   }
 
   canResearch() {
     return !this.researchService.isResearching();
   }
+
+  changeAssignment(label: string, byAmount: number) {
+
+  }
+
+  private calculateMaxValues() {
+
+  }
+
+  ///////////////////////////////////////////////////////////////////////////////
 
   researchMax() {
     const rr = this.getRudimentaryResearcher();

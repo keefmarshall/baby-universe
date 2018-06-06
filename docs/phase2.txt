@@ -277,3 +277,8 @@ Investigate whether number-pickers are causing performance issues.
 Logger font doesn't display combined diacritics correctly in Firefox.
 ^^ this is only when using Typed.js, it works fine otherwise. Looks like a Firefox
 bug with combined diacritics, suspect any font will be the same.
+
+Research panel: number-pickers: do calculations only when assignments change
+ - should reduce a lot of funcion calls. 
+ - Will have to use a separate valueChange handler.
+ - can also tidy this code up, reduce all the duplication.
